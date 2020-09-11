@@ -1,0 +1,11 @@
+body {
+    padding-top: 75px;
+}
+
+#candidate_chead {
+    background-color: rgba(242, 139, 48, .7);
+}
+
+#candidate_chead h3 {
+color: black;
+}

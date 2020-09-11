@@ -1,0 +1,29 @@
+body {
+    padding-top: 150px;
+}
+
+.jumbotron {
+    background-color: rgba(242, 139, 48, .7);
+    padding-top: 10px;
+}
+
+#welcome {
+    font-size: 1.5em;
+}
+
+
+
+@media screen and (max-width:768px){
+    body {
+        padding-top: 200px;
+    }
+
+    
+} 
+
+@media screen and (max-width:425px){
+    #logo img {
+        width: 100%;
+        height: auto;
+    }
+} 

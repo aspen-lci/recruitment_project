@@ -14,3 +14,7 @@
 
    <!-- Chatbot -->
    <script src="//code.tidio.co/wcvpkdgsrtwx6hqb0rd7t9w6gs881qem.js" async></script>
+
+   <?php
+      db_disconnect($db);
+  ?>

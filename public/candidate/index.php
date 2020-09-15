@@ -192,7 +192,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
     </div>
     <!-- /.row -->
-    <div class="row text-center">
+    <div class="row text-center"> 
       <div class="col-lg-12 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header" style="background-color: #F28B30;"></div>

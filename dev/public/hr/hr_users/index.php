@@ -1,31 +1,12 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
 <?php
-  $users = [
-    ['id' => '1', 
-    'firstName' => 'Angie', 
-    'lastName' => 'Spencer', 
-    'userType' => 'admin',
-    'email' => 'angela.spencer@lastingchangeinc.org'],
+  $user_set = all_users();
 
-    ['id' => '2', 
-    'firstName' => 'Jenn', 
-    'lastName' => 'Falk', 
-    'userType' => 'hr',
-    'email' => 'jenn.falk@lastingchangeinc.org'],
-
-    ['id' => '3', 
-    'firstName' => 'John', 
-    'lastName' => 'Smith', 
-    'userType' => 'candidate',
-    'email' => 'johnsmith@gmail.com'],
-
-    ['id' => '4', 
-    'firstName' => 'Kristen', 
-    'lastName' => 'Powell', 
-    'userType' => 'recruiter',
-    'email' => 'kristen.powell@lastingchangeinc.org']
-  ]
+  // $user_id = $users['id'];
+  // $name = $users['first_name'] . " " . $users['last_name'];
+  // $email = $users['email'];
+  // $user_type = $users['type'];
 
 ?>
 
@@ -54,17 +35,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($users as $user) { ?>
+                  <?php foreach ($user_set as $user) { ?>
                   <tr>
-                    <td><a class="action" href="<?php echo url_for('/hr/hr_users/edit.php?id=' . h($user['id'])); ?>"><?php echo h($user['firstName']) . " " . h($user['lastName']); ?></a></td>
+                    <td><a class="action" href="<?php echo url_for('/hr/hr_users/edit.php?id=' . h($user['id'])); ?>"><?php echo h($user['first_name']) . " " . h($user['last_name']); ?></a></td>
                     <td><?php echo h($user['email']); ?></td>
-                    <td><?php echo h($user['userType']); ?></td>
-                    <td><button type="button" class="btn btn-primary">Reset Password</button></td>
+                    <td><?php echo h($user['type']); ?></td>
+                    <td><button type="button" class="btn btn-primary" id="resetPass">Reset Password</button></td>
                   </tr>
                   <?php } ?>
                   
                 </tbody>
               </table>
+
               </div> <!-- end card body -->
             </div> <!-- Card -->
             </div> <!-- Column -->

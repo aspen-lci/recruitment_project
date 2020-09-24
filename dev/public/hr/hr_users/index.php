@@ -3,32 +3,24 @@
 <?php
   $users = [
     ['id' => '1', 
-    'userName' => 'aspencer', 
-    'password' => '123password', 
     'firstName' => 'Angie', 
     'lastName' => 'Spencer', 
     'userType' => 'admin',
     'email' => 'angela.spencer@lastingchangeinc.org'],
 
     ['id' => '2', 
-    'userName' => 'jfalk', 
-    'password' => '123password', 
     'firstName' => 'Jenn', 
     'lastName' => 'Falk', 
     'userType' => 'hr',
     'email' => 'jenn.falk@lastingchangeinc.org'],
 
     ['id' => '3', 
-    'userName' => 'jsmith', 
-    'password' => '123password', 
     'firstName' => 'John', 
     'lastName' => 'Smith', 
     'userType' => 'candidate',
     'email' => 'johnsmith@gmail.com'],
 
     ['id' => '4', 
-    'userName' => 'kpowell', 
-    'password' => '123password', 
     'firstName' => 'Kristen', 
     'lastName' => 'Powell', 
     'userType' => 'recruiter',
@@ -55,21 +47,19 @@
                 data-sortable="true">
                 <thead>
                   <tr>
-                    <th style data-sortable="true" data-field="userName">User Name</th>
-                    <th style data-field="password">Password</th>
-                    <th style data-sortable="true" data-field="full_name">Name</th>
-                    <th style data-sortable="true" data-field="userType">User Type</th>
+                    <th style data-sortable="true" data-field="name">Name</th>
                     <th style data-sortable="true" data-field="email">Email</th>
+                    <th style data-sortable="true" data-field="userType">User Type</th>
+                    <th style>Reset Password</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach($users as $user) { ?>
                   <tr>
-                    <td><a class="action" href="<?php echo url_for('/hr/hr_users/edit.php?id=' . h($user['id'])); ?>"><?php echo $user['userName']; ?></a></td>
-                    <td><?php echo h($user['password']); ?></td>
-                    <td><?php echo h($user['firstName']) . " " . h($user['lastName']); ?></td>
-                    <td><?php echo h($user['userType']); ?></td>
+                    <td><a class="action" href="<?php echo url_for('/hr/hr_users/edit.php?id=' . h($user['id'])); ?>"><?php echo h($user['firstName']) . " " . h($user['lastName']); ?></a></td>
                     <td><?php echo h($user['email']); ?></td>
+                    <td><?php echo h($user['userType']); ?></td>
+                    <td><button type="button" class="btn btn-primary">Reset Password</button></td>
                   </tr>
                   <?php } ?>
                   

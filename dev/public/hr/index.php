@@ -1,5 +1,8 @@
 <?php require_once('../../private/initialize.php'); ?>
 
+
+
+
 <?php
   $candidates = [
     ['id' => '1', 

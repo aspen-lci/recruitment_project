@@ -11,7 +11,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo url_for('/vendor/jquery/jquery.min.js') ?>"></script>
   <script src="<?php echo url_for('/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-
+  <script src="<?php echo url_for('/js/custom.js') ?>"></script>
    <!-- Chatbot -->
    <script src="//code.tidio.co/wcvpkdgsrtwx6hqb0rd7t9w6gs881qem.js" async></script>
 

@@ -35,9 +35,14 @@
         <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/LLlogo.png') ?>" alt="Logo" style="height: 100px;"></a>
       </div>
 
-      <div id="welcome">
-        <p>Welcome, Constantine!</p>
-      </div>
+     <div id="welcome">
+      <p><?php echo (empty($_SESSION['first_name'])) ? 'Welcome!' : 'Welcome, ' . $_SESSION['first_name'] . '!'; ?></p>
+    </div>
+      <navigation>   
+        <ul>
+          <li><a href="<?php echo url_for('/logout.php'); ?>">Log Out</a></li>
+
+      
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -61,3 +66,4 @@
       </div> -->
     </div>
   </nav>
+  <?php echo display_session_message(); ?>

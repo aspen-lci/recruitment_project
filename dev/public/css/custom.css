@@ -1,10 +1,29 @@
 body {
     padding-top: 150px;
+    
+
+}
+
+#content{
+    min-height: calc(100vh - 350px);
+}
+
+footer {
+    height: 200px;
+    /* position: fixed; */
+    /* margin-top: 100px; */
+    bottom: 0px;
+    /* width: 100%; */
+
 }
 
 .jumbotron {
     background-color: rgba(242, 139, 48, .7);
     padding-top: 10px;
+}
+
+ul li {
+    list-style-type: none;
 }
 
 #welcome {
@@ -27,3 +46,4 @@ body {
         height: auto;
     }
 } 
+

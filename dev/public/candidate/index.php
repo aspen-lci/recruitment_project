@@ -92,10 +92,29 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
         </div>
       </div>
+
+      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
+        <div class="card h-100">
+          <div class="card-header" style="background-color: #F2E205;">
+            <h4>5</h4>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Panel Interview</h4>
+            <p class="card-text"></p>
+          </div>
+          <div class="card-footer" style="background-color: #F2E205;">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Completed</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header" style="background-color: #F28B30;">
-            <h4>5</h4>
+            <h4>6</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">Accept and sign the job offer</h4>
@@ -109,10 +128,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
+    </div>
+    <!-- end row-->
+
+    <div class="row text-center">
+    <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header" style="background-color: #F2E205;">
-            <h4>6</h4>
+            <h4>7</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">Send in your transcripts</h4>
@@ -128,15 +151,10 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      
-    </div>
-    <!-- end row-->
-
-    <div class="row text-center">
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header" style="background-color: #F20505;">
-            <h4>7</h4>
+            <h4>8</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">Schedule fingerprinting</h4>
@@ -154,7 +172,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header" style="background-color: #0D0D0D; color: white;">
-            <h4>8</h4>
+            <h4>9</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">References</h4>
@@ -171,10 +189,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
+    </div>
+    <!-- /.row -->
+    <div class="row text-center"> 
+
+    <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header" style="background-color: #D8D8D8;">
-            <h4>9</h4>
+            <h4>10</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">UltiPro Onboarding</h4>
@@ -190,15 +212,13 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
         </div>
       </div>
-    </div>
-    <!-- /.row -->
-    <div class="row text-center"> 
-      <div class="col-lg-12 mb-4" style="visibility: visible;">
+
+      <div class="col-lg-8 mb-4" style="visibility: visible;">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F28B30;"></div>
+          <div class="card-header" style="background-color: #F28B30;"><h4> </h4></div>
           <div class="card-body">
-            <h4 class="card-title">Training Institute</h4>
-            <p class="card-text">If you’re selected to be hired and onboard, you will have the opportunity to come to our corporate office in Fort Wayne for a one-week Training Institute! During that week the following tests/requirements will take place:</p>
+            <h4 class="card-title">Impact Institute</h4>
+            <p class="card-text">If you’re selected to be hired and onboard, you will have the opportunity to come to our corporate office in Fort Wayne for a one-week Impact Institute! During that week the following tests/requirements will take place:</p>
             <div class="row text-justify">
               <div class="col-lg-6">
                 <h5>TB Test, Physical, 5 Panel Drug Test, and CPR Training</h5>
@@ -209,7 +229,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </ul>
               </div>
               <div class="col-lg-6">
-                <h5>Additionally, during Training Institute you will:</h5>
+                <h5>Additionally, during Impact Institute you will:</h5>
                 <ul>
                   <li>Meet the organization’s executives and leadership team</li>
                   <li>Learn about our mission and vision</li>

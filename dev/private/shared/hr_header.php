@@ -37,25 +37,31 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 20px;">
       <div class="container">
+        <div>
         <a class="navbar-brand" href="<?php echo WWW_ROOT . '/hr/index.php'?>">HR Dashboard</a>
+        </div>
+
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Candidates In Process</a>
-            </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="<?php echo url_for('/hr/hr_candidates/new.php') ?>">Add New Candidate</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="<?php echo url_for('/hr/hr_users/index.php') ?>">Users</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Settings</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo url_for('logout.php') ?>">Log Out</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+    <?php echo display_session_message(); ?>

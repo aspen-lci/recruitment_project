@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['SERVER_NAME'] == 'apps.lifelineyouth.org'){
+if ($_SERVER['SERVER_NAME'] == 'apps.mylifelineyouth.org'){
     define("DB_SERVER", "db5000839811.hosting-data.io");
     define("DB_USER", "dbu1131488");
     define("DB_PASS", "nta1tD8taBa53PW!");

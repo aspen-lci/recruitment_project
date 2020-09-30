@@ -21,6 +21,7 @@
     <!-- X-editable -->
     <script src="<?php echo url_for('/vendor/bootstrap3-editable/js/bootstrap-editable.min.js'); ?> "></script>  
     <script src="<?php echo url_for('/js/moment.js'); ?>"></script>
+    <script src="<?php echo url_for('/js/custom.js'); ?>"></script>
 
     <?php
       db_disconnect($db);

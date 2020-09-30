@@ -58,71 +58,7 @@
 
 
     <!-- Page Content -->
-      <!-- Project Card Example -->
-      <div class="row text-center">
-        <div class="col-lg-6 col-md-12 mb-4">
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Initial Documents</h6>
-            </div>
-            <div class="card-body">
-              <h4 class="medium font-weight-bold mb-4 text-justify">Number of Candidates In Progress <span class="float-right">12</span></h4>
-              
-              <h4 class="small font-weight-bold">Job Description <span class="float-right">20%</span></h4>
-              <div class="progress mb-4">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Disclosure Form <span class="float-right">40%</span></h4>
-              <div class="progress mb-4">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Criminal History and Background Check <span class="float-right">60%</span></h4>
-              <div class="progress mb-4">
-                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Criminal History and Background Check <span class="float-right">80%</span></h4>
-              <div class="progress">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              
-              
-            </div> <!-- end card body -->
-          </div> <!-- end card -->
-        </div> <!-- end column -->
-
-          <div class="col-lg-6 col-md-12 mb-4">
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Additional Steps</h6>
-              </div>
-              <div class="card-body">
-                <h4 class="small font-weight-bold">Job Offer <span class="float-right">Complete!</span></h4>
-              <div class="progress mb-4">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-                <h4 class="small font-weight-bold">Transcripts <span class="float-right">20%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Fingerprinting <span class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">References <span class="float-right">60%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Ultipro Onboarding <span class="float-right">80%</span></h4>
-                <div class="progress">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                
-                
-              </div> <!-- end card body -->
-            </div> <!-- end card -->
-            </div> <!-- end column -->
-          </div> <!-- end row -->
-
+      
           <div class="row text-center">
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">

@@ -26,10 +26,10 @@
 
 </head>
 
-<body>
+<body id="total-body" style="overflow: hidden;">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 20px;">
     <div class="container">
       <div id="logo">
         <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/LLlogo.png') ?>" alt="Logo" style="height: 100px;"></a>

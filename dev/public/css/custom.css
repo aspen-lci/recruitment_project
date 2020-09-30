@@ -1,19 +1,23 @@
 body {
     padding-top: 150px;
     
-
 }
 
 #content{
     min-height: calc(100vh - 350px);
 }
 
+#cust-btn{
+    font-weight: bold;
+    background-color:#F98E2C;
+    color: white;
+    border: none;
+    outline: none;
+}
+
 footer {
     height: 200px;
-    /* position: fixed; */
-    /* margin-top: 100px; */
     bottom: 0px;
-    /* width: 100%; */
 
 }
 
@@ -22,8 +26,34 @@ footer {
     padding-top: 10px;
 }
 
+#login-btn{
+    background:#F98E2C;
+    
+}
+
+#login-btn a{
+    color: white;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+#login-table{
+    height: 100%; 
+    margin: auto;
+}
+
+#login-title{
+    text-align: center;
+    font-size: 1.5em;
+}
+
 ul li {
     list-style-type: none;
+}
+
+#regForm {
+    margin: 0 auto;
+    font-size: 1.2em;
 }
 
 #welcome {

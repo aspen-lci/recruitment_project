@@ -56,41 +56,61 @@ if(is_post_request()) {
 
 
 <?php $page_title = 'Candidate'; ?>
-<?php include(SHARED_PATH . '/candidate_header.php'); ?>
+<?php include(SHARED_PATH . '/login_header.php'); ?>
 
 <!-- Page Content -->
 
 <div id="content">
   <div class="row">
-    <div class="col-lg-4 offset-lg-4">
-      <div class="card h-100 text-center" id="regForm" style="margin: 0 auto;">
-        <div class="card-header">
-          <h1>Email Address</h1>
-        </div>
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card h-100" id="regForm">
 
-        <div class="card-body">
-        <form action="index.php" method="post">
-          <input class="form-control" type="email" name="email" value="" /><br />
-          <input type="submit" name="submit" value="Submit"  />
-        </form>
-        </div> <!-- End Card Body -->
-      </div> <!-- End Card -->
-    </div> <!-- End Col -->
-  </div> <!-- End Row -->
-</div>
+        <div class="row no-gutters">
 
-<?php include(SHARED_PATH . '/candidate_footer.php'); ?>
+          <div class="col-sm-10">
+            <div class="card-body">
+              <h5 class="card-title" id="login-title">Log In</h5>
+              <form action="<?php echo (!isset($_SESSION['password']) ? 'index.php' : 'login.php');?>" method="post">
+                
+                  <label for="email">Email</label>
+                  <input class="form-control" type="email" name="email" value="<?php echo (isset($_SESSION['email']) ? $_SESSION['email'] : '');?>" <?php echo (isset($_SESSION['email']) ? 'disabled' : '');?> />
 
-<?php 
+                <div style="display: <?php echo (isset($_SESSION['email']) ? 'initial' : 'none');?>;">
+                
+                  <label for="password">Password</label>
+                  <input class="form-control" type="password" name="password" value="" />
+                </div>
+                <div style="display: <?php echo (isset($_SESSION['email']) && is_blank($_SESSION['password']) ? 'initial' : 'none');?>;">
+                  <label for="password">Confirm Password</label>
+                  <input class="form-control" type="password" name="confirm_password" value="" />
 
-  if (isset($_SESSION['email']) && is_blank($_SESSION['password'])){
-  echo '<script type="text/JavaScript">setPassForm(); </script>'; 
-  } ;
+                  <p>Passwords should be at least 12 characters and include at least one uppercase letter, lowercase
+                    letter, number, and symbol.</p>
+                </div>
+              
 
-  if (isset($_SESSION['email']) && !empty($_SESSION['password'])){
-    echo '<script type="text/JavaScript">enterPass(); </script>'; 
-  }
-?> 
-</body>
+            </div>
 
-</html>
+          </div>
+          <div class="col-sm-2" id="login-btn">
+            <table id="login-table">
+              <td>
+                <!-- <input type="submit" class="stretched-link" value="Submit"> -->
+                <!-- <a type="submit" class="stretched-link">Submit</a> -->
+                <button class="stretched-link" id="cust-btn" type="submit" name="submit" value="Submit">Sign In</button>
+              </td>
+            </table>
+          </div>
+          </form>
+          </div>
+          </div> <!-- End Card -->
+        </div> <!-- End Col -->
+      </div> <!-- End Row -->
+    </div>
+
+    <?php include(SHARED_PATH . '/candidate_footer.php'); ?>
+
+   
+    </body>
+
+    </html>

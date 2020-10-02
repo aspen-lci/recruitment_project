@@ -1,5 +1,6 @@
 <?php require_once('../private/initialize.php'); 
 
+$errors = '';
 if(is_post_request()) {
     switch(true){
       case (isset($_SESSION['email']) && !empty($_SESSION['password']) === true):
@@ -17,7 +18,7 @@ if(is_post_request()) {
           redirect_to(url_for('index.php'));
         }else {
           $errors = $result;
-          $_SESSION['message'] = $errors;
+          
         }
       break;
 
@@ -70,21 +71,22 @@ if(is_post_request()) {
           <div class="col-sm-10">
             <div class="card-body">
               <h5 class="card-title" id="login-title">Log In</h5>
+              <?php echo display_errors($errors); ?>
               <form action="<?php echo (!isset($_SESSION['password']) ? 'index.php' : 'login.php');?>" method="post">
                 
                   <label for="email">Email</label>
-                  <input class="form-control" type="email" name="email" value="<?php echo (isset($_SESSION['email']) ? $_SESSION['email'] : '');?>" <?php echo (isset($_SESSION['email']) ? 'disabled' : '');?> />
+                  <input class="form-control" type="email" name="email" value="<?php echo (isset($_SESSION['email']) ? $_SESSION['email'] : '');?>" <?php echo (isset($_SESSION['email']) ? 'disabled' : 'required');?> />
 
                 <div style="display: <?php echo (isset($_SESSION['email']) ? 'initial' : 'none');?>;">
                 
                   <label for="password">Password</label>
-                  <input class="form-control" type="password" name="password" value="" />
+                  <input class="form-control" type="password" name="password" title="Passwords must be at least 12 characters and include at least one uppercase letter, lowercase letter, number, and symbol." <?php echo (isset($_SESSION['email']) ? 'required required pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){12,100}$" onchange="form.confirm_password.pattern = RegExp.escape(this.value);"' : '');?>/>
                 </div>
                 <div style="display: <?php echo (isset($_SESSION['email']) && is_blank($_SESSION['password']) ? 'initial' : 'none');?>;">
                   <label for="password">Confirm Password</label>
-                  <input class="form-control" type="password" name="confirm_password" value="" />
+                  <input class="form-control" type="password" name="confirm_password" value="" <?php echo (is_blank($_SESSION['password']) ? 'required' : '');?>/>
 
-                  <p>Passwords should be at least 12 characters and include at least one uppercase letter, lowercase
+                  <p>Passwords must be at least 12 characters and include at least one uppercase letter, lowercase
                     letter, number, and symbol.</p>
                 </div>
               

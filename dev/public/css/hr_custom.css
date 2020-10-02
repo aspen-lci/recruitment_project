@@ -9,3 +9,37 @@ body {
 #candidate_chead h3 {
 color: black;
 }
+
+#logout-btn{
+    color: #F98E2C;
+    background-color: #ffffff;
+    border-color: #F98E2C;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+/* Errors */
+
+.errors {
+    display: inline-block;
+    border: 2px solid red;
+    color: red;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+  
+  .errors ul {
+    margin-bottom: 0;
+    padding-left: 1em;
+  }
+  
+  /* Session Messages */
+  
+  #message {
+    color: #0055DD;
+    background: white;
+    border: 2px solid #0055DD;
+    padding: 1em 15px;
+    margin: 1em auto;
+    text-align: center;
+  }

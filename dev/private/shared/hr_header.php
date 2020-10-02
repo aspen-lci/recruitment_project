@@ -57,11 +57,12 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Settings</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo url_for('logout.php') ?>">Log Out</a>
-            </li>
+            <!-- <li class="nav-item">
+              <a href="<?php echo url_for('/logout.php'); ?>" class="nav-link btn" id="logout-btn" role="button">Log Out</a>
+            </li> -->
           </ul>
         </div>
       </div>
+      <a href="<?php echo url_for('/logout.php'); ?>" class="btn d-none d-lg-inline-block" id="logout-btn" role="button">Log Out</a>
     </nav>
     <?php echo display_session_message(); ?>

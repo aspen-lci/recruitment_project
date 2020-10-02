@@ -40,7 +40,7 @@
     </div>
       <navigation>   
         <ul>
-          <li><a href="<?php echo url_for('/logout.php'); ?>">Log Out</a></li>
+        <li><a href="<?php echo url_for('/logout.php'); ?>" class="btn" id="logout-btn" role="button">Log Out</a></li>
 
       
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

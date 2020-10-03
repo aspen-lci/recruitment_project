@@ -3,11 +3,9 @@ require_once('../private/initialize.php');
 
 if(is_post_request()){
   //echo "post request";
-  echo password_hash($_POST['password'], PASSWORD_BCRYPT);
-  echo "</br>";
-  echo $_SESSION['password'];
+  
   $result = password_verify($_POST['password'], $_SESSION['password']);
-  echo $result;
+  
   //echo gettype($_SESSION['user_type']);
   if($result){
     switch(intval($_SESSION['user_type'])){
@@ -25,7 +23,7 @@ if(is_post_request()){
   }
   $_SESSION['message'] = "Log in failed.  Please try again." . $_SESSION['user_type'];
       
- // redirect_to(url_for('index.php'));
+ redirect_to(url_for('index.php'));
 }
 
 ?>

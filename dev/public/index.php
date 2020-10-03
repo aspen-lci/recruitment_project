@@ -84,7 +84,7 @@ if(is_post_request()) {
                 </div>
                 <div style="display: <?php echo (isset($_SESSION['email']) && is_blank($_SESSION['password']) ? 'initial' : 'none');?>;">
                   <label for="password">Confirm Password</label>
-                  <input class="form-control" type="password" name="confirm_password" value="" <?php echo (is_blank($_SESSION['password']) ? 'required' : '');?>/>
+                  <input class="form-control" type="password" name="confirm_password" title="Passwords do not match." <?php echo (is_blank($_SESSION['password']) ? 'required' : '');?>/>
 
                   <p>Passwords must be at least 12 characters and include at least one uppercase letter, lowercase
                     letter, number, and symbol.</p>
@@ -97,8 +97,6 @@ if(is_post_request()) {
           <div class="col-sm-2" id="login-btn">
             <table id="login-table">
               <td>
-                <!-- <input type="submit" class="stretched-link" value="Submit"> -->
-                <!-- <a type="submit" class="stretched-link">Submit</a> -->
                 <button class="stretched-link" id="cust-btn" type="submit" name="submit" value="Submit">Sign In</button>
               </td>
             </table>

@@ -1,5 +1,6 @@
 <?php 
     if(!isset($page_title)) { $page_title = 'New Hire';}
+    require_login();
 ?>
 
 

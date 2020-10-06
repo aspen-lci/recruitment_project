@@ -16,7 +16,7 @@ if(is_post_request()){
         redirect_to(url_for('/hr/hr_users/index.php'));
     }else {
         $errors = $result;
-        $_SESSION['message'] = $errors;
+        
     }
 }else {
     //display blank form
@@ -33,7 +33,7 @@ if(is_post_request()){
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
 <div id="content">
-
+<?php echo display_errors($errors); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">

@@ -1,13 +1,28 @@
+.btn{
+  background-color: #F98E2C;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 body {
-    padding-top: 75px;
+    padding-top: 100px;
 }
 
-#candidate_chead {
-    background-color: rgba(242, 139, 48, .7);
+
+
+#content{
+  min-height: calc(100vh - 300px);
 }
 
-#candidate_chead h3 {
-color: black;
+.form-control{
+  font-size: 1.1em;
+}
+
+.form-group label{
+  font-size: 1.25em;
 }
 
 #logout-btn{
@@ -16,6 +31,33 @@ color: black;
     border-color: #F98E2C;
     font-weight: bold;
     letter-spacing: 0.05em;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color:  rgba(242, 139, 48, .7);
+  font-size: 1.25em;
+}
+
+#nsRadio input{
+  margin-right: 10px;
+}
+
+#nsRadio label {
+  font-size: 1.1em;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#nsRadio p{
+  font-size: 1.25em;
+}
+
+#welcome {
+  font-size: 1.5em;
+  margin-left: auto;
+  color: #F98E2C;
 }
 
 /* Errors */

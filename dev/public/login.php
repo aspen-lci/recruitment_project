@@ -9,8 +9,10 @@ if(is_post_request()){
   //echo gettype($_SESSION['user_type']);
   if($result){
     switch(intval($_SESSION['user_type'])){
-      case 1;
-      case 2;
+      case 1:
+        redirect_to(url_for('/hr/index.php'));
+      case 2:
+        redirect_to(url_for('/recruiter/index.php'));
       case 3:
         redirect_to(url_for('/hr/index.php'));
       break;
@@ -21,7 +23,7 @@ if(is_post_request()){
       
     
   }
-  $_SESSION['message'] = "Log in failed.  Please try again." . $_SESSION['user_type'];
+  $_SESSION['message'] = "Log in failed.  Please try again.";
       
  redirect_to(url_for('index.php'));
 }

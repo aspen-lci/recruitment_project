@@ -24,7 +24,7 @@
     <link href="<?php echo url_for('/css/heroic-features.css'); ?>" rel="stylesheet">
 
     <!-- Bootstrap Table -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
   
     <!-- X-editable -->
     <link rel="stylesheet" href="<?php echo url_for('/vendor/bootstrap3-editable/css/bootstrap-editable.css') ?>">

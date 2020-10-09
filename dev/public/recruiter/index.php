@@ -1,53 +1,6 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php'); 
 
-<?php
-  $candidates = [
-    ['id' => '1', 
-    'name' => 'Angela Spencer', 
-    'jobDesc' => '<a href="#">JobDescription.pdf</a>', 
-    'discForm' => '<a href="#">Disclosure.pdf</a>',
-    'lea' => '<a href="#">LEA.pdf</a>',
-    'lCheck' => '<a href="#">LLBackground.pdf</a>',
-    'jobOffer' => '<a href="#">JobOffer.pdf</a>',
-    'trans' => '<i class="fas fa-check">',
-    'fPrint' => '<i class="fas fa-check">',
-    'ref' => '<i class="fas fa-check">',
-    'ultipro' => '<i class="fas fa-check">',
-    'startDate' => '09/12/2020',
-    'position' => 'Developer',
-    'email' => 'email@email.com'],
-
-    ['id' => '2', 
-    'name' => 'John Smith', 
-    'jobDesc' => '<a href="#">JobDescription.pdf</a>', 
-    'discForm' => '<a href="#">Disclosure.pdf</a>',
-    'lea' => '<a href="#">LEA.pdf</a>',
-    'lCheck' => '',
-    'jobOffer' => '',
-    'trans' => '',
-    'fPrint' => '',
-    'ref' => '',
-    'ultipro' => '',
-    'startDate' => '10/10/2020',
-    'position' => 'Therapist',
-    'email' => 'email@email.com'],
-
-    ['id' => '3', 
-    'name' => 'Jane Doe', 
-    'jobDesc' => '<a href="#">JobDescription.pdf</a>', 
-    'discForm' => '',
-    'lea' => '',
-    'lCheck' => '',
-    'jobOffer' => '',
-    'trans' => '',
-    'fPrint' => '',
-    'ref' => '',
-    'ultipro' => '',
-    'startDate' => '10/24/2020',
-    'position' => 'Homemaker',
-    'email' => 'email@email.com']
-
-  ];
+$candidates = candidates_by_recruiter($_SESSION['user_id']);
 ?>
 
 <?php $page_title = 'Recruiter Dashboard'; ?>
@@ -57,7 +10,7 @@
     <!-- Page Content -->
     <div id="content">
       
-          <div class="row text-center">
+          <div class="row">
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -71,6 +24,7 @@
                 data-toggle="table"
                 data-sortable="true"
                 data-detail-view="true"
+                data-detail-view-icon="true"
                 data-pagination="true" 
                 data-search="true" 
                 data-show-toggle="true"
@@ -81,14 +35,12 @@
                     <th colspan="1"></th>
                     <th colspan="9" class="text-center">Documents Received</th>
                   </tr>
+                  
                   <tr>
-                    
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
-                    <!-- <th style data-sortable="true" data-field="startDate">Start Date</th>
-                    <th style data-field="position">Position</th> -->
                     <th style data-field="jobDesc">Job Description</th>
                     <th style data-field="discForm">Disclosure Form</th>
-                    <th style data-field="lea">LEA Background Check</th>
+                    <th style data-field="lea">LEA</th>
                     <th style data-field="lCheck">Lifeline Background Check</th>
                     <th style data-field="jobOffer">Job Offer</th>
                     <th style data-field="trans">Transcripts</th>
@@ -102,23 +54,22 @@
                 <tbody>
                   <?php foreach($candidates as $candidate) { ?>
                   <tr data-has-detail-view="true">
-                    <td><a class="action" href="<?php echo url_for('/hr/hr_candidates/show.php?id=' . h($candidate['id'])); ?>"><?php echo $candidate['name']; ?></a></td>
-                    <!-- <td>09/12/2020</td>
-                    <td>Developer</td> -->
-                    <td><?php echo $candidate['jobDesc']; ?></td>
-                    <td><?php echo $candidate['discForm']; ?></td>
-                    <td><?php echo $candidate['lea']; ?></td>
-                    <td><?php echo $candidate['lCheck']; ?></td>
-                    <td><?php echo $candidate['jobOffer']; ?></td>
-                    <td><?php echo $candidate['trans']; ?></td>
-                    <td><?php echo $candidate['fPrint']; ?></td>
-                    <td><?php echo $candidate['ref']; ?></td>
-                    <td><?php echo $candidate['ultipro']; ?></td>
+                    <td><a class="action" href="<?php echo url_for('/recruiter/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
+                    <td><?php echo $candidate['jobDesc'] ?? ''; ?></td>
+                    <td><?php echo $candidate['discForm'] ?? ''; ?></td>
+                    <td><?php echo $candidate['lea'] ?? ''; ?></td>
+                    <td><?php echo $candidate['lCheck'] ?? ''; ?></td>
+                    <td><?php echo $candidate['jobOffer'] ?? ''; ?></td>
+                    <td><?php echo $candidate['trans'] ?? ''; ?></td>
+                    <td><?php echo $candidate['fPrint'] ?? ''; ?></td>
+                    <td><?php echo $candidate['ref'] ?? ''; ?></td>
+                    <td><?php echo $candidate['ultipro'] ?? ''; ?></td>
                   
-                    <td class="detail-view"> 
+                  
+                    <td class="detail-view" style="display:none;"> 
                       <dl class="text-justify">
                         <dt>Start Date</dt>
-                        <dd><?php echo $candidate['startDate']; ?></dd>
+                        <dd><?php echo $candidate['start_date']; ?></dd>
                         <dt>Position</dt>
                         <dd><?php echo $candidate['position']; ?></dd>
                         <dt>Email</dt>
@@ -137,7 +88,7 @@
             </div> <!-- Column -->
             </div> <!-- Row -->
             </div>
-            </div>
+            
 
     <?php include(SHARED_PATH . '/hr_footer.php'); ?>  
   
@@ -157,8 +108,8 @@
           var $rowDetails = $(row[10]);
 
           // Give new id to avoid conflict with first cell    
-          var id = $rowDetails.attr("id");
-          $rowDetails.attr("id", id + "-Show");
+          var $id = $rowDetails.attr("id");
+          $rowDetails.attr("id", $id + "-Show");
 
           // Write rowDetail to detail
           $detail.html($rowDetails);

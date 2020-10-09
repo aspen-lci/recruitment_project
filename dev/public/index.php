@@ -38,6 +38,7 @@ if(is_post_request()) {
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['password'] = $user['password'];
         $_SESSION['user_type'] = $user['type'];
+        $_SESSION['user_id'] = $user['id'];
 
         //check if password is blank
         // if(is_blank($_SESSION['password'])){

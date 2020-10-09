@@ -16,7 +16,7 @@
     <script src="<?php echo url_for('vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 
     <!-- Bootstrap Table -->
-    <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
 
     <!-- X-editable -->
     <script src="<?php echo url_for('/vendor/bootstrap3-editable/js/bootstrap-editable.min.js'); ?> "></script>  

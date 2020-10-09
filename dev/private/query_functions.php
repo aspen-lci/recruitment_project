@@ -158,8 +158,6 @@
     return $recruiters;
   }
 
-
-
     function validate_password($password, $confirm_password){
         
         $errors = [];
@@ -225,55 +223,96 @@
 
   }
 
-    function insert_candidate($candidate){
-      global $db;
+  function insert_candidate($candidate){
+    global $db;
 
-      $errors = validate_candidate($candidate);
-          
-          if (!empty($errors)) {
-              return $errors;
-          }
-      
-          $sql = "INSERT INTO users ";
-          $sql .= "(first_name, last_name, email, type) ";
-          $sql .= "VALUES (";
-          $sql .= "'" . db_escape($db, $candidate['first_name']) . "',";
-          $sql .= "'" . db_escape($db, $candidate['last_name']) . "',";
-          $sql .= "'" . db_escape($db, $candidate['email']) . "',";
-          $sql .= "'" . db_escape($db, $candidate['type']) . "'";
-          $sql .= ")";
+    $errors = validate_candidate($candidate);
+        
+        if (!empty($errors)) {
+            return $errors;
+        }
+    
+        // could use sprintf("'%s','%s',%d", 'string1', 'string2', 1) also
+        $sql = "REPLACE INTO users ";
+        $sql .= "(first_name, last_name, email, type) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . db_escape($db, $candidate['first_name']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['last_name']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['email']) . "',";
+        $sql .= db_escape($db, $candidate['type']);
+        $sql .= ")";
 
-          $result = mysqli_query($db, $sql);
+        $result = mysqli_query($db, $sql);
 
-          if(!$result){
-              echo mysqli_error($db);
-              
-          }
-
-          $new_id = mysqli_insert_id($db);
-
-          $sql = "INSERT INTO candidates ";
-          $sql .= "(user_id, recruiter_id, company_id, position_id, region_id, start_date, interview_date, interview_time, ii_date) ";
-          $sql .= "VALUES (";
-          $sql .= "'" . db_escape($db, $new_id) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['recruiter']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['company']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['position']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['region']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['start_date']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['interview_date']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['interview_time']) . "' ";
-          $sql .= "'" . db_escape($db, $candidate['ii_date']) . "'";
-          $sql .= ")";
-
-          $result = mysqli_query($db, $sql);
-
-          if(!$result){
+        if(!$result){
             echo mysqli_error($db);
-          }
+            
+        }
 
-          db_disconnect($db);
-          return $result;
-  }
+        $new_id = mysqli_insert_id($db);
+
+        $sql = "INSERT INTO candidates ";
+        $sql .= "(user_id, recruiter_id, company_id, position_id, region_id, start_date, interview_date, interview_time, ii_date) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . db_escape($db, $new_id) . "',";
+        $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['company']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['position']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['region']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['start_date']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['interview_date']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['interview_time']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['ii_date']) . "'";
+        $sql .= ")";
+
+        $result = mysqli_query($db, $sql);
+echo $sql;
+        if(!$result){
+          echo mysqli_error($db);
+        }
+
+        db_disconnect($db);
+        return $result;
+}
+
+  function candidates_by_recruiter($recruiter_id){
+    global $db;
+
+    $sql = "SELECT * FROM full_candidate_view ";
+    $sql .= "WHERE recruiter_id='" . db_escape($db, $recruiter_id) . "' ";
+    $sql .= "ORDER BY last_name ASC";
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $candidates = resultToArray($result);
+    mysqli_free_result($result);
+    return $candidates;
+}
+
+function get_candidate_by_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM full_candidate_view ";
+  $sql .= "WHERE candidate_id='" . db_escape($db, $id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $candidate = resultToArray($result);
+  mysqli_free_result($result);
+  return $candidate;
+}
+
+function all_candidates(){
+  global $db;
+
+    $sql = "SELECT * FROM full_candidate_view";
+    
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $candidates = resultToArray($result);
+    mysqli_free_result($result);
+    return $candidates;
+}
 
 ?>

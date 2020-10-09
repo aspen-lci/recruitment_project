@@ -1,74 +1,26 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php'); 
+
+$candidates = all_candidates();
 
 
-
-
-<?php
-  $candidates = [
-    ['id' => '1', 
-    'name' => 'Angela Spencer', 
-    'jobDesc' => '<a href="#">JobDescription.pdf</a>', 
-    'discForm' => '<a href="#">Disclosure.pdf</a>',
-    'lea' => '<a href="#">LEA.pdf</a>',
-    'lCheck' => '<a href="#">LLBackground.pdf</a>',
-    'jobOffer' => '<a href="#">JobOffer.pdf</a>',
-    'trans' => '<i class="fas fa-check">',
-    'fPrint' => '<i class="fas fa-check">',
-    'ref' => '<i class="fas fa-check">',
-    'ultipro' => '<i class="fas fa-check">',
-    'startDate' => '09/12/2020',
-    'position' => 'Developer',
-    'email' => 'email@email.com'],
-
-    ['id' => '2', 
-    'name' => 'John Smith', 
-    'jobDesc' => '<a href="#">JobDescription.pdf</a>', 
-    'discForm' => '<a href="#">Disclosure.pdf</a>',
-    'lea' => '<a href="#">LEA.pdf</a>',
-    'lCheck' => '',
-    'jobOffer' => '',
-    'trans' => '',
-    'fPrint' => '',
-    'ref' => '',
-    'ultipro' => '',
-    'startDate' => '10/10/2020',
-    'position' => 'Therapist',
-    'email' => 'email@email.com'],
-
-    ['id' => '3', 
-    'name' => 'Jane Doe', 
-    'jobDesc' => '<a href="#">JobDescription.pdf</a>', 
-    'discForm' => '',
-    'lea' => '',
-    'lCheck' => '',
-    'jobOffer' => '',
-    'trans' => '',
-    'fPrint' => '',
-    'ref' => '',
-    'ultipro' => '',
-    'startDate' => '10/24/2020',
-    'position' => 'Homemaker',
-    'email' => 'email@email.com']
-
-  ];
 ?>
+
+
 
 <?php $page_title = 'HR Dashboard'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
 
     <!-- Page Content -->
-      
-          <div class="row text-center">
+      <div id="content">
+          <div class="row">
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Candidates In Process</h6>
+                  <h4 class="m-0 font-weight-bold text-dark text-center">Candidates In Process</h4>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
-                  <div class="actions text-left mb-2">
-                      <a href="<?php echo url_for('/hr/hr_candidates/new.php') ?>">Create New Candidate</a>
-                    </div>
+                <div class="actions text-left mb-2"></div>
                 <table
                 id="parentTable"
                 data-toggle="table"
@@ -78,8 +30,9 @@
                 data-search="true" 
                 data-show-toggle="true"
                 data-detail-formatter="detailFormatter">
+                
                 <thead>
-                <tr>
+                <tr style="overflow-wrap:break-word;">
                     <th class="d-none">Hidden nested details table</th>
                     <th colspan="1"></th>
                     <th colspan="9" class="text-center">Documents Received</th>
@@ -87,17 +40,15 @@
                   <tr>
                     
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
-                    <!-- <th style data-sortable="true" data-field="startDate">Start Date</th>
-                    <th style data-field="position">Position</th> -->
-                    <th style data-field="jobDesc">Job Description</th>
-                    <th style data-field="discForm">Disclosure Form</th>
-                    <th style data-field="lea">LEA Background Check</th>
-                    <th style data-field="lCheck">Lifeline Background Check</th>
-                    <th style data-field="jobOffer">Job Offer</th>
-                    <th style data-field="trans">Transcripts</th>
-                    <th style data-field="fPrint">Fingerprinting</th>
-                    <th style data-field="ref">References</th>
-                    <th style data-field="ultipro">Ultipro</th>
+                    <th style data-sortable="true" data-field="jobDesc">Job Description</th>
+                    <th style data-sortable="true" data-field="discForm">Disclosure Form</th>
+                    <th style data-sortable="true" data-field="lea">LEA</th>
+                    <th style data-sortable="true" data-field="lCheck">Lifeline Background Check</th>
+                    <th style data-sortable="true" data-field="jobOffer">Job Offer</th>
+                    <th style data-sortable="true" data-field="trans">Transcripts</th>
+                    <th style data-sortable="true" data-field="fPrint">Fingerprinting</th>
+                    <th style data-sortable="true" data-field="ref">References</th>
+                    <th style data-sortable="true" data-field="ultipro">Ultipro</th>
                     <th class="d-none"></th>
                   </tr>
                  
@@ -105,28 +56,44 @@
                 <tbody>
                   <?php foreach($candidates as $candidate) { ?>
                   <tr data-has-detail-view="true">
-                    <td><a class="action" href="<?php echo url_for('/hr/hr_candidates/show.php?id=' . h($candidate['id'])); ?>"><?php echo $candidate['name']; ?></a></td>
-                    <!-- <td>09/12/2020</td>
-                    <td>Developer</td> -->
-                    <td><?php echo $candidate['jobDesc']; ?></td>
-                    <td><?php echo $candidate['discForm']; ?></td>
-                    <td><?php echo $candidate['lea']; ?></td>
-                    <td><?php echo $candidate['lCheck']; ?></td>
-                    <td><?php echo $candidate['jobOffer']; ?></td>
-                    <td><?php echo $candidate['trans']; ?></td>
-                    <td><?php echo $candidate['fPrint']; ?></td>
-                    <td><?php echo $candidate['ref']; ?></td>
-                    <td><?php echo $candidate['ultipro']; ?></td>
+                    <td><a class="action" href="<?php echo url_for('/hr/hr_candidates/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo ($candidate['first_name'] . " " . $candidate['last_name']); ?></a></td>
+                    <td><a href="#">JobDescription.pdf</a></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
                   
-                    <td class="detail-view"> 
-                      <dl class="text-justify">
-                        <dt>Start Date</dt>
-                        <dd><?php echo $candidate['startDate']; ?></dd>
-                        <dt>Position</dt>
-                        <dd><?php echo $candidate['position']; ?></dd>
+                    <td class="detail-view" style="display:none;"> 
+                    <table colspan="6" class="text-justify">  
+                    <td style="border: none; padding-right: 50px;">
                         <dt>Email</dt>
                         <dd><?php echo $candidate['email']; ?></dd>
-                      </dl>
+                        <dt>Recruiter</dt>
+                        <dd><?php echo $candidate['recruiter']; ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
+                        <dt>Company</dt>
+                        <dd><?php echo $candidate['company']; ?></dd>  
+                        <dt>Position</dt>
+                        <dd><?php echo $candidate['position']; ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
+                        <dt>Interview Date</dt>
+                        <dd><?php echo $candidate['interview_date']; ?></dd>
+                        <dt>Interview Time</dt>
+                        <dd><?php echo $candidate['interview_time']; ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
+                        <dt>Start Date</dt>
+                        <dd><?php echo $candidate['start_date']; ?></dd>
+                        <dt>Impact Institute Date</dt>
+                        <dd><?php echo $candidate['ii_date']; ?></dd>
+                    </td>
+                  </table>
                     </td>
                   </tr>
 
@@ -139,7 +106,7 @@
             </div> <!-- Card -->
             </div> <!-- Column -->
             </div> <!-- Row -->
-
+          </div> <!-- Content -->
     <?php include(SHARED_PATH . '/hr_footer.php'); ?>  
   
     <script>

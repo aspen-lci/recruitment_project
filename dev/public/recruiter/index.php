@@ -1,6 +1,7 @@
 <?php require_once('../../private/initialize.php'); 
 
 $candidates = candidates_by_recruiter($_SESSION['user_id']);
+
 ?>
 
 <?php $page_title = 'Recruiter Dashboard'; ?>
@@ -67,14 +68,32 @@ $candidates = candidates_by_recruiter($_SESSION['user_id']);
                   
                   
                     <td class="detail-view" style="display:none;"> 
-                      <dl class="text-justify">
-                        <dt>Start Date</dt>
-                        <dd><?php echo $candidate['start_date']; ?></dd>
-                        <dt>Position</dt>
-                        <dd><?php echo $candidate['position']; ?></dd>
+                    <table colspan="6" class="text-justify">  
+                    <td style="border: none; padding-right: 50px;">
                         <dt>Email</dt>
-                        <dd><?php echo $candidate['email']; ?></dd>
-                      </dl>
+                        <dd><?php echo $candidate['email'] ?? ''; ?></dd>
+                        <dt>Recruiter</dt>
+                        <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
+                        <dt>Company</dt>
+                        <dd><?php echo $candidate['company'] ?? ''; ?></dd>  
+                        <dt>Position</dt>
+                        <dd><?php echo $candidate['position'] ?? ''; ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
+                        <dt>Interview Date</dt>
+                        <dd><?php echo $candidate['interview_date'] ?? ''; ?></dd>
+                        <dt>Interview Time</dt>
+                        <dd><?php echo $candidate['interview_time'] ?? ''; ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
+                        <dt>Start Date</dt>
+                        <dd><?php echo $candidate['start_date'] ?? ''; ?></dd>
+                        <dt>Impact Institute Date</dt>
+                        <dd><?php echo $candidate['ii_date'] ?? ''; ?></dd>
+                    </td>
+                  </table>
                     </td>
                   </tr>
 

@@ -315,4 +315,21 @@ function all_candidates(){
     return $candidates;
 }
 
+function documents_by_candidate($candidate_id){
+  global $db;
+
+  $sql = "SELECT * FROM candidate_documents_view ";
+  $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "'";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $documents = resultToArray($result);
+  mysqli_free_result($result);
+  return $documents;
+}
+
+
+
+
+
 ?>

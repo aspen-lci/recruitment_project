@@ -82,4 +82,25 @@ function display_session_message() {
   }
 }
 
+// Convert date coming from database to typical MM-DD-YYYY format
+function convert_date($date){
+  $newDate = date('m-d-Y', strtotime($date));
+  return $newDate;
+}
+
+// Convert time from db to 12 hour format
+function convert_time($time){
+  $newTime = date("g:i a", strtotime($time));
+  return $newTime;
+}
+
+function document_in_document_list($documents_list, $id){
+  foreach ($documents_list as $document){
+    if ($document['document_id'] === $id) return $document['status'];
+  }
+  return;
+}
+
+
+
 ?>

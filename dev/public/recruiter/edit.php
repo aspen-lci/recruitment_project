@@ -1,10 +1,32 @@
 <?php require_once('../../private/initialize.php'); 
+    require_login();
 
-$candidate_list = get_candidate_by_id($_GET['id']);
-$candidate = $candidate_list[0];
+    if(!isset($_GET['id'])){
+        redirect_to(ur_for('/recruiter/index.php'));
+    }
 
-$document_list = documents_by_candidate($_GET['id']);
+    $id = $_GET['id'];
 
+    $candidate_list = get_candidate_by_id($id);
+    $candidate = $candidate_list[0];
+
+    $document_list = documents_by_candidate($id);
+
+    if(is_post_request()){
+        $update = [];
+        $update['candidate_id'] = $id;
+        $update['first_name'] = $_POST['first_name'];
+        $update['last_name'] = $_POST['last_name'];
+        $update['email'] = $_POST['email'];
+        $update['company'] = $_POST['company'];
+        $update['position'] = $_POST['position'];
+        $update['interview_date'] = $_POST['interviewDate'];
+        $update['interview_time'] = $_POST['interviewTime'];
+        $update['start_date'] = $_POST['startDate'];
+        $update['ii_date'] = $_POST['iiDate'];
+        print_r($update);
+
+    }
 
 ?>
 
@@ -16,9 +38,11 @@ $document_list = documents_by_candidate($_GET['id']);
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">
-                <form action="<?php echo url_for('/recruiter/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
-                <div class="card-header py-3 d-flex justify-content-center" id="candidate_chead">
-                    <h3 class="m-0 font-weight-bold text-center" id="name" data-type="text" data-pk="<?php echo h($candidate['candidate_id']); ?>" data-name="name"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></h3>
+                <form form="edit-form" action="<?php echo url_for('/recruiter/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
+                    <div class="card-header py-3 d-flex justify-content-center" id="candidate_chead">
+                    <h3 class="m-0 font-weight-bold text-center" type="text" id="name" name="first_name" value="<?php echo h($candidate['first_name']); ?>"><?php echo (h($candidate['first_name'])); ?></h3>
+                    <h3 class="m-0 font-weight-bold text-center" id="last_name" data-type="text" data-pk="<?php echo h($candidate['candidate_id']); ?>" name="last_name"><?php echo (h($candidate['last_name'])); ?></h3>
+                    <!-- <h3 class="m-0 font-weight-bold text-center" id="name" data-type="text" data-pk="<?php echo h($candidate['candidate_id']); ?>" data-name="name"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></h3> -->
                 </div>  <!-- Card Header End -->
                 <div class="card=body">
                     <div class="row m-4">
@@ -32,24 +56,29 @@ $document_list = documents_by_candidate($_GET['id']);
                             <p>Position: <a href="#" id="position" data-type="select" data-pk="<?php echo (h($candidate['candidate_id'])); ?>" data-name="position" data-value="<?php echo($candidate['position']); ?>"><?php echo($candidate['position']); ?></a></p>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
-                            <p>Interview Date: <a href="#" id="interviewDate" data-type="date" data-pk="<?php echo (h($candidate['candidate_id'])); ?>" data-url="/post" data-name="interviewDate" data-value="<?php echo(h($candidate['interview_date'])); ?>"><?php echo(convert_date($candidate['interview_date'])); ?></a></p>
+                            <p>Interview Date: <a href="#" id="interviewDate" data-type="date" data-pk="<?php echo (h($candidate['candidate_id'])); ?>" data-url="<?php echo url_for('/recruiter/edit.php?candidate_id' . h(u($candidate['candidate_id']))); ?>" method="post" data-name="interviewDate" data-value="<?php echo(h($candidate['interview_date'])); ?>"><?php echo(convert_date($candidate['interview_date'])); ?></a></p>
                             <p>Interview Time: <a href="#" id="interviewTime" data-type="time" data-pk="<?php echo (h($candidate['candidate_id'])); ?>" data-name="interviewTime" data-value="<?php echo(h($candidate['interview_time'])); ?>"><?php echo(convert_time($candidate['interview_time'])); ?></a></p>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
                             <p>Start Date: <a href="#" id="startDate" data-type="date" data-pk="<?php echo (h($candidate['candidate_id'])); ?>" data-url="/post" data-name="startDate" data-value="<?php echo($candidate['start_date']); ?>"><?php echo(convert_date($candidate['start_date'])); ?></a></p>
                             <p>Impact Institute Date: <a href="#" id="iiDate" data-type="date" data-pk="<?php echo (h($candidate['candidate_id'])); ?>" data-url="/post" data-name="iiDate" data-value="<?php echo($candidate['ii_date']); ?>"><?php echo(convert_date($candidate['ii_date'])); ?></a></p>
                         </div> <!-- Form Col End -->
-                       
+                        <div class="form-row m-4">
+                            <div class="form-group col">
+                                <button form="edit-form" type="submit" class="btn">Submit</button>
+                            </div> <!-- Form Col End -->
+                        </div><!-- Form Row End -->    
+                    </form>
                     </div> <!-- Form Row End -->
                         
                     <div class="row m-4">
 
                         <h3>Documents</h3>
                     </div> <!-- Form Row End -->
-                    <div class="row m-4">
+                    <div class="row m-4 doc_status">
                         <div class="col-md-4">
                             <h5>Job Description: </h5>
-                            <p></p>
+                            <p><?php echo(get_job_desc($document_list)); ?></p>
                         </div> <!-- Form Col End -->
                     
                         <div class="col-md-4">
@@ -64,7 +93,7 @@ $document_list = documents_by_candidate($_GET['id']);
                         </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
 
-                        <div class="row m-4">
+                        <div class="row m-4 doc_status">
                         <div class="col-md-4">
                             <h5>Lifeline Criminal History and Background Check:</h5> 
                             <p><?php echo(document_in_document_list($document_list, '6')); ?></p>
@@ -81,7 +110,7 @@ $document_list = documents_by_candidate($_GET['id']);
                         </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
 
-                        <div class="row m-4">
+                        <div class="row m-4 doc_status">
                         <div class="col-md-4">
                             <h5>Fingerprinting Complete:</h5> 
                             <p><?php echo(document_in_document_list($document_list, '9')); ?></p>
@@ -97,7 +126,7 @@ $document_list = documents_by_candidate($_GET['id']);
                             <p><?php echo(document_in_document_list($document_list, '11')); ?></p>
                         </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
-                    </form>
+                   
                 </div> <!-- Card Body End -->
             </div>  <!-- Card End -->
         </div>  <!-- Col End -->
@@ -120,6 +149,8 @@ $document_list = documents_by_candidate($_GET['id']);
    
         $(document).ready(function(){
         $('#name').editable();
+
+        $('#last_name').editable();
 
         $('#company').editable({
             source:[

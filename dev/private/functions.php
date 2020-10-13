@@ -101,6 +101,17 @@ function document_in_document_list($documents_list, $id){
   return;
 }
 
+function get_job_desc($documents_list){
+  foreach($documents_list as $document){
+    if($document['is_jd'] == 1){
+      $id = $document['document_id'];
+      $jd = document_in_document_list($documents_list, $id);
+      return $jd;
+    }
+    return "Not found";
+  }
+}
+
 
 
 ?>

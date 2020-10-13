@@ -8,7 +8,7 @@
       </div>
       <!-- /.container -->
   </footer>
-
+ 
      <!-- Bootstrap core JavaScript -->
      <script src="<?php echo url_for('/vendor/jquery/jquery.min.js'); ?>"></script>
     <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
@@ -19,6 +19,7 @@
     <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
 
     <!-- X-editable -->
+    
     <script src="<?php echo url_for('/vendor/bootstrap3-editable/js/bootstrap-editable.min.js'); ?> "></script>  
     <script src="<?php echo url_for('/js/moment.js'); ?>"></script>
     <script src="<?php echo url_for('/js/custom.js'); ?>"></script>

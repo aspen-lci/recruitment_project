@@ -21,6 +21,57 @@ body {
   color:  green;
 }
 
+#edit-form #edit-form-btn{
+  position: absolute;
+  right: 50px;
+  bottom: auto;
+  top: auto;
+}
+
+#edit-form #edit-form-btn #cancel{
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #007bff;
+}
+
+#edit-form #edit-form-fields{
+  margin-top: 30px;
+}
+
+#edit-form input{
+  border-top-style: hidden;
+  border-bottom-style: dashed 1px #0088cc;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  color: black;
+}
+
+
+#edit-form #name{
+  background-color: transparent;
+  font-size: 1.75rem;
+  text-decoration: none;
+  font-style: normal;
+  text-align: right;
+}
+
+#edit-form #last_name{
+  background-color: transparent;
+  font-size: 1.75rem;
+  text-decoration: none;
+  font-style: normal;
+  padding-left: 0;
+  text-align: left !important;
+}
+
+#edit-form select {
+  border-top-style: hidden;
+  border-bottom-style: dashed 1px #0088cc;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  color: black;
+}
+
 .form-control{
   font-size: 1.1em;
 }
@@ -31,6 +82,11 @@ body {
 
 #last_name{
   padding-left: .25em;
+}
+
+#edit-form label{
+  padding-right: .5em;
+  margin-bottom: 2em;
 }
 
 #logout-btn{

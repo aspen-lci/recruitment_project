@@ -10,7 +10,11 @@ class Documents {
         "discForm" => "Disclosure Form",
         "lea" => "LEA",
         "lCheck" => "Lifeline Background Check",
-        "jobOffer" => "Job Offer"
+        "jobOffer" => "Job Offer",
+        "trans" => "Transcripts",
+        "fPrint" => "Fingerprinting",
+        "ref" => "References",
+        "ultipro" => "Ultipro"
     ];
 
     private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];
@@ -100,7 +104,7 @@ class Documents {
     }
 }
   
-$candidates = candidates_by_recruiter($_SESSION['user_id']);
+$candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SESSION['user_id']);
 
 ?>
 
@@ -139,36 +143,16 @@ $candidates = candidates_by_recruiter($_SESSION['user_id']);
                   
                   <tr>
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
-                    <th style data-field="jobDesc">Job Description</th>
-                    <th style data-field="discForm">Disclosure Form</th>
-                    <th style data-field="lea">LEA</th>
-                    <th style data-field="lCheck">Lifeline Background Check</th>
-                    <th style data-field="jobOffer">Job Offer</th>
-                    <th style data-field="trans">Transcripts</th>
-                    <th style data-field="fPrint">Fingerprinting</th>
-                    <th style data-field="ref">References</th>
-                    <th style data-field="ultipro">Ultipro</th>
+                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style data-field="%s">%s</th>', $k, $v); ?>
                     <th class="d-none"></th>
                   </tr>
                  
                 </thead>
                 <tbody>
-                  <?php 
-                  foreach($candidates as $candidate) {
-                      $docs = new Documents($candidate['documents']); 
-                  ?>
+                  <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/recruiter/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <td><?php echo $docs->get('jobDesc')->status; ?></td>
-                    <td><?php echo $docs->get('discForm')->status; ?></td>
-                    <td><?php echo $docs->get('lea')->status; ?></td>
-                    <td><?php echo $docs->get('lCheck')->status; ?></td>
-                    <td><?php echo $docs->get('jobOffer')->status; ?></td>
-                    <td><?php echo $candidate['trans'] ?? ''; ?></td>
-                    <td><?php echo $candidate['fPrint'] ?? ''; ?></td>
-                    <td><?php echo $candidate['ref'] ?? ''; ?></td>
-                    <td><?php echo $candidate['ultipro'] ?? ''; ?></td>
-                  
+                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', $d->status); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
                     <table colspan="6" class="text-justify">  

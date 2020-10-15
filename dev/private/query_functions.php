@@ -278,7 +278,7 @@ echo $sql;
   function candidates_by_recruiter($recruiter_id){
     global $db;
 
-    $sql = "SELECT * FROM full_candidate_view ";
+    $sql = "SELECT * FROM recruiter_candidate_view ";
     $sql .= "WHERE recruiter_id='" . db_escape($db, $recruiter_id) . "' ";
     $sql .= "ORDER BY last_name ASC";
 

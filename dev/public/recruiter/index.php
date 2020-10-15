@@ -1,5 +1,105 @@
 <?php require_once('../../private/initialize.php'); 
 
+/**
+ * Object to encapsulate document status logic.
+ */
+class Documents {
+    // map of valid document keys and associated descriptions
+    public static $docMap = [
+        "jobDesc" => "Job Description",
+        "discForm" => "Disclosure Form",
+        "lea" => "LEA",
+        "lCheck" => "Lifeline Background Check",
+        "jobOffer" => "Job Offer"
+    ];
+
+    private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];
+
+    private $docList = [];
+
+    public function __construct($json = false) {
+        if ($json) $this->addAll(json_decode($json));            
+    }
+
+    /**
+     * Add list of documents.
+     * 
+     * @param $docs array of objects to add
+     */
+    public function addAll($docs) {
+        if (!empty($docs)) {
+          if(!is_array($docs)) $docs = [$docs];
+          
+          $keys = [];
+          foreach($docs as $doc) {
+            $key = $this->add($doc);
+            if ($key) $keys[] = $key;
+          }
+          if (!empty($keys)) return $keys;
+        }
+
+        return false;
+    }
+
+    /**
+     * Add an individual document.
+     * 
+     * @param $doc object document object to add
+     */
+    public function add($doc) {
+        if (!empty($doc) && is_object($doc) && $doc !== null) {
+          $key = false;
+
+          // set key as JD if flagged as a job description doc.
+          if (property_exists($doc, "is_jd") && $doc->is_jd == 1) {
+              $key = "jobDesc";
+          } 
+          
+          // if key not set, try description via document map lookup.
+          if (false === $key && property_exists($doc, "description")) {
+              $key = array_search($doc->description, Documents::$docMap);
+              if (false === $key) $key = $doc->description;
+          }
+  
+          // once key is set, add document object by key.
+          if ($key) {
+              // cleanup document object required properties
+              foreach(array_keys($this->reqProps) as $prop) {
+                  if (!property_exists($doc, $prop) || $doc->{$prop} === null) $doc->{$prop} = $this->reqProps[$prop];
+              }
+              $this->docList[$key] = $doc;
+          }
+
+          return $key;
+        }        
+
+        return false;
+    }
+
+    /**
+     * Get individual document.
+     * 
+     * @param $docKey string
+     * returns object of document specified by docKey
+     */
+    public function get(string $docKey) {
+        if (array_key_exists($docKey, $this->docList)) return $this->docList[$docKey];
+        return (object) $this->reqProps;
+    }
+
+    /**
+     * Get all documents in map.
+     * if documnet list is empty, will return list of objects with default required property values.
+     */
+    public function getAll() {
+      $docs = [];
+      foreach(array_keys(Documents::$docMap) as $key) {
+        $docs[$key] = $this->get($key);
+      }
+      return $docs;
+    }
+}
+  
 $candidates = candidates_by_recruiter($_SESSION['user_id']);
 
 ?>
@@ -53,14 +153,17 @@ $candidates = candidates_by_recruiter($_SESSION['user_id']);
                  
                 </thead>
                 <tbody>
-                  <?php foreach($candidates as $candidate) { ?>
+                  <?php 
+                  foreach($candidates as $candidate) {
+                      $docs = new Documents($candidate['documents']); 
+                  ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/recruiter/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <td><?php echo $candidate['jobDesc'] ?? ''; ?></td>
-                    <td><?php echo $candidate['discForm'] ?? ''; ?></td>
-                    <td><?php echo $candidate['lea'] ?? ''; ?></td>
-                    <td><?php echo $candidate['lCheck'] ?? ''; ?></td>
-                    <td><?php echo $candidate['jobOffer'] ?? ''; ?></td>
+                    <td><?php echo $docs->get('jobDesc')->status; ?></td>
+                    <td><?php echo $docs->get('discForm')->status; ?></td>
+                    <td><?php echo $docs->get('lea')->status; ?></td>
+                    <td><?php echo $docs->get('lCheck')->status; ?></td>
+                    <td><?php echo $docs->get('jobOffer')->status; ?></td>
                     <td><?php echo $candidate['trans'] ?? ''; ?></td>
                     <td><?php echo $candidate['fPrint'] ?? ''; ?></td>
                     <td><?php echo $candidate['ref'] ?? ''; ?></td>

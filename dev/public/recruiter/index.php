@@ -7,14 +7,14 @@ class Documents {
     // map of valid document keys and associated descriptions
     public static $docMap = [
         "jobDesc" => "Job Description",
-        "discForm" => "Disclosure Form",
+        "discForm" => "Disclosure",
         "lea" => "LEA",
-        "lCheck" => "Lifeline Background Check",
+        "lCheck" => "Background Check",
         "jobOffer" => "Job Offer",
         "trans" => "Transcripts",
         "fPrint" => "Fingerprinting",
-        "ref" => "References",
-        "ultipro" => "Ultipro"
+        "ref" => "Reference Check",
+        "ultipro" => "Ultipro Onboarding"
     ];
 
     private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];

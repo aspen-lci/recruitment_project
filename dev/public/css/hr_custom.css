@@ -11,6 +11,11 @@ body {
     padding-top: 100px;
 }
 
+.card-deck .card-header{
+  font-weight: bolder;
+  font-size: .9em;
+}
+
 #content{
   min-height: calc(100vh - 300px);
 }
@@ -20,6 +25,8 @@ body {
   font-weight: 500;
   color:  green;
 }
+
+
 
 #edit-form #edit-form-btn{
   position: absolute;

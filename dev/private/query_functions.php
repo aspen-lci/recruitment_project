@@ -328,7 +328,70 @@ function documents_by_candidate($candidate_id){
   return $documents;
 }
 
+function edit_candidate($data_set, $candidate_id){
+  global $db;
 
+  $sql = "UPDATE full_candidate_view SET ";
+            $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
+            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
+            $sql .= "email='" . db_escape($db, $data_set['email']) . "', ";
+            $sql .= "recruiter_id='" . db_escape($db, $data_set['recruiter']) . "', ";
+            $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
+            $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
+            $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
+            $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
+            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
+            $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
+            $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "' ";
+            $sql .= "LIMIT 1";
+            echo $sql;
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+                echo mysqli_error($db);
+                
+            }
+            db_disconnect($db);
+            return $result;
+}
+
+function edit_candidate2($data_set){
+  global $db;
+
+  $sql = "UPDATE users SET ";
+            $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
+            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
+            $sql .= "email='" . db_escape($db, $data_set['email']) . "' ";
+            $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
+            $sql .= "LIMIT 1; ";
+            echo $sql;
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+                echo mysqli_error($db);
+                
+            }
+            
+            $sql = "UPDATE candidates SET ";
+            $sql .= "recruiter_id='" . db_escape($db, $data_set['recruiter']) . "', ";
+            $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
+            $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
+            $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
+            $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
+            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
+            $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
+            $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
+            $sql .= "LIMIT 1";
+            echo $sql;
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+                echo mysqli_error($db);
+                
+            }
+            db_disconnect($db);
+            return $result;
+}
 
 
 

@@ -73,19 +73,19 @@ if(is_post_request()) {
             <div class="card-body">
               <h5 class="card-title" id="login-title">Log In</h5>
               <?php echo display_errors($errors); ?>
-              <form action="<?php echo (!isset($_SESSION['password']) ? 'index.php' : 'login.php');?>" method="post">
+              <form id="login" action="<?php echo (!isset($_SESSION['password']) ? 'index.php' : 'login.php');?>" method="post">
                 
-                  <label for="email">Email</label>
+                  <label for="email" class="control-label">Email</label>
                   <input class="form-control" type="email" name="email" value="<?php echo (isset($_SESSION['email']) ? $_SESSION['email'] : '');?>" <?php echo (isset($_SESSION['email']) ? 'disabled' : 'required');?> />
 
                 <div style="display: <?php echo (isset($_SESSION['email']) ? 'initial' : 'none');?>;">
                 
                   <label for="password">Password</label>
-                  <input class="form-control" type="password" name="password" title="Passwords must be at least 12 characters and include at least one uppercase letter, lowercase letter, number, and symbol." <?php echo (isset($_SESSION['email']) ? 'required required pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){12,100}$" onchange="form.confirm_password.pattern = RegExp.escape(this.value);"' : '');?>/>
+                  <input class="form-control" type="password" name="password" autocomplete="off" title="Passwords must be at least 12 characters and include at least one uppercase letter, lowercase letter, number, and symbol." <?php echo (isset($_SESSION['email']) ? 'required required pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){12,100}$" onchange="form.confirm_password.pattern = RegExp.escape(this.value);"' : '');?>/>
                 </div>
                 <div style="display: <?php echo (isset($_SESSION['email']) && is_blank($_SESSION['password']) ? 'initial' : 'none');?>;">
                   <label for="password">Confirm Password</label>
-                  <input class="form-control" type="password" name="confirm_password" title="Passwords do not match." <?php echo (is_blank($_SESSION['password']) ? 'required' : '');?>/>
+                  <input class="form-control" type="password" name="confirm_password" autocomplete="off" title="Passwords do not match." <?php echo (is_blank($_SESSION['password']) ? 'required' : '');?>/>
 
                   <p>Passwords must be at least 12 characters and include at least one uppercase letter, lowercase
                     letter, number, and symbol.</p>
@@ -98,7 +98,7 @@ if(is_post_request()) {
           <div class="col-sm-2" id="login-btn">
             <table id="login-table">
               <td>
-                <button class="stretched-link" id="cust-btn" type="submit" name="submit" value="Submit">Sign In</button>
+                <button form="login" class="stretched-link" id="cust-btn" type="submit" name="submit">Sign In</button>
               </td>
             </table>
           </div>

@@ -22,7 +22,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F28B30;">
+          <div class="card-header c-card-1" style="background-color: #F28B30;">
             <h4>1</h4>
           </div>
           <div class="card-body">
@@ -44,7 +44,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F2E205;">
+          <div class="card-header c-card-2" style="background-color: #F2E205;">
             <h4>2</h4>
           </div>
           <div class="card-body">
@@ -60,7 +60,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F20505;">
+          <div class="card-header c-card-3" style="background-color: #F20505;">
             <h4>3</h4>
           </div>
           <div class="card-body">
@@ -80,7 +80,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center">
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #0D0D0D; color: white;">
+          <div class="card-header c-card-4" style="background-color: #0D0D0D; color: white;">
             <h4>4</h4>
           </div>
           <div class="card-body">
@@ -95,7 +95,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F2E205;">
+          <div class="card-header c-card-5" style="background-color: #F2E205;">
             <h4>5</h4>
           </div>
           <div class="card-body">
@@ -113,7 +113,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F28B30;">
+          <div class="card-header c-card-6" style="background-color: #F28B30;">
             <h4>6</h4>
           </div>
           <div class="card-body">
@@ -134,7 +134,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center">
     <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F2E205;">
+          <div class="card-header c-card-7" style="background-color: #F2E205;">
             <h4>7</h4>
           </div>
           <div class="card-body">
@@ -153,7 +153,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #F20505;">
+          <div class="card-header c-card-8" style="background-color: #F20505;">
             <h4>8</h4>
           </div>
           <div class="card-body">
@@ -171,7 +171,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
-          <div class="card-header" style="background-color: #0D0D0D; color: white;">
+          <div class="card-header c-card-9" style="background-color: #0D0D0D; color: white;">
             <h4>9</h4>
           </div>
           <div class="card-body">

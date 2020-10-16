@@ -20,6 +20,7 @@
     if(is_post_request()){
         $update = [];
         $update['candidate_id'] = $id;
+        $update['user_id'] = $candidate['user_id'];
         $update['first_name'] = $_POST['first_name'];
         $update['last_name'] = $_POST['last_name'];
         $update['email'] = $_POST['email'];
@@ -30,10 +31,17 @@
         $update['interview_time'] = $_POST['interviewTime'];
         $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
-        print_r($update);
+        
 
+        $result = edit_candidate2($update);
+        if ($result === true) {
+            $_SESSION['message'] = "User has been updated.";
+            redirect_to(url_for('/recruiter/index.php'));
+        }else{
+            print_r($update);
+            $errors=$result;
+        }
     }
-
 ?>
 
 <?php $page_title = 'View Candidate'; ?>
@@ -64,7 +72,7 @@
                             <label>Recruiter:</label>
                             <select id="recruiter" type="select" name="recruiter" value="<?php echo($candidate['recruiter']); ?>">
                                 <?php foreach ($recruiter_set as $recruiter) { ?>
-                                        <option value="<?php echo $recruiter['id'] ?>" <?php echo($recruiter['recruiter_id'] === $candidate['recruiter_id'] ? 'selected' : ''); ?>><?php echo ($recruiter['first_name'] . " " . $recruiter['last_name']); ?></option>    
+                                        <option value="<?php echo $recruiter['recruiter_id'] ?>" <?php echo($recruiter['recruiter_id'] === $candidate['recruiter_id'] ? 'selected' : ''); ?>><?php echo ($recruiter['first_name'] . " " . $recruiter['last_name']); ?></option>    
                                     <?php } ?>
                             </select>
                             
@@ -94,68 +102,101 @@
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
                             <label>Impact Institute Date:</label> <input id="iiDate" type="date" name="iiDate" value="<?php echo($candidate['ii_date']); ?>"/>
                         </div> <!-- Form Col End -->
-                        <div class="form-row m-4">
-                            
-                        </div><!-- Form Row End -->    
+                        
                     </form>
                     </div> <!-- Form Row End -->
                         
-                    <div class="row m-4">
+                    <div class="row m-4 d-flex align-items-center justify-content-center">
+                        
+                            <h3>Documents</h3>
+                        
+                            </div>
+                    <div class="row m-4 justify-content-center">
+                        <div class="card-deck mb-3 text-center">
+                        <div class="card">
+                            <div class="card-header c-card-1 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Job Description</p>
+                            </div> <!--End Card Header -->
 
-                        <h3>Documents</h3>
-                    </div> <!-- Form Row End -->
-                    <div class="row m-4 doc_status">
-                        <div class="col-md-4">
-                            <h5>Job Description: </h5>
-                            <p><?php echo(get_job_desc($document_list)); ?></p>
-                        </div> <!-- Form Col End -->
+                            <div class="card-body flex-column h-100">
+                                <p class="card-text"><?php echo(get_job_desc($document_list)); ?></p>
+                            </div> <!-- End Card body -->
+                            </div> <!-- End Card -->
+                        
+                        <div class="card">
+                            <div class="card-header c-card-2 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Disclosure</p>
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p class="card-text"><?php echo(document_in_document_list($document_list, '4')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
+                        
+                        <div class="card">
+                            <div class="card-header c-card-3 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">LEA</p>
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '5')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
                     
-                        <div class="col-md-4">
-                            <h5>Disclosure: </h5>
-                            <p><?php echo(document_in_document_list($document_list, '4')); ?></p>
-                        </div> <!-- Form Col End -->
+                        <div class="card">
+                            <div class="card-header c-card-4 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Background Check</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '6')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
                         
-                        
-                        <div class="col-md-4">
-                            <h5>LEA Background Check: </h5>
-                            <p><?php echo(document_in_document_list($document_list, '5')); ?></p>
-                        </div> <!-- Form Col End -->
-                        </div> <!-- Form Row End -->
+                        <div class="card">
+                            <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Job Offer</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '7')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
+                    <!-- </div>
+                        <div class="card-deck mb-3 text-center"> -->
+                        <div class="card">
+                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Transcripts</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '8')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
 
-                        <div class="row m-4 doc_status">
-                        <div class="col-md-4">
-                            <h5>Lifeline Background Check:</h5> 
-                            <p><?php echo(document_in_document_list($document_list, '6')); ?></p>
-                        </div> <!-- Form Col End -->
+                        <div class="card">
+                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Fingerprinting</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '9')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
                         
-                        <div class="col-md-4">
-                            <h5>Job Offer:</h5> 
-                            <p><?php echo(document_in_document_list($document_list, '7')); ?></p>
-                        </div> <!-- Form Col End -->
+                        <div class="card">
+                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">Reference Check</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '10')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
                         
-                        <div class="col-md-4">
-                            <h5>Transcripts:</h5> 
-                            <p><?php echo(document_in_document_list($document_list, '8')); ?></p>
-                        </div> <!-- Form Col End -->
-                        </div> <!-- Form Row End -->
-
-                        <div class="row m-4 doc_status">
-                        <div class="col-md-4">
-                            <h5>Fingerprinting:</h5> 
-                            <p><?php echo(document_in_document_list($document_list, '9')); ?></p>
-                        </div> <!-- Form Col End -->
-                        
-                        <div class="col-md-4">
-                            <h5>Reference Check:</h5> 
-                            <p><?php echo(document_in_document_list($document_list, '10')); ?></p>
-                        </div> <!-- Form Col End -->
-                        
-                        <div class="col-md-4">
-                            <h5>UltiPro Onboarding:</h5>
-                            <p><?php echo(document_in_document_list($document_list, '11')); ?></p>
-                        </div> <!-- Form Col End -->
-                        </div> <!-- Form Row End -->
-                   
+                        <div class="card">
+                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100">
+                                <p class="my-0 flex-grow-1">UltiPro Onboarding</p>
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '11')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
+                   </div> <!-- End Card Group -->
+                </div> <!-- End Row -->
                 </div> <!-- Card Body End -->
             </div>  <!-- Card End -->
         </div>  <!-- Col End -->
@@ -171,31 +212,31 @@ function resizeInput() {
     $(this).attr('size', $(this).val().length);
 }
 
-$('input[type="text"]')
-    // event handler
-    .keyup(resizeInput)
-    // resize on page load
-    .each(resizeInput);
+// $('input[type="text"]')
+//     // event handler
+//     .keyup(resizeInput)
+//     // resize on page load
+//     .each(resizeInput);
 
 
-    $.fn.editable.defaults.mode = 'inline';
-    $.fn.editableform.buttons =
-    '<button type="submit" class="btn btn-primary btn-sm editable-submit">' +
-        '<i class="fa fa-fw fa-check"></i>' +
-        '</button>' +
-    '<button type="button" class="btn btn-warning btn-sm editable-cancel">' +
-        '<i class="fa fa-fw fa-times"></i>' +
-        '</button>';
+//     $.fn.editable.defaults.mode = 'inline';
+//     $.fn.editableform.buttons =
+//     '<button type="submit" class="btn btn-primary btn-sm editable-submit">' +
+//         '<i class="fa fa-fw fa-check"></i>' +
+//         '</button>' +
+//     '<button type="button" class="btn btn-warning btn-sm editable-cancel">' +
+//         '<i class="fa fa-fw fa-times"></i>' +
+//         '</button>';
    
-        $(document).ready(function(){
-        $('#name').editable();
+//         $(document).ready(function(){
+//         $('#name').editable();
 
-        $('#last_name').editable();
+//         $('#last_name').editable();
 
-        $('#email').editable();
+//         $('#email').editable();
 
        
-        });
+//         });
 
         
 </script>

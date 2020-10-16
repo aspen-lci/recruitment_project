@@ -53,6 +53,7 @@
 
     <!-- My Custom CSS -->
     <link rel="stylesheet" href="<?php echo url_for('/css/hr_custom.css'); ?>">
+    <link rel="stylesheet" href="<?php echo url_for('/css/cards.css'); ?>">
   
   </head>
 

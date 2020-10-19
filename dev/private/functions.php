@@ -108,7 +108,7 @@ function get_job_desc($documents_list){
       $jd = document_in_document_list($documents_list, $id);
       return $jd;
     }
-    return "Not found";
+    return;
   }
 }
 

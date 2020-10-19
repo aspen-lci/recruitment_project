@@ -119,7 +119,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h4 class="m-0 font-weight-bold text-dark">Candidates In Process</h4>
+                  <h4 class="m-0 font-weight-bold text-dark text-center">Candidates In Process</h4>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
                   <div class="actions text-left mb-2">

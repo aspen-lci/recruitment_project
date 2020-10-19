@@ -158,6 +158,19 @@
     return $recruiters;
   }
 
+  function all_status(){
+    global $db;
+
+    $sql = "SELECT * FROM status ";
+    $sql .= "ORDER BY id ASC";
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $status = resultToArray($result);
+    mysqli_free_result($result);
+    return $status;
+  }
+
     function validate_password($password, $confirm_password){
         
         $errors = [];
@@ -306,7 +319,7 @@ function get_candidate_by_id($id){
 function all_candidates(){
   global $db;
 
-    $sql = "SELECT * FROM full_candidate_view";
+    $sql = "SELECT * FROM all_candidate_doc_status";
     
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

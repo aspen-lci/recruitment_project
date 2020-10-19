@@ -1,5 +1,26 @@
 .btn{
   background-color: #F98E2C;
+  border-color: #F98E2C;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.btn i{
+  background-color: #F98E2C;
+  border-color: #F98E2C;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+button.btn.btn-secondary{
+  background-color: #F98E2C;
+  border-color: #F98E2C;
   color: white;
   font-weight: bold;
   letter-spacing: 0.05em;
@@ -20,10 +41,14 @@ body {
   min-height: calc(100vh - 300px);
 }
 
-.doc_status p{
-  font-size: 1.2em;
-  font-weight: 500;
-  color:  green;
+.doc-status {
+  font-size: .8em;
+  max-width: 100%;
+  white-space: normal;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+
 }
 
 
@@ -39,6 +64,7 @@ body {
   margin-left: 0;
   margin-right: 0;
   background-color: #007bff;
+  border-color: #007bff;
 }
 
 #edit-form #edit-form-fields{
@@ -51,6 +77,8 @@ body {
   border-left-style: hidden;
   border-right-style: hidden;
   color: black;
+  max-width:100%;
+  padding: 0;
 }
 
 
@@ -62,13 +90,17 @@ body {
   text-align: right;
 }
 
+#edit-form label{
+  padding-right: .5em;
+  margin-bottom: 2em;
+}
+
 #edit-form #last_name{
   background-color: transparent;
   font-size: 1.75rem;
   text-decoration: none;
   font-style: normal;
   padding-left: 0;
-  text-align: left !important;
 }
 
 #edit-form select {
@@ -77,6 +109,7 @@ body {
   border-left-style: hidden;
   border-right-style: hidden;
   color: black;
+  text-align: center;
 }
 
 .form-control{
@@ -87,13 +120,10 @@ body {
   font-size: 1.25em;
 }
 
+
+
 #last_name{
   padding-left: .25em;
-}
-
-#edit-form label{
-  padding-right: .5em;
-  margin-bottom: 2em;
 }
 
 #logout-btn{

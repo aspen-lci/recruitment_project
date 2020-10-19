@@ -53,7 +53,7 @@
 
     <!-- My Custom CSS -->
     <link rel="stylesheet" href="<?php echo url_for('/css/hr_custom.css'); ?>">
-  
+    <link rel="stylesheet" href="<?php echo url_for('/css/cards.css'); ?>">
   </head>
 
   <body>
@@ -61,7 +61,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-bottom: 20px;">
       <div class="container">
         <div>
-        <a class="navbar-brand"  href="<?php echo WWW_ROOT . '/recruiter/index.php'?>"><h2>HR Dashboard</h2></a>
+        <a class="navbar-brand"  href="<?php echo WWW_ROOT . '/hr/index.php'?>"><h2>HR Dashboard</h2></a>
         </div>
 
        

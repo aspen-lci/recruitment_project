@@ -81,7 +81,7 @@
               <p><?php echo (empty($_SESSION['first_name'])) ? 'Hello!' : 'Hello, ' . $_SESSION['first_name'] . '!'; ?></p>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo url_for('/hr/hr_candidates/new.php') ?>">Add New Candidate</a>
+              <a class="nav-link" href="<?php echo url_for('/recruiter/new.php') ?>">Add New Candidate</a>
             </li>
             
             <!-- <li class="nav-item">

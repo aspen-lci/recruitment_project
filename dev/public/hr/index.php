@@ -14,7 +14,7 @@ class Documents {
       "trans" => "Transcripts",
       "fPrint" => "Fingerprinting",
       "ref" => "Reference Check",
-      "ultipro" => "Ultipro Onboarding"
+      "ultipro" => "Ultipro"
   ];
 
   private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];
@@ -143,7 +143,7 @@ $candidates = all_candidates();
                   </tr>
                   <tr>
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
-                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style data-field="%s">%s</th>', $k, $v); ?>
+                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style style data-sortable="true" data-field="%s">%s</th>', $k, $v); ?>
                     <th class="d-none"></th>
                   </tr>
                  
@@ -155,12 +155,19 @@ $candidates = all_candidates();
                     <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', $d->status); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
-                    <table colspan="6" class="text-justify">  
+                    <table colspan="8" class="text-justify">  
                     <td style="border: none; padding-right: 50px;">
+                    <dt>Disposition</dt>
+                        <dd><?php echo $candidate['disposition'] ?? ''; ?></dd>
                         <dt>Email</dt>
                         <dd><?php echo $candidate['email'] ?? ''; ?></dd>
+                        
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
                         <dt>Recruiter</dt>
                         <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>
+                        <dt>Region</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Company</dt>

@@ -33,7 +33,7 @@
         $update['ii_date'] = $_POST['iiDate'];
         
 
-        $result = edit_candidate2($update);
+        $result = edit_candidate_recruiter($update);
         if ($result === true) {
             $_SESSION['message'] = "User has been updated.";
             redirect_to(url_for('/recruiter/index.php'));
@@ -91,6 +91,12 @@
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
                             <?php foreach ($position_set as $position) { ?>
                                         <option value="<?php echo $position['id'];?>" <?php echo($position['title'] === $candidate['position'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>    
+                                    <?php } ?>
+                            </select><br/>
+                            <label>Region:</label> 
+                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
+                            <?php foreach ($region_set as $region) { ?>
+                                        <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
                                     <?php } ?>
                             </select>
                         </div> <!-- Form Col End -->

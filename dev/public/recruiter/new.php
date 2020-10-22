@@ -1,4 +1,4 @@
-<?php require_once('../../../private/initialize.php'); 
+<?php require_once('../../private/initialize.php'); 
 
 $company_set = all_companies();
 $position_set = all_positions();
@@ -19,7 +19,7 @@ if(is_post_request()){
     $candidate['company'] = $_POST['company'] ?? '';
     $candidate['position'] = $position ?? '';
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
-    $candidate['region'] = $_POST['region'] ?? 'NULL';
+    $candidate['region'] = $_POST['region'] ?? '';
     $candidate['start_date'] = $_POST['startDate'] ?? '';
     $candidate['interview_date'] = $_POST['interviewDate'] ?? '';
     $candidate['interview_time'] = $_POST['interviewTime'] ?? '';
@@ -29,7 +29,7 @@ if(is_post_request()){
 
     if($result === true){
         $_SESSION['message'] = "Candidate has been created.";
-        redirect_to(url_for('/hr/index.php'));
+        redirect_to(url_for('/recruiter/index.php'));
     }else{
         $errors = $result;
     }
@@ -38,7 +38,7 @@ if(is_post_request()){
 ?>
 
 <?php $page_title = 'Create Candidate'; ?>
-<?php include(SHARED_PATH . '/hr_header.php'); ?>
+<?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
     <?php echo(!empty($errors) ? display_errors($errors) : ""); ?>
@@ -49,7 +49,7 @@ if(is_post_request()){
                     <h3 class="m-0 font-weight-bold text-dark text-center">Add New Candidate</h3>
                 </div>  <!-- Card Header End -->
                 <div class="card=body">
-                    <form action="<?php echo url_for('/hr/hr_candidates/new.php'); ?>" method="post">
+                    <form action="<?php echo url_for('/recruiter/new.php'); ?>" method="post">
                         <div class="form-row m-4">
                             <div class="form-group col-md-3">
                                 <label for="firstName">First Name</label>
@@ -80,7 +80,7 @@ if(is_post_request()){
                                     <select id="company" class="form-control" name="company">
                                         <!-- <option selected>Choose Company</option> -->
                                         <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['id'] === '2' ? 'selected' : 'disabled'); ?>><?php echo $company['company'] ?></option>    
+                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['id'] === '2' ? 'selected' : ''); ?>><?php echo $company['company'] ?></option>    
                                     <?php } ?>
                                     </select>
                             </div> <!-- Form Col End -->
@@ -97,7 +97,7 @@ if(is_post_request()){
 
                             <div class="form-group col-md-4" id="nsRadio">
                                     <p>Region (Choose One)</p>
-                                    <label for="region"><input type="radio" name="region" value='NULL' checked>Unknown</label>
+                                    <label for="region"><input type="radio" name="region" value="" checked>Unknown</label>
                                     <?php foreach ($region_set as $region) { ?>
                                         <label for="region"><input type="radio" name="region" value="<?php echo $region['id'] ?>"><?php echo $region['name'] ?></label>    
                                     <?php } ?>

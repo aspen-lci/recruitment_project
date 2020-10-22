@@ -6,6 +6,8 @@
     $region_set = all_regions();
     $recruiter_set = all_recruiters();
     $status_set = all_status();
+    $ii_dates = all_ii_dates();
+
 
     if(!isset($_GET['id'])){
         redirect_to(url_for('/hr/index.php'));
@@ -26,18 +28,19 @@
         $update['last_name'] = $_POST['last_name'];
         $update['email'] = $_POST['email'];
         $update['recruiter'] = $_POST['recruiter'];
+        $update['disposition'] = $_POST['status'];
         $update['company'] = $_POST['company'];
         $update['position'] = $_POST['position'];
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
         $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
-        
+        $update['disc_status'] = $_POST['disc_status'];
 
-        $result = edit_candidate2($update);
+        $result = edit_candidate_hr($update);
         if ($result === true) {
             $_SESSION['message'] = "User has been updated.";
-            redirect_to(url_for('/recruiter/index.php'));
+            redirect_to(url_for('/hr/index.php'));
         }else{
             print_r($update);
             $errors=$result;
@@ -48,12 +51,14 @@
 <?php $page_title = 'View Candidate'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
+<?php print_r($ii_dates); ?>
+
 <div id="content">
 <a href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to List</a>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">
-                <form id="edit-form" form="edit-form" action="<?php echo url_for('/recruiter/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
+                <form id="edit-form" form="edit-form" action="<?php echo url_for('/hr/hr_candidates/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
                    
                 <div class="card-header py-3 d-flex justify-content-center" id="candidate_chead">
                     <div id="name-div">
@@ -89,13 +94,19 @@
                             <label>Company:</label> 
                             <select id="company" type="select" name="company" value="<?php echo($candidate['company']); ?>">
                             <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['company'] === $candidate['company'] ? 'selected' : ''); ?>><?php echo $company['company'] ?></option>    
+                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['company'] === $candidate['company'] ? 'selected' : ''); ?>><?php echo $company['company']; ?></option>    
                                     <?php } ?>
                             </select> <br/>
                             <label>Position:</label> 
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
                             <?php foreach ($position_set as $position) { ?>
-                                        <option value="<?php echo $position['id'];?>" <?php echo($position['title'] === $candidate['position'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>    
+                                        <option value="<?php echo $position['id'];?>" <?php echo($position['title'] === $candidate['position'] ? 'selected' : ''); ?>><?php echo $position['title']; ?></option>    
+                                    <?php } ?>
+                            </select><br/>
+                            <label>Region:</label> 
+                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
+                            <?php foreach ($region_set as $region) { ?>
+                                        <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    
                                     <?php } ?>
                             </select>
                         </div> <!-- Form Col End -->
@@ -107,7 +118,13 @@
                         <div class="col-3">
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
                             <br>
-                            <label>Impact Institute Date:</label> <input id="iiDate" type="date" name="iiDate" value="<?php echo($candidate['ii_date']); ?>"/>
+                            <label>Impact Institute Date:</label> 
+                            <select id="iiDate" type="select" name="iiDate">
+                            <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>></option>
+                            <?php foreach ($ii_dates as $date) { ?>
+                                <option value="<?php echo $date['date']; ?>" <?php echo($date['date'] === $candidate['ii_date'] ? 'selected' : ''); ?>><?php echo $date['date']; ?></option>
+                            <?php } ?>
+                            </select>
                         </div> <!-- Form Col End -->
                         
                     </form>
@@ -127,10 +144,10 @@
 
                             <div class="card-body flex-column h-100">
                                 <!-- <p class="card-text"><?php echo(get_job_desc($document_list)); ?></p> -->
-                                <select class="doc-status" id="jd_status" type="select" name="jd_status" value="<?php echo(get_job_desc($document_list)); ?>">
+                                <select class="doc-status" id="jd_status" type="select" name="jd_status">
                                     <option value="" <?php echo(is_blank(get_job_desc($document_list)) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === get_job_desc($document_list) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (get_job_desc($document_list)) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                             </select>
                             </div> <!-- End Card body -->

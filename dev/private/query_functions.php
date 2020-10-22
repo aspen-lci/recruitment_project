@@ -171,6 +171,22 @@
     return $status;
   }
 
+  function all_ii_dates(){
+    global $db;
+
+    $sql = "SELECT * FROM ii_dates ";
+    $sql .= "WHERE date >= CURRENT_DATE() ";
+    $sql .= "ORDER BY date ASC";
+echo $sql;
+    $result = mysqli_query($db, $sql);
+
+    confirm_result_set($result);
+    $dates = resultToArray($result);
+    mysqli_free_result($result);
+    return $dates;
+  }
+
+
     function validate_password($password, $confirm_password){
         
         $errors = [];
@@ -244,7 +260,8 @@
         if (!empty($errors)) {
             return $errors;
         }
-    
+      mysqli_begin_transaction($db);
+
         // could use sprintf("'%s','%s',%d", 'string1', 'string2', 1) also
         $sql = "REPLACE INTO users ";
         $sql .= "(first_name, last_name, email, type) ";
@@ -263,6 +280,8 @@
         }
 
         $new_id = mysqli_insert_id($db);
+        
+      
 
         $sql = "INSERT INTO candidates ";
         $sql .= "(user_id, recruiter_id, company_id, position_id, region_id, start_date, interview_date, interview_time, ii_date) ";
@@ -279,12 +298,37 @@
         $sql .= ")";
 
         $result = mysqli_query($db, $sql);
+
+        if(!$result){
+          echo mysqli_error($db);
+        }
+        $candidate_id = mysqli_insert_id($db);
+
+        $sql = "INSERT INTO document_status ";
+        $sql .= "(candidate_id, document_id, status_id) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $candidate_id . "', ";
+        $sql .= "'" . $candidate['jd_doc_id'] . "', ";
+        $sql .= "1), ";
+        $sql .= "(";
+        $sql .= "'" . $candidate_id . "', ";
+        $sql .= "4, 1), ";
+        $sql .= "(";
+        $sql .= "'" . $candidate_id . "', ";
+        $sql .= "5, 1), ";
+        $sql .= "(";
+        $sql .= "'" . $candidate_id . "', ";
+        $sql .= "6, 1)";
 echo $sql;
+        $result = mysqli_query($db, $sql);
+
         if(!$result){
           echo mysqli_error($db);
         }
 
+        mysqli_commit($db);
         db_disconnect($db);
+
         return $result;
 }
 
@@ -293,6 +337,7 @@ echo $sql;
 
     $sql = "SELECT * FROM recruiter_candidate_view ";
     $sql .= "WHERE recruiter_id='" . db_escape($db, $recruiter_id) . "' ";
+    $sql .= "AND disposition <> 'Inactive' ";
     $sql .= "ORDER BY last_name ASC";
 
     $result = mysqli_query($db, $sql);
@@ -319,7 +364,8 @@ function get_candidate_by_id($id){
 function all_candidates(){
   global $db;
 
-    $sql = "SELECT * FROM all_candidate_doc_status";
+    $sql = "SELECT * FROM all_candidate_doc_status ";
+    $sql .= "WHERE disposition <> 'Inactive'";
     
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -341,34 +387,7 @@ function documents_by_candidate($candidate_id){
   return $documents;
 }
 
-function edit_candidate($data_set, $candidate_id){
-  global $db;
-
-  $sql = "UPDATE full_candidate_view SET ";
-            $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
-            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
-            $sql .= "email='" . db_escape($db, $data_set['email']) . "', ";
-            $sql .= "recruiter_id='" . db_escape($db, $data_set['recruiter']) . "', ";
-            $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
-            $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
-            $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
-            $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
-            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
-            $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
-            $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "' ";
-            $sql .= "LIMIT 1";
-            echo $sql;
-            $result = mysqli_query($db, $sql);
-
-            if(!$result){
-                echo mysqli_error($db);
-                
-            }
-            db_disconnect($db);
-            return $result;
-}
-
-function edit_candidate2($data_set){
+function edit_candidate_recruiter($data_set){
   global $db;
 
   $sql = "UPDATE users SET ";
@@ -406,6 +425,61 @@ function edit_candidate2($data_set){
             return $result;
 }
 
+function edit_candidate_hr($data_set){
+  global $db;
+
+  $sql = "UPDATE users SET ";
+            $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
+            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
+            $sql .= "email='" . db_escape($db, $data_set['email']) . "' ";
+            $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
+            $sql .= "LIMIT 1; ";
+            echo $sql;
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+                echo mysqli_error($db);
+                
+            }
+            
+            $sql = "UPDATE candidates SET ";
+            $sql .= "recruiter_id='" . db_escape($db, $data_set['recruiter']) . "', ";
+            $sql .= "disposition_id='" . db_escape($db, $data_set['disposition']) . "', ";
+            $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
+            $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
+            $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
+            $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
+            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
+            $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
+            $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
+            $sql .= "LIMIT 1";
+            echo $sql;
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+                echo mysqli_error($db);
+                
+            }
+            db_disconnect($db);
+            return $result;
+}
+
+function get_jd_doc_id($position_id){
+  global $db;
+
+  $sql = "SELECT jd_doc_id FROM positions ";
+  $sql .= "WHERE id='" . $position_id . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+
+  confirm_result_set($result);
+  $jd_doc_id_set = resultToArray($result);
+  
+  mysqli_free_result($result);
+  db_disconnect($db);
+  return $jd_doc_id_set;
+}
 
 
 ?>

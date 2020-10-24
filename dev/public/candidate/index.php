@@ -13,8 +13,9 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- Jumbotron Header -->
     <header class="jumbotron">
       <h1 class="display-4">We cannot wait to get to know you better!</h1>
-      <p class="lead">By choosing to apply with us, you are making the first step to positively impact individuals, families, and communities! Below you will find an easy checklist to walk you through our hiring process.</p>
-      <p class="lead">Moving forward your point of contact will be our HR team at joinus@lastingchangeinc.org. You will be receiving emails from HR as well as KidTraks and Checkster. Should you have any questions, please contact HR or your recruiter! We would be happy to assist you at any point in your hiring process, and we look forward to welcoming you to our team!</p>
+      <p class="lead">By applying with us, you have taken the first step to positively impact individuals, families, and communities. Below you will find an easy checklist to walk you through our hiring process.</p>
+      <p class="lead">We ask that you complete the first four steps below within the next 48 hours so we can invite you to the panel interview and facilitate your onboarding experience. The speed with which you complete this process determines how quickly you can begin your work at Lifeline Youth & Family Services.</p>
+      <p class="lead">As you move further along, you will receive emails from our HR representative, Jenn Falk (jenn.falk@lastingchangeinc.org), as well as KidTraks and Checkster. Please be sure to use the same email address on all forms and for all communication with Lifeline. Please reach out if you have any questions. We are happy to assist you in your hiring process, and we look forward to welcoming you to our team!</p>
     </header>
 
     <!-- Page Features -->
@@ -27,14 +28,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Job Description</h4>
-            <p class="card-text">Sign and return (you only need to submit the description for the position for which you are
-              interviewing)</p>
-            <ul style="list-style-type: none; padding-left: 0;">
-              <li><a href="https://bit.ly/2zAKaVx" class="btn btn-outline-primary btn-small">Therapist Job Description</a></li>
-              <!-- <li style="margin-top: 5px; visibility: hidden;"><a href="https://bit.ly/2N6GJcB" class="btn btn-outline-primary btn-small">Family Consultant/Case Manager Job Description</a></li>
-              <li style="margin-top: 5px; visibility: hidden;"><a href="https://bit.ly/2AoxeT9" class="btn btn-outline-primary btn-small">Visitation Specialist Job Description</a></li>
-              <li style="margin-top: 5px; visibility: hidden;"><a href="https://bit.ly/2NP2p2x" class="btn btn-outline-primary btn-small">Homemaker/ Parent Aide Job Description</a></li> -->
-            </ul>
+            <p class="card-text">Please sign and return.</p>
+            <a href="https://bit.ly/2zAKaVx" class="btn btn-outline-primary btn-small">Therapist Job Description</a>
           </div>
           <div class="card-footer" style="background-color: #F28B30;">
             
@@ -49,7 +44,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Disclosure Form</h4>
-            <p class="card-text">Full name (first, middle, & last name) required; sign and date</p>
+            <p class="card-text">First, Middle, and Last Name required! Please sign and date. </p>
             <a href="https://bit.ly/2O1oPZD" class="btn btn-outline-primary btn-small">FCRA Disclosure</a>
           </div>
           <div class="card-footer" style="background-color: #F2E205;">
@@ -64,7 +59,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4>3</h4>
           </div>
           <div class="card-body">
-            <h4 class="card-title">Application for Criminal History Background Check</h4>
+            <h4 class="card-title">LEA Form</h4>
             <a href="lea.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
           </div>
           <div class="card-footer" style="background-color: #F20505;">
@@ -100,13 +95,9 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Panel Interview</h4>
-            <p class="card-text"></p>
+            <p class="card-text">Open the box below for details and necessary preparation materials. Good luck on your interview!</p>
           </div>
           <div class="card-footer" style="background-color: #F2E205;">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Completed</label>
-            </div>
           </div>
         </div>
       </div>
@@ -118,9 +109,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Accept and sign the job offer</h4>
-            <p class="card-text" id="job-text">As soon as you decide to join our team, please sign and return
-              the written offer via email to HR at joinus@lastingchangeinc.org so we can move you along to the
-              next step!</p>
+            <p class="card-text" id="job-text">Please sign and return the official offer received in your email so we can move you along to the next step!</p>
            </div>
           <div class="card-footer" style="background-color: #F28B30;">
             
@@ -139,15 +128,10 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Send in your transcripts</h4>
-            <p class="card-text">Contact your school for assistance. In most cases, the bursar’s or
-              registrar’s office will be able to help you.</p>
+            <p class="card-text">Contact your college registrar or bursar’s office for assistance. </p>
           </div>
           <div class="card-footer" style="background-color: #F2E205;">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Completed</label>
             </div>
-          </div>
         </div>
       </div>
 
@@ -158,17 +142,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Schedule fingerprinting</h4>
-            <p class="card-text">Instructions will be sent to you via email from HR.  Lifeline’s billing account information is at the end of the document, as your fingerprints
-              will be paid for by Lifeline Youth & Family Services.</p>
+            <p class="card-text">Your fingerprinting will be paid for by Lifeline Youth & Family Services.</p>
+            <a href="#" class="btn btn-outline-primary btn-small mt-3">Instructions</a>
           </div>
           <div class="card-footer" style="background-color: #F20505;">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Completed</label>
-            </div>
-          </div>
+           </div>
         </div>
       </div>
+      
       <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
         <div class="card h-100">
           <div class="card-header c-card-9" style="background-color: #0D0D0D; color: white;">
@@ -176,16 +157,11 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">References</h4>
-            <p class="card-text">You will receive a link via email from Checkster.  Please ensure at least two (2) of your references are from supervisors.
-              A minimum of four (4) total reference responses are required to continue with the
-              employment.</p>
+            <p class="card-text">You will receive an email from Checkster to create an account and invite references to participate in your reference check.</p>
+              <a href="#" class="btn btn-outline-primary btn-small mt-3">Instructions</a>
           </div>
           <div class="card-footer" style="background-color: #0D0D0D;">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1" style="color: white;">Completed</label>
             </div>
-          </div>
         </div>
       </div>
 
@@ -199,16 +175,10 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4>10</h4>
           </div>
           <div class="card-body">
-            <h4 class="card-title">UltiPro Onboarding</h4>
-            <p class="card-text">You will receive a link from HR after sending your signed employment offer. Upon
-              receipt, please log-in and complete the onboarding as soon as possible. This is required
-              to move forward with employment. This is where our employee handbook is located.</p>
+            <h4 class="card-title">Onboarding</h4>
+            <p class="card-text">You will receive an email from Lasting Change, Inc with a link to UltiPro. Please use this link to log in and complete the onboarding documents as soon as possible. This step must be completed before you may be onboarded as an employee.</p>
           </div>
           <div class="card-footer" style="background-color: #D8D8D8;">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Completed</label>
-            </div>
           </div>
         </div>
       </div>
@@ -218,29 +188,25 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-header" style="background-color: #F28B30;"><h4> </h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>
-            <p class="card-text">If you’re selected to be hired and onboard, you will have the opportunity to come to our corporate office in Fort Wayne for a one-week Impact Institute! During that week the following tests/requirements will take place:</p>
+            <p class="card-text"><strong>We can’t wait to meet you!</strong> Your first week with us at Impact Institute will set you up to hit the ground running.</p>
             <div class="row text-justify">
               <div class="col-lg-6">
-                <h5>TB Test, Physical, 5 Panel Drug Test, and CPR Training</h5>
-                <ul>
-                  <li>We will pay for and schedule your necessary medical screenings for the week of
-                    training institute.</li>
-                  <li>CPR Certification will also take place during TI.</li>
-                </ul>
+                <h5>TB and 5-Panel Drug Tests, Physical, and CPR Certification</h5>
+                <p>All necessary medical screenings and CPR certification are covered by Lifeline and will take place during Impact Institute.</p>
+                  
               </div>
               <div class="col-lg-6">
-                <h5>Additionally, during Impact Institute you will:</h5>
+                <h5>During Impact Institute you will:</h5>
                 <ul>
-                  <li>Meet the organization’s executives and leadership team</li>
-                  <li>Learn about our mission and vision</li>
-                  <li>Experience a full week of preparation and training designed for your role</li>
-                  <li>Experience team building opportunities with other new hires</li>
-                  <li>Meet your mentors</li>
-                  <li>Gain access to support from staff, supervisors, and chaplains</li>
-                  <li>Learn about Career Track, and how you can grow with our organization</li>
+                  <li>Meet the executives and leadership team</li>
+                  <li>Learn about our mission, vision, and company culture</li>
+                  <li>Experience a full week of preparation and training designed for your new role</li>
+                  <li>Experience team-building with other new employees</li>
+                  <li>Gain access to support from staff members, supervisors, and chaplains</li>
                 </ul>
               </div>
             </div>
+            <a href="#" class="btn btn-outline-primary btn-small mt-3">Learn more about your first week</a>
           </div>
           <div class="card-footer" style="background-color: #F28B30;">
             

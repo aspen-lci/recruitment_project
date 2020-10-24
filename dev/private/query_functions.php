@@ -177,7 +177,7 @@
     $sql = "SELECT * FROM ii_dates ";
     $sql .= "WHERE date >= CURRENT_DATE() ";
     $sql .= "ORDER BY date ASC";
-echo $sql;
+
     $result = mysqli_query($db, $sql);
 
     confirm_result_set($result);
@@ -434,7 +434,7 @@ function edit_candidate_hr($data_set){
             $sql .= "email='" . db_escape($db, $data_set['email']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
             $sql .= "LIMIT 1; ";
-            echo $sql;
+            
             $result = mysqli_query($db, $sql);
 
             if(!$result){
@@ -453,7 +453,7 @@ function edit_candidate_hr($data_set){
             $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";
-            echo $sql;
+            
             $result = mysqli_query($db, $sql);
 
             if(!$result){
@@ -481,5 +481,25 @@ function get_jd_doc_id($position_id){
   return $jd_doc_id_set;
 }
 
+function update_doc_status($candidate_id, $doc_id, $status){
+  global $db;
+
+  $sql = "UPDATE document_status SET ";
+  $sql .= "status_id='" . $status . "' ";
+  $sql .= "WHERE candidate_id='" . $candidate_id . "' ";
+  $sql .= "AND document_id='" . $doc_id . "' ";
+  $sql .= "LIMIT 1";
+  echo $sql;
+  $result = mysqli_query($db, $sql);
+
+  if(!$result){
+    echo mysqli_error($db);
+    
+  }
+  
+  db_disconnect($db);
+  return $result;
+
+}
 
 ?>

@@ -1,37 +1,51 @@
 .c-card-1{
     background-color: #F28B30;
+    font-weight: bold;
   }
   
   .c-card-2{
     background-color: #F2E205;
+    font-weight: bold;
   }
   
   .c-card-3{
     background-color: #F20505;
+    font-weight: bold;
   }
   
   .c-card-4{
     background-color: #0D0D0D;
     color: white; 
+    font-weight: bold;
   }
   
   .c-card-5{
     background-color: #F2E205;
+    font-weight: bold;
   }
   
   .c-card-6{
     background-color: #F28B30;
+    font-weight: bold;
   }
   
   .c-card-7{
     background-color: #F2E205;
+    font-weight: bold;
   }
   
   .c-card-8{
     background-color: #F20505;
+    font-weight: bold;
   }
   
   .c-card-9{
     background-color: #0D0D0D;
     color: white;
+    font-weight: bold;
+  }
+
+  .c-card-10{
+    background-color: #D8D8D8;
+    font-weight: bold;
   }

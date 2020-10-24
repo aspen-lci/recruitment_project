@@ -124,22 +124,19 @@
                             <h3>Documents</h3>
                         
                             </div>
-                    <div class="row justify-content-center m-0 text-center">
-                        <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header c-card-1">
-                                <!-- <p class="my-0 flex-grow-1">Job Description</p> -->
+                    <div class="row m-4 justify-content-center">
+                        <div class="card-deck mb-3 text-center">
+                        <div class="card">
+                            <div class="card-header c-card-1 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Job Description</p>
                             </div> <!--End Card Header -->
 
-                            <div class="card-body">
+                            <div class="card-body flex-column h-100">
                                 <p class="card-text"><?php echo(get_job_desc($document_list)); ?></p>
                             </div> <!-- End Card body -->
                             </div> <!-- End Card -->
-                        </div> <!-- End Column -->
                         
-                        <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
+                        <div class="card">
                             <div class="card-header c-card-2 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Disclosure</p>
                             </div> <!--End Card Header -->
@@ -147,10 +144,8 @@
                                 <p class="card-text"><?php echo(document_in_document_list($document_list, '4')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
-
-                        <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
+                        
+                        <div class="card">
                             <div class="card-header c-card-3 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">LEA</p>
                             </div> <!--End Card Header -->
@@ -158,10 +153,8 @@
                                 <p><?php echo(document_in_document_list($document_list, '5')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
-
-                        <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
+                    
+                        <div class="card">
                             <div class="card-header c-card-4 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Background Check</p> 
                             </div> <!--End Card Header -->
@@ -169,10 +162,8 @@
                                 <p><?php echo(document_in_document_list($document_list, '6')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
 
-                        <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
+                        <div class="card">
                             <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Panel Interview</p> 
                             </div> <!--End Card Header -->
@@ -181,66 +172,57 @@
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
                         </div> <!-- End Card Group -->
-                    </div> <!-- End Column -->
                 </div> <!-- End Row -->
-                
                         
                         
-                        <div class="row d-flex justify-content-center m-0 text-center"> <!-- m-4 justify-content-center"> -->
-                        <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100">
+                        <div class="row d-flex justify-content-center m-0"> <!-- m-4 justify-content-center"> -->
+                        <div class="card-deck mb-3 text-center"> <!-- mb-3 text-center" -->
+                        <div class="card">
+                            <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Job Offer</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '7')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
-
-                    <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100">
+                    <!-- </div>
+                        <div class="card-deck mb-3 text-center"> -->
+                        <div class="card">
+                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Transcripts</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '8')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
 
-                    <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100">
+                        <div class="card">
+                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Fingerprinting</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '9')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
-
-                    <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100">
+                        
+                        <div class="card">
+                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">Reference Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '10')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Column -->
-
-                    <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header c-card-10 d-flex align-items-center justify-content-center h-100">
+                        
+                        <div class="card">
+                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100">
                                 <p class="my-0 flex-grow-1">UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '11')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                   </div> <!-- End Col -->
+                   </div> <!-- End Card Group -->
                 </div> <!-- End Row -->
                 </div> <!-- Card Body End -->
             </div>  <!-- Card End -->

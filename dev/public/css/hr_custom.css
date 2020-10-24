@@ -32,9 +32,9 @@ body {
     padding-top: 100px;
 }
 
-.card-deck .card-header{
+.card-header{
   font-weight: bolder;
-  font-size: .9em;
+  font-size: 1.2em;
 }
 
 #content{
@@ -42,7 +42,7 @@ body {
 }
 
 .doc-status {
-  font-size: .8em;
+  font-size: 1.1em;
   max-width: 100%;
   white-space: normal;
   text-overflow: ellipsis;

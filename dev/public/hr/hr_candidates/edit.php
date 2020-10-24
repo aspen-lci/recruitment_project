@@ -35,15 +35,34 @@
         $update['interview_time'] = $_POST['interviewTime'];
         $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
-        $update['disc_status'] = $_POST['disc_status'];
+        
 
         $result = edit_candidate_hr($update);
         if ($result === true) {
-            $_SESSION['message'] = "User has been updated.";
-            redirect_to(url_for('/hr/index.php'));
+            $_SESSION['message'] = "User has been updated. ";
+            
         }else{
             print_r($update);
             $errors=$result;
+        }
+
+        $doc_status['disc_status'] = $_POST['disc_status'];
+        if(in_array('4', $document_list)){
+            $result = update_doc_status($id, '4', $doc_status['disc_status']);
+            if($result === true){
+                $_SESSION['message'] .= " Document status has been updated. " . $doc_status['disc_status'];
+            redirect_to(url_for('/hr/index.php'));
+            }else{
+                $errors=$result;
+            }
+        }else{
+            $result = insert_doc_status(4, $doc_status['disc_status']);
+            if($result === true){
+                $_SESSION['message'] = "User has been updated.";
+                redirect_to(url_for('/hr/index.php'));
+            }else{
+                $errors=$result;
+            }
         }
     }
 ?>
@@ -51,8 +70,7 @@
 <?php $page_title = 'View Candidate'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
-<?php print_r($ii_dates); ?>
-
+<?php echo (isset($_POST['disc_status']) ? $_POST['disc_status'] : ''); ?>
 <div id="content">
 <a href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to List</a>
     <div class="row">
@@ -126,25 +144,23 @@
                             <?php } ?>
                             </select>
                         </div> <!-- Form Col End -->
-                        
-                    </form>
-                    </div> <!-- Form Row End -->
-                        
+                        </div> <!-- Row End -->
+                       
                     <div class="row m-4 d-flex align-items-center justify-content-center">
                         
-                            <h3>Documents</h3>
+                        <h3>Documents</h3>
                         
-                            </div>
-                    <div class="row m-4 justify-content-center">
-                        <div class="card-deck mb-3 text-center">
+                    </div>
+                    <div class="row justify-content-center m-0 text-center">
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-1 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-1">
                                 <p class="my-0 flex-grow-1">Job Description</p>
                             </div> <!--End Card Header -->
 
-                            <div class="card-body flex-column h-100">
-                                <!-- <p class="card-text"><?php echo(get_job_desc($document_list)); ?></p> -->
-                                <select class="doc-status" id="jd_status" type="select" name="jd_status">
+                            <div class="card-body">
+                                
+                                <select class="doc-status card-text" id="jd_status" type="select" name="jd_status">
                                     <option value="" <?php echo(is_blank(get_job_desc($document_list)) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
                                         <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (get_job_desc($document_list)) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
@@ -152,12 +168,14 @@
                             </select>
                             </div> <!-- End Card body -->
                             </div> <!-- End Card -->
+                            </div> <!-- End Column -->
                         
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-2 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-2">
                                 <p class="my-0 flex-grow-1">Disclosure</p>
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <!-- <p class="card-text"><?php echo(document_in_document_list($document_list, '4')); ?></p> -->
                                 <select class="doc-status" id="disc_status" type="select" name="disc_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '4')) ? 'selected' : ''); ?>></option>
@@ -167,12 +185,14 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
+                        </div> <!-- End Column -->
                         
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-3 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-3">
                                 <p class="my-0 flex-grow-1">LEA</p>
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <select class="doc-status" id="lea_status" type="select" name="lea_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '5')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
@@ -181,12 +201,14 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                    
+                        </div> <!-- End Column -->
+                        
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-4 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-4">
                                 <p class="my-0 flex-grow-1">Background Check</p> 
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <select class="doc-status" id="bcg_status" type="select" name="bcg_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '6')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
@@ -195,12 +217,35 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
+                        </div> <!-- End Column -->
                         
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-5">
+                                <p class="my-0 flex-grow-1">Panel Interview</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body">
+                                <select class="doc-status" id="panel_status" type="select" name="panel_status">
+                                    <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '13')) ? 'selected' : ''); ?>></option>
+                                    <?php foreach ($status_set as $status) { ?>
+                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '8')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                    <?php } ?>
+                                </select>
+                                </form>
+                            
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
+                   </div>  <!--End Card Group -->
+                </div> <!-- End Row -->
+                
+
+    <div class="row d-flex justify-content-center m-0 text-center">
+            <div class="col-lg-2 col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-header c-card-6">
                                 <p class="my-0 flex-grow-1">Job Offer</p> 
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <select class="doc-status" id="offer_status" type="select" name="offer_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '7')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
@@ -209,13 +254,14 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                    <!-- </div>
-                        <div class="card-deck mb-3 text-center"> -->
+                        </div> <!-- End Column -->
+                                                
+                        <div class="col-lg-2 col-md-4 mb-4">    
                         <div class="card">
-                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-7">
                                 <p class="my-0 flex-grow-1">Transcripts</p> 
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <select class="doc-status" id="trans_status" type="select" name="trans_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '8')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
@@ -224,12 +270,14 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-
+                        </div> <!-- End Column -->
+                        
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-8">
                                 <p class="my-0 flex-grow-1">Fingerprinting</p> 
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                <select class="doc-status" id="fprint_status" type="select" name="fprint_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '9')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
@@ -238,12 +286,14 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
+                        </div> <!-- End Column -->
                         
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-9">
                                 <p class="my-0 flex-grow-1">Reference Check</p> 
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <select class="doc-status" id="ref_status" type="select" name="disc_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '10')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
@@ -252,12 +302,14 @@
                                 </select>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
+                        </div> <!-- End Column -->
                         
+                        <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-10">
                                 <p class="my-0 flex-grow-1">UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
-                            <div class="card-body flex-column h-100">
+                            <div class="card-body">
                                 <select class="doc-status" id="ultipro_status" type="select" name="ultipro_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '11')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>

@@ -464,23 +464,6 @@ function edit_candidate_hr($data_set){
             return $result;
 }
 
-function get_jd_doc_id($position_id){
-  global $db;
-
-  $sql = "SELECT jd_doc_id FROM positions ";
-  $sql .= "WHERE id='" . $position_id . "' ";
-  $sql .= "LIMIT 1";
-
-  $result = mysqli_query($db, $sql);
-
-  confirm_result_set($result);
-  $jd_doc_id_set = resultToArray($result);
-  
-  mysqli_free_result($result);
-  db_disconnect($db);
-  return $jd_doc_id_set;
-}
-
 function update_doc_status($candidate_id, $doc_id, $status){
   global $db;
 
@@ -501,5 +484,41 @@ function update_doc_status($candidate_id, $doc_id, $status){
   return $result;
 
 }
+
+function get_templates(){
+ global $db;
+ 
+ $sql = "SELECT * FROM documents";
+ 
+ $result = mysqli_query($db, $sql);
+
+ confirm_result_set($result);
+ $docs_info = resultToArray($result);
+ 
+ mysqli_free_result($result);
+ db_disconnect($db);
+ return $docs_info;
+
+
+}
+
+function get_jd_doc_id($position_id){
+  global $db;
+
+  $sql = "SELECT jd_doc_id FROM positions ";
+  $sql .= "WHERE id='" . $position_id . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+
+  confirm_result_set($result);
+  $jd_doc_id = $result;
+
+  mysqli_free_result($result);
+  db_disconnect($db);
+  return $jd_doc_id;
+}
+
+
 
 ?>

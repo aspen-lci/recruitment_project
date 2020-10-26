@@ -1,6 +1,21 @@
 <?php require_once('../../private/initialize.php'); 
 
+$candidate = get_candidate_by_id($_SESSION['id']);
+$candidate_id = $candidate['candidate_id'];
+$position_id = $candidate['position_id'];
+$position = $candidate['position'];
+$region_id = $candidate['region_id'];
+$start_date = $candidate['start_date'];
+$interview_date = $candidate['interview_date'];
+$interview_time = $candidate['interview_time'];
+$ii_date = $candidate['ii_date'];
 
+$documents = documents_by_candidate($_SESSION['id']);
+
+$templates = get_templates();
+$jd_doc_id = get_jd_doc_id($position_id);
+$jd = get_template_link($templates, $jd_doc_id);
+$disc = get_template_link($templates, 4);
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
@@ -29,7 +44,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-body">
             <h4 class="card-title">Job Description</h4>
             <p class="card-text">Please sign and return.</p>
-            <a href="https://bit.ly/2zAKaVx" class="btn btn-outline-primary btn-small">Therapist Job Description</a>
+            <a href="<?php echo $jd['template_link'] ?>" class="btn btn-outline-primary btn-small"><?php echo $jd['template_name'] ?></a>
           </div>
           <div class="card-footer" style="background-color: #F28B30;">
             

@@ -111,6 +111,42 @@ function get_job_desc($documents_list){
   }
 }
 
+function get_jd_link($documents_list){
+  foreach($documents_list as $document){
+    if($document['is_jd'] == 1){
+      return $document['signed_link'];
+    }
+    return;
+  }
+}
 
+function get_doc_link($documents_list, $doc_id){
+  foreach($documents_list as $document){
+    if($document['document_id'] == $doc_id){
+      return $document['signed_link'];
+    }
+    return "";
+  }
+}
+
+function add_doc_link($link){
+  if (!is_blank($link)) {
+    return '<a href=' . $link . ' target="_blank">Document Link</a>';
+  }
+  return;
+}
+
+function get_template_link($templates, $doc_id){
+  foreach($templates as $template){
+    if($doc_id == $template['id']){
+      $result = [];
+      $result['template_link'] = $template['template_link'];
+      $result['template_name'] = $template['description'];
+
+      return $result;
+    }
+    return;
+  }
+}
 
 ?>

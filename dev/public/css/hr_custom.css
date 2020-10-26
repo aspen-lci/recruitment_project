@@ -32,6 +32,10 @@ body {
     padding-top: 100px;
 }
 
+.card-body a{
+  margin-bottom: 1.5em;
+}
+
 .card-header{
   font-weight: bolder;
   font-size: 1.2em;
@@ -46,7 +50,7 @@ body {
   max-width: 100%;
   white-space: normal;
   text-overflow: ellipsis;
-  margin: 0;
+  margin: 20px;
   padding: 0;
 
 }

@@ -6,15 +6,16 @@
 class Documents {
     // map of valid document keys and associated descriptions
     public static $docMap = [
-        "jobDesc" => "Job Description",
-        "discForm" => "Disclosure",
-        "lea" => "LEA",
-        "lCheck" => "Background Check",
-        "jobOffer" => "Job Offer",
-        "trans" => "Transcripts",
-        "fPrint" => "Fingerprinting",
-        "ref" => "Reference Check",
-        "ultipro" => "Ultipro Onboarding"
+      "jobDesc" => "Job Description",
+      "discForm" => "Disclosure",
+      "lea" => "LEA",
+      "lCheck" => "Background Check",
+      "panel" => "Panel Interview",
+      "jobOffer" => "Job Offer",
+      "trans" => "Transcripts",
+      "fPrint" => "Fingerprinting",
+      "ref" => "Reference Check",
+      "ultipro" => "Ultipro"
     ];
 
     private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];
@@ -138,7 +139,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                 <tr>
                     <th class="d-none">Hidden nested details table</th>
                     <th colspan="1"></th>
-                    <th colspan="9" class="text-center">Documents Received</th>
+                    <th colspan="10" class="text-center">Documents Received</th>
                   </tr>
                   
                   <tr>

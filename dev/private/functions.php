@@ -151,16 +151,16 @@ function get_template_link($templates, $doc_id){
 
 function box_visibility($documents_list, $doc_id){
   foreach($documents_list as $document){
-    if($document['document_id']  == $doc_id){
-      return;
+    if($document['status_id'] === 14){
+      return 'style="display: none";';
     }
-  } return 'style="display: none";';
+  } return;
 }
 
 function card_body_status($documents_list, $doc_id){
   foreach($documents_list as $document){
     if($document['document_id']  == $doc_id){
-      if($document['status_id'] > 1){
+      if($document['status_id'] > 1 && !12){
         return 'style="display: none;"';
       }
     }
@@ -170,7 +170,7 @@ function card_body_status($documents_list, $doc_id){
   function display_card_body_status($documents_list, $doc_id){
     foreach($documents_list as $document){
       if($document['document_id']  == $doc_id){
-        if($document['status_id'] == 1){
+        if($document['status_id'] === 1){
           return 'style="color: red; display: none;"';
         }
       }

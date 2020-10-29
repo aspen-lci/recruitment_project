@@ -4,6 +4,7 @@ $company_set = all_companies();
 $position_set = all_positions();
 $region_set = all_regions();
 $recruiter_set = all_recruiters();
+$ii_dates = all_ii_dates();
 
 if(is_post_request()){
     $position_explode = explode('|', $_POST['position']);
@@ -122,7 +123,12 @@ if(is_post_request()){
 
                             <div class="form-group col-md-4">
                                 <label for="iiDate">Impact Institute Date</label>
-                                <input type="date" id="iiDate" class="form-control" name="iiDate">
+                                <select id="iiDate" type="select" name="iiDate">
+                                    <option value=""></option>
+                                    <?php foreach ($ii_dates as $date) { ?>
+                                        <option value="<?php echo $date['date']; ?>"><?php echo $date['date']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
 

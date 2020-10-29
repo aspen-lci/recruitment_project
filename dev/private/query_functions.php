@@ -458,10 +458,11 @@ function edit_candidate_recruiter($data_set){
             return $result;
 }
 
-function edit_candidate_hr($data_set){
+function edit_candidate_hr($data_set, $doc_set){
   global $db;
 
-  $sql = "UPDATE users SET ";
+  mysqli_begin_transaction($db);
+            $sql = "UPDATE users SET ";
             $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
             $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
             $sql .= "email='" . db_escape($db, $data_set['email']) . "' ";
@@ -471,7 +472,8 @@ function edit_candidate_hr($data_set){
             $result = mysqli_query($db, $sql);
 
             if(!$result){
-                echo mysqli_error($db);
+              mysqli_rollback($db);
+              echo mysqli_error($db);
                 
             }
             
@@ -490,11 +492,28 @@ function edit_candidate_hr($data_set){
             $result = mysqli_query($db, $sql);
 
             if(!$result){
-                echo mysqli_error($db);
-                
+              mysqli_rollback($db);
+              echo mysqli_error($db); 
             }
-            
-            return $result;
+
+            $sql = "";
+
+            foreach($doc_set as $doc){
+
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['status_id'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . $doc_set['doc_id'] . "; ";
+            }
+
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+    
+    mysqli_commit($db);
+  return $result;
 }
 
 function update_doc_status($candidate_id, $doc_id, $status){
@@ -525,9 +544,12 @@ function get_jd_doc_id($position_id){
 
   $result = mysqli_query($db, $sql);
 
+  
   confirm_result_set($result);
   $doc_id = resultToArray($result);
+ 
   mysqli_free_result($result);
+ 
   return $doc_id;
 }
 

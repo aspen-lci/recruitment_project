@@ -41,9 +41,44 @@
         $update['interview_time'] = $_POST['interviewTime'];
         $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
-        
 
-        $result = edit_candidate_hr($update);
+
+        $jd_id = get_jd_doc_id($update['position']);
+print_r($jd_id);
+        $doc_status_update = [];
+        $doc_status_update[0]['doc_id'] = $jd_id[0]['jd_doc_id'];
+        $doc_status_update[0]['status_id'] = $_POST['jd_status'];
+
+        $doc_status_update[1]['doc_id'] = 4;
+        $doc_status_update[1]['status_id'] = $_POST['disc_status'];
+
+        $doc_status_update[2]['doc_id'] = 5;
+        $doc_status_update[2]['status_id'] = $_POST['lea_status'];
+        
+        $doc_status_update[3]['doc_id'] = 6;
+        $doc_status_update[3]['status_id'] = $_POST['bcg_status'];
+
+        $doc_status_update[4]['doc_id'] = 13;
+        $doc_status_update[4]['status_id'] = $_POST['panel_status'];
+
+        $doc_status_update[5]['doc_id'] = 7;
+        $doc_status_update[5]['status_id'] = $_POST['offer_status'];
+
+        $doc_status_update[6]['doc_id'] = 8;
+        $doc_status_update[6]['status_id'] = $_POST['trans_status'];
+
+        $doc_status_update[7]['doc_id'] = 9;
+        $doc_status_update[7]['status_id'] = $_POST['fprint_status'];
+
+        $doc_status_update[8]['doc_id'] = 10;
+        $doc_status_update[8]['status_id'] = $_POST['ref_status'];
+
+        $doc_status_update[9]['doc_id'] = 11;
+        $doc_status_update[9]['status_id'] = $_POST['ultipro_status'];
+        print_r($doc_status_update);
+
+        $result = edit_candidate_hr($update, $doc_status_update);
+        
         if ($result === true) {
             $_SESSION['message'] = "User has been updated. ";
             
@@ -51,27 +86,8 @@
             print_r($update);
             $errors=$result;
         }
-        $document_ids = array_column($document_list, 'document_id');
-        
-        $disc_status = $_POST['disc_status'];
-        if(in_array(4, $document_ids)){
-            $result = update_doc_status($id, '4', $disc_status);
-            if($result === true){
-                $_SESSION['message'] .= " Document status has been updated. " . $doc_status['disc_status'];
-            redirect_to(url_for('/hr/index.php'));
-            }else{
-                $errors=$result;
-            }
-        }else{
-            $result = insert_doc_status(4, $doc_status['disc_status']);
-            if($result === true){
-                $_SESSION['message'] .= " Document status has been updated.";
-                redirect_to(url_for('/hr/index.php'));
-            }else{
-                $errors=$result;
-            }
-        }
     }
+            
 ?>
 
 <?php $page_title = 'View Candidate'; ?>
@@ -238,7 +254,7 @@
                                 <select class="doc-status" id="panel_status" type="select" name="panel_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '13')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '8')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '13')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                                 </form>
@@ -304,7 +320,7 @@
                                 <p class="my-0 flex-grow-1">Reference Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
-                                <select class="doc-status" id="ref_status" type="select" name="disc_status">
+                                <select class="doc-status" id="ref_status" type="select" name="ref_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '10')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
                                         <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '10')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>

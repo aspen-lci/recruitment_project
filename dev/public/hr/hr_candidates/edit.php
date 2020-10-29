@@ -51,10 +51,11 @@
             print_r($update);
             $errors=$result;
         }
-
-        $doc_status['disc_status'] = $_POST['disc_status'];
-        if(in_array('4', $document_list)){
-            $result = update_doc_status($id, '4', $doc_status['disc_status']);
+        $document_ids = array_column($document_list, 'document_id');
+        
+        $disc_status = $_POST['disc_status'];
+        if(in_array(4, $document_ids)){
+            $result = update_doc_status($id, '4', $disc_status);
             if($result === true){
                 $_SESSION['message'] .= " Document status has been updated. " . $doc_status['disc_status'];
             redirect_to(url_for('/hr/index.php'));
@@ -76,8 +77,9 @@
 <?php $page_title = 'View Candidate'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
-<?php echo (isset($_POST['disc_status']) ? $_POST['disc_status'] : ''); ?>
+
 <div id="content">
+
 <a href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to List</a>
     <div class="row">
         <div class="col-lg-12">

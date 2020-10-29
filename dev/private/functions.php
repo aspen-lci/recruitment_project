@@ -104,11 +104,12 @@ function document_in_document_list($documents_list, $id){
 function get_job_desc($documents_list){
   foreach($documents_list as $document){
     if($document['is_jd'] == 1){
-      $jd = document_in_document_list($documents_list, $document['document_id']);
-      return $jd;
+      
+      return $document['status'];
     }
-    return;
+    
   }
+  return;
 }
 
 function get_jd_link($documents_list){
@@ -116,8 +117,9 @@ function get_jd_link($documents_list){
     if($document['is_jd'] == 1){
       return $document['signed_link'];
     }
-    return;
+    
   }
+  return;
 }
 
 function get_doc_link($documents_list, $doc_id){
@@ -125,8 +127,9 @@ function get_doc_link($documents_list, $doc_id){
     if($document['document_id'] == $doc_id){
       return $document['signed_link'];
     }
-    return "";
+    
   }
+  return "";
 }
 
 function add_doc_link($link){
@@ -138,15 +141,41 @@ function add_doc_link($link){
 
 function get_template_link($templates, $doc_id){
   foreach($templates as $template){
-    if($doc_id == $template['id']){
-      $result = [];
-      $result['template_link'] = $template['template_link'];
-      $result['template_name'] = $template['description'];
-
-      return $result;
+    if($template['id'] == $doc_id){
+      return $template['template_link'];
     }
-    return;
+   
   }
+
 }
+
+function box_visibility($documents_list, $doc_id){
+  foreach($documents_list as $document){
+    if($document['document_id']  == $doc_id){
+      return;
+    }
+  } return 'style="display: none";';
+}
+
+function card_body_status($documents_list, $doc_id){
+  foreach($documents_list as $document){
+    if($document['document_id']  == $doc_id){
+      if($document['status_id'] > 1){
+        return 'style="display: none;"';
+      }
+    }
+  } return;
+  }
+
+  function display_card_body_status($documents_list, $doc_id){
+    foreach($documents_list as $document){
+      if($document['document_id']  == $doc_id){
+        if($document['status_id'] == 1){
+          return 'style="color: red; display: none;"';
+        }
+      }
+    } return;
+    }
+
 
 ?>

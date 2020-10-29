@@ -1,20 +1,24 @@
 <?php require_once('../../private/initialize.php'); 
 
-$candidate = get_candidate_by_id($_SESSION['id']);
-$candidate_id = $candidate['candidate_id'];
-$position_id = $candidate['position_id'];
-$position = $candidate['position'];
-$region_id = $candidate['region_id'];
-$start_date = $candidate['start_date'];
-$interview_date = $candidate['interview_date'];
-$interview_time = $candidate['interview_time'];
-$ii_date = $candidate['ii_date'];
+$candidate = get_candidate_by_user_id($_SESSION['user_id']);
+$candidate_id = $candidate[0]['candidate_id'];
+$position_id = $candidate[0]['position_id'];
+$position = $candidate[0]['position'];
+$region_id = $candidate[0]['region_id'];
+$start_date = $candidate[0]['start_date'];
+$interview_date = $candidate[0]['interview_date'];
+$interview_time = $candidate[0]['interview_time'];
+$ii_date = $candidate[0]['ii_date'];
 
-$documents = documents_by_candidate($_SESSION['id']);
+$documents = documents_by_candidate($candidate_id);
 
+$jd_doc_id_value = get_jd_doc_id($position_id);
+$jd_doc_id = $jd_doc_id_value[0]['jd_doc_id'];
 $templates = get_templates();
-$jd_doc_id = get_jd_doc_id($position_id);
+
+
 $jd = get_template_link($templates, $jd_doc_id);
+
 $disc = get_template_link($templates, 4);
 
 $page_title = 'Welcome to Lifeline';
@@ -32,19 +36,20 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <p class="lead">We ask that you complete the first four steps below within the next 48 hours so we can invite you to the panel interview and facilitate your onboarding experience. The speed with which you complete this process determines how quickly you can begin your work at Lifeline Youth & Family Services.</p>
       <p class="lead">As you move further along, you will receive emails from our HR representative, Jenn Falk (jenn.falk@lastingchangeinc.org), as well as KidTraks and Checkster. Please be sure to use the same email address on all forms and for all communication with Lifeline. Please reach out if you have any questions. We are happy to assist you in your hiring process, and we look forward to welcoming you to our team!</p>
     </header>
-
+    
     <!-- Page Features -->
     <div class="row text-center">
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
+        <div class="card h-100" <?php echo(box_visibility($documents, $jd_doc_id)); ?>>
           <div class="card-header c-card-1" style="background-color: #F28B30;">
             <h4>1</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">Job Description</h4>
-            <p class="card-text">Please sign and return.</p>
-            <a href="<?php echo $jd['template_link'] ?>" class="btn btn-outline-primary btn-small"><?php echo $jd['template_name'] ?></a>
+            <p class="card-text" <?php echo(card_body_status($documents, $jd_doc_id)); ?>>Please sign and return.</p>
+            <a href="<?php echo $jd; ?>" target="_blank" class="btn btn-outline-primary btn-small" <?php echo(card_body_status($documents, $jd_doc_id)); ?>><?php echo $position; ?> Job Description</a>
+            <p <?php echo(display_card_body_status($documents, $jd_doc_id)); ?>><?php echo(document_in_document_list($documents, $jd_doc_id)); ?></p>
           </div>
           <div class="card-footer" style="background-color: #F28B30;">
             
@@ -53,14 +58,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 4)); ?>;">
           <div class="card-header c-card-2" style="background-color: #F2E205;">
             <h4>2</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">Disclosure Form</h4>
             <p class="card-text">First, Middle, and Last Name required! Please sign and date. </p>
-            <a href="https://bit.ly/2O1oPZD" class="btn btn-outline-primary btn-small">FCRA Disclosure</a>
+            <a href="<?php echo $disc; ?>" target="_blank" class="btn btn-outline-primary btn-small">FCRA Disclosure</a>
           </div>
           <div class="card-footer" style="background-color: #F2E205;">
            
@@ -69,13 +74,13 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 5)); ?>;">
           <div class="card-header c-card-3" style="background-color: #F20505;">
             <h4>3</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">LEA Form</h4>
-            <a href="lea.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
+            <a href="lea.php" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
           </div>
           <div class="card-footer" style="background-color: #F20505;">
             
@@ -89,7 +94,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <div class="row text-center">
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 6)); ?>;">
           <div class="card-header c-card-4" style="background-color: #0D0D0D; color: white;">
             <h4>4</h4>
           </div>
@@ -103,8 +108,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 13)); ?>;">
           <div class="card-header c-card-5" style="background-color: #F2E205;">
             <h4>5</h4>
           </div>
@@ -117,8 +122,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 7)); ?>;">
           <div class="card-header c-card-6" style="background-color: #F28B30;">
             <h4>6</h4>
           </div>
@@ -136,8 +141,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- end row-->
 
     <div class="row text-center">
-    <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 8)); ?>;">
           <div class="card-header c-card-7" style="background-color: #F2E205;">
             <h4>7</h4>
           </div>
@@ -150,8 +155,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 9)); ?>;">
           <div class="card-header c-card-8" style="background-color: #F20505;">
             <h4>8</h4>
           </div>
@@ -165,8 +170,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
       
-      <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 10)); ?>;">
           <div class="card-header c-card-9" style="background-color: #0D0D0D; color: white;">
             <h4>9</h4>
           </div>
@@ -184,8 +189,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- /.row -->
     <div class="row text-center"> 
 
-    <div class="col-lg-4 col-md-6 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 11)); ?>;">
           <div class="card-header" style="background-color: #D8D8D8;">
             <h4>10</h4>
           </div>
@@ -198,8 +203,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-8 mb-4" style="visibility: visible;">
-        <div class="card h-100">
+      <div class="col-lg-8 mb-4">
+        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 11)); ?>;">
           <div class="card-header" style="background-color: #F28B30;"><h4> </h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>

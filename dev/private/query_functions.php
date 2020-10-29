@@ -271,19 +271,18 @@
         $sql .= "'" . db_escape($db, $candidate['email']) . "',";
         $sql .= db_escape($db, $candidate['type']);
         $sql .= ")";
-
+echo $sql;
         $result = mysqli_query($db, $sql);
 
         if(!$result){
+            mysqli_rollback($db);
             echo mysqli_error($db);
             
         }
 
         $new_id = mysqli_insert_id($db);
         
-      
-
-        $sql = "INSERT INTO candidates ";
+        $sql = "REPLACE INTO candidates ";
         $sql .= "(user_id, recruiter_id, company_id, position_id, region_id, start_date, interview_date, interview_time, ii_date) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $new_id) . "',";
@@ -296,40 +295,58 @@
         $sql .= "'" . db_escape($db, $candidate['interview_time']) . "',";
         $sql .= "'" . db_escape($db, $candidate['ii_date']) . "'";
         $sql .= ")";
-
+        echo $sql;
         $result = mysqli_query($db, $sql);
 
         if(!$result){
+          mysqli_rollback($db);
           echo mysqli_error($db);
         }
+
         $candidate_id = mysqli_insert_id($db);
+        $doc_defaults = get_doc_defaults($candidate['company']);
 
         $sql = "INSERT INTO document_status ";
         $sql .= "(candidate_id, document_id, status_id) ";
-        $sql .= "VALUES (";
-        $sql .= "'" . $candidate_id . "', ";
-        $sql .= "'" . $candidate['jd_doc_id'] . "', ";
-        $sql .= "1), ";
+        $sql .= "VALUES ";
+       
+
+        foreach($doc_defaults as $default){
         $sql .= "(";
-        $sql .= "'" . $candidate_id . "', ";
-        $sql .= "4, 1), ";
+        $sql .= $candidate_id . ",";
+        $sql .= $default['document_id'] . "," . $default['default_status'] . "), ";
+        }
+
         $sql .= "(";
-        $sql .= "'" . $candidate_id . "', ";
-        $sql .= "5, 1), ";
-        $sql .= "(";
-        $sql .= "'" . $candidate_id . "', ";
-        $sql .= "6, 1)";
-echo $sql;
+        $sql .= $candidate_id . ", ";
+        $sql .= $candidate['jd_doc_id'] . ", ";
+        $sql .= "1)";
+        echo $sql;
         $result = mysqli_query($db, $sql);
 
         if(!$result){
+          mysqli_rollback($db);
           echo mysqli_error($db);
         }
 
         mysqli_commit($db);
-        db_disconnect($db);
-
+        
         return $result;
+}
+
+function get_doc_defaults($company_id){
+  global $db;
+
+  $sql = "SELECT * FROM document_defaults ";
+  $sql .= "WHERE company_id='" . $company_id . "'";
+
+  $result = mysqli_query($db, $sql);
+
+  if(!$result){
+    echo mysqli_error($db);
+  }
+
+  return $result;
 }
 
   function candidates_by_recruiter($recruiter_id){
@@ -359,6 +376,22 @@ function get_candidate_by_id($id){
   $candidate = resultToArray($result);
   mysqli_free_result($result);
   return $candidate;
+}
+
+function get_candidate_by_user_id($user_id){
+  global $db;
+
+  $sql = "SELECT * FROM full_candidate_view ";
+  $sql .= "WHERE user_id='" . db_escape($db, $user_id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $candidate = resultToArray($result);
+  mysqli_free_result($result);
+  
+  return $candidate;
+
 }
 
 function all_candidates(){
@@ -460,7 +493,7 @@ function edit_candidate_hr($data_set){
                 echo mysqli_error($db);
                 
             }
-            db_disconnect($db);
+            
             return $result;
 }
 
@@ -480,9 +513,22 @@ function update_doc_status($candidate_id, $doc_id, $status){
     
   }
   
-  db_disconnect($db);
   return $result;
 
+}
+
+function get_jd_doc_id($position_id){
+  global $db;
+
+  $sql = "SELECT jd_doc_id FROM positions ";
+  $sql .= "WHERE id='" . $position_id . "'";
+
+  $result = mysqli_query($db, $sql);
+
+  confirm_result_set($result);
+  $doc_id = resultToArray($result);
+  mysqli_free_result($result);
+  return $doc_id;
 }
 
 function get_templates(){
@@ -496,28 +542,13 @@ function get_templates(){
  $docs_info = resultToArray($result);
  
  mysqli_free_result($result);
- db_disconnect($db);
+ 
  return $docs_info;
 
 
 }
 
-function get_jd_doc_id($position_id){
-  global $db;
 
-  $sql = "SELECT jd_doc_id FROM positions ";
-  $sql .= "WHERE id='" . $position_id . "' ";
-  $sql .= "LIMIT 1";
-
-  $result = mysqli_query($db, $sql);
-
-  confirm_result_set($result);
-  $jd_doc_id = $result;
-
-  mysqli_free_result($result);
-  db_disconnect($db);
-  return $jd_doc_id;
-}
 
 
 

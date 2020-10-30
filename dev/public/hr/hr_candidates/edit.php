@@ -43,10 +43,11 @@
         $update['ii_date'] = $_POST['iiDate'];
 
 
-        $jd_id = get_jd_doc_id($update['position']);
+        $jd_id_array = get_jd_doc_id($update['position']);
+        $jd_id = $jd_id_array[0]['jd_doc_id'];
 print_r($jd_id);
         $doc_status_update = [];
-        $doc_status_update[0]['doc_id'] = $jd_id[0]['jd_doc_id'];
+        $doc_status_update[0]['doc_id'] = $jd_id;
         $doc_status_update[0]['status_id'] = $_POST['jd_status'];
 
         $doc_status_update[1]['doc_id'] = 4;

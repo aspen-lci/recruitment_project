@@ -505,7 +505,7 @@ function edit_candidate_hr($data_set, $doc_set){
             $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
             $sql .= "AND document_id=" . $doc_set['doc_id'] . "; ";
             }
-
+echo $sql;
             $result = mysqli_query($db, $sql);
 
             if(!$result){

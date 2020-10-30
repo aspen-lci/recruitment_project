@@ -123,12 +123,19 @@ if(is_post_request()){
 
                             <div class="form-group col-md-4">
                                 <label for="iiDate">Impact Institute Date</label>
+                                <!-- <input type="date" class="form-control" id="iiDate" name="iiDate" list="iiDates">
+                                    <datalist id="iiDates">
+                                        <?php foreach($ii_dates as $date) echo sprintf('<option>%s</option>' . PHP_EOL, $date); ?>
+                                    </datalist> -->
                                 <select id="iiDate" type="select" name="iiDate">
+                                    <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date))->format("m/d/Y")); ?>
+                                </select>
+                                <!-- <select id="iiDate" type="select" name="iiDate">
                                     <option value=""></option>
                                     <?php foreach ($ii_dates as $date) { ?>
                                         <option value="<?php echo $date['date']; ?>"><?php echo $date['date']; ?></option>
                                     <?php } ?>
-                                </select>
+                                </select> -->
                             </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
 

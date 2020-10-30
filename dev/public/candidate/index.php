@@ -28,7 +28,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
   <!-- Page Content -->
   <div class="container">
-
+<?php echo gettype($documents['status_id']);?>
     <!-- Jumbotron Header -->
     <header class="jumbotron">
       <h1 class="display-4">We cannot wait to get to know you better!</h1>
@@ -58,7 +58,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 4)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 4)); ?>;>
           <div class="card-header c-card-2" style="background-color: #F2E205;">
             <h4>2</h4>
           </div>
@@ -74,7 +74,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 5)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 5)); ?>;>
           <div class="card-header c-card-3" style="background-color: #F20505;">
             <h4>3</h4>
           </div>
@@ -94,7 +94,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <div class="row text-center">
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 6)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 6)); ?>;>
           <div class="card-header c-card-4" style="background-color: #0D0D0D; color: white;">
             <h4>4</h4>
           </div>
@@ -109,7 +109,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 13)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 13)); ?>;>
           <div class="card-header c-card-5" style="background-color: #F2E205;">
             <h4>5</h4>
           </div>
@@ -123,7 +123,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 7)); ?>;">
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 7)); ?>;">
           <div class="card-header c-card-6" style="background-color: #F28B30;">
             <h4>6</h4>
           </div>
@@ -142,7 +142,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <div class="row text-center">
     <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 8)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 8)); ?>;>
           <div class="card-header c-card-7" style="background-color: #F2E205;">
             <h4>7</h4>
           </div>
@@ -156,7 +156,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 9)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 9)); ?>;>
           <div class="card-header c-card-8" style="background-color: #F20505;">
             <h4>8</h4>
           </div>
@@ -171,7 +171,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
       
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 10)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 10)); ?>;>
           <div class="card-header c-card-9" style="background-color: #0D0D0D; color: white;">
             <h4>9</h4>
           </div>
@@ -190,7 +190,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center"> 
 
     <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 11)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 11)); ?>;>
           <div class="card-header" style="background-color: #D8D8D8;">
             <h4>10</h4>
           </div>
@@ -204,7 +204,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-8 mb-4">
-        <div class="card h-100" style="visibility: <?php echo(box_visibility($documents, 11)); ?>;">
+        <div class="card h-100" <?php echo(box_visibility($documents, 11)); ?>;>
           <div class="card-header" style="background-color: #F28B30;"><h4> </h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>

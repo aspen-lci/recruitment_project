@@ -410,7 +410,7 @@ function all_candidates(){
 function documents_by_candidate($candidate_id){
   global $db;
 
-  $sql = "SELECT * FROM candidate_documents_view ";
+  $sql = "SELECT document_id, is_jd, status_id, status, signed_link FROM candidate_documents_view ";
   $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "'";
 
   $result = mysqli_query($db, $sql);

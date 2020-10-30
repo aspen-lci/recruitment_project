@@ -97,10 +97,9 @@ if(is_post_request()){
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-4" id="nsRadio">
-                                    <p>Region (Choose One)</p>
-                                    <label for="region"><input type="radio" name="region" value='NULL' checked>Unknown</label>
+                                    <p>District for Panel Interview Zoom Link</p>
                                     <?php foreach ($region_set as $region) { ?>
-                                        <label for="region"><input type="radio" name="region" value="<?php echo $region['id'] ?>"><?php echo $region['name'] ?></label>    
+                                        <label for="region"><input type="radio" name="region" value="<?php echo $region['id'] ?>" required><?php echo $region['name'] ?></label>    
                                     <?php } ?>
                             </div> <!-- Form Col End -->
 
@@ -123,19 +122,11 @@ if(is_post_request()){
 
                             <div class="form-group col-md-4">
                                 <label for="iiDate">Impact Institute Date</label>
-                                <!-- <input type="date" class="form-control" id="iiDate" name="iiDate" list="iiDates">
-                                    <datalist id="iiDates">
-                                        <?php foreach($ii_dates as $date) echo sprintf('<option>%s</option>' . PHP_EOL, $date); ?>
-                                    </datalist> -->
-                                <select id="iiDate" type="select" name="iiDate">
-                                    <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date))->format("m/d/Y")); ?>
+                                <br>
+                                <select class="form-control" id="iiDate" type="select" name="iiDate">
+                                    <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
                                 </select>
-                                <!-- <select id="iiDate" type="select" name="iiDate">
-                                    <option value=""></option>
-                                    <?php foreach ($ii_dates as $date) { ?>
-                                        <option value="<?php echo $date['date']; ?>"><?php echo $date['date']; ?></option>
-                                    <?php } ?>
-                                </select> -->
+                               
                             </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
 
@@ -162,6 +153,9 @@ if(is_post_request()){
          $('#interviewDate').datepicker();
       }
    })();
+
+ 
+
  
 </script>
 

@@ -43,6 +43,7 @@ if(is_post_request()){
 <?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
+    
     <?php echo(!empty($errors) ? display_errors($errors) : ""); ?>
     <div class="row">
         <div class="col-lg-12">
@@ -98,10 +99,9 @@ if(is_post_request()){
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-4" id="nsRadio">
-                                    <p>Region (Choose One)</p>
-                                    <label for="region"><input type="radio" name="region" value="" checked>Unknown</label>
+                                    <p>District for Panel Interview Zoom Link</p>
                                     <?php foreach ($region_set as $region) { ?>
-                                        <label for="region"><input type="radio" name="region" value="<?php echo $region['id'] ?>"><?php echo $region['name'] ?></label>    
+                                        <label for="region"><input type="radio" name="region" value="<?php echo $region['id'] ?>" required><?php echo $region['name'] ?></label>    
                                     <?php } ?>
                             </div> <!-- Form Col End -->
 
@@ -124,11 +124,9 @@ if(is_post_request()){
 
                             <div class="form-group col-md-4">
                                 <label for="iiDate">Impact Institute Date</label>
-                                <select id="iiDate" type="select" name="iiDate">
-                                    <option value=""></option>
-                                    <?php foreach ($ii_dates as $date) { ?>
-                                        <option value="<?php echo $date['date']; ?>"><?php echo $date['date']; ?></option>
-                                    <?php } ?>
+                                <br>
+                                <select class="form-control" id="iiDate" type="select" name="iiDate">
+                                    <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
                                 </select>
                             </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->

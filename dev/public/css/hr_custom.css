@@ -52,6 +52,7 @@ body {
   text-overflow: ellipsis;
   margin: 20px;
   padding: 0;
+  background-color: transparent;
 
 }
 
@@ -83,6 +84,7 @@ body {
   color: black;
   max-width:100%;
   padding: 0;
+  background-color: transparent;
 }
 
 
@@ -114,10 +116,12 @@ body {
   border-right-style: hidden;
   color: black;
   text-align: center;
+  background-color: transparent;
 }
 
 .form-control{
   font-size: 1.1em;
+  background-color: transparent;
 }
 
 .form-group label{

@@ -45,48 +45,42 @@
 
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
-print_r($jd_id);
-        $doc_status_update = [];
-        $doc_status_update[0]['doc_id'] = $jd_id;
-        $doc_status_update[0]['status_id'] = $_POST['jd_status'];
 
-        $doc_status_update[1]['doc_id'] = 4;
-        $doc_status_update[1]['status_id'] = $_POST['disc_status'];
-
-        $doc_status_update[2]['doc_id'] = 5;
-        $doc_status_update[2]['status_id'] = $_POST['lea_status'];
+        $doc_status_update['jd'] = $_POST['jd_status'];
+        $doc_status_update['disc'] = $_POST['disc_status'];
+        $doc_status_update['lea'] = $_POST['lea_status'];
+        $doc_status_update['bcg'] = $_POST['bcg_status'];
+        $doc_status_update['panel'] = $_POST['panel_status'];
+        $doc_status_update['offer'] = $_POST['offer_status'];
+        $doc_status_update['trans'] = $_POST['trans_status'];
+        $doc_status_update['fprint'] = $_POST['fprint_status'];
+        $doc_status_update['ref'] = $_POST['ref_status'];
+        $doc_status_update['ultipro'] = $_POST['ultipro_status'];
         
-        $doc_status_update[3]['doc_id'] = 6;
-        $doc_status_update[3]['status_id'] = $_POST['bcg_status'];
 
-        $doc_status_update[4]['doc_id'] = 13;
-        $doc_status_update[4]['status_id'] = $_POST['panel_status'];
-
-        $doc_status_update[5]['doc_id'] = 7;
-        $doc_status_update[5]['status_id'] = $_POST['offer_status'];
-
-        $doc_status_update[6]['doc_id'] = 8;
-        $doc_status_update[6]['status_id'] = $_POST['trans_status'];
-
-        $doc_status_update[7]['doc_id'] = 9;
-        $doc_status_update[7]['status_id'] = $_POST['fprint_status'];
-
-        $doc_status_update[8]['doc_id'] = 10;
-        $doc_status_update[8]['status_id'] = $_POST['ref_status'];
-
-        $doc_status_update[9]['doc_id'] = 11;
-        $doc_status_update[9]['status_id'] = $_POST['ultipro_status'];
-        print_r($doc_status_update);
-
-        $result = edit_candidate_hr($update, $doc_status_update);
+        $result = edit_candidate_hr($update, $doc_status_update, $jd_id);
         
         if ($result === true) {
             $_SESSION['message'] = "User has been updated. ";
             
         }else{
-            print_r($update);
             $errors=$result;
         }
+
+        $link_upload['jd'] = $_POST['jd_link_upload'];
+        $link_upload['disc'] = $_POST['disc_link_upload'];
+        $link_upload['lea'] = $_POST['lea_link_upload'];
+        $link_upload['bcg'] = $_POST['bcg_link_upload'];
+        
+
+        $result = update_document_links($id, $jd_id, $link_upload);
+
+        if ($result === true){
+            $_SESSION['message'] = "Document links updated.";
+        }else{
+            $errors = $result; 
+        }
+
     }
             
 ?>
@@ -184,14 +178,20 @@ print_r($jd_id);
                             </div> <!--End Card Header -->
 
                             <div class="card-body">
-                                <?php echo add_doc_link($link['jd']);  ?>
-                                <select class="doc-status card-text" id="jd_status" type="select" name="jd_status">
+                            <select class="doc-status card-text" id="jd_status" type="select" name="jd_status">
                                     <option value="" <?php echo(is_blank(get_job_desc($document_list)) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
                                         <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (get_job_desc($document_list)) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                             </select>
+                                <label class="mt-2 mb-0">Update Document Link</label>
+                                <input class="m-0 p-0" type="text" name="jd_link_upload"/>
+                                
+                            
                             </div> <!-- End Card body -->
+                            <div class="card-footer">
+                                <?php echo add_doc_link($link['jd']);  ?>
+                            </div>
                             </div> <!-- End Card -->
                             </div> <!-- End Column -->
                         
@@ -200,15 +200,20 @@ print_r($jd_id);
                             <div class="card-header c-card-2">
                                 <p class="my-0 flex-grow-1">Disclosure</p>
                             </div> <!--End Card Header -->
-                            <div class="card-body">
-                                <?php echo add_doc_link($link['disc']);  ?>
+                            <div class="card-body">  
                                 <select class="doc-status" id="disc_status" type="select" name="disc_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '4')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
                                         <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '4')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
+                                <label class="mt-2 mb-0">Update Document Link</label>
+                                <input class="m-0 p-0" type="text" name="disc_link_upload"/>
+                                
                             </div> <!-- End Card Body -->
+                            <div class="card-footer">
+                            <?php echo add_doc_link($link['disc']);  ?>
+                            </div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
@@ -218,14 +223,18 @@ print_r($jd_id);
                                 <p class="my-0 flex-grow-1">LEA</p>
                             </div> <!--End Card Header -->
                             <div class="card-body">
-                                <?php echo add_doc_link($link['lea']);  ?>
                                 <select class="doc-status" id="lea_status" type="select" name="lea_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '5')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
                                         <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '5')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
+                                <label class="mt-2 mb-0">Update Document Link</label>
+                                <input class="m-0 p-0" type="text" name="lea_link_upload"/>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer">
+                            <?php echo add_doc_link($link['lea']);  ?>
+                            </div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
@@ -235,14 +244,18 @@ print_r($jd_id);
                                 <p class="my-0 flex-grow-1">Background Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
-                                <?php echo add_doc_link($link['bcg']);  ?>
                                 <select class="doc-status" id="bcg_status" type="select" name="bcg_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '6')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
                                         <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '6')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
+                                <label class="mt-2 mb-0">Update Document Link</label>
+                                <input class="m-0 p-0" type="text" name="bcg_link_upload"/>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer">
+                            <?php echo add_doc_link($link['bcg']);  ?>
+                            </div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
@@ -261,6 +274,7 @@ print_r($jd_id);
                                 </form>
                             
                             </div> <!-- End Card Body -->
+                            <div class="card-footer"></div>
                         </div> <!-- End Card -->
                    </div>  <!--End Card Group -->
                 </div> <!-- End Row -->
@@ -280,6 +294,7 @@ print_r($jd_id);
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                                                 
@@ -296,6 +311,7 @@ print_r($jd_id);
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
@@ -312,6 +328,7 @@ print_r($jd_id);
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
@@ -328,6 +345,7 @@ print_r($jd_id);
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
@@ -344,6 +362,7 @@ print_r($jd_id);
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
+                            <div class="card-footer"></div>
                         </div> <!-- End Card -->
                    </div> <!-- End Card Group -->
                 </div> <!-- End Row -->

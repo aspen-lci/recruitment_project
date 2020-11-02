@@ -458,7 +458,7 @@ function edit_candidate_recruiter($data_set){
             return $result;
 }
 
-function edit_candidate_hr($data_set, $doc_set){
+function edit_candidate_hr($data_set, $doc_set, $jd_id){
   global $db;
 
   mysqli_begin_transaction($db);
@@ -496,16 +496,65 @@ function edit_candidate_hr($data_set, $doc_set){
               echo mysqli_error($db); 
             }
 
-            $sql = "";
-
-            foreach($doc_set as $doc){
-
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['status_id'] . " ";
+            $sql = "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['jd'] . " ";
             $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . $doc_set['doc_id'] . "; ";
-            }
-echo $sql;
+            $sql .= "AND document_id=" . $jd_id . "; ";
+
+            //disc
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['disc'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 4 . "; ";
+
+            //lea
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['lea'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 5 . "; ";
+
+            //bcg
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['bcg'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 6 . "; ";
+
+            //panel
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['panel'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 13 . "; ";
+
+            //offer
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['offer'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 7 . "; ";
+
+            //trans
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['trans'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 8 . "; ";
+
+            //fprint
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['fprint'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 9 . "; ";
+
+            //ref
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['ref'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 10 . "; ";
+
+            //ultipro
+            $sql .= "UPDATE document_status SET ";
+            $sql .= "status_id=" . $doc_set['ultipro'] . " ";
+            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
+            $sql .= "AND document_id=" . 11 . "; ";
+
             $result = mysqli_query($db, $sql);
 
             if(!$result){
@@ -570,7 +619,51 @@ function get_templates(){
 
 }
 
+function update_document_links($candidate_id, $jd_id, $links){
+  global $db;
 
+  $sql = "";
+
+  if(!is_blank($links['jd'])){
+    $sql .= "UPDATE document_status SET ";
+    $sql .= "signed_link='" . db_escape($db, $links['jd']) . "' ";
+    $sql .= "WHERE candidate_id='" . $candidate_id . "' ";
+    $sql .= "AND document_id='" . $jd_id . "' ";
+  }
+
+  if(!is_blank($links['disc'])){
+    $sql .= "UPDATE document_status SET ";
+    $sql .= "signed_link='" . db_escape($db, $links['disc']) . "' ";
+    $sql .= "WHERE candidate_id='" . $candidate_id . "' ";
+    $sql .= "AND document_id='" . 4 . "' ";
+    }
+
+  if(!is_blank($links['lea'])){
+    $sql .= "UPDATE document_status SET ";
+    $sql .= "signed_link='" . db_escape($db, $links['lea']) . "' ";
+    $sql .= "WHERE candidate_id='" . $candidate_id . "' ";
+    $sql .= "AND document_id='" . 5 . "' ";
+    }
+
+  if(!is_blank($links['bcg'])){
+    $sql .= "UPDATE document_status SET ";
+    $sql .= "signed_link='" . db_escape($db, $links['bcg']) . "' ";
+    $sql .= "WHERE candidate_id='" . $candidate_id . "' ";
+    $sql .= "AND document_id='" . 6 . "' ";
+    }
+  
+  if(!is_blank($sql)){
+    $result = mysqli_query($db, $sql);
+  
+    if(!$result){
+      echo mysqli_error($db);
+    }
+
+  return $result;
+  } else {
+    return;
+  }
+}
 
 
 

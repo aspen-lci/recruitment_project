@@ -1,7 +1,7 @@
 <?php require_once('../../../private/initialize.php'); 
 
 $type_set = all_user_types();
-
+$errors = "";
 if(is_post_request()){
     $user = [];
     $user['first_name'] = $_POST['firstName'] ?? '';
@@ -38,7 +38,7 @@ if(is_post_request()){
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary">Add New User</h3>
+                    <h3 class="m-0 font-weight-bold text-dark text-center">Add New User</h3>
                 </div>  <!-- Card Header End -->
                 <div class="card=body">
                     <form action="<?php echo url_for('/hr/hr_users/new.php'); ?>" method="post">

@@ -43,6 +43,36 @@
         $update['ii_date'] = $_POST['iiDate'];
 
 
+        if($update['position'] != $candidate['position_id']){
+            $old_jd_set = get_jd_doc_id($candidate['position_id']);
+           
+            $old_jd = $old_jd_set[0]['jd_doc_id'];
+            $new_jd_set = get_jd_doc_id($update['position']);
+            $new_jd = $new_jd_set[0]['jd_doc_id'];
+           
+
+            $inactive_result = make_doc_inactive($candidate['candidate_id'], $old_jd);
+            if ($inactive_result === false) {
+                $errors = $inactive_result;
+            }
+
+            $jd_exists = jd_in_doc_list($document_list, $new_jd);
+            if($jd_exists === false){
+                $new_jd_result = add_new_jd($candidate['candidate_id'], $new_jd);
+                
+                if ($new_jd_result === false){
+                    $errors = $new_jd_result;
+                }
+            }else{
+                $active_result = make_doc_active($candidate['candidate_id'], $new_jd);
+                if ($active_result === false) {
+                    $errors = $inactive_result;
+                }
+            }
+            $new_jd_status = get_jd_status($candidate['candidate_id'], $new_jd);
+            $_POST['jd_status'] = $new_jd_status[0]['status_id'];
+        }
+
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
 
@@ -60,11 +90,8 @@
 
         $result = edit_candidate_hr($update, $doc_status_update, $jd_id);
         
-        if ($result === true) {
-            $_SESSION['message'] = "User has been updated. ";
-            
-        }else{
-            $errors=$result;
+        if ($result === false) {
+            $errors = $result;
         }
 
         $link_upload['jd'] = $_POST['jd_link_upload'];
@@ -77,10 +104,11 @@
 
         if ($result === true){
             $_SESSION['message'] = "Document links updated.";
+            
         }else{
             $errors = $result; 
         }
-
+        redirect_to(url_for('/hr/index.php'));
     }
             
 ?>

@@ -183,5 +183,13 @@ function card_body_status($documents_list, $doc_id){
     } return;
     }
 
+    function jd_in_doc_list($documents_list, $jd_id){
+      foreach($documents_list as $document){
+        if($document['document_id'] == $jd_id){
+          return true;
+        }
+      }
+      return false;
+    }
 
 ?>

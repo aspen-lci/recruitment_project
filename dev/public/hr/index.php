@@ -153,7 +153,7 @@ $candidates = all_candidates();
                   <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/hr/hr_candidates/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', $d->status); ?>                
+                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', ($d->status !== "Unassigned" ? $d->status : "")); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
                     <table colspan="8" class="text-justify">  
@@ -204,20 +204,13 @@ $candidates = all_candidates();
           </div> <!-- Content -->
     <?php include(SHARED_PATH . '/hr_footer.php'); ?>  
   
-    <script>
-      // Add the following code if you want the name of the file appear on select
-      $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-      });
-      </script>
 
     <script>
       // Load detail view
           $('#parentTable').on('expand-row.bs.table', function (e, index, row, $detail) {
 
           // Get subtable from first cell
-          var $rowDetails = $(row[10]);
+          var $rowDetails = $(row[11]);
 
           // Give new id to avoid conflict with first cell    
           var id = $rowDetails.attr("id");

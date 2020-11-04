@@ -271,7 +271,7 @@
         $sql .= "'" . db_escape($db, $candidate['email']) . "',";
         $sql .= db_escape($db, $candidate['type']);
         $sql .= ")";
-echo $sql;
+
         $result = mysqli_query($db, $sql);
 
         if(!$result){
@@ -411,7 +411,8 @@ function documents_by_candidate($candidate_id){
   global $db;
 
   $sql = "SELECT document_id, is_jd, status_id, status, signed_link FROM candidate_documents_view ";
-  $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "'";
+  $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "' ";
+  $sql .= "AND inactive=0";
 
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
@@ -496,66 +497,61 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
               echo mysqli_error($db); 
             }
 
-            $sql = "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['jd'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . $jd_id . "; ";
+           $result = update_doc_status($data_set['candidate_id'], $jd_id, $doc_set['jd']);
 
-            //disc
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['disc'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 4 . "; ";
+            if(!$result){
+              echo mysqli_error($db); 
+            }
 
-            //lea
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['lea'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 5 . "; ";
+            $result = update_doc_status($data_set['candidate_id'], 4, $doc_set['disc']);
 
-            //bcg
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['bcg'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 6 . "; ";
+            if(!$result){
+              echo mysqli_error($db); 
+            }
 
-            //panel
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['panel'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 13 . "; ";
+            $result = update_doc_status($data_set['candidate_id'], 5, $doc_set['lea']);
 
-            //offer
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['offer'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 7 . "; ";
+            if(!$result){
+              echo mysqli_error($db); 
+            }
 
-            //trans
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['trans'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 8 . "; ";
+            $result = update_doc_status($data_set['candidate_id'], 6, $doc_set['bcg']);
 
-            //fprint
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['fprint'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 9 . "; ";
+            if(!$result){
+              echo mysqli_error($db); 
+            }
 
-            //ref
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['ref'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 10 . "; ";
+            $result = update_doc_status($data_set['candidate_id'], 13, $doc_set['panel']);
 
-            //ultipro
-            $sql .= "UPDATE document_status SET ";
-            $sql .= "status_id=" . $doc_set['ultipro'] . " ";
-            $sql .= "WHERE candidate_id=" . $data_set['candidate_id'] . " ";
-            $sql .= "AND document_id=" . 11 . "; ";
+            if(!$result){
+              echo mysqli_error($db); 
+            }
 
-            $result = mysqli_query($db, $sql);
+            $result = update_doc_status($data_set['candidate_id'], 7, $doc_set['offer']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 8, $doc_set['trans']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 9, $doc_set['fprint']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 10, $doc_set['ref']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 11, $doc_set['ultipro']);
 
             if(!$result){
               echo mysqli_error($db); 
@@ -569,11 +565,11 @@ function update_doc_status($candidate_id, $doc_id, $status){
   global $db;
 
   $sql = "UPDATE document_status SET ";
-  $sql .= "status_id='" . $status . "' ";
-  $sql .= "WHERE candidate_id='" . $candidate_id . "' ";
-  $sql .= "AND document_id='" . $doc_id . "' ";
+  $sql .= "status_id=" . $status . " ";
+  $sql .= "WHERE candidate_id=" . $candidate_id . " ";
+  $sql .= "AND document_id=" . $doc_id . " ";
   $sql .= "LIMIT 1";
-  echo $sql;
+  
   $result = mysqli_query($db, $sql);
 
   if(!$result){
@@ -589,7 +585,7 @@ function get_jd_doc_id($position_id){
   global $db;
 
   $sql = "SELECT jd_doc_id FROM positions ";
-  $sql .= "WHERE id='" . $position_id . "'";
+  $sql .= "WHERE id=" . $position_id . " ";
 
   $result = mysqli_query($db, $sql);
 
@@ -665,6 +661,74 @@ function update_document_links($candidate_id, $jd_id, $links){
   }
 }
 
+function make_doc_inactive($candidate_id, $doc_id){
+  global $db;
 
+  $sql = "UPDATE document_status SET ";
+  $sql .= "inactive=1 ";
+  $sql .= "WHERE candidate_id=" . $candidate_id . " ";
+  $sql .= "AND document_id=" . $doc_id;
+
+  $result = mysqli_query($db, $sql);
+
+  if(!$result){
+    echo mysqli_error($db);
+  }
+
+  return $result;
+}
+
+function make_doc_active($candidate_id, $doc_id){
+  global $db;
+
+  $sql = "UPDATE document_status SET ";
+  $sql .= "inactive=0 ";
+  $sql .= "WHERE candidate_id=" . $candidate_id . " ";
+  $sql .= "AND document_id=" . $doc_id;
+
+  $result = mysqli_query($db, $sql);
+
+  if(!$result){
+    echo mysqli_error($db);
+  }
+
+  return $result;
+}
+
+function add_new_jd($candidate_id, $document_id){
+        global $db;
+  
+        $sql = "INSERT INTO document_status ";
+        $sql .= "(candidate_id, document_id) ";
+        $sql .= "VALUES (";
+        $sql .= $candidate_id . ",";
+        $sql .= $document_id . ")";
+        
+        $result = mysqli_query($db, $sql);
+
+        if(!$result){
+          echo mysqli_error($db);
+        }
+
+        return $result;
+}
+
+function get_jd_status($candidate_id, $jd_id){
+  global $db;
+
+  $sql = "SELECT status_id FROM document_status ";
+  $sql .= "WHERE candidate_id=" . $candidate_id . " ";
+  $sql .= "AND document_id=" . $jd_id;
+
+  $result = mysqli_query($db, $sql);
+
+  confirm_result_set($result);
+  $jd_status = resultToArray($result);
+  
+  mysqli_free_result($result);
+  
+  return $jd_status;
+
+}
 
 ?>

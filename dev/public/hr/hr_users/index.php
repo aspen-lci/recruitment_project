@@ -12,7 +12,7 @@
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                  <h3 class="m-0 font-weight-bold text-dark text-center">Users</h3>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
                   <div class="actions text-left mb-2">
@@ -27,6 +27,7 @@
                     <th style data-sortable="true" data-field="email">Email</th>
                     <th style data-sortable="true" data-field="userType">User Type</th>
                     <th style>Reset Password</th>
+                    <th style>Inactive</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,15 @@
                     <td>
                       <form onsubmit="return confirm('Do you really want to submit the form?');" action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['id']))); ?>" method="post">
                         <button type="submit" class="btn btn-primary" value="submit">Reset Password</button>
+                      </form>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="inactive" name="inactive" value="1" <?php echo($user['inactive'] === 1 ? "checked" : ""); ?>>
+                        <label for="inactive">Make User Inactive</label>
+                      <form  action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['id']))); ?>" method="post">
+                        <button type="submit" class="btn btn-primary" value="submit">Change Status</button>
+                      </form>
+                        
                       </form>
                     </td>
                   </tr>

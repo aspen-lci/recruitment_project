@@ -80,8 +80,12 @@
               <p><?php echo (empty($_SESSION['first_name'])) ? 'Hello!' : 'Hello, ' . $_SESSION['first_name'] . '!'; ?></p>
             </li> -->
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo url_for('/hr/hr_users/index.php') ?>">All Users</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo url_for('/hr/hr_candidates/new.php') ?>">Add New Candidate</a>
             </li>
+            
             
             <!-- <li class="nav-item">
               <a href="<?php echo url_for('/logout.php'); ?>" class="nav-link btn" id="logout-btn" role="button">Log Out</a>

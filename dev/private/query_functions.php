@@ -398,7 +398,7 @@ function all_candidates(){
   global $db;
 
     $sql = "SELECT * FROM all_candidate_doc_status ";
-    $sql .= "WHERE disposition <> 'Inactive'";
+    $sql .= "WHERE inactive = 0";
     
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -719,7 +719,7 @@ function get_jd_status($candidate_id, $jd_id){
   $sql = "SELECT status_id FROM document_status ";
   $sql .= "WHERE candidate_id=" . $candidate_id . " ";
   $sql .= "AND document_id=" . $jd_id;
-
+  echo $sql;
   $result = mysqli_query($db, $sql);
 
   confirm_result_set($result);
@@ -730,5 +730,59 @@ function get_jd_status($candidate_id, $jd_id){
   return $jd_status;
 
 }
+
+function reset_password($user_id){
+  global $db;
+
+  $sql = "UPDATE users SET ";
+  $sql .= "password=NULL ";
+  $sql .= "WHERE id=" . $user_id;
+  $sql .= " LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+
+  if(!$result){
+    echo mysqli_error($db);
+  }
+
+  return $result;
+ }
+
+ function change_user_status($user_id, $status){
+   global $db;
+
+   if($status == 0){
+     $sql = "UPDATE users SET ";
+     $sql .= "inactive=1 ";
+     $sql .= "WHERE id=" . $user_id;
+     $sql .= " LIMIT 1";
+
+     $result = mysqli_query($db, $sql);
+
+      if(!$result){
+        echo mysqli_error($db);
+      }
+    } 
+    
+    if($status == 1){
+      $sql = "UPDATE users SET ";
+      $sql .= "inactive=0 ";
+      $sql .= "WHERE id=" . $user_id;
+      $sql .= " LIMIT 1";
+      
+      $result = mysqli_query($db, $sql);
+
+      if(!$result){
+        echo mysqli_error($db);
+      }
+
+      $sql = "UPDATE candidates SET ";
+      $sql .= "disposition=1 ";
+      $sql .= "WHERE user_id=" . $user_id;
+    }
+
+   return $result;
+
+ }
 
 ?>

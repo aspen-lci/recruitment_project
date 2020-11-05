@@ -55,6 +55,10 @@ footer {
     letter-spacing: 0.05em;
 }
 
+navigation ul{
+    list-style-type: none;
+}
+
 
 
 #regForm {

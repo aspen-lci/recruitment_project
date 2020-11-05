@@ -33,12 +33,18 @@ if(is_post_request()) {
             $_SESSION['message'] = "Email not found.  Please contact your recruiter.";
             redirect_to(url_for('index.php'));
         }
+
+        if($user['inactive'] == 0) {
          //if user is populated, store values in session
         $_SESSION['email'] = $email;
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['password'] = $user['password'];
         $_SESSION['user_type'] = $user['type'];
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['inactive'] = $user['inactive'];
+        } else {
+          $_SESSION['message'] = "Your account is not active.  Please contact your recruiter.";
+        }
 
         //check if password is blank
         // if(is_blank($_SESSION['password'])){

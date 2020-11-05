@@ -43,6 +43,8 @@
         $update['ii_date'] = $_POST['iiDate'];
 
 
+        
+
         if($update['position'] != $candidate['position_id']){
             $old_jd_set = get_jd_doc_id($candidate['position_id']);
            
@@ -92,6 +94,20 @@
         
         if ($result === false) {
             $errors = $result;
+        }
+
+        if($update['disposition'] == 12){
+            $result = change_user_status($update['user_id'], 0);
+            if ($result === false) {
+                $errors = $result;
+            }
+        }
+
+        if($candidate['disposition'] == 12 && $update['disposition'] != 12){
+            $result = change_user_status($update['user_id'], 1);
+            if ($result === false) {
+                $errors = $result;
+            }
         }
 
         $link_upload['jd'] = $_POST['jd_link_upload'];

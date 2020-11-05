@@ -134,6 +134,10 @@ body {
   padding-left: .25em;
 }
 
+li {
+  padding: 20px;
+}
+
 #logout-btn{
     color: #F98E2C;
     background-color: #ffffff;
@@ -161,6 +165,10 @@ body {
 
 #nsRadio p{
   font-size: 1.25em;
+}
+
+table p{
+  font-weight: bold;
 }
 
 #welcome {

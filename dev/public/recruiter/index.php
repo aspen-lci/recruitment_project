@@ -212,7 +212,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
           $('#parentTable').on('expand-row.bs.table', function (e, index, row, $detail) {
 
           // Get subtable from first cell
-          var $rowDetails = $(row[10]);
+          var $rowDetails = $(row[11]);
 
           // Give new id to avoid conflict with first cell    
           var $id = $rowDetails.attr("id");

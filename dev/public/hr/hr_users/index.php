@@ -1,12 +1,29 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
 <?php
-  $user_set = all_users();
+  
+  if(is_post_request()){
+    $id = $_GET['id'];
+    $status = $_GET['inactive'];
+    $result = change_user_status($id, $status);
+   
+    if($result===true){
+      $_SESSION['message'] = "User status has been updated.";
+    }else{
+      $errors = $result;
+      $_SESSION['message'] = "WARNING: User status has not been updated.";
+    }
+    redirect_to(url_for('/hr/hr_users/index.php'));
+  }
 
+  $user_set = all_users();
+  $errors = '';
 ?>
 
 <?php $page_title = 'Users'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
+
+<?php echo(display_errors($errors)); ?>
 
 <div class="row text-center">
             <div class="col-lg-12 mb-4">
@@ -26,8 +43,8 @@
                     <th style data-sortable="true" data-field="name">Name</th>
                     <th style data-sortable="true" data-field="email">Email</th>
                     <th style data-sortable="true" data-field="userType">User Type</th>
+                    <th style data-sortable="true">Status</th>
                     <th style>Reset Password</th>
-                    <th style>Inactive</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -37,17 +54,20 @@
                     <td><?php echo h($user['email']); ?></td>
                     <td><?php echo h($user['role']); ?></td>
                     <td>
-                      <form onsubmit="return confirm('Do you really want to submit the form?');" action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['id']))); ?>" method="post">
-                        <button type="submit" class="btn btn-primary" value="submit">Reset Password</button>
-                      </form>
+                        <div class="d-inline-block">
+                          <p style="color: <?php echo($user['inactive'] == 1 ? "red" : "black"); ?>;"><?php echo($user['inactive'] == 1 ? "Inactive" : "Active"); ?></p>
+                        </div>
+
+                        <div class="d-inline-block">
+                          <form  action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive']); ?>" method="post">
+                            <button type="submit" class="btn btn-primary d-inline" value="submit">Change Status</button>
+                          </form>
+                        </div>
                     </td>
+
                     <td>
-                        <input type="checkbox" id="inactive" name="inactive" value="1" <?php echo($user['inactive'] === 1 ? "checked" : ""); ?>>
-                        <label for="inactive">Make User Inactive</label>
-                      <form  action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['id']))); ?>" method="post">
-                        <button type="submit" class="btn btn-primary" value="submit">Change Status</button>
-                      </form>
-                        
+                      <form onsubmit="return confirm('<?php echo('Would you like to reset the password for ' . h($user['first_name']) . ' ' . h($user['last_name']) . '?'); ?>')" action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['user_id']))); ?>" method="post">
+                        <button type="submit" class="btn btn-primary" value="submit">Reset Password</button>
                       </form>
                     </td>
                   </tr>

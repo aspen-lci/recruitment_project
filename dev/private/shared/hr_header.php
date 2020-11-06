@@ -25,7 +25,8 @@
 
     <!-- Bootstrap Table -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
-  
+    <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+
     <!-- X-editable -->
     <link rel="stylesheet" href="<?php echo url_for('/vendor/bootstrap3-editable/css/bootstrap-editable.css') ?>">
 

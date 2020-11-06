@@ -775,14 +775,26 @@ function reset_password($user_id){
       if(!$result){
         echo mysqli_error($db);
       }
-
-      $sql = "UPDATE candidates SET ";
-      $sql .= "disposition=1 ";
-      $sql .= "WHERE user_id=" . $user_id;
     }
-
+      
    return $result;
 
  }
 
+ function make_candidate_active($user_id){
+    global $db;
+
+    $sql = "UPDATE candidates SET ";
+    $sql .= "disposition_id=1 ";
+    $sql .= "WHERE user_id=" . $user_id;
+
+    $result = mysqli_query($db, $sql);
+
+    if(!$result){
+      echo mysqli_error($db);
+  }
+
+  return $result;
+}
+ 
 ?>

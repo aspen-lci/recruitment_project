@@ -5,10 +5,19 @@
   if(is_post_request()){
     $id = $_GET['id'];
     $status = $_GET['inactive'];
+    $role = $_GET['role'];
     $result = change_user_status($id, $status);
    
     if($result===true){
       $_SESSION['message'] = "User status has been updated.";
+      if($role == '4'){
+        $disposition = make_candidate_active($id);
+        if($disposition===true){
+          $_SESSION['message'] .= " Candidate disposition is now Open.";
+        }else{
+          $errors = $disposition;
+        }
+      }
     }else{
       $errors = $result;
       $_SESSION['message'] = "WARNING: User status has not been updated.";
@@ -26,6 +35,7 @@
 <?php echo(display_errors($errors)); ?>
 
 <div class="row text-center">
+<a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -33,17 +43,20 @@
                 </div> <!-- Card header -->
                 <div class="card-body"> 
                   <div class="actions text-left mb-2">
-                    <a href="<?php echo url_for('/hr/hr_users/new.php') ?>">Create New User</a>
+                    <a class="btn" href="<?php echo url_for('/hr/hr_users/new.php') ?>">Create New User</a>
                   </div>
                 <table
+                id="table"
                 data-toggle="table"
-                data-sortable="true">
+                data-sortable="true"
+                data-pagination="true" 
+                data-search="true">
                 <thead>
                   <tr>
                     <th style data-sortable="true" data-field="name">Name</th>
                     <th style data-sortable="true" data-field="email">Email</th>
                     <th style data-sortable="true" data-field="userType">User Type</th>
-                    <th style data-sortable="true">Status</th>
+                    <th style data-sortable="true" data-field="status">Status</th>
                     <th style>Reset Password</th>
                   </tr>
                 </thead>
@@ -59,7 +72,7 @@
                         </div>
 
                         <div class="d-inline-block">
-                          <form  action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive']); ?>" method="post">
+                          <form  action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive'] . '&role=' . $user['role_id']); ?>" method="post">
                             <button type="submit" class="btn btn-primary d-inline" value="submit">Change Status</button>
                           </form>
                         </div>
@@ -83,6 +96,12 @@
 
 
 <?php include(SHARED_PATH . '/hr_footer.php'); ?>  
+
+<script>
+$(function){
+  $('#table').bootstrapTable()
+})
+</script>
 
 </body>
 </html>

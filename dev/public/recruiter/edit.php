@@ -33,7 +33,6 @@
         $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
         
-
         $result = edit_candidate_recruiter($update);
         if ($result === true) {
             $_SESSION['message'] = "User has been updated.";
@@ -42,6 +41,36 @@
             print_r($update);
             $errors=$result;
         }
+
+        if($update['position'] != $candidate['position_id']){
+            $old_jd_set = get_jd_doc_id($candidate['position_id']);
+           
+            $old_jd = $old_jd_set[0]['jd_doc_id'];
+            $new_jd_set = get_jd_doc_id($update['position']);
+            $new_jd = $new_jd_set[0]['jd_doc_id'];
+           
+
+            $inactive_result = make_doc_inactive($candidate['candidate_id'], $old_jd);
+            if ($inactive_result === false) {
+                $errors = $inactive_result;
+            }
+
+            $jd_exists = jd_in_doc_list($document_list, $new_jd);
+            if($jd_exists === false){
+                $new_jd_result = add_new_jd($candidate['candidate_id'], $new_jd);
+                
+                if ($new_jd_result === false){
+                    $errors = $new_jd_result;
+                }
+            }else{
+                $active_result = make_doc_active($candidate['candidate_id'], $new_jd);
+                if ($active_result === false) {
+                    $errors = $inactive_result;
+                }
+            }
+            $new_jd_status = get_jd_status($candidate['candidate_id'], $new_jd);
+            $_POST['jd_status'] = $new_jd_status[0]['status_id'];
+        }
     }
 ?>
 
@@ -49,7 +78,7 @@
 <?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
-<a href="<?php echo url_for('/recruiter/index.php'); ?>">&laquo; Return to List</a>
+<a class="p-4" href="<?php echo url_for('/recruiter/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')">&laquo; Return to List</a>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">

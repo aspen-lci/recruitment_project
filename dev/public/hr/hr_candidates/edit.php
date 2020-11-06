@@ -135,7 +135,7 @@
 
 <div id="content">
 
-<a href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to List</a>
+<a href="<?php echo url_for('/hr/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')" >&laquo; Return to List</a>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">

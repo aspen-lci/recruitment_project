@@ -125,7 +125,9 @@ $candidates = all_candidates();
                   <h4 class="m-0 font-weight-bold text-dark text-center">Candidates In Process</h4>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
+                
                 <div class="actions text-left mb-2"></div>
+                <a class="btn" href="https://docs.google.com/spreadsheets/d/161_T3QU4jgzs6snv_MKkmpB8sJQKPUhDB5jE_HwZg2w/edit?usp=sharing" target="_blank">HBS Tracking Sheet</a>
                 <table
                 id="parentTable"
                 data-toggle="table"

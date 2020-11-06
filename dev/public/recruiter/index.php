@@ -153,15 +153,22 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                   <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/recruiter/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', $d->status); ?>                
+                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', ($d->status !== "Unassigned" ? $d->status : "")); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
-                    <table colspan="6" class="text-justify">  
+                    <table colspan="8" class="text-justify">  
                     <td style="border: none; padding-right: 50px;">
+                    <dt>Disposition</dt>
+                        <dd><?php echo $candidate['disposition'] ?? ''; ?></dd>
                         <dt>Email</dt>
                         <dd><?php echo $candidate['email'] ?? ''; ?></dd>
+                        
+                    </td>
+                    <td style="border: none; padding-right: 50px;">
                         <dt>Recruiter</dt>
                         <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>
+                        <dt>Region</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Company</dt>

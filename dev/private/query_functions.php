@@ -455,7 +455,7 @@ function edit_candidate_recruiter($data_set){
                 echo mysqli_error($db);
                 
             }
-            db_disconnect($db);
+           
             return $result;
 }
 

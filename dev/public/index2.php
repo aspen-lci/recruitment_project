@@ -95,19 +95,22 @@ if(is_post_request()) {
 
                   <p>Passwords must be at least 12 characters and include at least one uppercase letter, lowercase
                     letter, number, and symbol.</p>
+
+                    
                 </div>
+                <button class="form-control" form="login" id="cust-btn" type="submit" name="submit">Sign In</button>
               </form>
 
             </div>
 
           </div>
-          <div class="col-sm-2" id="login-btn">
+          <!-- <div class="card-footer col-sm-2" id="login-btn">
             <table id="login-table">
               <td>
                 <button form="login" class="stretched-link" id="cust-btn" type="submit" name="submit">Sign In</button>
               </td>
             </table>
-          </div>
+          </div> -->
           
           </div> <!-- End Row -->
           </div> <!-- End Card -->

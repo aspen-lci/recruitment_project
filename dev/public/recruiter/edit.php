@@ -36,7 +36,7 @@
         $result = edit_candidate_recruiter($update);
         if ($result === true) {
             $_SESSION['message'] = "User has been updated.";
-            redirect_to(url_for('/recruiter/index.php'));
+            
         }else{
             print_r($update);
             $errors=$result;
@@ -71,6 +71,7 @@
             $new_jd_status = get_jd_status($candidate['candidate_id'], $new_jd);
             $_POST['jd_status'] = $new_jd_status[0]['status_id'];
         }
+        redirect_to(url_for('/recruiter/index.php'));
     }
 ?>
 

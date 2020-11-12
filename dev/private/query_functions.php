@@ -796,5 +796,21 @@ function reset_password($user_id){
 
   return $result;
 }
+
+function get_zoom_link($region_id){
+  global $db;
+
+  $sql = "SELECT zoom_link ";
+  $sql .= "FROM regions ";
+  $sql .= "WHERE id=" . $region_id;
+
+  $result = mysqli_query($db, $sql);
+
+  confirm_result_set($result);
+  $zoom = resultToArray($result);
+  mysqli_free_result($result);
+
+  return $zoom;
+}
  
 ?>

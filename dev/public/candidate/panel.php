@@ -3,6 +3,11 @@
 $templates = get_templates();
 $lea = get_template_link($templates, 5);
 
+$candidate_set = get_candidate_by_user_id($_SESSION['user_id']);
+$candidate = $candidate_set[0];
+$zoom_link_set = get_zoom_link($candidate['region_id']);
+$zoom_link = $zoom_link_set[0]['zoom_link'];
+
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
 
@@ -12,8 +17,10 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
-        <h1>Instructions and Helpful Tips for Filling Out the LEA Form</h1>
-        <p class="lead">Please list all cities/counties/states resided in for the past five (5) years, <em>with dates</em> (month/day/year). Please see the following example.</p>
+        <h1>Panel Interview</h1>
+        <p class="lead"><b>Interview Date:</b> <?php echo (date("l, F d, Y", strtotime($candidate['interview_date']))); ?></p>
+        <p class="lead"><b>Interview Time:</b> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>
+        <a class="lead btn" id="logout-btn" href="<?php echo $zoom_link; ?>">Zoom Link</a>
         
       </header>
   
@@ -21,7 +28,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="row text-center">  
         <div class="col-lg-12 mb-4">
           <div class="card h-100">
-            <div class="card-header" style="background-color: #F20505;"></div>
+            <div class="card-header" style="background-color: #F2E205;"></div>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12">
@@ -38,7 +45,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               </div>
             </div>
             </div>
-            <div class="card-footer" style="background-color: #F20505;">
+            <div class="card-footer" style="background-color: #F2E205;">
               
             </div>
           </div>

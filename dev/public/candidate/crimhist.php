@@ -1,57 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once('../../private/initialize.php'); 
 
-<head>
+$templates = get_templates();
+$lea = get_template_link($templates, 5);
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+$page_title = 'Welcome to Lifeline';
+include(SHARED_PATH . '/candidate_header.php'); ?>
 
-  <title>Lifeline Onboarding - Criminal History Form</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/heroic-features.css" rel="stylesheet">
-
-  <!-- My Custom Styles-->
-  <link href="css/custom.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 20px;">
-      <div class="container">
-        <a class="navbar-brand" href="#"><img src="images/LLlogo.png" alt="Logo" style="height: 100px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Criminal History Form</a>
-            </li>
-            </ul>
-        </div> 
-      </div>
-    </nav>
-  
     <!-- Page Content -->
     <div class="container" style="margin-top: 20px;">
-  
+    <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
         <h1 class="text-center">Instructions and Helpful Tips for Filling Out the Criminal History and Background Check Form</h1>
-        <p class="lead mt-3">Must be completed for any state lived since January 1st, 1988 or birth.</p>
-        <p class="lead">KidTraks will e-mail you for authorization after completion.</p>
-        <p class="lead">Should you have any questions, please contact HR at joinus@lastingchangeinc.org or your recruiter! We would be happy to assist you at any point in your hiring process.</p>
+        <p class="lead mt-3">The Department of Child Services (DCS) requires the following information for your background check. Without this information, the hiring process cannot proceed.</p>
+        <p class="lead">Please complete this form in its entirety, sign, and return. Keep an eye on your email over the next few days, for instructions regarding how the hiring process will continue. </p>
       </header>
   
       <!-- Page Features -->
@@ -63,18 +25,24 @@
               <h4 class="card-title mb-4">HELPFUL HINTS: Common errors for criminal history form</h4>
               <div class="row text-justify">
                   <div class="col-lg-12">
-                    <ol>
-                        <li>Your current address needs to include your street address – city, state, and zip code.</li>
-                        <li>“Date moved to this address” needs to have the month, day, and year.</li>
-                        <li>Section 2 (Please see example below): Residency needs city, state, and county (street address not required). This section must be done in chronological order.
-                            There may not be any gaps or overlap in history. You must go back to January 1, 1988 or birth date.</li>
-                    </ol>
+                  <ol>
+                    <li>Your current address needs to include your street address – city, state, and zip code. </li>
+                    <li>“Date moved to this address” needs to have the month, day, and year. </li>
+                    <li>Section 2:
+                      <ol type="a">
+                        <li>Residency needs to include your city, state, and county (street address not required). </li>
+                        <li>This section must be done in chronological order. <b>There may not be any gaps or overlap in your residential history.</b></li>
+                        <li>You must list all residences dating back to January 1, 1988 or your birth date, whichever is MOST RECENT. Please see the following example.</li>
+                      </ol>
+                    </li>
+                  </ol>
+        
                     </div>
                 </div>
             <div class="row text-center">  
                 <div class="col-lg-12">
                     <p class="mt-4"><strong>Example</strong></p>
-                    <img src="images/Criminal History.PNG" alt="Criminal Historoy Form Example" style="width: 100%;">
+                    <img src="<?php echo url_for('/images/Criminal History.PNG') ?>" alt="Criminal Historoy Form Example" style="width: 100%;">
                     <p>(1) I was born 10/9/1990, I lived in my hometown Fort Wayne, IN until I went to college at (2) Indiana
                         University! I always went (3) home for the summer. (4) In August 2009, I transferred home to finish my
                         degree at IPFW and have lived in Fort Wayne since.</p>    
@@ -82,6 +50,7 @@
                 </div>
                 <div class="row text-center">
                 <div class="col-lg-12">
+                
                     <p class="mt-4"><strong>Form</strong></p>
                     <a href="https://bit.ly/2AmvMRg" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
                 </div>

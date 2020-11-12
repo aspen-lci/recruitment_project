@@ -1,5 +1,7 @@
 <?php require_once('../../private/initialize.php'); 
 
+$errors = "";
+
 /**
  * Object to encapsulate document status logic.
  */
@@ -118,6 +120,7 @@ $candidates = all_candidates();
 
     <!-- Page Content -->
       <div id="content">
+      <?php echo display_errors($errors); ?>
           <div class="row">
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">

@@ -1,6 +1,7 @@
 <?php require_once('../../../private/initialize.php'); 
     require_login();
 
+    $errors = "";
     $company_set = all_companies();
     $position_set = all_positions();
     $region_set = all_regions();
@@ -75,6 +76,14 @@
             $_POST['jd_status'] = $new_jd_status[0]['status_id'];
         }
 
+        if(intval($candidate['disposition_id']) <=5 && intval($update['disposition']) == 7){
+            $select_result = select_doc_status_change(intval($candidate['candidate_id']));
+            if ($select_result === false){
+                $errors = $result;
+            }
+        }
+        
+
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
 
@@ -124,7 +133,7 @@
         }else{
             $errors = $result; 
         }
-        redirect_to(url_for('/hr/index.php'));
+        // redirect_to(url_for('/hr/index.php'));
     }
             
 ?>
@@ -134,7 +143,8 @@
 
 
 <div id="content">
-
+<?php echo gettype($candidate['candidate_id']); ?>
+<?php echo display_errors($errors); ?>
 <a href="<?php echo url_for('/hr/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')" >&laquo; Return to List</a>
     <div class="row">
         <div class="col-lg-12">

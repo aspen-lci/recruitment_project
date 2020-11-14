@@ -158,7 +158,7 @@ $candidates = all_candidates();
                   <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/hr/hr_candidates/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', ($d->status !== "Unassigned" ? $d->status : "")); ?>                
+                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', ($d->status != "Unassigned" ? $d->status : "")); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
                     <table colspan="8" class="text-justify">  

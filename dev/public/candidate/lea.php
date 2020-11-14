@@ -25,7 +25,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12">
-                    <h4 class="text-center">Example</h4>
+                    <h3 class="text-center">Example</h3>
                 <img src="<?php echo url_for('/images/LEA example.PNG'); ?>" alt="LEA example" style="width: 100%">
                 <p class="text-center">I lived in Fort Wayne, IN until I went to college at Indiana University. After 2 years of college, I moved back to Fort Wayne, IN.</p>
                 <p class="lead">Complete this form in its entirety, sign, and return.</p>

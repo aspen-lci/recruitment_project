@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialize.php'); 
 
 $templates = get_templates();
-$lea = get_template_link($templates, 5);
+$crim = get_template_link($templates, 6);
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
@@ -41,7 +41,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </div>
             <div class="row text-center">  
                 <div class="col-lg-12">
-                    <p class="mt-4"><strong>Example</strong></p>
+                    <h3 class="mt-4">Example</h3>
                     <img src="<?php echo url_for('/images/Criminal History.PNG') ?>" alt="Criminal Historoy Form Example" style="width: 100%;">
                     <p>(1) I was born 10/9/1990, I lived in my hometown Fort Wayne, IN until I went to college at (2) Indiana
                         University! I always went (3) home for the summer. (4) In August 2009, I transferred home to finish my
@@ -52,7 +52,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 <div class="col-lg-12">
                 
                     <p class="mt-4"><strong>Form</strong></p>
-                    <a href="https://bit.ly/2AmvMRg" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
+                    <a href="<?php echo $crim; ?>" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
                 </div>
             </div>
             </div>

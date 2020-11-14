@@ -24,6 +24,7 @@
 
   <!-- My Custom Styles-->
   <link href="<?php echo url_for('/css/custom.css') ?>" rel="stylesheet">
+  <link href="<?php echo url_for('/css/cards.css') ?>" rel="stylesheet">
 
 </head>
 

@@ -83,6 +83,7 @@
             }
         }
         
+        // echo $select_result;
 
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
@@ -133,7 +134,7 @@
         }else{
             $errors = $result; 
         }
-        // redirect_to(url_for('/hr/index.php'));
+        redirect_to(url_for('/hr/index.php'));
     }
             
 ?>
@@ -143,7 +144,7 @@
 
 
 <div id="content">
-<?php echo gettype($candidate['candidate_id']); ?>
+<!-- <?php echo gettype($candidate['candidate_id']); ?> -->
 <?php echo display_errors($errors); ?>
 <a href="<?php echo url_for('/hr/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')" >&laquo; Return to List</a>
     <div class="row">

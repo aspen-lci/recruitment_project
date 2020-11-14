@@ -96,7 +96,7 @@ function convert_time($time){
 
 function document_in_document_list($documents_list, $id){
   foreach ($documents_list as $document){
-    if ($document['document_id'] === $id) return $document['status'];
+    if ($document['document_id'] == $id) return $document['status'];
   }
   return;
 }
@@ -155,7 +155,7 @@ function box_visibility($documents_list, $doc_id){
       if($document['status_id'] == 14){
         return 'none';
         
-      }else {return 'inherit';}
+      }else {return 'flex';}
       
     } 
   } 
@@ -166,7 +166,7 @@ function box_visibility($documents_list, $doc_id){
 function card_body_status($documents_list, $doc_id){
   foreach($documents_list as $document){
     if($document['document_id']  == $doc_id){
-      if(intval($document['status_id']) > 1 && !14){
+      if(intval($document['status_id']) > 1 && intval($document['status_id']) !== 14){
         return 'style="display: none;"';
       }
     }
@@ -176,7 +176,7 @@ function card_body_status($documents_list, $doc_id){
   function display_card_body_status($documents_list, $doc_id){
     foreach($documents_list as $document){
       if($document['document_id']  == $doc_id){
-        if($document['status_id'] == 1){
+        if(intval($document['status_id']) == 1){
           return 'style="color: red; display: none;"';
         }
       }

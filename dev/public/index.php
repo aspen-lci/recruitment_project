@@ -91,7 +91,7 @@ if(is_post_request()) {
                 </div>
                 <div style="display: <?php echo (isset($_SESSION['email']) && is_blank($_SESSION['password']) ? 'initial' : 'none');?>;">
                   <label for="password">Confirm Password</label>
-                  <input class="form-control" type="password" name="confirm_password" autocomplete="off" title="Passwords do not match." <?php echo (is_blank($_SESSION['password']) ? 'required' : '');?>/>
+                  <input class="form-control" type="password" name="confirm_password" autocomplete="off" title="Passwords do not match." <?php echo (isset($_SESSION['email']) && is_blank($_SESSION['password']) ? 'required' : '');?>/>
 
                   <p>Passwords must be at least 12 characters and include at least one uppercase letter, lowercase
                     letter, number, and symbol.</p>
@@ -116,6 +116,20 @@ if(is_post_request()) {
     </div>
 
     <?php include(SHARED_PATH . '/candidate_footer.php'); ?>
+
+<!-- <script>
+function submitForm (){
+  document.login.submit();
+  document.login.method='post';
+}
+
+document.onkeydown = function (){
+  if (window.event.keyCode == '13'){
+    submitForm();
+  }
+}
+
+</script> -->
 
    
     </body>

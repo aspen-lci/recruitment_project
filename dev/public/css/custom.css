@@ -15,6 +15,12 @@ body {
     outline: none;
 }
 
+.doc_status {
+    font-size: 2em;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
 footer {
     height: 200px;
     bottom: 0px;

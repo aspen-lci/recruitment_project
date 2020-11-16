@@ -51,7 +51,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <p class="card-text">Please sign and return.</p>
               <a href="<?php echo $jd; ?>" target="_blank" class="btn btn-outline-primary btn-small" <?php echo(card_body_status($documents, $jd_doc_id)); ?>><?php echo $position; ?> Job Description</a>
             </div>
-            <p class="display-4 text-success" <?php echo(display_card_body_status($documents, $jd_doc_id)); ?>><?php echo(document_in_document_list($documents, $jd_doc_id)); ?></p>
+            <p class="doc_status" <?php echo(display_card_body_status($documents, $jd_doc_id)); ?>><?php echo(document_in_document_list($documents, $jd_doc_id)); ?></p>
           </div>
           <div class="card-footer c-card-1"></div>
         </div>
@@ -68,7 +68,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <p class="card-text">First, Middle, and Last Name required! Please sign and date. </p>
               <a href="<?php echo $disc; ?>" target="_blank" class="btn btn-outline-primary btn-small">FCRA Disclosure</a>
             </div>
-            <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 4)); ?>><?php echo(document_in_document_list($documents, 4)); ?></p>
+            <p class="doc_status" <?php echo(display_card_body_status($documents, '4')); ?>><?php echo(document_in_document_list($documents, 4)); ?></p>
           </div>
           <div class="card-footer c-card-2">
            
@@ -84,9 +84,9 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-body">
             <h4 class="card-title">LEA Form</h4>
             <div <?php echo(card_body_status($documents, 5)); ?>>
-              <a href="lea.php" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
+              <a href="lea.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
             </div>
-            <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
+            <p class="display-4" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
           </div>
           <div class="card-footer c-card-3">
             
@@ -109,7 +109,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 6)); ?>>
               <a href="crimhist.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
             </div>
-            <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 6)); ?>><?php echo(document_in_document_list($documents, 6)); ?></p>
+            <p class="doc_status" <?php echo(display_card_body_status($documents, 6)); ?>><?php echo(document_in_document_list($documents, 6)); ?></p>
           </div>
           <div class="card-footer c-card-4">
             
@@ -128,7 +128,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <p class="card-text">Open the box below for details and necessary preparation materials. Good luck on your interview!</p>
               <a href="panel.php" class="btn btn-outline-primary btn-small mt-3">Interview Materials</a>
             </div>
-            <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 13)); ?>><?php echo(document_in_document_list($documents, 13)); ?></p>
+            <p class="doc_status" <?php echo(display_card_body_status($documents, 13)); ?>><?php echo(document_in_document_list($documents, 13)); ?></p>
           </div>
           <div class="card-footer c-card-5">
           </div>
@@ -145,7 +145,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 7)); ?>>
               <p class="card-text" id="job-text">Please sign and return the official offer received in your email so we can move you along to the next step!</p>
             </div>
-            <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 7)); ?>><?php echo(document_in_document_list($documents, 7)); ?></p>
+            <p class="doc_status" <?php echo(display_card_body_status($documents, 7)); ?>><?php echo(document_in_document_list($documents, 7)); ?></p>
            </div>
           <div class="card-footer c-card-6">
             
@@ -166,8 +166,12 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Send in your transcripts</h4>
             <div <?php echo(card_body_status($documents, 8)); ?>>
               <p class="card-text">Contact your college registrar or bursar’s office for assistance. </p>
+              <div>
+                <p class="card-text" style="display: <?php echo($position_id == 2 ? 'flex' : 'none'); ?>" >Please send transcripts for your highest completed degree.</p>
+              </div>
+              <a href="transcripts.php" class="btn btn-outline-primary btn-small mt-3">How to Send Transcripts</a>
           </div>
-          <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 8)); ?>><?php echo(document_in_document_list($documents, 8)); ?></p>
+          <p class="doc_status" <?php echo(display_card_body_status($documents, 8)); ?>><?php echo(document_in_document_list($documents, 8)); ?></p>
           </div>
           <div class="card-footer c-card-7">
             </div>
@@ -183,9 +187,9 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Schedule fingerprinting</h4>
             <div <?php echo(card_body_status($documents, 9)); ?>>
               <p class="card-text">Your fingerprinting will be paid for by Lifeline Youth & Family Services.</p>
-              <a href="#" class="btn btn-outline-primary btn-small mt-3">Instructions</a>
+              <a href="<?php echo url_for('/documents/Fingerprinting instructions.pdf'); ?>" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions</a>
               </div>
-              <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 9)); ?>><?php echo(document_in_document_list($documents, 9)); ?></p>
+              <p class="doc_status" <?php echo(display_card_body_status($documents, 9)); ?>><?php echo(document_in_document_list($documents, 9)); ?></p>
           </div>
           <div class="card-footer c-card-8">
            </div>
@@ -201,9 +205,9 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">References</h4>
             <div <?php echo(card_body_status($documents, 10)); ?>>
             <p class="card-text">You will receive an email from Checkster to create an account and invite references to participate in your reference check.</p>
-              <a href="#" class="btn btn-outline-primary btn-small mt-3">Instructions</a>
+              <a href="references.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Requirements</a>
               </div>
-              <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 10)); ?>><?php echo(document_in_document_list($documents, 10)); ?></p>
+              <p class="doc_status" <?php echo(display_card_body_status($documents, 10)); ?>><?php echo(document_in_document_list($documents, 10)); ?></p>
           </div>
           <div class="card-footer c-card-9">
             </div>
@@ -224,7 +228,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 11)); ?>>
               <p class="card-text">You will receive an email from Lasting Change, Inc with a link to UltiPro. Please use this link to log in and complete the onboarding documents as soon as possible. This step must be completed before you may be onboarded as an employee.</p>
           </div>
-          <p class="display-4 text-success" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
+          <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
           </div>
           <div class="card-footer c-card-10">
           </div>
@@ -256,7 +260,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </ul>
               </div>
             </div>
-            <a href="#" class="btn btn-outline-primary btn-small mt-3">Learn more about your first week</a>
+            <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-primary btn-small mt-3">Learn more about your first week</a>
           </div>
           <div class="card-footer c-card-11">
             

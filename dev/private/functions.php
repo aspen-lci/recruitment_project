@@ -166,7 +166,7 @@ function box_visibility($documents_list, $doc_id){
 function card_body_status($documents_list, $doc_id){
   foreach($documents_list as $document){
     if($document['document_id']  == $doc_id){
-      if(intval($document['status_id']) > 1 && intval($document['status_id']) !== 14){
+      if(intval($document['status_id']) > 1 && intval($document['status_id']) !== 14 && intval($document['status_id']) !== 3){
         return 'style="display: none;"';
       }
     }
@@ -175,13 +175,45 @@ function card_body_status($documents_list, $doc_id){
 
   function display_card_body_status($documents_list, $doc_id){
     foreach($documents_list as $document){
-      if($document['document_id']  == $doc_id){
-        if(intval($document['status_id']) == 1){
-          return 'style="color: red; display: none;"';
+      if($document['document_id'] == $doc_id){
+        switch(intval($document['status_id'])) {
+          case 1:
+          return 'style="display: none;"';
+          break;
+
+          case 2:
+            return 'style="color: green;"';
+          break;  
+
+          case 3:
+            return 'style="color: red;"';
+          break;
+
+          case 4:
+            return 'style="color: green;"';
+          break;
+
+          case 11:
+            return 'style="color: orange;"';
+          break;
+
+          case 13: 
+            return 'style="color: black;"';
+          break;
+
+          case 15:
+            return 'style="color: yellow;"';
+          break;
+
+          default: 
+          return 'style="color: black;"';
+        break;
         }
+          
+        }
+      
       }
-    } return;
-    }
+    } 
 
     function jd_in_doc_list($documents_list, $jd_id){
       foreach($documents_list as $document){

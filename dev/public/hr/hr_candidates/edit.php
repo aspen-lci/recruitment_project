@@ -76,15 +76,7 @@
             $_POST['jd_status'] = $new_jd_status[0]['status_id'];
         }
 
-        if(intval($candidate['disposition_id']) <=5 && intval($update['disposition']) == 7){
-            $select_result = select_doc_status_change(intval($candidate['candidate_id']));
-            if ($select_result === false){
-                $errors = $result;
-            }
-        }
         
-        // echo $select_result;
-
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
 
@@ -93,11 +85,11 @@
         $doc_status_update['lea'] = $_POST['lea_status'];
         $doc_status_update['bcg'] = $_POST['bcg_status'];
         $doc_status_update['panel'] = $_POST['panel_status'];
-        $doc_status_update['offer'] = $_POST['offer_status'];
-        $doc_status_update['trans'] = $_POST['trans_status'];
-        $doc_status_update['fprint'] = $_POST['fprint_status'];
-        $doc_status_update['ref'] = $_POST['ref_status'];
-        $doc_status_update['ultipro'] = $_POST['ultipro_status'];
+        $doc_status_update['offer'] = (intval($candidate['disposition_id']) <= 5 && intval($update['disposition']) == 7 ? 1 : $_POST['offer_status']);
+        $doc_status_update['trans'] = (intval($candidate['disposition_id']) <= 5 && intval($update['disposition']) == 7 ? 1 : $_POST['trans_status']);
+        $doc_status_update['fprint'] = (intval($candidate['disposition_id']) <= 5 && intval($update['disposition']) == 7 ? 1 : $_POST['fprint_status']);
+        $doc_status_update['ref'] = (intval($candidate['disposition_id']) <= 5 && intval($update['disposition']) == 7 ? 1 : $_POST['ref_status']);
+        $doc_status_update['ultipro'] = (intval($candidate['disposition_id']) <= 5 && intval($update['disposition']) == 7 ? 1 : $_POST['ultipro_status']);
         
 
         $result = edit_candidate_hr($update, $doc_status_update, $jd_id);
@@ -211,11 +203,9 @@
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
                             <br>
                             <label>Impact Institute Date:</label> 
-                            <select id="iiDate" type="select" name="iiDate">
+                            <select class="form_control" id="iiDate" type="select" name="iiDate">
                             <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>></option>
-                            <?php foreach ($ii_dates as $date) { ?>
-                                <option value="<?php echo $date['date']; ?>" <?php echo($date['date'] === $candidate['ii_date'] ? 'selected' : ''); ?>><?php echo $date['date']; ?></option>
-                            <?php } ?>
+                            <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
                             </select>
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->

@@ -109,6 +109,9 @@ class Documents {
 
 
 $candidates = all_candidates();
+$interview_date = date_format(strtotime($candidates['interview_date']), 'm/d/Y');
+$start_date = date_format(date_create($candidates['start_date']), 'm/d/Y');
+$ii_date = date_format(date_create($candidates['ii_date']), 'm/d/Y');
 
 ?>
 
@@ -183,13 +186,13 @@ $candidates = all_candidates();
                     </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Interview Date</dt>
-                        <dd><?php echo $candidate['interview_date'] ?? ''; ?></dd>
+                        <dd><?php echo $interview_date ?? ''; ?></dd>
                         <dt>Interview Time</dt>
                         <dd><?php echo $candidate['interview_time'] ?? ''; ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Start Date</dt>
-                        <dd><?php echo $candidate['start_date'] ?? ''; ?></dd>
+                        <dd><?php echo $start_date ?? ''; ?></dd>
                         <dt>Impact Institute Date</dt>
                         <dd><?php echo $candidate['ii_date'] ?? ''; ?></dd>
                     </td>

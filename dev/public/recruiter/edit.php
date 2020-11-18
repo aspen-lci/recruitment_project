@@ -140,9 +140,7 @@
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
                             <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>></option>
-                            <?php foreach ($ii_dates as $date) { ?>
-                                <option value="<?php echo $date['date']; ?>" <?php echo($date['date'] === $candidate['ii_date'] ? 'selected' : ''); ?>><?php echo $date['date']; ?></option>
-                            <?php } ?>
+                            <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
                             </select>
                         </div> <!-- Form Col End -->
                         

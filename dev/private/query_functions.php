@@ -813,22 +813,5 @@ function get_zoom_link($region_id){
   return $zoom;
 }
 
-function select_doc_status_change($candidate_id){
-  global $db;
-
-  $sql = "UPDATE document_status SET ";
-  $sql .= "status_id=1 ";
-  $sql .= "WHERE document_id IN (7,8,9,10,11) AND ";
-  $sql .= "candidate_id=" . $candidate_id;
-echo $sql;
-  $result = mysqli_query($db, $sql);
-
-  if(!$result){
-    echo mysqli_error($db);
-  }
-
-  return $result; 
-
-}
  
 ?>

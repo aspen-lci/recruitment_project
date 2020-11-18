@@ -41,6 +41,10 @@ body {
   font-size: 1.2em;
 }
 
+#card-padding{
+  padding-top: 100px;
+}
+
 #content{
   min-height: calc(100vh - 300px);
 }

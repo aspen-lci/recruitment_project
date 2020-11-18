@@ -178,15 +178,15 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                     </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Interview Date</dt>
-                        <dd><?php echo $candidate['interview_date'] ?? ''; ?></dd>
+                        <dd><?php echo ($candidate['interview_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['interview_date'])) : ''); ?></dd>
                         <dt>Interview Time</dt>
-                        <dd><?php echo $candidate['interview_time'] ?? ''; ?></dd>
+                        <dd><?php echo ($candidate['interview_time'] > 0 ? date('g:i A', strtotime($candidate['interview_time'])) : ''); ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Start Date</dt>
-                        <dd><?php echo $candidate['start_date'] ?? ''; ?></dd>
+                        <dd><?php echo ($candidate['start_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['start_date'])) : ''); ?></dd>
                         <dt>Impact Institute Date</dt>
-                        <dd><?php echo $candidate['ii_date'] ?? ''; ?></dd>
+                        <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
                     </td>
                   </table>
                     </td>

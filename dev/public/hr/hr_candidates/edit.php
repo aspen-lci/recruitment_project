@@ -144,7 +144,7 @@
             <div class="card shadow mb-4">
                 <form id="edit-form" form="edit-form" action="<?php echo url_for('/hr/hr_candidates/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
                    
-                <div class="card-header py-3 d-flex justify-content-center" id="candidate_chead">
+                <div class="card-header py-3 d-flex justify-content-center position-fixed w-100" id="candidate_chead">
                     <div id="name-div">
                         <input class="m-0 font-weight-bold text-center" type="text" id="name" name="first_name" value="<?php echo h($candidate['first_name']); ?>"/>
                         <input class="m-0 font-weight-bold text-center" type="text" id="last_name" name="last_name" value="<?php echo h($candidate['last_name']); ?>"/>
@@ -154,7 +154,7 @@
                         <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Cancel</button>
                     </div>
                 </div>  <!-- Card Header End -->
-                <div class="card=body">
+                <div class="card=body" id="card-padding">
                     <div class="row m-4">
                         <div class="col-3">
                             <label>Email: </label><input id="email" type="text" name="email" value="<?php echo($candidate['email']); ?>"/>
@@ -197,7 +197,7 @@
                         <div class="col-3">
                             <label>Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
                             <br>
-                            <label>Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
+                            <label>Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
@@ -209,8 +209,14 @@
                             </select>
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->
+                        </div>
+                    </div>
                        
-                    <div class="row m-4 d-flex align-items-center justify-content-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">   
+                        <div class="card-header mb-4 d-flex align-items-center justify-content-center">
+                            
                         
                         <h3>Documents</h3>
                         
@@ -321,8 +327,8 @@
                             </div> <!-- End Card Body -->
                             <div class="card-footer"></div>
                         </div> <!-- End Card -->
-                   </div>  <!--End Card Group -->
                 </div> <!-- End Row -->
+                </div>
                 
 
     <div class="row d-flex justify-content-center m-0 text-center">
@@ -415,6 +421,8 @@
             </div>  <!-- Card End -->
         </div>  <!-- Col End -->
     </div>  <!-- Row End -->
+    </div>  
+   
 
 </div> <!-- Content End -->
 

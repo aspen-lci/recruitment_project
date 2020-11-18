@@ -85,7 +85,7 @@
             <div class="card shadow mb-4">
                 <form id="edit-form" form="edit-form" action="<?php echo url_for('/recruiter/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
                    
-                <div class="card-header py-3 d-flex justify-content-center" id="candidate_chead">
+                <div class="card-header py-3 d-flex justify-content-center position-fixed w-100" id="candidate_chead">
                     <div id="name-div">
                         <input class="m-0 font-weight-bold text-center" type="text" id="name" name="first_name" value="<?php echo h($candidate['first_name']); ?>"/>
                         <input class="m-0 font-weight-bold text-center" type="text" id="last_name" name="last_name" value="<?php echo h($candidate['last_name']); ?>"/>
@@ -95,7 +95,7 @@
                         <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Cancel</button>
                     </div>
                 </div>  <!-- Card Header End -->
-                <div class="card=body">
+                <div class="card=body" id="card-padding">
                     <div class="row m-4">
                         <div class="col-3">
                             <label>Email: </label><input id="email" type="text" name="email" value="<?php echo($candidate['email']); ?>"/>
@@ -110,6 +110,7 @@
                             <p>Disposition: <?php echo($candidate['disposition']); ?></p>
                             
                         </div> <!-- Form Col End -->
+                        
 
                         <div class="col-3">
                             <label>Company:</label> 
@@ -139,19 +140,25 @@
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
-                            <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>></option>
+                            <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
                             <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
                             </select>
                         </div> <!-- Form Col End -->
                         
                     </form>
                     </div> <!-- Form Row End -->
+                    </div>
+                    </div>
                         
-                    <div class="row m-4 d-flex align-items-center justify-content-center">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow mb-4">   
+                    <div class="card-header mb-4 d-flex align-items-center justify-content-center">
                         
                             <h3>Documents</h3>
                         
-                            </div>
+                        </div>
                     <div class="row justify-content-center m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
@@ -208,7 +215,7 @@
                                 <p><?php echo(document_in_document_list($document_list, '13')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
-                        </div> <!-- End Card Group -->
+                        
                     </div> <!-- End Column -->
                 </div> <!-- End Row -->
                 
@@ -272,8 +279,10 @@
                 </div> <!-- End Row -->
                 </div> <!-- Card Body End -->
             </div>  <!-- Card End -->
+            </div> <!-- End Card Group -->
         </div>  <!-- Col End -->
     </div>  <!-- Row End -->
+    
 
 </div> <!-- Content End -->
 

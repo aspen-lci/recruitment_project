@@ -126,6 +126,7 @@ if(is_post_request()){
                                 <label for="iiDate">Impact Institute Date</label>
                                 <br>
                                 <select class="form-control" id="iiDate" type="select" name="iiDate">
+                                <option value=""> </option>
                                     <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
                                 </select>
                             </div> <!-- Form Col End -->

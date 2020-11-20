@@ -1,6 +1,7 @@
 <?php require_once('../../private/initialize.php'); 
     require_login();
-
+    
+    $errors = "";
     $company_set = all_companies();
     $position_set = all_positions();
     $region_set = all_regions();
@@ -38,7 +39,6 @@
             $_SESSION['message'] = "User has been updated.";
             
         }else{
-            print_r($update);
             $errors=$result;
         }
 
@@ -79,21 +79,27 @@
 <?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
-<a class="p-4" href="<?php echo url_for('/recruiter/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')">&laquo; Return to List</a>
+    <?php echo display_errors($errors); ?>
+    <div class="row m-3" id="top-ribbon">
+        <div class="col-lg-2">
+            <a class="p-4" href="<?php echo url_for('/recruiter/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')">&laquo; Return to List</a>
+            </div>
+    <div class="col-lg-10 d-flex justify-content-end" id="edit-form-btn">
+        <button form="edit-form" type="submit" class="btn">Update</button>
+        <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Cancel</button>
+    </div>
+</div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <form id="edit-form" form="edit-form" action="<?php echo url_for('/recruiter/edit.php?id=' . $candidate['candidate_id']); ?>" method="post">
                    
-                <div class="card-header py-3 d-flex justify-content-center position-fixed w-100" id="candidate_chead">
+                <div class="card-header py-3 d-flex justify-content-center" id="candidate_chead">
                     <div id="name-div">
                         <input class="m-0 font-weight-bold text-center" type="text" id="name" name="first_name" value="<?php echo h($candidate['first_name']); ?>"/>
                         <input class="m-0 font-weight-bold text-center" type="text" id="last_name" name="last_name" value="<?php echo h($candidate['last_name']); ?>"/>
                     </div>
-                    <div id="edit-form-btn" style="float:right;">
-                        <button form="edit-form" type="submit" class="btn">Update</button>
-                        <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Cancel</button>
-                    </div>
+                   
                 </div>  <!-- Card Header End -->
                 <div class="card=body" id="card-padding">
                     <div class="row m-4">
@@ -164,7 +170,7 @@
                         <div class="card h-100">
                             <div class="card-header c-card-1">
                                 <!-- <p class="my-0 flex-grow-1">Job Description</p> -->
-                                <p class="my-0 flex-grow-1">Job Description</p>
+                                <p class="my-0 flex-grow-1">1. Job Description</p>
                             </div> <!--End Card Header -->
 
                             <div class="card-body">
@@ -176,7 +182,7 @@
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-2 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Disclosure</p>
+                                <p class="my-0 flex-grow-1">2. Disclosure</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p class="card-text"><?php echo(document_in_document_list($document_list, '4')); ?></p>
@@ -187,7 +193,7 @@
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-3 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">LEA</p>
+                                <p class="my-0 flex-grow-1">3. LEA</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '5')); ?></p>
@@ -198,7 +204,7 @@
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-4 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Background Check</p> 
+                                <p class="my-0 flex-grow-1">4. Background Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '6')); ?></p>
@@ -209,7 +215,7 @@
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Panel Interview</p> 
+                                <p class="my-0 flex-grow-1">5. Panel Interview</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '13')); ?></p>
@@ -225,7 +231,7 @@
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Job Offer</p> 
+                                <p class="my-0 flex-grow-1">6. Job Offer</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '7')); ?></p>
@@ -236,7 +242,7 @@
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Transcripts</p> 
+                                <p class="my-0 flex-grow-1">7. Transcripts</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '8')); ?></p>
@@ -247,7 +253,7 @@
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Fingerprinting</p> 
+                                <p class="my-0 flex-grow-1">8. Fingerprinting</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '9')); ?></p>
@@ -258,7 +264,7 @@
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">Reference Check</p> 
+                                <p class="my-0 flex-grow-1">9. Reference Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '10')); ?></p>
@@ -269,7 +275,7 @@
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-10 d-flex align-items-center justify-content-center h-100">
-                                <p class="my-0 flex-grow-1">UltiPro Onboarding</p>
+                                <p class="my-0 flex-grow-1">10. UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '11')); ?></p>

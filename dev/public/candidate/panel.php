@@ -35,7 +35,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                     <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Zoom Etiquette - Candidate.pdf'); ?>">Zoom Etiquette</a>
                     <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/LL CareerPresentation 052220.pdf'); ?>">Lifeline Career Presentation</a>
                     <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FAQlist 2020.pdf'); ?>">FAQ List</a>
-                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/TENETS OF OUR CULTURE 05 08 2020.pdf'); ?>">Tenets of Our Culture</a>
+                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Tenets of Culture Document.pdf'); ?>">Tenets of Our Culture</a>
                     <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Career Progression updated.pdf'); ?>" style="display: <?php echo($candidate['position'] == 1 ? "inherit" : "none"); ?>">Family Consultant Career Progression</a>
               </div>
               </div>

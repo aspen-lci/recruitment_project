@@ -27,6 +27,14 @@ footer {
 
 }
 
+#ii_list ul li{
+    text-align: left;
+}
+
+#ii_testing p{
+    text-align: left;
+}
+
 .jumbotron {
     background-color: rgba(242, 139, 48, .7);
     padding-top: 10px;
@@ -65,18 +73,16 @@ navigation ul{
     list-style-type: none;
 }
 
-
-
 #regForm {
     margin: 0 auto;
     font-size: 1.2em;
 }
 
+
+
 #welcome {
     font-size: 1.5em;
 }
-
-
 
 @media screen and (max-width:768px){
     body {

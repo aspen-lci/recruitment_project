@@ -9,6 +9,17 @@ function url_for($script_path) {
     return WWW_ROOT . $script_path;
   }
 
+  function http($link){
+    //add leading http if not present
+    if(strpos($link, 'http') === 0){
+      return $link;
+    }else{
+      $link = "http://" . $link;
+      return $link;
+    }
+
+  }
+
 function u($string=""){
   return urlencode($string);
 }
@@ -45,13 +56,6 @@ function is_get_request(){
 }
 
 //Custom functions
-
-function checkmark($var){
-  $cmark = '<i class="fas fa-check"></i>';
-  if ($var == 'true'){
-    return $cmark;
-  } 
-}
 
 function display_errors($errors=array()) {
   $output = '';

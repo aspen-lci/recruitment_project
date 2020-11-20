@@ -352,9 +352,10 @@ function get_doc_defaults($company_id){
   function candidates_by_recruiter($recruiter_id){
     global $db;
 
-    $sql = "SELECT * FROM recruiter_candidate_view ";
+    $sql = "SELECT * FROM all_candidate_doc_status ";
     $sql .= "WHERE recruiter_id='" . db_escape($db, $recruiter_id) . "' ";
     $sql .= "AND disposition <> 'Inactive' ";
+    $sql .= "AND inactive = 0 ";
     $sql .= "ORDER BY last_name ASC";
 
     $result = mysqli_query($db, $sql);

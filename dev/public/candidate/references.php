@@ -13,7 +13,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
         <h1>Instructions</h1>
-        <p class="lead">Please register online with Checkster. You will then be able to send invitations to colleagues and supervisors to fill out a reference form for you.</p>
+        <p class="lead">Once you receive the email from Checkster, please register online using the links provided in the email. You will then be able to send invitations to colleagues and supervisors to fill out a reference form for you.</p>
         <h1>Requirements</h1>
         <p class="lead">A minimum of four (4) reference responses are required. Two (2) of these responses must be from current or past supervisors.</p>
         

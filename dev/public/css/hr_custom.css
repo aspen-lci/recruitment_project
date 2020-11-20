@@ -38,12 +38,9 @@ body {
 
 .card-header{
   font-weight: bolder;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
-#card-padding{
-  padding-top: 100px;
-}
 
 #content{
   min-height: calc(100vh - 300px);
@@ -57,7 +54,11 @@ body {
   margin: 20px;
   padding: 0;
   background-color: transparent;
-
+  border-top-style: hidden;
+  border-bottom-style: dashed 1px #0088cc;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  color: black;
 }
 
 
@@ -69,7 +70,7 @@ body {
   top: auto;
 }
 
-#edit-form #edit-form-btn #cancel{
+#cancel{
   margin-left: 0;
   margin-right: 0;
   background-color: #007bff;
@@ -173,6 +174,10 @@ li {
 
 table p{
   font-weight: bold;
+}
+
+div #top_ribbon .row {
+  margin: 20px;
 }
 
 #welcome {

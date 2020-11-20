@@ -84,9 +84,9 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-body">
             <h4 class="card-title">LEA Form</h4>
             <div <?php echo(card_body_status($documents, 5)); ?>>
-              <a href="lea.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
+              <a href="lea.php" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
             </div>
-            <p class="display-4" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
+            <p class="doc_status" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
           </div>
           <div class="card-footer c-card-3">
             
@@ -107,7 +107,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-body">
             <h4 class="card-title">Criminal History & Background Check</h4>
             <div <?php echo(card_body_status($documents, 6)); ?>>
-              <a href="crimhist.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
+              <a href="crimhist.php" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 6)); ?>><?php echo(document_in_document_list($documents, 6)); ?></p>
           </div>
@@ -244,12 +244,12 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <p class="card-text"><strong>We can’t wait to meet you!</strong> Your first week with us at Impact Institute will set you up to hit the ground running.</p>
             
             <div class="row text-justify">
-              <div class="col-lg-6">
-                <h5>TB and 5-Panel Drug Tests, Physical, and CPR Certification</h5>
+              <div class="col-lg-6" id="ii_testing">
+                <h5>TB test, Drug Screen, Physical, and CPR Certification</h5>
                 <p>All necessary medical screenings and CPR certification are covered by Lifeline and will take place during Impact Institute.</p>
                   
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6" id="ii_list">
                 <h5>During Impact Institute you will:</h5>
                 <ul>
                   <li>Meet the executives and leadership team</li>

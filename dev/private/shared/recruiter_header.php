@@ -60,7 +60,7 @@
   <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-bottom: 20px;">
-      <div class="container">
+      <div class="container d-flex justify-content-between">
         <div>
         <a class="navbar-brand"  href="<?php echo WWW_ROOT . '/recruiter/index.php'?>"><h2>Recruiter Dashboard</h2></a>
         </div>
@@ -73,26 +73,23 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
-        <!-- <div id="welcome"> -->
+        <div id="welcome">
           <span class="navbar-text" id="welcome"><?php echo (empty($_SESSION['first_name'])) ? 'Hello!' : 'Hello, ' . $_SESSION['first_name'] . '!'; ?></span>
-        <!-- </div> -->
+        </div>
           <ul class="navbar-nav ml-auto">
-          <!--  <li class="nav-item">
-              <p><?php echo (empty($_SESSION['first_name'])) ? 'Hello!' : 'Hello, ' . $_SESSION['first_name'] . '!'; ?></p>
-            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="<?php echo url_for('/recruiter/new.php') ?>">Add New Candidate</a>
             </li>
             
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="<?php echo url_for('/logout.php'); ?>" class="nav-link btn" id="logout-btn" role="button">Log Out</a>
-            </li> -->
+            </li>
           </ul>
         </div>
         
       </div>
-      <div>
+      <!-- <div>
       <a href="<?php echo url_for('/logout.php'); ?>" class="btn d-none d-lg-inline-block" id="logout-btn" role="button">Log Out</a>
-      </div>
+      </div> -->
     </nav>
     <?php echo display_session_message(); ?>

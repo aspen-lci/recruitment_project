@@ -42,8 +42,10 @@
     </div>
       <navigation>   
         <ul>
-        <li style="list-style-type: none;"><a href="<?php echo url_for('/logout.php'); ?>" class="btn" id="logout-btn" role="button">Log Out</a></li>
-
+        <!-- <li style="list-style-type: none;"><a href="<?php echo url_for('/logout.php'); ?>" class="btn" id="logout-btn" role="button">Log Out</a></li> -->
+        <li class="nav-item">
+              <a href="<?php echo url_for('/logout.php'); ?>" class="nav-link btn" id="logout-btn" role="button">Log Out</a>
+            </li>
       
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

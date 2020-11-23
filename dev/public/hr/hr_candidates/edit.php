@@ -166,7 +166,7 @@
                     </div>
                     
                 </div>  <!-- Card Header End -->
-                <div class="card=body">
+                <div class="card-body">
                     <div class="row m-4">
                         <div class="col-3">
                             <label>Email: </label><input id="email" type="text" name="email" value="<?php echo($candidate['email']); ?>"/>
@@ -207,9 +207,9 @@
                             </select>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
-                            <label>Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
+                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
                             <br>
-                            <label>Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
+                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="row justify-content-center m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-1">
                                 <p class="my-0 flex-grow-1">1. Job Description</p>
                             </div> <!--End Card Header -->
@@ -259,7 +259,7 @@
                             </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-2">
                                 <p class="my-0 flex-grow-1">2. Disclosure</p>
                             </div> <!--End Card Header -->
@@ -281,7 +281,7 @@
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-3">
                                 <p class="my-0 flex-grow-1">3. LEA</p>
                             </div> <!--End Card Header -->
@@ -302,7 +302,7 @@
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-4">
                                 <p class="my-0 flex-grow-1">4. Background Check</p> 
                             </div> <!--End Card Header -->
@@ -323,7 +323,7 @@
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-5">
                                 <p class="my-0 flex-grow-1">5. Panel Interview</p> 
                             </div> <!--End Card Header -->
@@ -345,7 +345,7 @@
 
     <div class="row d-flex justify-content-center m-0 text-center">
             <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-6">
                                 <p class="my-0 flex-grow-1">6. Job Offer</p> 
                             </div> <!--End Card Header -->
@@ -362,7 +362,7 @@
                         </div> <!-- End Column -->
                                                 
                         <div class="col-lg-2 col-md-4 mb-4">    
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-7">
                                 <p class="my-0 flex-grow-1">7. Transcripts</p> 
                             </div> <!--End Card Header -->
@@ -379,7 +379,7 @@
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-8">
                                 <p class="my-0 flex-grow-1">8. Fingerprinting</p> 
                             </div> <!--End Card Header -->
@@ -396,7 +396,7 @@
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-9">
                                 <p class="my-0 flex-grow-1">9. Reference Check</p> 
                             </div> <!--End Card Header -->
@@ -413,7 +413,7 @@
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header c-card-10">
                                 <p class="my-0 flex-grow-1">10. UltiPro Onboarding</p>
                             </div> <!--End Card Header -->

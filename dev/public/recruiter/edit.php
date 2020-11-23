@@ -101,13 +101,13 @@
                     </div>
                    
                 </div>  <!-- Card Header End -->
-                <div class="card=body" id="card-padding">
+                <div class="card-body" id="card-padding">
                     <div class="row m-4">
                         <div class="col-3">
                             <label>Email: </label><input id="email" type="text" name="email" value="<?php echo($candidate['email']); ?>"/>
                             <br>
                             <label>Recruiter:</label>
-                            <select id="recruiter" type="select" name="recruiter" value="<?php echo($candidate['recruiter']); ?>">
+                            <select id="recruiter" type="select" name="recruiter" value="<?php echo($candidate['recruiter']); ?>" onchange="return confirm('Changing the recruiter will remove this candidate from your list.')">
                                 <?php foreach ($recruiter_set as $recruiter) { ?>
                                         <option value="<?php echo $recruiter['recruiter_id'] ?>" <?php echo($recruiter['recruiter_id'] === $candidate['recruiter_id'] ? 'selected' : ''); ?>><?php echo ($recruiter['first_name'] . " " . $recruiter['last_name']); ?></option>    
                                     <?php } ?>
@@ -139,8 +139,8 @@
                             </select>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
-                            <label>Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
-                            <label>Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
+                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
+                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
                         </div> <!-- Form Col End -->
                         <div class="col-3">
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>

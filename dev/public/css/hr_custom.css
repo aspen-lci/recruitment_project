@@ -41,6 +41,9 @@ body {
   font-size: 1.1em;
 }
 
+.container{
+  min-width: 100%;
+}
 
 #content{
   min-height: calc(100vh - 300px);
@@ -183,6 +186,7 @@ div #top_ribbon .row {
 #welcome {
   font-size: 1.5em;
   margin-left: auto;
+  margin-right: auto;
   color: #F98E2C;
 }
 

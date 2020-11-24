@@ -45,6 +45,9 @@
                   <div class="actions text-left mb-2">
                     <a class="btn" href="<?php echo url_for('/hr/hr_users/new.php') ?>">Create New User</a>
                   </div>
+                  <div>
+                    <button class="btn" type="button" id="toggleInactive">Toggle Inactive</a>
+                  </div>
                 <table
                 id="table"
                 data-toggle="table"
@@ -62,7 +65,7 @@
                 </thead>
                 <tbody>
                   <?php foreach ($user_set as $user) { ?>
-                  <tr>
+                  <tr class="<?php echo($user['inactive'] == 0 ? 'active' : 'inactive'); ?>">
                     <td><a class="action" href="<?php echo url_for('/hr/hr_users/edit.php?id=' . h($user['user_id'])); ?>"><?php echo h($user['first_name']) . " " . h($user['last_name']); ?></a></td>
                     <td><?php echo h($user['email']); ?></td>
                     <td><?php echo h($user['role']); ?></td>
@@ -101,6 +104,12 @@
 $(function){
   $('#table').bootstrapTable()
 })
+
+$(document).ready(function(){
+  $(#toggleInactive).click(function()){
+    $("tr.inactive").toggleClass("hidden");
+});
+});
 </script>
 
 </body>

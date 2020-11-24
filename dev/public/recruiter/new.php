@@ -111,9 +111,9 @@ if(is_post_request()){
                         <div class="form-row m-4">
                             
                             <div class="form-group col-md-4">
-                                <label for="interviewDate">Interview Date</label>
+                                <label for="interviewDate">Panel Interview Date</label>
                                 <input type="date" class="form-control" id="interviewDate" name="interviewDate" >
-                                <label for="interviewTime">Interview Time</label>
+                                <label for="interviewTime">Panel Interview Time</label>
                                 <input type="time" class="form-control" name="interviewTime" >
                             </div> <!-- Form Col End -->
 
@@ -126,8 +126,8 @@ if(is_post_request()){
                                 <label for="iiDate">Impact Institute Date</label>
                                 <br>
                                 <select class="form-control" id="iiDate" type="select" name="iiDate">
-                                <option value=""> </option>
-                                    <?php foreach($ii_dates as $date) echo sprintf('<option value="%s">%s</option>' . PHP_EOL, $date, (new DateTime($date['date']))->format("m/d/Y")); ?>
+                                <option value="">Select a Date</option>
+                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                                 </select>
                             </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->

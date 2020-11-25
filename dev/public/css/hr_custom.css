@@ -24,8 +24,8 @@ button.btn.btn-secondary{
   color: white;
   font-weight: bold;
   letter-spacing: 0.05em;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 body {
@@ -64,6 +64,12 @@ body {
   color: black;
 }
 
+.btn-dropdown{
+  margin: 5px 0 0;
+  display: block;
+  border-radius: 0;
+  
+}
 
 
 #edit-form #edit-form-btn{

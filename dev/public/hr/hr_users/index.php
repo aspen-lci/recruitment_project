@@ -38,21 +38,19 @@
 <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h3 class="m-0 font-weight-bold text-dark text-center">Users</h3>
+                <div class="card-header py-3 d-flex">
+                  <button class="btn p-2" type="button" id="toggleInactive">Show Inactive Users</button>
+                  <button class="btn p-2 mr-auto" type="button" id="allUsers">Show All Users</button>
+                  <h3 class="mr-auto font-weight-bold text-dark">Users</h3>
+                  <button class="btn ml-auto p-2 action" onclick="window.location.href='<?php echo url_for('/hr/hr_users/new.php') ?>';">Create New User</button>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
-                <div class="d-flex">  
-                    <button class="btn p-2" type="button" id="toggleInactive">Show Inactive Users</a>
-                    <button class="btn p-2" type="button" id="allUsers">Show All Users</a>
-                    <button class="btn ml-auto p-2" href="<?php echo url_for('/hr/hr_users/new.php') ?>">Create New User</button>
-                  </div>
-                </div>
+               
                 <table
                 id="table"
                 data-toggle="table"
                 data-sortable="true"
-                data-pagination="true" 
+                data-pagination="false" 
                 data-search="true">
                 <thead>
                   <tr>

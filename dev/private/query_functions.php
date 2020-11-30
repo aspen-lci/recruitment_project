@@ -13,6 +13,20 @@
         return $user;
     }
 
+    //Get user by id
+    function find_user_by_id($id){
+      global $db;
+
+        $sql = "SELECT * FROM users_roles ";
+        $sql .= "WHERE user_id='" . db_escape($db, $id) . "' "; 
+
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $user;
+    }
+
 // Get list of all users
     function all_users(){
         global $db;
@@ -91,6 +105,29 @@
             }
             db_disconnect($db);
             return $result;
+    }
+
+    function update_user($user_set){
+      global $db;
+
+      $sql = "REPLACE INTO users ";
+      $sql .= "(first_name, last_name, email, type) ";
+      $sql .= "VALUES (";
+      $sql .= "'" . db_escape($db, $user_set['first_name']) . "', ";
+      $sql .= "'" . db_escape($db, $user_set['last_name']) . "', ";
+      $sql .= "'" . db_escape($db, $user_set['email']) . "', ";
+      $sql .= "'" . db_escape($db, $user_set['type']) . "'";
+      $sql .= ") ";
+      $sql .= "WHERE id=" . $user_set['id'];
+      echo $sql;
+      $result = mysqli_query($db, $sql);
+
+      if(!$result){
+          echo mysqli_error($db);
+          
+      }
+      db_disconnect($db);
+      return $result;
     }
 
     function all_user_types(){

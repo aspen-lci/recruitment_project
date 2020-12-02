@@ -5,7 +5,7 @@ $position_set = all_positions();
 $region_set = all_regions();
 $recruiter_set = all_recruiters();
 $ii_dates = all_ii_dates();
-
+$errors = "";
 
 if(is_post_request()){
     $position_explode = explode('|', $_POST['position']);
@@ -33,8 +33,10 @@ if(is_post_request()){
         $_SESSION['message'] = "Candidate has been created.";
         redirect_to(url_for('/recruiter/index.php'));
     }else{
-        $errors = $result;
+        $_SESSION['message'] = print_r($result);
+        // $errors = $result;
     }
+    
 }
 
 ?>

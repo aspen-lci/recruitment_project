@@ -110,14 +110,11 @@
     function update_user($user_set){
       global $db;
 
-      $sql = "REPLACE INTO users ";
-      $sql .= "(first_name, last_name, email, type) ";
-      $sql .= "VALUES (";
-      $sql .= "'" . db_escape($db, $user_set['first_name']) . "', ";
-      $sql .= "'" . db_escape($db, $user_set['last_name']) . "', ";
-      $sql .= "'" . db_escape($db, $user_set['email']) . "', ";
-      $sql .= "'" . db_escape($db, $user_set['type']) . "'";
-      $sql .= ") ";
+      $sql = "UPDATE users SET ";
+      $sql .= "first_name='" . db_escape($db, $user_set['first_name']) . "', ";
+      $sql .= "last_name='" . db_escape($db, $user_set['last_name']) . "', ";
+      $sql .= "email='" . db_escape($db, $user_set['email']) . "', ";
+      $sql .= "type='" . db_escape($db, $user_set['type']) . "' ";
       $sql .= "WHERE id=" . $user_set['id'];
       echo $sql;
       $result = mysqli_query($db, $sql);
@@ -310,10 +307,11 @@
         $sql .= ")";
 
         $result = mysqli_query($db, $sql);
-
+echo($result);
         if(!$result){
             mysqli_rollback($db);
-            echo mysqli_error($db);
+            return (mysqli_error($db));
+            exit;
             
         }
 

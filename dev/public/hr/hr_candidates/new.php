@@ -26,6 +26,10 @@ if(is_post_request()){
     $candidate['interview_time'] = $_POST['interviewTime'] ?? '';
     $candidate['ii_date'] = $_POST['iiDate'] ?? '';
 
+    $exists = find_user_by_email($candidate['email']);
+
+    if(!$exists){
+
     $result = insert_candidate($candidate);
 
     if($result === true){
@@ -34,6 +38,9 @@ if(is_post_request()){
     }else{
         $errors = $result;
     }
+} else{
+    $errors['user_exists'] = "Candidate already exists.  Please contact Jen Faulk for further information.";
+}
 }
 
 ?>

@@ -137,7 +137,7 @@ $candidates = all_candidates();
                 data-toggle="table"
                 data-sortable="true"
                 data-detail-view="true"
-                data-pagination="true" 
+                data-pagination="false" 
                 data-search="true" 
                 data-show-toggle="true"
                 data-detail-formatter="detailFormatter">
@@ -159,7 +159,7 @@ $candidates = all_candidates();
                   <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/hr/hr_candidates/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', ($d->status != "Unassigned" ? $d->status : "")); ?>                
+                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center doc_status">%s</td>', ($d->status != "Unassigned" ? $d->status : "")); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
                     <table colspan="8" class="text-justify">  
@@ -227,7 +227,14 @@ $candidates = all_candidates();
 
           return;
 
-          })
+          });
+
+          $(document).ready(function(){
+            $('.doc_status:contains("Submitted")').addClass("submitted");
+            $('.doc_status:contains("Correction Required")').addClass("correction");
+            $('.doc_status:contains("Completed")').addClass("completed");
+            $('.doc_status:contains("Processing")').addClass("processing");
+          });
     </script>
     
     </body>

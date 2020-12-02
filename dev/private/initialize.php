@@ -29,5 +29,5 @@
     require_once('auth_session.php');
 
     $db = db_connect();
-
+    $errors = [];
 ?>

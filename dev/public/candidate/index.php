@@ -237,11 +237,12 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-8 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11)); ?>";>
-          <div class="card-header c-card-11"><h4> </h4></div>
+          <div class="card-header c-card-11"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>
-            
-              <p class="card-text"><strong>We can’t wait to meet you!</strong> Your first week with us at Impact Institute will set you up to hit the ground running.</p>
+              
+              <p class="card-text"><strong>We can’t wait to meet you!</strong></p>
+              <p class="card-text">Your first week with us at Impact Institute will set you up to hit the ground running.</p>
             
             <div class="row text-justify">
               <div class="col-lg-6" id="ii_testing">

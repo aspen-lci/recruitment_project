@@ -18,7 +18,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
         <h1 class="text-center">Panel Interview</h1>
-        <p class="lead"><b>Interview Date:</b> <?php echo (date("l, F d, Y", strtotime($candidate['interview_date']))); ?></p>
+        <p class="lead"><b>Interview Date:</b> <?php echo (date("l, F j, Y", strtotime($candidate['interview_date']))); ?></p>
         <p class="lead"><b>Interview Time:</b> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>
         <a class="lead btn" id="logout-btn" href="<?php echo $zoom_link; ?>">Zoom Link</a>
         

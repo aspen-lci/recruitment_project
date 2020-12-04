@@ -71,7 +71,7 @@ if(is_post_request()){
 
                             <div class="form-group col-md-3">
                                     <label for="recruiter">Assigned Recruiter</label>
-                                    <select id="recruiter" class="form-control" name="recruiter">
+                                    <select id="recruiter" class="form-control" name="recruiter" onchange="return confirm('Changing the recruiter will remove this candidate from your list.')">
                                         <!-- <option selected>Choose Recruiter</option> -->
                                         <?php foreach ($recruiter_set as $recruiter) { ?>
                                         <option value="<?php echo $recruiter['recruiter_id'] ?>" <?php echo($recruiter['email'] === $_SESSION['email'] ? 'selected' : ''); ?>><?php echo ($recruiter['first_name'] . ' ' . $recruiter['last_name']); ?></option>    

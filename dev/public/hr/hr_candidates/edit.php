@@ -1,7 +1,6 @@
 <?php require_once('../../../private/initialize.php'); 
     require_login();
 
-    $errors = "";
     $company_set = all_companies();
     $position_set = all_positions();
     $region_set = all_regions();
@@ -149,6 +148,7 @@
     <div class="col-lg-2">
         <a href="<?php echo url_for('/hr/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')" >&laquo; Return to List</a>
     </div>
+    
     <div class="col-lg-10 d-flex justify-content-end" id="edit-form-btn">
         <button form="edit-form" type="submit" class="btn">Update</button>
         <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Cancel</button>
@@ -213,12 +213,12 @@
                         </div> <!-- Form Col End -->
                         <div class="col-3">
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
-                            <br>
                             <label>Impact Institute Date:</label> 
-                            <select class="form_control" id="iiDate" type="select" name="iiDate">
-                            <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>></option>
-                            <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
+                            <select id="iiDate" type="select" name="iiDate">
+                                <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
+                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                             </select>
+
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->
                         </div>

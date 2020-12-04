@@ -96,7 +96,7 @@ if(is_post_request()) {
                   <p>Passwords must be at least 12 characters and include at least one uppercase letter, lowercase
                     letter, number, and symbol.</p>
                 </div>
-              </form>
+             
 
             </div>
 
@@ -104,11 +104,11 @@ if(is_post_request()) {
           <div class="col-sm-2" id="login-btn">
             <table id="login-table">
               <td>
-                <button form="login" class="stretched-link" id="cust-btn" type="submit" name="submit">Sign In</button>
+              <button form="login" class="stretched-link" id="cust-btn" type="submit" name="submit">Sign In</button>
               </td>
             </table>
           </div>
-          
+          </form>
           </div> <!-- End Row -->
           </div> <!-- End Card -->
         </div> <!-- End Col -->
@@ -117,19 +117,7 @@ if(is_post_request()) {
 
     <?php include(SHARED_PATH . '/candidate_footer.php'); ?>
 
-<!-- <script>
-function submitForm (){
-  document.login.submit();
-  document.login.method='post';
-}
 
-document.onkeydown = function (){
-  if (window.event.keyCode == '13'){
-    submitForm();
-  }
-}
-
-</script> -->
 
    
     </body>

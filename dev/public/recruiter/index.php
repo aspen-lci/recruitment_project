@@ -131,7 +131,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                 data-sortable="true"
                 data-detail-view="true"
                 data-detail-view-icon="true"
-                data-pagination="true" 
+                data-pagination="false" 
                 data-search="true" 
                 data-show-toggle="true"
                 data-detail-formatter="detailFormatter">
@@ -153,7 +153,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                   <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
                     <td><a class="action" href="<?php echo url_for('/recruiter/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
-                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center">%s</td>', ($d->status !== "Unassigned" ? $d->status : "")); ?>                
+                    <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center doc_status %s">%s</td>', $d->status, ($d->status != "Unassigned" ? $d->status : "")); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
                     <table colspan="8" class="text-justify">  
@@ -167,7 +167,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                     <td style="border: none; padding-right: 50px;">
                         <dt>Recruiter</dt>
                         <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>
-                        <dt>Region</dt>
+                        <dt>Panel Interview District</dt>
                         <dd><?php echo $candidate['region'] ?? ''; ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">
@@ -177,9 +177,9 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                         <dd><?php echo $candidate['position'] ?? ''; ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">
-                        <dt>Interview Date</dt>
+                        <dt>Panel Interview Date</dt>
                         <dd><?php echo ($candidate['interview_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['interview_date'])) : ''); ?></dd>
-                        <dt>Interview Time</dt>
+                        <dt>Panel Interview Time</dt>
                         <dd><?php echo ($candidate['interview_time'] > 0 ? date('g:i A', strtotime($candidate['interview_time'])) : ''); ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;">

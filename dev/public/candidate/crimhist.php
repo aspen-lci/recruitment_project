@@ -23,7 +23,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div class="card-header" style="background-color: #0D0D0D;"></div>
             <div class="card-body">
               <h4 class="card-title mb-4">HELPFUL HINTS: Common errors for criminal history form</h4>
-              <div class="row text-justify">
+              <div class="row text-left">
                   <div class="col-lg-12">
                   <ol>
                     <li>Your current address needs to include your street address – city, state, and zip code. </li>
@@ -33,6 +33,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                         <li>Residency needs to include your city, state, and county (street address not required). </li>
                         <li>This section must be done in chronological order. <b>There may not be any gaps or overlap in your residential history.</b></li>
                         <li>You must list all residences dating back to January 1, 1988 or your birth date, whichever is MOST RECENT. Please see the following example.</li>
+                        <li>If there is not enough space on this form for all addresses, please list additional addresses in a separate document and email to jenn.falk@lastingchangeinc.org.</li>
                       </ol>
                     </li>
                   </ol>

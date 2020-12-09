@@ -213,6 +213,7 @@
                         </div> <!-- Form Col End -->
                         <div class="col-3">
                             <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
+                            <br>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
                                 <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>

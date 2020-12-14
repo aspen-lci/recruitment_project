@@ -33,12 +33,15 @@ include(SHARED_PATH . '/hr_header.php');
 <div id="content">
 
     <div class="row">
+        
+            <a class="m-3 pl-4" href="<?php echo url_for('/hr/hr_users/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')">&laquo; Return to List</a>
+        
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h4 class="m-0 font-weight-bold text-dark text-center">Edit User</h4>
                 </div>  <!-- Card Header End -->
-                <div class="card=body">
+                <div class="card-body">
                     <form action="<?php echo url_for('/hr/hr_users/edit.php?id=' . h(u($id))); ?>" method="post">
                         <div class="form-row m-4">
                             <div class="form-group col-md-6">

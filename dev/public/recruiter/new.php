@@ -5,7 +5,7 @@ $position_set = all_positions();
 $region_set = all_regions();
 $recruiter_set = all_recruiters();
 $ii_dates = all_ii_dates();
-$errors = "";
+
 
 if(is_post_request()){
     $position_explode = explode('|', $_POST['position']);
@@ -27,15 +27,20 @@ if(is_post_request()){
     $candidate['interview_time'] = $_POST['interviewTime'] ?? '';
     $candidate['ii_date'] = $_POST['iiDate'] ?? '';
 
+    $exists = find_user_by_email($candidate['email']);
+
+    if(!$exists){
     $result = insert_candidate($candidate);
 
     if($result === true){
         $_SESSION['message'] = "Candidate has been created.";
         redirect_to(url_for('/recruiter/index.php'));
     }else{
-        $_SESSION['message'] = print_r($result);
-        // $errors = $result;
+        $errors = $result;
     }
+}else{
+    $errors['user_exists'] = "Candidate already exists.  Please contact Jen Faulk for further information.";
+}
     
 }
 
@@ -114,14 +119,12 @@ if(is_post_request()){
                             
                             <div class="form-group col-md-4">
                                 <label for="interviewDate">Panel Interview Date</label>
-                                <input type="date" class="form-control" id="interviewDate" name="interviewDate" >
-                                <label for="interviewTime">Panel Interview Time</label>
-                                <input type="time" class="form-control" name="interviewTime" >
+                                <input type="date" class="form-control" id="interviewDate" name="interviewDate">
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-4">
-                                <label for="date">Start Date</label>
-                                <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
+                                <label for="interviewTime">Panel Interview Time</label>
+                                <input type="time" class="form-control" name="interviewTime" >
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-4">

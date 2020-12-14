@@ -1,3 +1,11 @@
+* {
+    font-family: Calibri, sans-serif;
+    
+}
+
+.btn {
+    font-size: 1.2rem;
+}
 body {
     padding-top: 150px;
     
@@ -27,6 +35,10 @@ footer {
 
 }
 
+footer #footer_tagline{
+    font-size: 1.75rem;
+}
+
 #ii_list ul li{
     text-align: left;
 }
@@ -36,7 +48,7 @@ footer {
 }
 
 .jumbotron {
-    background-color: rgba(242, 139, 48, .7);
+    background-color: rgba(249, 142, 44, .75);
     padding-top: 10px;
 }
 
@@ -48,7 +60,7 @@ footer {
 #login-btn a{
     color: white;
     font-weight: 600;
-    font-size: 1.25em;
+    font-size: 1.5rem;
 }
 
 #login-table{
@@ -81,7 +93,7 @@ navigation ul{
 
 
 #welcome {
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 @media screen and (max-width:768px){

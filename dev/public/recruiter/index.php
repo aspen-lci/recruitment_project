@@ -165,12 +165,6 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                         
                     </td>
                     <td style="border: none; padding-right: 50px;">
-                        <dt>Recruiter</dt>
-                        <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>
-                        <dt>Panel Interview District</dt>
-                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
-                    </td>
-                    <td style="border: none; padding-right: 50px;">
                         <dt>Company</dt>
                         <dd><?php echo $candidate['company'] ?? ''; ?></dd>  
                         <dt>Position</dt>
@@ -182,9 +176,9 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                         <dt>Panel Interview Time</dt>
                         <dd><?php echo ($candidate['interview_time'] > 0 ? date('g:i A', strtotime($candidate['interview_time'])) : ''); ?></dd>
                     </td>
-                    <td style="border: none; padding-right: 50px;">
-                        <dt>Start Date</dt>
-                        <dd><?php echo ($candidate['start_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['start_date'])) : ''); ?></dd>
+                    <td style="border: none;">
+                        <dt>Panel Interview District</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
                         <dt>Impact Institute Date</dt>
                         <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
                     </td>

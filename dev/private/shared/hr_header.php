@@ -43,14 +43,7 @@
 "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > 
     </script> 
 
-    <!-- timepicker polyfill -->
-    <link href= 
-'<?php echo url_for('/css/time-polyfill.css') ?>'
-          rel='stylesheet'> 
-
-          <script src= 
-"<?php echo url_for('/js/time-polyfill.min.js') ?>"> 
-    </script>
+   
 
     <!-- My Custom CSS -->
     <link rel="stylesheet" href="<?php echo url_for('/css/hr_custom.css'); ?>">
@@ -100,3 +93,4 @@
       </div> -->
     </nav>
     <?php echo display_session_message(); ?>
+    <?php echo display_errors($errors); ?>

@@ -1,3 +1,12 @@
+* {
+  font-family: Calibri,  sans-serif;
+ 
+}
+
+body{
+  font-size: 1.1rem;
+}
+
 .btn{
   background-color: #F98E2C;
   border-color: #F98E2C;
@@ -6,6 +15,7 @@
   letter-spacing: 0.05em;
   margin-left: 20px;
   margin-right: 20px;
+  font-size: 1.2rem;
 }
 
 .btn i{
@@ -112,7 +122,7 @@ body {
 
 #edit-form label{
   padding-right: .5em;
-  margin-bottom: 2em;
+  padding-top: 2em;
 }
 
 #edit-form #last_name{
@@ -162,10 +172,11 @@ li {
     letter-spacing: 0.05em;
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 1.2rem;
 }
 
 .navbar-dark .navbar-nav .nav-link{
-  color:  rgba(242, 139, 48, .7);
+  color:  rgba(249, 142, 44, .75);
   font-size: 1.25em;
 }
 
@@ -206,6 +217,7 @@ div #top_ribbon .row {
     color: red;
     padding: 1em;
     margin-bottom: 1em;
+    margin-top: 1em;
   }
   
   .errors ul {

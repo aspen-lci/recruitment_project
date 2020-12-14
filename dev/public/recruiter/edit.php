@@ -79,14 +79,13 @@
 <?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
-    <?php echo display_errors($errors); ?>
-    <div class="row m-3" id="top-ribbon">
+   <div class="row m-3" id="top-ribbon">
         <div class="col-lg-2">
             <a class="p-4" href="<?php echo url_for('/recruiter/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')">&laquo; Return to List</a>
             </div>
     <div class="col-lg-10 d-flex justify-content-end" id="edit-form-btn">
         <button form="edit-form" type="submit" class="btn">Update</button>
-        <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Cancel</button>
+        <button form="edit-form" type="reset" value="Cancel" class="btn btn-info" id="cancel">Reset</button>
     </div>
 </div>
     <div class="row">
@@ -103,9 +102,8 @@
                 </div>  <!-- Card Header End -->
                 <div class="card-body" id="card-padding">
                     <div class="row m-4">
-                        <div class="col-3">
-                            <label>Email: </label><input id="email" type="text" name="email" value="<?php echo($candidate['email']); ?>"/>
-                            <br>
+                        <div class="col-4">
+                            <p class="m-0"><label>Email:</label><?php echo($candidate['email']); ?></p>
                             <label>Recruiter:</label>
                             <select id="recruiter" type="select" name="recruiter" value="<?php echo($candidate['recruiter']); ?>" onchange="return confirm('Changing the recruiter will remove this candidate from your list.')">
                                 <?php foreach ($recruiter_set as $recruiter) { ?>
@@ -113,12 +111,12 @@
                                     <?php } ?>
                             </select>
                             
-                            <p>Disposition: <?php echo($candidate['disposition']); ?></p>
+                            <p><label>Disposition:</label> <?php echo($candidate['disposition']); ?></p>
                             
                         </div> <!-- Form Col End -->
                         
 
-                        <div class="col-3">
+                        <div class="col-4">
                             <label>Company:</label> 
                             <select id="company" type="select" name="company" value="<?php echo($candidate['company']); ?>">
                             <?php foreach ($company_set as $company) { ?>
@@ -130,24 +128,24 @@
                             <?php foreach ($position_set as $position) { ?>
                                         <option value="<?php echo $position['id'];?>" <?php echo($position['title'] === $candidate['position'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>    
                                     <?php } ?>
-                            </select><br/>
-                            <label>Region:</label> 
-                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
-                            <?php foreach ($region_set as $region) { ?>
-                                        <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
-                                    <?php } ?>
                             </select>
-                        </div> <!-- Form Col End -->
-                        <div class="col-3">
-                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
-                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
-                        </div> <!-- Form Col End -->
-                        <div class="col-3">
-                            <label>Start Date:</label> <input id="startDate" type="date" name="startDate" value="<?php echo($candidate['start_date']); ?>"/>
+                            <br/>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
                             <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
                             <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
+                            </select>
+                        </div> <!-- Form Col End -->
+                        <div class="col-4">
+                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date']) > 0000-00-00 ? $candidate['interview_date'] : ''); ?>"/>
+                            <br>
+                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
+                            <br>
+                            <label>Panel Interview District for Zoom Link:</label> 
+                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
+                            <?php foreach ($region_set as $region) { ?>
+                                        <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
+                                    <?php } ?>
                             </select>
                         </div> <!-- Form Col End -->
                         

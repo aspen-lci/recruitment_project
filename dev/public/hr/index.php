@@ -121,7 +121,7 @@ $candidates = all_candidates();
 
     <!-- Page Content -->
       <div id="content">
-      <?php echo display_errors($errors); ?>
+      
           <div class="row">
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
@@ -163,36 +163,34 @@ $candidates = all_candidates();
                   
                     <td class="detail-view" style="display:none;"> 
                     <table colspan="8" class="text-justify">  
-                    <td style="border: none; padding-right: 50px;">
-                    <dt>Disposition</dt>
+                    <td style="border: none; padding-right: 50px;" class="align-top">
+                        <dt>Disposition</dt>
                         <dd><?php echo $candidate['disposition'] ?? ''; ?></dd>
                         <dt>Email</dt>
                         <dd><?php echo $candidate['email'] ?? ''; ?></dd>
                         
                     </td>
-                    <td style="border: none; padding-right: 50px;">
-                        <dt>Recruiter</dt>
-                        <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>
-                        <dt>Region</dt>
-                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
-                    </td>
-                    <td style="border: none; padding-right: 50px;">
+                    <td style="border: none; padding-right: 50px;" class="align-top">
                         <dt>Company</dt>
                         <dd><?php echo $candidate['company'] ?? ''; ?></dd>  
                         <dt>Position</dt>
                         <dd><?php echo $candidate['position'] ?? ''; ?></dd>
                     </td>
-                    <td style="border: none; padding-right: 50px;">
-                        <dt>Interview Date</dt>
-                        <dd><?php echo ($candidate['interview_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['interview_date'])) : ''); ?></dd>
-                        <dt>Interview Time</dt>
+                    <td style="border: none; padding-right: 50px;" class="align-top">
+                        <dt>Recruiter</dt>
+                        <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>  
+                        <dt>Panel Interview District</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>    
+                    </td>
+                    <td style="border: none; padding-right: 50px;" class="align-top">
+                        <dt>Panel Interview Date</dt>
+                        <dd><?php echo ($candidate['interview_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['interview_date'])) : ''); ?></dd>    
+                        <dt>Panel Interview Time</dt>
                         <dd><?php echo ($candidate['interview_time'] > 0 ? date('g:i A', strtotime($candidate['interview_time'])) : ''); ?></dd>
                     </td>
-                    <td style="border: none; padding-right: 50px;">
-                        <dt>Start Date</dt>
-                        <dd><?php echo ($candidate['start_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['start_date'])) : ''); ?></dd>
-                        <dt>Impact Institute Date</dt>
-                        <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
+                    <td style="border: none;" class="align-top">
+                      <dt>Impact Institute Date</dt>
+                      <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
                     </td>
                   </table>
                     </td>

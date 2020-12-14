@@ -100,7 +100,7 @@
             $result = mysqli_query($db, $sql);
 
             if(!$result){
-                echo mysqli_error($db);
+                $result = mysqli_error($db);
                 
             }
             db_disconnect($db);

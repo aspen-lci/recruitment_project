@@ -2,8 +2,8 @@
     
  <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="text-white text-center"><strong>Individuals Succeed. Families Thrive. Communities Prosper.</strong></p>
-        <p class="text-white text-center">4150 Illinois Road, Fort Wayne, IN 46804 | crosswinds.org | lastingchangestartshere.org | lifelineyouth.org</p>
+      <p class="text-white text-center"><strong>Changing hearts & bringing hope to individuals, families, and communities.</strong></p>
+      <p class="text-white text-center">4150 Illinois Road, Fort Wayne, IN 46804 | crosswinds.org | lifelineyouth.org</p>
         <p class="m-0 text-center text-white">Copyright &copy; <?php echo date('Y') ?> Lasting Change, Inc.</p>
       </div>
       <!-- /.container -->

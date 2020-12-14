@@ -32,8 +32,6 @@
 <?php $page_title = 'Users'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
-<?php echo(display_errors($errors)); ?>
-
 <div class="row text-center">
 <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
             <div class="col-lg-12 mb-4">

@@ -118,14 +118,12 @@ if(is_post_request()){
                             
                             <div class="form-group col-md-4">
                                 <label for="interviewDate">Panel Interview Date</label>
-                                <input type="date" class="form-control" id="interviewDate" name="interviewDate" >
-                                <label class="pt-2" for="interviewTime">Panel Interview Time</label>
-                                <input type="time" class="form-control" name="interviewTime" >
+                                <input type="date" class="form-control" id="interviewDate" name="interviewDate">
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-4">
-                                <label for="date">Start Date</label>
-                                <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
+                                <label for="interviewTime">Panel Interview Time</label>
+                                <input type="time" class="form-control" name="interviewTime">
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-4">

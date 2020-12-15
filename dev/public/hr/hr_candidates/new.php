@@ -62,20 +62,20 @@ if(is_post_request()){
                         <div class="form-row m-4">
                             <div class="form-group col-md-3">
                                 <label for="firstName">First Name</label>
-                                <input type="text" class="form-control" name="firstName">
+                                <input type="text" class="form-control" name="firstName" required>
                             </div> <!-- Form Col End -->
                             <div class="form-group col-md-3">
                                 <label for="lastName">Last Name</label>
-                                <input type="text" class="form-control" name="lastName">
+                                <input type="text" class="form-control" name="lastName" required>
                             </div> <!-- Form Col End -->
                             <div class="form-group col-md-3">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" required>
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-3">
                                     <label for="recruiter">Assigned Recruiter</label>
-                                    <select id="recruiter" class="form-control" name="recruiter">
+                                    <select id="recruiter" class="form-control" name="recruiter" required>
                                         <!-- <option selected>Choose Recruiter</option> -->
                                         <?php foreach ($recruiter_set as $recruiter) { ?>
                                         <option value="<?php echo $recruiter['recruiter_id'] ?>" <?php echo($recruiter['email'] === $_SESSION['email'] ? 'selected' : ''); ?>><?php echo ($recruiter['first_name'] . ' ' . $recruiter['last_name']); ?></option>    
@@ -96,7 +96,7 @@ if(is_post_request()){
                             
                             <div class="form-group col-md-4">
                                     <label for="position">Position</label>
-                                    <select id="position" class="form-control" name="position">
+                                    <select id="position" class="form-control" name="position" required>
                                         <option value = "" selected>Choose Position</option>
                                         <?php foreach ($position_set as $position) { ?>
                                         <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option>    

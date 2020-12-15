@@ -462,8 +462,7 @@ function edit_candidate_recruiter($data_set){
 
   $sql = "UPDATE users SET ";
             $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
-            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
-            $sql .= "email='" . db_escape($db, $data_set['email']) . "' ";
+            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
             $sql .= "LIMIT 1; ";
             echo $sql;
@@ -501,8 +500,7 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
   mysqli_begin_transaction($db);
             $sql = "UPDATE users SET ";
             $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
-            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "', ";
-            $sql .= "email='" . db_escape($db, $data_set['email']) . "' ";
+            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
             $sql .= "LIMIT 1; ";
             

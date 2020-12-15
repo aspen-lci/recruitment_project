@@ -47,18 +47,6 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
         </div>
 
-        <!-- <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <div class="card-header" style="background-color: #0D0D0D;"></div>
-            <div class="card-body">
-              <h4 class="card-title">Form</h4>
-                <a href="https://bit.ly/2SbHRzx" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">LEA Criminal History and Background Check</a>
-            </div>
-            <div class="card-footer" style="background-color: #0D0D0D;"> -->
-              
-            <!-- </div>
-          </div>
-        </div> -->
     </div> 
     <!-- /.row -->
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>

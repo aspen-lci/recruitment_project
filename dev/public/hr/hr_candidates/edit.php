@@ -32,7 +32,6 @@
         $update['user_id'] = $candidate['user_id'];
         $update['first_name'] = $_POST['first_name'];
         $update['last_name'] = $_POST['last_name'];
-        $update['email'] = $_POST['email'];
         $update['recruiter'] = $_POST['recruiter'];
         $update['disposition'] = $_POST['status'];
         $update['company'] = $_POST['company'];

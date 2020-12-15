@@ -53,7 +53,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 <div class="col-lg-12">
                 
                     <p class="mt-4"><strong>Form</strong></p>
-                    <a href="<?php echo $crim; ?>" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
+                    <a href="<?php echo $crim; ?>" target="_blank" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
                 </div>
             </div>
             </div>
@@ -63,18 +63,13 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
         </div>
     </div>
+    
+    <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
+    
     </div>
     <!-- /.container -->
   
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="text-white text-center"><strong>Individuals Succeed. Families Thrive. Communities Prosper.</strong></p>
-        <p class="text-white text-center">4150 Illinois Road, Fort Wayne, IN 46804 | crosswinds.org | lastingchangestartshere.org | lifelineyouth.org</p>
-        <p class="m-0 text-center text-white">Copyright &copy; Lifeline Youth and Family Services 2020</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+    <?php include(SHARED_PATH . '/candidate_footer.php'); ?>  
   
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

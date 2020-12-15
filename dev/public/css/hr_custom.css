@@ -143,6 +143,10 @@ body {
   background-color: transparent;
 }
 
+footer #footer_tagline{
+  font-size: 1.75rem;
+}
+
 .form-control{
   font-size: 1.1em;
   background-color: transparent;

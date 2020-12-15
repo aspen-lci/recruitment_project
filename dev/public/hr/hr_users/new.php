@@ -45,21 +45,21 @@ if(is_post_request()){
                         <div class="form-row m-4">
                             <div class="form-group col-md-6">
                                 <label for="firstName">First Name</label>
-                                <input type="text" class="form-control" name="firstName" placeholder="First Name" value="<?php echo $user['first_name']; ?>">
+                                <input type="text" class="form-control" name="firstName" placeholder="First Name" value="<?php echo $user['first_name']; ?>" required>
                             </div> <!-- Form Col End -->
                             <div class="form-group col-md-6">
                                 <label for="lastName">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="<?php echo $user['last_name']; ?>">
+                                <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="<?php echo $user['last_name']; ?>" required>
                             </div> <!-- Form Col End -->
                         </div> <!-- Form Row End -->
                         <div class="form-row m-4">
                         <div class="form-group col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $user['email']; ?>">
+                                <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $user['email']; ?>" required>
                             </div> <!-- Form Col End -->
                             <div class="form-group col-md-6">
                                 <label for="userType">User Type</label>
-                                <select id="userType" class="form-control" name="userType">
+                                <select id="userType" class="form-control" name="userType" required>
                                     <option value="" selected>Choose User Type</option>
                                     <?php foreach ($type_set as $type) { ?>
                                         <option value="<?php echo $type['id'] ?>" <?php echo($user['type'] == $type['id'] ? 'selected' : '') ?>><?php echo $type['role'] ?></option>    

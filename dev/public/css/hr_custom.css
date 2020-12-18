@@ -1,5 +1,5 @@
 * {
-  font-family: Calibri,  sans-serif;
+  font-family: myriad-pro, "Calibri", sans-serif;
  
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 #content{
-  min-height: calc(100vh - 325px);
+  min-height: calc(100vh - 350px);
 }
 
 .doc-status {

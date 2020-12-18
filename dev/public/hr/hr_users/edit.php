@@ -20,7 +20,7 @@ if(is_post_request()){
         $_SESSION['message'] = "User has been updated";
         redirect_to(url_for('/hr/hr_users/index.php'));
     }else {
-        $errors = $result;
+        $errors['user_error'] = $result;
         
     }
 

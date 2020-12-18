@@ -52,6 +52,7 @@ if(is_post_request()){
     <?php echo(!empty($errors) ? display_errors($errors) : ""); ?>
     
     <div class="row">
+    <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">

@@ -63,7 +63,7 @@ if(is_post_request()) {
 
 
 
-<?php $page_title = 'Candidate'; ?>
+<?php $page_title = 'Log In'; ?>
 <?php include(SHARED_PATH . '/login_header.php'); ?>
 
 <!-- Page Content -->

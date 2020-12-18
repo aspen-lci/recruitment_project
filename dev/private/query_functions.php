@@ -116,11 +116,11 @@
       $sql .= "email='" . db_escape($db, $user_set['email']) . "', ";
       $sql .= "type='" . db_escape($db, $user_set['type']) . "' ";
       $sql .= "WHERE id=" . $user_set['id'];
-      echo $sql;
+      
       $result = mysqli_query($db, $sql);
 
       if(!$result){
-          echo mysqli_error($db);
+          return mysqli_error($db);
           
       }
       db_disconnect($db);

@@ -39,7 +39,7 @@ if(is_post_request()){
         $errors = $result;
     }
 }else{
-    $errors['user_exists'] = "Candidate already exists.  Please contact Jen Faulk for further information.";
+    $errors['user_exists'] = "Candidate already exists.  Please contact Jen Falk for further information.";
 }
     
 }
@@ -50,9 +50,8 @@ if(is_post_request()){
 <?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
-    
-    <?php echo(!empty($errors) ? display_errors($errors) : ""); ?>
     <div class="row">
+    <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">

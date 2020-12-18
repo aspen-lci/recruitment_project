@@ -19,6 +19,9 @@ if(is_post_request()){
       case 4:
         redirect_to(url_for('/candidate/index.php'));
       break;
+      case 5:
+        redirect_to(url_for('/hr/index.php'));
+      break;
     } 
       
     

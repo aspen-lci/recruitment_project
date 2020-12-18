@@ -20,7 +20,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="row text-center">  
         <div class="col-lg-12 mb-4">
           <div class="card h-100">
-            <div class="card-header" style="background-color: #0D0D0D;"></div>
+            <div class="card-header c-card-4"></div>
             <div class="card-body">
               <h4 class="card-title mb-4">HELPFUL HINTS: Common errors for criminal history form</h4>
               <div class="row text-left">
@@ -57,7 +57,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </div>
             </div>
             </div>
-            <div class="card-footer" style="background-color: #0D0D0D;">
+            <div class="card-footer c-card-4">
               
             </div>
           </div>

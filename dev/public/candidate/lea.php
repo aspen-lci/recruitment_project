@@ -21,7 +21,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="row text-center">  
         <div class="col-lg-12 mb-4">
           <div class="card h-100">
-            <div class="card-header" style="background-color: #F20505;"></div>
+            <div class="card-header c-card-3"></div>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12">
@@ -38,7 +38,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               </div>
             </div>
             </div>
-            <div class="card-footer" style="background-color: #F20505;">
+            <div class="card-footer c-card-3">
               
             </div>
           </div>

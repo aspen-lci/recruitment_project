@@ -455,6 +455,11 @@ $('input[type="text"]')
     // resize on page load
     .each(resizeInput);
 
+    $('#status').change(function (){
+        if($(this).val() === '12')
+            alert("Selecting inactive status will remove candidate from dashboard lists and make them an inactive user.");
+    });
+
 
 //     $.fn.editable.defaults.mode = 'inline';
 //     $.fn.editableform.buttons =

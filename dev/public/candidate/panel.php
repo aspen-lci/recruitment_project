@@ -28,7 +28,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="row text-center">  
         <div class="col-lg-12 mb-4">
           <div class="card h-100">
-            <div class="card-header" style="background-color: #F2E205;"><h3>Resources</h3></div>
+            <div class="card-header c-card-5"><h3>Necessary Interview Materials</h3></div>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12 d-flex justify-content-between">
@@ -41,7 +41,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               </div>
               
             </div>
-            <div class="card-footer" style="background-color: #F2E205;">
+            <div class="card-footer c-card-5">
               
             </div>
           </div>

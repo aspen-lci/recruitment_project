@@ -4,7 +4,7 @@
 }
 
 body{
-  font-size: 1.1rem;
+  font-size: .9rem;
 }
 
 .btn{
@@ -180,8 +180,8 @@ li {
 }
 
 .navbar-dark .navbar-nav .nav-link{
-  color:  rgba(249, 142, 44, .75);
-  font-size: 1.25em;
+  color:  rgba(249, 142, 44);
+  font-size: 1.5rem;
 }
 
 #nsRadio input{

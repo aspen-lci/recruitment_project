@@ -1,0 +1,280 @@
+* {
+    font-family: myriad-pro, "Calibri", sans-serif;
+   
+  }
+  
+  body{
+    font-size: .9rem;
+  }
+  
+  .btn{
+    background-color: #F98E2C;
+    border-color: #F98E2C;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .btn i{
+    background-color: #F98E2C;
+    border-color: #F98E2C;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  button.btn.btn-secondary{
+    background-color: #F98E2C;
+    border-color: #F98E2C;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  body {
+      padding-top: 100px;
+  }
+  
+  .card-body a{
+    margin-bottom: 1.5em;
+  }
+  
+  .card-header{
+    font-weight: bolder;
+    font-size: 1.1em;
+  }
+  
+  .container{
+    min-width: 100%;
+  }
+  
+  #content{
+    min-height: calc(100vh - 350px);
+  }
+  
+  .doc-status {
+    font-size: 1.1em;
+    max-width: 100%;
+    white-space: normal;
+    text-overflow: ellipsis;
+    margin: 20px;
+    padding: 0;
+    background-color: transparent;
+    border-top-style: hidden;
+    border-bottom-style: dashed 1px #0088cc;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    color: black;
+  }
+  
+  .btn-dropdown{
+    margin: 5px 0 0;
+    display: block;
+    border-radius: 0;
+    
+  }
+  
+  
+  #edit-form #edit-form-btn{
+    position: absolute;
+    right: 50px;
+    bottom: auto;
+    top: auto;
+  }
+  
+  #cancel{
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  #edit-form #edit-form-fields{
+    margin-top: 30px;
+  }
+  
+  #edit-form input{
+    border-top-style: hidden;
+    border-bottom-style: dashed 1px #0088cc;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    color: black;
+    max-width:100%;
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  
+  #edit-form #name{
+    background-color: transparent;
+    font-size: 1.75rem;
+    text-decoration: none;
+    font-style: normal;
+    text-align: right;
+  }
+  
+  #edit-form label{
+    padding-right: .5em;
+    padding-top: 2em;
+  }
+  
+  #edit-form #last_name{
+    background-color: transparent;
+    font-size: 1.75rem;
+    text-decoration: none;
+    font-style: normal;
+    padding-left: 0;
+  }
+  
+  #edit-form select {
+    border-top-style: hidden;
+    border-bottom-style: dashed 1px #0088cc;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    color: black;
+    text-align: center;
+    background-color: transparent;
+  }
+  
+  footer #footer_tagline{
+    font-size: 1.75rem;
+  }
+  
+  .form-control{
+    font-size: 1.1em;
+    background-color: transparent;
+  }
+  
+  .form-group label{
+    font-size: 1.25em;
+  }
+  
+  .hidden{
+    display: none;
+  }
+  
+  #last_name{
+    padding-left: .25em;
+  }
+  
+  li {
+    padding: 20px;
+  }
+  
+  #logout-btn{
+      color: #F98E2C;
+      background-color: #ffffff;
+      border-color: #F98E2C;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      margin-left: 20px;
+      margin-right: 20px;
+      font-size: 1.2rem;
+  }
+  
+  .navbar-dark .navbar-nav .nav-link{
+    color:  rgba(249, 142, 44);
+    font-size: 1.5rem;
+  }
+  
+  #nsRadio input{
+    margin-right: 10px;
+  }
+  
+  #nsRadio label {
+    font-size: 1.1em;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #nsRadio p{
+    font-size: 1.25em;
+  }
+  
+  table p{
+    font-weight: bold;
+  }
+  
+  div #top_ribbon .row {
+    margin: 20px;
+  }
+  
+  #welcome {
+    font-size: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    color: #F98E2C;
+  }
+  
+  /* Errors */
+  
+  .errors {
+      display: inline-block;
+      border: 2px solid red;
+      color: red;
+      padding: 1em;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+    
+    .errors ul {
+      margin-bottom: 0;
+      padding-left: 1em;
+    }
+    
+    /* Session Messages */
+    
+    #message {
+      color: #0055DD;
+      background: white;
+      border: 2px solid #0055DD;
+      padding: 1em 15px;
+      margin: 1em auto;
+      text-align: center;
+    }
+  
+    /* Document Status Coloring */
+    .doc_status.Submitted {
+      background-color: rgba(91,192,222,0.6);
+      font-weight: 500;
+    }
+  
+    .doc_status.Correction {
+      background-color: rgba(255,0,0,0.6);
+      font-weight: 500;
+    }
+  
+    .doc_status.Completed {
+      background-color: rgba(92, 184, 92, 0.6);
+      font-weight: 500;
+    }
+  
+    .doc_status.Processing {
+      background-color: rgba(249, 142, 44, 0.6);
+      font-weight: 500;
+    }
+
+/* sidebar CSS */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #343a40;
+    color: #fff;
+    transition: all 0.3s;
+}

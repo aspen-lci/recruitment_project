@@ -6,14 +6,37 @@
 .btn {
     font-size: 1.2rem;
 }
+
+.btn-outline-lli{
+    color: #F98E2C;
+    background-color: #ffffff;
+    border-color: #F98E2C;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+}
+
+.btn-outline-lli:hover {
+    color: #ffffff;
+    background-color: #F98E2C;
+}
+
 body {
     padding-top: 150px;
-    
+    font-size: 1.2rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #content{
     min-height: calc(100vh - 350px);
 }
+
+
 
 #cust-btn{
     font-weight: bold;
@@ -82,9 +105,15 @@ footer #footer_tagline{
     letter-spacing: 0.05em;
 }
 
+#logout-btn:hover{
+    color: #ffffff;
+    background-color: #F98E2C;
+}
+
 navigation ul{
     list-style-type: none;
 }
+
 
 #regForm {
     margin: 0 auto;

@@ -50,7 +50,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, $jd_doc_id)); ?>>
               <p class="card-text">Please sign and return.</p>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="<?php echo $jd; ?>" target="_blank" class="btn btn-outline-primary btn-small" <?php echo(card_body_status($documents, $jd_doc_id)); ?>><?php echo $position; ?> Job Description</a>
+              <a href="<?php echo $jd; ?>" target="_blank" class="btn btn-outline-lli btn-small" <?php echo(card_body_status($documents, $jd_doc_id)); ?>><?php echo $position; ?> Job Description</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, $jd_doc_id)); ?>><?php echo(document_in_document_list($documents, $jd_doc_id)); ?></p>
           </div>
@@ -68,7 +68,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 4)); ?>>
               <p class="card-text">First, Middle, and Last Name required! Please sign and date. </p>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="<?php echo $disc; ?>" target="_blank" class="btn btn-outline-primary btn-small">FCRA Disclosure</a>
+              <a href="<?php echo $disc; ?>" target="_blank" class="btn btn-outline-lli btn-small">FCRA Disclosure</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, '4')); ?>><?php echo(document_in_document_list($documents, 4)); ?></p>
           </div>
@@ -87,7 +87,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">LEA Form</h4>
             <div <?php echo(card_body_status($documents, 5)); ?>>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="lea.php" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
+              <a href="lea.php" target="_blank" class="btn btn-outline-lli btn-small mt-3">Instructions and Form</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
           </div>
@@ -111,7 +111,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Criminal History & Background Check</h4>
             <div <?php echo(card_body_status($documents, 6)); ?>>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="crimhist.php" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions and Form</a>
+              <a href="crimhist.php" target="_blank" class="btn btn-outline-lli btn-small mt-3">Instructions and Form</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 6)); ?>><?php echo(document_in_document_list($documents, 6)); ?></p>
           </div>
@@ -131,7 +131,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 13)); ?>>
               <p class="card-text">Open the box below for details and necessary preparation materials.</p>
               <p class="card-text">Good luck on your interview!</p>
-              <a href="panel.php" class="btn btn-outline-primary btn-small mt-3">Neccessary Interview Materials</a>
+              <a href="panel.php" class="btn btn-outline-lli btn-small mt-3">Neccessary Interview Materials</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 13)); ?>><?php echo(document_in_document_list($documents, 13)); ?></p>
           </div>
@@ -174,7 +174,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <div>
                 <p class="card-text" style="display: <?php echo($position_id == 2 ? 'flex' : 'none'); ?>" >Please send transcripts for your highest completed degree.</p>
               </div>
-              <a href="transcripts.php" class="btn btn-outline-primary btn-small mt-3">How to Send Transcripts</a>
+              <a href="transcripts.php" class="btn btn-outline-lli btn-small mt-3">How to Send Transcripts</a>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 8)); ?>><?php echo(document_in_document_list($documents, 8)); ?></p>
           </div>
@@ -192,7 +192,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Schedule fingerprinting</h4>
             <div <?php echo(card_body_status($documents, 9)); ?>>
               <p class="card-text">Your fingerprinting will be paid for by Lifeline Youth & Family Services.</p>
-              <a href="<?php echo url_for('/documents/Fingerprinting instructions.pdf'); ?>" target="_blank" class="btn btn-outline-primary btn-small mt-3">Instructions</a>
+              <a href="<?php echo url_for('/documents/Fingerprinting instructions.pdf'); ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Instructions</a>
               </div>
               <p class="doc_status" <?php echo(display_card_body_status($documents, 9)); ?>><?php echo(document_in_document_list($documents, 9)); ?></p>
           </div>
@@ -210,7 +210,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">References</h4>
             <div <?php echo(card_body_status($documents, 10)); ?>>
             <p class="card-text">You will receive an email from Checkster to create an account and invite references to participate in your reference check.</p>
-              <a href="references.php" class="btn btn-outline-primary btn-small mt-3">Instructions and Requirements</a>
+              <a href="references.php" class="btn btn-outline-lli btn-small mt-3">Instructions and Requirements</a>
               </div>
               <p class="doc_status" <?php echo(display_card_body_status($documents, 10)); ?>><?php echo(document_in_document_list($documents, 10)); ?></p>
           </div>
@@ -266,7 +266,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </ul>
               </div>
             </div>
-            <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-primary btn-small mt-3">Learn more about your first week</a>
+            <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
           </div>
           <div class="card-footer c-card-11">
             

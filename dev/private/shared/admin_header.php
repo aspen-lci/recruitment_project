@@ -52,11 +52,15 @@
    
 
     <!-- My Custom CSS -->
-    <link rel="stylesheet" href="<?php echo url_for('/css/hr_custom.css'); ?>">
+    <link rel="stylesheet" href="<?php echo url_for('/css/admin.css'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('/css/cards.css'); ?>">
+    
 
     <!-- Myriad Pro Font -->
     <link rel="stylesheet" href="https://use.typekit.net/kux2cbc.css">
+
+    <!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
   </head>
 

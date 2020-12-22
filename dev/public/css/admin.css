@@ -2,6 +2,11 @@
     font-family: myriad-pro, "Calibri", sans-serif;
    
   }
+
+  #admin_btn_group{
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
   
   body{
     font-size: .9rem;
@@ -16,6 +21,14 @@
     margin-left: 20px;
     margin-right: 20px;
     font-size: 1.2rem;
+  }
+
+  .admin_btn_group div a{
+    color: white;
+  }
+
+  .admin_btn_group .btn{
+    display: flex;
   }
   
   .btn i{
@@ -261,20 +274,3 @@
       font-weight: 500;
     }
 
-/* sidebar CSS */
-.wrapper {
-    display: flex;
-    width: 100%;
-}
-
-#sidebar {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    background: #343a40;
-    color: #fff;
-    transition: all 0.3s;
-}

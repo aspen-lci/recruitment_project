@@ -205,6 +205,30 @@
     return $status;
   }
 
+  function all_dispositions(){
+    global $db;
+
+    $sql = "SELECT * FROM dispositions";
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $dispositions = resultToArray($result);
+    mysqli_free_result($result);
+    return $dispositions;
+  }
+
+  function all_doc_status(){
+    global $db;
+
+    $sql = "SELECT * FROM doc_status_view";
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $doc_status = resultToArray($result);
+    mysqli_free_result($result);
+    return $doc_status;
+  }
+
   function all_ii_dates(){
     global $db;
 
@@ -847,5 +871,19 @@ function get_zoom_link($region_id){
   return $zoom;
 }
 
+//get a list of all documents used for candidates
+
+function all_documents(){
+
+  global $db;
+
+  $sql = "SELECT * FROM documents";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $documents = resultToArray($result);
+  mysqli_free_result($result);
+  return $documents;
+}
  
 ?>

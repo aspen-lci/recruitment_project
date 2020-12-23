@@ -153,6 +153,39 @@
       return $companies;
     }
 
+    function get_company_by_id($id){
+      global $db;
+
+      $sql = "SELECT * FROM companies ";
+      $sql .= "WHERE id=" . $id . " ";
+      $sql .= "LIMIT 1";
+
+      $result = mysqli_query($db, $sql);
+      confirm_result_set($result);
+      $company = resultToArray($result);
+      mysqli_free_result($result);
+      return $company;
+    }
+
+    function update_company($company){
+      global $db;
+
+      $sql = "UPDATE companies SET ";
+      $sql .= "company='" . $company['company'] . "', ";
+      $sql .= "logo_url='" . h($company['logo_url']) . "' ";
+      $sql .= "WHERE id=" . $company['id'] . " ";
+      $sql .= "LIMIT 1";
+echo $sql;
+      $result = mysqli_query($db, $sql);
+
+        if(!$result){
+          
+          echo mysqli_error($db);
+          
+        }
+        return $result;
+    }
+
     function all_positions(){
       global $db;
 

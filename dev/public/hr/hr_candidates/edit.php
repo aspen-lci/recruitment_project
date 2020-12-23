@@ -142,7 +142,7 @@
 
 <div id="content">
 
-<?php echo display_errors($errors); ?>
+
 <div class="row m-3" id="top-ribbon">
     <div class="col-lg-2">
         <a href="<?php echo url_for('/hr/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')" >&laquo; Return to List</a>

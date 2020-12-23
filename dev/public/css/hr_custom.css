@@ -179,6 +179,11 @@ li {
     font-size: 1.2rem;
 }
 
+#logout-btn:hover{
+  color: #ffffff;
+  background-color: #F98E2C;
+}
+
 .navbar-dark .navbar-nav .nav-link{
   color:  rgba(249, 142, 44);
   font-size: 1.5rem;

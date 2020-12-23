@@ -4,12 +4,12 @@
   }
 
   #admin_btn_group{
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px;
   }
   
   body{
-    font-size: .9rem;
+    font-size: 1rem;
+    padding-top: 100px;
   }
   
   .btn{
@@ -21,15 +21,23 @@
     margin-left: 20px;
     margin-right: 20px;
     font-size: 1.2rem;
-  }
-
-  .admin_btn_group div a{
-    color: white;
-  }
-
-  .admin_btn_group .btn{
     display: flex;
   }
+
+  .btn:hover{
+    background-color: white;
+    color: #f98e2c;
+  }
+
+.btn-admin{
+    background-color: white;
+    color: #F98E2C;
+    margin-left: 0;
+    border-radius: 0;
+}
+  /* .admin_btn_group .btn{
+    display: flex;
+  } */
   
   .btn i{
     background-color: #F98E2C;
@@ -40,6 +48,7 @@
     margin-left: 20px;
     margin-right: 20px;
   }
+
   
   button.btn.btn-secondary{
     background-color: #F98E2C;
@@ -51,10 +60,6 @@
     margin-right: 10px;
   }
   
-  body {
-      padding-top: 100px;
-  }
-  
   .card-body a{
     margin-bottom: 1.5em;
   }
@@ -62,6 +67,8 @@
   .card-header{
     font-weight: bolder;
     font-size: 1.1em;
+    background-color: #003b49;
+    color: white;
   }
   
   .container{
@@ -109,52 +116,7 @@
     border-color: #007bff;
   }
   
-  #edit-form #edit-form-fields{
-    margin-top: 30px;
-  }
   
-  #edit-form input{
-    border-top-style: hidden;
-    border-bottom-style: dashed 1px #0088cc;
-    border-left-style: hidden;
-    border-right-style: hidden;
-    color: black;
-    max-width:100%;
-    padding: 0;
-    background-color: transparent;
-  }
-  
-  
-  #edit-form #name{
-    background-color: transparent;
-    font-size: 1.75rem;
-    text-decoration: none;
-    font-style: normal;
-    text-align: right;
-  }
-  
-  #edit-form label{
-    padding-right: .5em;
-    padding-top: 2em;
-  }
-  
-  #edit-form #last_name{
-    background-color: transparent;
-    font-size: 1.75rem;
-    text-decoration: none;
-    font-style: normal;
-    padding-left: 0;
-  }
-  
-  #edit-form select {
-    border-top-style: hidden;
-    border-bottom-style: dashed 1px #0088cc;
-    border-left-style: hidden;
-    border-right-style: hidden;
-    color: black;
-    text-align: center;
-    background-color: transparent;
-  }
   
   footer #footer_tagline{
     font-size: 1.75rem;
@@ -191,6 +153,11 @@
       margin-right: 20px;
       font-size: 1.2rem;
   }
+
+  #logout-btn:hover{
+    color: #ffffff;
+    background-color: #F98E2C;
+}
   
   .navbar-dark .navbar-nav .nav-link{
     color:  rgba(249, 142, 44);

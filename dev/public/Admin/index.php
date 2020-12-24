@@ -30,7 +30,7 @@ $doc_statuses = all_doc_status();
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex">
-                  <a class="btn p-2" type="button" href="#">Add New Company</a>
+                  <a class="btn p-2" type="button" href="<?php echo(url_for('/admin/new_company.php')); ?>">Add New Company</a>
                   <h3 class="m-auto font-weight-bold text-light">Companies</h3>
                 </div> <!-- Card header -->
             
@@ -74,7 +74,7 @@ $doc_statuses = all_doc_status();
                 <a href="#top">Return to Top</a>
               <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex">
-                    <a class="btn p-2" type="button" href="#">Add New Document</a>
+                    <a class="btn p-2" type="button" href="<?php echo(url_for('/admin/new_document.php')); ?>">Add New Document</a>
                     <h3 class="m-auto font-weight-bold text-light">Documents</h3>
                 </div> <!-- Card header -->
             
@@ -102,21 +102,7 @@ $doc_statuses = all_doc_status();
                     <td><i class="fas fa-check" style="display:<?php echo ($document['is_jd'] == '1' ? "initial" : "none"); ?>"></i></td>
                     <td><?php echo h($document['template_link']); ?></td>
                     <td>
-                        <div class="dropdown d-inline-block">
-                        <a type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                          <div class="dropdown-menu dropdown-primary">
-                          <form  action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive'] . '&role=' . $user['role_id']); ?>" method="post">
-                            <button type="submit" class="dropdown-item btn btn-dropdown" value="submit">Change Status</button>
-                          </form>
-                        
-                      <form onsubmit="return confirm('<?php echo('Would you like to reset the password for ' . h($user['first_name']) . ' ' . h($user['last_name']) . '?'); ?>')" action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['user_id']))); ?>" method="post">
-                        <button type="submit" class="dropdown-item btn btn-dropdown" value="submit">Reset Password</button>
-                      </form>
-
-                      
-
-                      </div>
-                      </div>
+                    <a href="<?php echo(url_for('/admin/edit_documents.php?id=' . $document['id'])); ?>"><i class="fas fa-pencil-alt"></i></a>
                     </td>
                   </tr>
                   <?php } ?>
@@ -150,30 +136,25 @@ $doc_statuses = all_doc_status();
                   <tr>
                     <th style data-sortable="true" data-searchable="true">ID</th>
                     <th style data-sortable="true" data-searchable="true">Date</th>
-                    <th style></th>
+                    <th style data-sortable="true">Inactive</th>
+                    <th style>Make Inactive</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($ii_dates as $date) { ?>
                   <tr>
                     <td><?php echo h($date['id']); ?></td>
-                    <td><?php echo h($date['date']); ?></td>
                     <td>
-                        <div class="dropdown d-inline-block">
-                        <a type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                          <div class="dropdown-menu dropdown-primary">
-                          <form  action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive'] . '&role=' . $user['role_id']); ?>" method="post">
-                            <button type="submit" class="dropdown-item btn btn-dropdown" value="submit">Change Status</button>
-                          </form>
-                        
-                      <form onsubmit="return confirm('<?php echo('Would you like to reset the password for ' . h($user['first_name']) . ' ' . h($user['last_name']) . '?'); ?>')" action="<?php echo url_for('/hr/hr_users/delete.php?id=' . h(u($user['user_id']))); ?>" method="post">
-                        <button type="submit" class="dropdown-item btn btn-dropdown" value="submit">Reset Password</button>
-                      </form>
-
-                      
-
-                      </div>
-                      </div>
+                      <?php 
+                      $change_date = convert_date($date['date']); 
+                      echo $change_date;
+                      ?>
+                      </td>
+                    <td><i class="fas fa-check" style="display:<?php echo ($date['inactive'] == '1' ? "initial" : "none"); ?>"></i></td>
+                    <td class="d-flex justify-content-center">
+                        <form action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive'] . '&role=' . $user['role_id']); ?>" method="post">
+                            <button type="submit" class="btn" value="submit">Change Status</button>
+                        </form>
                     </td>
                   </tr>
                   <?php } ?>

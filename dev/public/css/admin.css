@@ -135,6 +135,10 @@
     display: none;
   }
   
+  #is_jd.form_control{
+    align-items: flex-start;
+  }
+
   #last_name{
     padding-left: .25em;
   }

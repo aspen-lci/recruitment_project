@@ -186,6 +186,23 @@ echo $sql;
         return $result;
     }
 
+    function create_company($company){
+      global $db;
+
+      $sql = "REPLACE INTO companies ";
+      $sql .= "(company, logo_url) ";
+      $sql .= "VALUES (";
+      $sql .= "'" . db_escape($db, $company['company']) . "', ";
+      $sql .= "'" . db_escape($db, $company['logo_url']) . "')";
+echo $sql;
+      $result = mysqli_query($db, $sql);
+
+      if(!$result){
+        echo mysqli_error($db);
+      }
+      return $result; 
+    }
+
     function all_positions(){
       global $db;
 
@@ -918,5 +935,56 @@ function all_documents(){
   mysqli_free_result($result);
   return $documents;
 }
+
+function get_document_by_id($id){
+  global $db;
+
+  $sql = "SELECT * FROM documents ";
+  $sql .= "WHERE id=" . $id;
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $document = resultToArray($result);
+  mysqli_free_result($result);
+  return $document;
+}
  
+function update_document($document){
+  global $db;
+
+  $sql = "UPDATE documents SET ";
+  $sql .= "description='" . h($document['description']) . "', ";
+  $sql .= "is_jd='" . h($document['is_jd']) . "', ";
+  $sql .= "template_link='" . h($document['template_link']) . "' ";
+  $sql .= "WHERE id='" . $document['id'] . "' ";
+  $sql .= "LIMIT 1";
+echo $sql;
+  $result = mysqli_query($db, $sql);
+
+    if(!$result){
+      
+      echo mysqli_error($db);
+      
+    }
+    return $result;
+}
+
+function create_document($document){
+  global $db;
+
+  $sql = "REPLACE INTO documents ";
+  $sql .= "(description, is_jd, template_link) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $document['description']) . "', ";
+  $sql .= "'" . db_escape($db, $document['is_jd']) . "', ";
+  $sql .= "'" . db_escape($db, $document['template_link']) . "')";
+echo $sql;
+  $result = mysqli_query($db, $sql);
+
+  if(!$result){
+    echo mysqli_error($db);
+  }
+  return $result; 
+}
+
 ?>

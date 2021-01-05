@@ -11,9 +11,10 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="container" style="margin-top: 20px;">
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
-        <h1>Instructions and Helpful Tips for Filling Out the LEA Form</h1>
-        <p class="lead">Please list all cities/counties/states resided in for the past five (5) years, <em>with dates</em> (month/day/year). Please see the following example.</p>
+      <header class="jumbotron">
+       <img src="<?php echo url_for('/images/LL New Hire_LEAform.jpg') ?>" alt="Instructions and Helpful Tips for Filling Out the LEA Form" style="width:100%;">
+        <!-- <h1>Instructions and Helpful Tips for Filling Out the LEA Form</h1>
+        <p class="lead">Please list all cities/counties/states resided in for the past five (5) years, <em>with dates</em> (month/day/year). Please see the following example.</p> -->
         
       </header>
   
@@ -21,7 +22,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="row text-center">  
         <div class="col-lg-12 mb-4">
           <div class="card h-100">
-            <div class="card-header c-card-3"></div>
+            <div class="card-header c-card-5"></div>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12">
@@ -34,28 +35,17 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <div class="row text-center">
               <div class="col-lg-12">
                 <h4 class="text-center mt-3">Form</h4>
-                <a href="<?php echo($lea); ?>" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">LEA Criminal History and Background Check</a>      
+                <a href="<?php echo($lea); ?>" class="btn btn-outline-primary btn-small align-self-center mt-3" target="_blank" style="font-size: 1.25em;">LEA Criminal History and Background Check</a>      
               </div>
             </div>
             </div>
-            <div class="card-footer c-card-3">
+            <div class="card-footer c-card-5">
               
             </div>
           </div>
         </div>
 
-        <!-- <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <div class="card-header" style="background-color: #0D0D0D;"></div>
-            <div class="card-body">
-              <h4 class="card-title">Form</h4>
-                <a href="https://bit.ly/2SbHRzx" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">LEA Criminal History and Background Check</a>
-            </div>
-            <div class="card-footer" style="background-color: #0D0D0D;"> -->
-              
-            <!-- </div>
-          </div>
-        </div> -->
+        
     </div> 
     <!-- /.row -->
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>

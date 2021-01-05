@@ -88,7 +88,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">LEA Form</h4>
             <div <?php echo(card_body_status($documents, 5)); ?>>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="lea.php" target="_blank" class="btn btn-outline-lli btn-small mt-3">Instructions and Form</a>
+              <a href="lea.php" class="btn btn-outline-lli btn-small mt-3">Instructions and Form</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
           </div>
@@ -112,7 +112,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Criminal History & Background Check</h4>
             <div <?php echo(card_body_status($documents, 6)); ?>>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="crimhist.php" target="_blank" class="btn btn-outline-lli btn-small mt-3">Instructions and Form</a>
+              <a href="crimhist.php" class="btn btn-outline-lli btn-small mt-3">Instructions and Form</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 6)); ?>><?php echo(document_in_document_list($documents, 6)); ?></p>
           </div>

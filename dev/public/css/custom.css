@@ -72,6 +72,7 @@ footer #footer_tagline{
 
 .jumbotron {
     background-color: white;
+    padding: 0;
 }
 
 #login-btn{
@@ -112,13 +113,28 @@ navigation ul{
     list-style-type: none;
 }
 
+#panel-img {
+    color: white;
+    position: relative;
+    text-align: right;
+    
+}
+
+label.panel-info{
+    font-weight: 800;
+}
 
 #regForm {
     margin: 0 auto;
     font-size: 1.2em;
 }
 
-
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 2rem;
+}
 
 #welcome {
     font-size: 2em;

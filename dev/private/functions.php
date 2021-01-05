@@ -138,7 +138,7 @@ function get_doc_link($documents_list, $doc_id){
 
 function add_doc_link($link){
   if (!is_blank($link)) {
-    return '<button class="btn btn-primary" type="button" onclick="location.href=\'' . $link . '\';" target="_blank">Document Link</button>';
+    return '<button class="btn" type="button" onclick="location.href=\'' . $link . '\';" target="_blank">Document Link</button>';
   }
   return;
 }

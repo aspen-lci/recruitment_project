@@ -255,7 +255,7 @@ echo $sql;
     return $status;
   }
 
-  function all_dispositions(){
+ function all_dispositions(){
     global $db;
 
     $sql = "SELECT * FROM dispositions";

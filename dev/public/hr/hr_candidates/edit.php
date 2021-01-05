@@ -5,8 +5,9 @@
     $position_set = all_positions();
     $region_set = all_regions();
     $recruiter_set = all_recruiters();
-    $status_set = all_status();
     $ii_dates = all_ii_dates();
+    $disposition_set = all_dispositions();
+    $status_set = all_doc_status();
 
 
     if(!isset($_GET['id'])){
@@ -178,8 +179,8 @@
                             <br>
                             <label>Disposition:</label>
                             <select id="status" type="select" name="status" value="<?php echo($candidate['disposition']); ?>">
-                                    <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" <?php echo($status['status'] === $candidate['disposition'] ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                    <?php foreach ($disposition_set as $disposition) { ?>
+                                        <option value="<?php echo $disposition['status_id'] ?>" <?php echo($disposition['status'] === $candidate['disposition'] ? 'selected' : ''); ?>><?php echo ($disposition['status']); ?></option>
                                     <?php } ?>
                             </select>
                         </div> <!-- Form Col End -->
@@ -240,7 +241,7 @@
                             <select class="doc-status card-text" id="jd_status" type="select" name="jd_status">
                                     <option value="" <?php echo(is_blank(get_job_desc($document_list)) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (get_job_desc($document_list)) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (get_job_desc($document_list)) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                             </select>
                                 <label class="mt-2 mb-0">Update Document Link</label>
@@ -263,7 +264,7 @@
                                 <select class="doc-status" id="disc_status" type="select" name="disc_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '4')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '4')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '4')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                                 <label class="mt-2 mb-0">Update Document Link</label>
@@ -285,7 +286,7 @@
                                 <select class="doc-status" id="lea_status" type="select" name="lea_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '5')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '5')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '5')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                                 <label class="mt-2 mb-0">Update Document Link</label>
@@ -306,7 +307,7 @@
                                 <select class="doc-status" id="bcg_status" type="select" name="bcg_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '6')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '6')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '6')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                                 <label class="mt-2 mb-0">Update Document Link</label>
@@ -327,7 +328,7 @@
                                 <select class="doc-status" id="panel_status" type="select" name="panel_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '13')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '13')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '13')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                                 
@@ -349,7 +350,7 @@
                                 <select class="doc-status" id="offer_status" type="select" name="offer_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '7')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '7')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '7')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
@@ -366,7 +367,7 @@
                                 <select class="doc-status" id="trans_status" type="select" name="trans_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '8')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '8')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '8')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
@@ -383,7 +384,7 @@
                                 <select class="doc-status" id="fprint_status" type="select" name="fprint_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '9')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '9')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '9')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
@@ -400,7 +401,7 @@
                                 <select class="doc-status" id="ref_status" type="select" name="ref_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '10')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '10')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '10')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
@@ -417,7 +418,7 @@
                                 <select class="doc-status" id="ultipro_status" type="select" name="ultipro_status">
                                     <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '11')) ? 'selected' : ''); ?>></option>
                                     <?php foreach ($status_set as $status) { ?>
-                                        <option value="<?php echo $status['id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '11')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '11')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
                                 </form>

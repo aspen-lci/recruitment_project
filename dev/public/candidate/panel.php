@@ -16,12 +16,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="container" style="margin-top: 20px;">
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
-        <h1 class="text-center">Panel Interview</h1>
-        <p class="lead"><b>Interview Date:</b> <?php echo (date("l, F j, Y", strtotime($candidate['interview_date']))); ?></p>
-        <p class="lead"><b>Interview Time:</b> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>
-        <a class="lead btn" id="logout-btn" href="<?php echo $zoom_link; ?>">Zoom Link</a>
-        
+      <header class="jumbotron" id="panel-img">
+        <!-- <h1 class="text-center">Panel Interview</h1> -->
+        <img src="<?php echo url_for('/images/LL New Hire_PanelInterview.jpg') ?>" alt="Panel Interview Information" style="width:100%;">
+        <div class="top-right">
+          <p><label class="panel-info">Interview Date:</label> <?php echo (date("l, F j, Y", strtotime($candidate['interview_date']))); ?></p>
+          <p><label class="panel-info">Interview Time:</label> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>
+          <a class="lead btn" id="logout-btn" href="<?php echo $zoom_link; ?>">Zoom Link</a>
+        </div>
       </header>
   
       <!-- Page Features -->

@@ -10,10 +10,11 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="container" style="margin-top: 20px;">
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4" style="background-color: rgba(242, 139, 48, .7);">
-        <h1 class="text-center">Instructions and Helpful Tips for Filling Out the Criminal History and Background Check Form</h1>
+      <header class="jumbotron">
+        <img src="<?php echo url_for('/images/LL New Hire_CriminalBackgroundCheck.jpg'); ?>" alt="background_check_banner_img" style="width: 100%;">
+        <!-- <h1 class="text-center">Instructions and Helpful Tips for Filling Out the Criminal History and Background Check Form</h1>
         <p class="lead mt-3">The Department of Child Services (DCS) requires the following information for your background check. Without this information, the hiring process cannot proceed.</p>
-        <p class="lead">Please complete this form in its entirety, sign, and return. Keep an eye on your email over the next few days, for instructions regarding how the hiring process will continue. </p>
+        <p class="lead">Please complete this form in its entirety, sign, and return. Keep an eye on your email over the next few days, for instructions regarding how the hiring process will continue. </p> -->
       </header>
   
       <!-- Page Features -->

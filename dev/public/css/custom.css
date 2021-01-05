@@ -71,9 +71,7 @@ footer #footer_tagline{
 }
 
 .jumbotron {
-    background-color: rgba(249, 142, 44);
-    color: white;
-    padding-top: 10px;
+    background-color: white;
 }
 
 #login-btn{

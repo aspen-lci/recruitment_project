@@ -152,7 +152,7 @@ $doc_statuses = all_doc_status();
                       </td>
                     <td><i class="fas fa-check" style="display:<?php echo ($date['inactive'] == '1' ? "initial" : "none"); ?>"></i></td>
                     <td class="d-flex justify-content-center">
-                        <form action="<?php echo url_for('/hr/hr_users/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive'] . '&role=' . $user['role_id']); ?>" method="post">
+                        <form action="<?php echo url_for('/admin/index.php?id=' . h(u($user['user_id'])) . '&inactive=' . $user['inactive'] . '&role=' . $user['role_id']); ?>" method="post">
                             <button type="submit" class="btn" value="submit">Change Status</button>
                         </form>
                     </td>

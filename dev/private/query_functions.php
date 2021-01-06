@@ -220,7 +220,8 @@ echo $sql;
     global $db;
 
     $sql = "SELECT * FROM regions ";
-    $sql .= "ORDER BY name ASC";
+    $sql .= "WHERE inactive=0 ";
+    $sql .= "ORDER BY id ASC";
 
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

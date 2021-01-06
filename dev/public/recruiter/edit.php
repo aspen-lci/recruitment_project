@@ -141,12 +141,12 @@
                             <br>
                             <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
                             <br>
-                            <label>Panel Interview District for Zoom Link:</label> 
+                            <!-- <label>Panel Interview District for Zoom Link:</label> 
                             <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
                                     <?php } ?>
-                            </select>
+                            </select> -->
                         </div> <!-- Form Col End -->
                         
                     </form>

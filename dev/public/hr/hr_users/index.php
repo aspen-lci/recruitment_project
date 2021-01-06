@@ -32,6 +32,7 @@
 <?php $page_title = 'Users'; ?>
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
+<div id="content">
 <div class="row text-center">
 <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
             <div class="col-lg-12 mb-4">
@@ -99,6 +100,7 @@
             </div> <!-- Card -->
             </div> <!-- Column -->
             </div> <!-- Row -->
+          </div>
 
 
 <?php include(SHARED_PATH . '/hr_footer.php'); ?>  

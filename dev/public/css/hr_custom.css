@@ -5,6 +5,7 @@
 
 body{
   font-size: .9rem;
+  padding-top: 100px;
 }
 
 .btn{
@@ -36,10 +37,6 @@ button.btn.btn-secondary{
   letter-spacing: 0.05em;
   margin-left: 10px;
   margin-right: 10px;
-}
-
-body {
-    padding-top: 100px;
 }
 
 .card-body a{

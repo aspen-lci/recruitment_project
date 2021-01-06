@@ -198,24 +198,25 @@
                                         <option value="<?php echo $position['id'];?>" <?php echo($position['title'] === $candidate['position'] ? 'selected' : ''); ?>><?php echo $position['title']; ?></option>    
                                     <?php } ?>
                             </select><br/>
-                            <label>Panel Interview District for Zoom Link:</label> 
-                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
-                            <?php foreach ($region_set as $region) { ?>
-                                        <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    
-                                    <?php } ?>
-                            </select>
-                        </div> <!-- Form Col End -->
-                        <div class="col-4">
-                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
-                            <br>
-                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
-                            <br>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
                                 <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
                                 <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                             </select>
 
+                        </div> <!-- Form Col End -->
+                        <div class="col-4">
+                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date'])); ?>"/>
+                            <br>
+                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
+                            <br>
+                            <label>Panel Interview Region:</label> 
+                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
+                            <?php foreach ($region_set as $region) { ?>
+                                        <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    
+                                    <?php } ?>
+                            </select>
+                            
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->
                         </div>

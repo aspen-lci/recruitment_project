@@ -177,8 +177,8 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                         <dd><?php echo ($candidate['interview_time'] > 0 ? date('g:i A', strtotime($candidate['interview_time'])) : ''); ?></dd>
                     </td>
                     <td style="border: none;">
-                        <dt>Panel Interview District</dt>
-                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
+                        <!-- <dt>Panel Interview District</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd> -->
                         <dt>Impact Institute Date</dt>
                         <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
                     </td>

@@ -51,7 +51,7 @@ if(is_post_request()){
 
 <div id="content">
     <div class="row">
-    <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
+    <a class="m-3 pl-4" href="<?php echo url_for('/recruiter/index.php'); ?>">&laquo; Return to Candidates In Process</a>
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -60,20 +60,23 @@ if(is_post_request()){
                 <div class="card=body">
                     <form action="<?php echo url_for('/recruiter/new.php'); ?>" method="post">
                         <div class="form-row m-4">
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="firstName">First Name</label>
                                 <input type="text" class="form-control" name="firstName">
                             </div> <!-- Form Col End -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="lastName">Last Name</label>
                                 <input type="text" class="form-control" name="lastName">
                             </div> <!-- Form Col End -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" name="email">
                             </div> <!-- Form Col End -->
 
-                            <div class="form-group col-md-3">
+                            
+                        </div> <!-- Form Row End -->
+                        <div class="form-row m-4">
+                        <div class="form-group col-md-4">
                                     <label for="recruiter">Assigned Recruiter</label>
                                     <select id="recruiter" class="form-control" name="recruiter" onchange="return confirm('Changing the recruiter will remove this candidate from your list.')">
                                         <!-- <option selected>Choose Recruiter</option> -->
@@ -82,8 +85,6 @@ if(is_post_request()){
                                     <?php } ?>
                                     </select>
                             </div> <!-- Form Col End -->
-                        </div> <!-- Form Row End -->
-                        <div class="form-row m-4">
                             <div class="form-group col-md-4">
                                     <label for="company">Company</label>
                                     <select id="company" class="form-control" name="company">
@@ -104,11 +105,11 @@ if(is_post_request()){
                                     </select>
                             </div> <!-- Form Col End -->
 
-                            <div class="form-group col-md-4" id="nsRadio">
+                            <!-- <div class="form-group col-md-4" id="nsRadio">
                                     <p>District for Panel Interview Zoom Link</p>
                                     <?php foreach ($region_set as $region) { ?>
                                         <label for="region"><input type="radio" name="region" value="<?php echo $region['id'] ?>" required><?php echo $region['name'] ?></label>    
-                                    <?php } ?>
+                                    <?php } ?> -->
                             </div> <!-- Form Col End -->
 
                             

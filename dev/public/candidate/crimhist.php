@@ -54,7 +54,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 <div class="col-lg-12">
                 
                     <p class="mt-4"><strong>Form</strong></p>
-                    <a href="<?php echo $crim; ?>" target="_blank" class="btn btn-outline-primary btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
+                    <a href="<?php echo $crim; ?>" target="_blank" class="btn btn-small align-self-center mt-3" style="font-size: 1.25em;">Criminal History and Background Check</a>
                 </div>
             </div>
             </div>

@@ -988,4 +988,20 @@ echo $sql;
   return $result; 
 }
 
+function get_position_id($user_id){
+  global $db;
+
+  $sql = "SELECT position_id FROM full_candidate_view ";
+  $sql .= "WHERE user_id='" . db_escape($db, $user_id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $position = resultToArray($result);
+  mysqli_free_result($result);
+  
+  return $position;
+
+}
+
 ?>

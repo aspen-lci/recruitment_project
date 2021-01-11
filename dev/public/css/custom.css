@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
 }
 
 .doc_status {
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: bold;
     padding-top: 20px;
 }
@@ -137,14 +137,30 @@ label.panel-info{
 }
 
 #welcome {
-    font-size: 2em;
+    font-size: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    color: #F98E2C;
 }
+
+@media screen and (max-width:991px){
+    footer {
+        height: 300px;
+        bottom: 0px;
+    
+    }
+    
+} 
 
 @media screen and (max-width:768px){
     body {
         padding-top: 200px;
     }
-
+    footer {
+        height: 300px;
+        bottom: 0px;
+    
+    }
     
 } 
 
@@ -153,6 +169,7 @@ label.panel-info{
         width: 100%;
         height: auto;
     }
+    
 } 
 
 

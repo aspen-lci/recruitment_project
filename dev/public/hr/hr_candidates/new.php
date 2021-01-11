@@ -20,7 +20,7 @@ if(is_post_request()){
     $candidate['company'] = $_POST['company'] ?? '';
     $candidate['position'] = $position ?? '';
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
-    $candidate['start_date'] = $_POST['startDate'] ?? '';
+    $candidate['region_id'] = $_POST['region_id'] ?? '';
     $candidate['interview_date'] = $_POST['interviewDate'] ?? '';
     $candidate['interview_time'] = $_POST['interviewTime'] ?? '';
     $candidate['ii_date'] = $_POST['iiDate'] ?? '';

@@ -41,7 +41,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- Page Features -->
     <div class="row text-center">
 
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, $jd_doc_id)); ?>;">
           <div class="card-header c-card-1">
             <h4>1</h4>
@@ -59,7 +59,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 4)); ?>;">
           <div class="card-header c-card-2">
             <h4>2</h4>
@@ -79,7 +79,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 5)); ?>;">
           <div class="card-header c-card-3">
             <h4>3</h4>
@@ -103,7 +103,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- /.row -->
 
     <div class="row text-center">
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 6)); ?>;">
           <div class="card-header c-card-4">
             <h4>4</h4>
@@ -122,7 +122,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 13)); ?>;">
           <div class="card-header c-card-5" >
             <h4>5</h4>
@@ -141,7 +141,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 7)); ?>;">
           <div class="card-header c-card-6">
             <h4>6</h4>
@@ -163,7 +163,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- end row-->
 
     <div class="row text-center">
-    <div class="col-lg-4 col-md-6 mb-4">
+    <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 8)); ?>";>
           <div class="card-header c-card-7">
             <h4>7</h4>
@@ -184,7 +184,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 9)); ?>";>
           <div class="card-header c-card-8">
             <h4>8</h4>
@@ -202,7 +202,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
       
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 10)); ?>";>
           <div class="card-header c-card-9">
             <h4>9</h4>
@@ -224,7 +224,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- /.row -->
     <div class="row text-center"> 
 
-    <div class="col-lg-4 col-md-6 mb-4">
+    <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11)); ?>";>
           <div class="card-header c-card-10">
             <h4>10</h4>
@@ -250,7 +250,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <p class="card-text"><strong>We can’t wait to meet you!</strong></p>
               <p class="card-text">Your first week with us at Impact Institute will set you up to hit the ground running.</p>
             
-            <div class="row text-justify">
+            <div class="row text-left">
               <div class="col-lg-6" id="ii_testing">
                 <h5>TB test, Drug Screen, Physical, and CPR Certification</h5>
                 <p>All necessary medical screenings and CPR certification are covered by Lifeline and will take place during Impact Institute.</p>

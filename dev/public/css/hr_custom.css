@@ -5,7 +5,6 @@
 
 body{
   font-size: .9rem;
-  padding-top: 100px;
 }
 
 .btn{
@@ -37,6 +36,10 @@ button.btn.btn-secondary{
   letter-spacing: 0.05em;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+body {
+    padding-top: 100px;
 }
 
 .card-body a{
@@ -259,6 +262,11 @@ div #top_ribbon .row {
   }
 
   .doc_status.Processing {
+    background-color: rgba(249, 142, 44, 0.6);
+    font-weight: 500;
+  }
+
+  .doc_status.Rescheduling {
     background-color: rgba(249, 142, 44, 0.6);
     font-weight: 500;
   }

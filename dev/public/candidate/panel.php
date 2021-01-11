@@ -22,7 +22,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         <div class="top-right">
           <p><label class="panel-info">Interview Date:</label> <?php echo (date("l, F j, Y", strtotime($candidate['interview_date']))); ?></p>
           <p><label class="panel-info">Interview Time:</label> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>
-          <a class="lead btn" id="logout-btn" href="<?php echo $zoom_link; ?>">Zoom Link</a>
+          <a class="lead btn" id="logout-btn" target="_blank" href="<?php echo $zoom_link; ?>">Zoom Link</a>
         </div>
       </header>
   

@@ -100,8 +100,7 @@
             </div> <!-- Card -->
             </div> <!-- Column -->
             </div> <!-- Row -->
-          </div>
-
+</div>
 
 <?php include(SHARED_PATH . '/hr_footer.php'); ?>  
 

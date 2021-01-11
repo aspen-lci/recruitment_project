@@ -41,7 +41,8 @@
         $update['interview_time'] = $_POST['interviewTime'];
         $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
-        
+      	$update['region'] = $_POST['region'];
+
 
         
 
@@ -211,12 +212,12 @@
                             <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
                             <br>
                             <label>Panel Interview Region:</label> 
-                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
+                            <select id="region" type="select" name="region">
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    
                                     <?php } ?>
                             </select>
-                            
+
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->
                         </div>

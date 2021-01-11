@@ -76,7 +76,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
-        <div class="d-flex justify-content-center" id="welcome">
+        <div claa="d-flex justify-content-center" id="welcome">
           <span class="navbar-text" id="welcome"><?php echo (empty($_SESSION['first_name'])) ? 'Hello!' : 'Hello, ' . $_SESSION['first_name'] . '!'; ?></span>
         </div>
         

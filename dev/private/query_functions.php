@@ -208,7 +208,7 @@ echo $sql;
 
       $sql = "SELECT * FROM positions ";
       $sql .= "ORDER BY title ASC";
-
+    
       $result = mysqli_query($db, $sql);
       confirm_result_set($result);
       $positions = resultToArray($result);
@@ -222,7 +222,7 @@ echo $sql;
     $sql = "SELECT * FROM regions ";
     $sql .= "WHERE inactive=0 ";
     $sql .= "ORDER BY id ASC";
-
+    
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $regions = resultToArray($result);
@@ -235,7 +235,7 @@ echo $sql;
 
     $sql = "SELECT * FROM recruiters ";
     $sql .= "ORDER BY first_name ASC";
-
+    
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $recruiters = resultToArray($result);
@@ -554,7 +554,7 @@ function edit_candidate_recruiter($data_set){
             $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
-            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
+            $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
             $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";
@@ -594,7 +594,7 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
             $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
-            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
+            $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
             $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";

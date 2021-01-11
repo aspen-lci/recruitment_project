@@ -51,4 +51,3 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
   </body>
   
   </html>
-  

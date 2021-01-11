@@ -20,7 +20,8 @@ if(is_post_request()){
     $candidate['company'] = $_POST['company'] ?? '';
     $candidate['position'] = $position ?? '';
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
-    $candidate['region_id'] = $_POST['region_id'] ?? '';
+    $candidate['region'] = $_POST['region'] ?? 'NULL';
+    $candidate['start_date'] = $_POST['startDate'] ?? '';
     $candidate['interview_date'] = $_POST['interviewDate'] ?? '';
     $candidate['interview_time'] = $_POST['interviewTime'] ?? '';
     $candidate['ii_date'] = $_POST['iiDate'] ?? '';
@@ -48,6 +49,8 @@ if(is_post_request()){
 <?php include(SHARED_PATH . '/hr_header.php'); ?>
 
 <div id="content">
+    <?php echo(!empty($errors) ? display_errors($errors) : ""); ?>
+    
     <div class="row">
     <a class="m-3 pl-4" href="<?php echo url_for('/hr/index.php'); ?>">&laquo; Return to Candidates In Process</a>
         <div class="col-lg-12">
@@ -55,7 +58,7 @@ if(is_post_request()){
                 <div class="card-header py-3">
                     <h3 class="m-0 font-weight-bold text-dark text-center">Add New Candidate</h3>
                 </div>  <!-- Card Header End -->
-                <div class="card-body">
+                <div class="card=body">
                     <form action="<?php echo url_for('/hr/hr_candidates/new.php'); ?>" method="post">
                         <div class="form-row m-4">
                             <div class="form-group col-md-3">

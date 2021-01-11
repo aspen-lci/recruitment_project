@@ -58,7 +58,7 @@ if(is_post_request()){
                     <h3 class="m-0 font-weight-bold text-dark text-center">Add New Candidate</h3>
                 </div>  <!-- Card Header End -->
                 <div class="card=body">
-                <form action="<?php echo url_for('/recruiter/new.php'); ?>" method="post">
+                     <form action="<?php echo url_for('/recruiter/new.php'); ?>" method="post">
                         <div class="form-row m-4">
                             <div class="form-group col-md-3">
                                 <label for="firstName">First Name</label>

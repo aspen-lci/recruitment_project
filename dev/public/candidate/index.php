@@ -132,7 +132,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 13)); ?>>
               <p class="card-text">Open the box below for details and necessary preparation materials.</p>
               <p class="card-text">Good luck on your interview!</p>
-              <a href="panel.php" class="btn btn-outline-lli btn-small mt-3">Neccessary Interview Materials</a>
+              <a href="panel.php" class="btn btn-outline-lli btn-small mt-3">Necessary Interview Materials</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 13)); ?>><?php echo(document_in_document_list($documents, 13)); ?></p>
           </div>

@@ -1,7 +1,5 @@
 <?php require_once('../../private/initialize.php'); 
 
-$errors = "";
-
 /**
  * Object to encapsulate document status logic.
  */
@@ -181,9 +179,10 @@ $candidates = all_candidates();
                         <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>  
                         <dt>Impact Institute Date</dt>
                       <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
-                        
+                        <!-- <dt>Panel Interview District</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>     -->
                     </td>
-                    <td style="border: none; padding-right: 50px;" class="align-top">
+                     <td style="border: none; padding-right: 50px;" class="align-top">
                         <dt>Panel Interview Date</dt>
                         <dd><?php echo ($candidate['interview_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['interview_date'])) : ''); ?></dd>    
                         <dt>Panel Interview Time</dt>

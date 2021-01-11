@@ -1,7 +1,6 @@
 <?php require_once('../../private/initialize.php'); 
     require_login();
     
-    $errors = "";
     $company_set = all_companies();
     $position_set = all_positions();
     $region_set = all_regions();
@@ -31,7 +30,7 @@
         $update['position'] = $_POST['position'];
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
-        $update['start_date'] = $_POST['startDate'];
+        $update['region'] = $_POST['region'];
         $update['ii_date'] = $_POST['iiDate'];
         
         $result = edit_candidate_recruiter($update);
@@ -141,12 +140,12 @@
                             <br>
                             <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
                             <br>
-                            <!-- <label>Panel Interview District for Zoom Link:</label> 
-                            <select id="region" type="select" name="region" value="<?php echo($candidate['region']); ?>">
+                            <label>Panel Interview District for Zoom Link:</label> 
+                            <select id="region" type="select" name="region">
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
                                     <?php } ?>
-                            </select> -->
+                            </select>
                         </div> <!-- Form Col End -->
                         
                     </form>

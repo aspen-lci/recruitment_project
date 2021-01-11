@@ -206,7 +206,7 @@ function card_body_status($documents_list, $doc_id){
           break;
 
           case 15:
-            return 'style="color: yellow;"';
+            return 'style="color: orange;"';
           break;
 
           default: 

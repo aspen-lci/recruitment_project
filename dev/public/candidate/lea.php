@@ -35,7 +35,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               <div class="row text-center">
               <div class="col-lg-12">
                 <h4 class="text-center mt-3">Form</h4>
-                <a href="<?php echo($lea); ?>" class="btn btn-outline-primary btn-small align-self-center mt-3" target="_blank" style="font-size: 1.25em;">LEA Criminal History and Background Check</a>      
+                <a href="<?php echo($lea); ?>" class="btn btn-small align-self-center mt-3" id="logout-btn" target="_blank" style="font-size: 1.25em;">LEA Criminal History and Background Check</a>      
               </div>
             </div>
             </div>

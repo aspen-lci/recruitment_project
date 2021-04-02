@@ -184,6 +184,7 @@
                                         <option value="<?php echo $disposition['status_id'] ?>" <?php echo($disposition['status'] === $candidate['disposition'] ? 'selected' : ''); ?>><?php echo ($disposition['status']); ?></option>
                                     <?php } ?>
                             </select>
+                           
                         </div> <!-- Form Col End -->
 
                         <div class="col-4">
@@ -227,9 +228,16 @@
             <div class="col-lg-12">
                 <div class="card shadow mb-4">   
                         <div class="card-header mb-4 d-flex align-items-center justify-content-center">
-                            
+                            <div>
+                            <label>Application Status:</label>
+                            <select id="application" type="select" name="application">
+                                <option>option</option>
+                            </select>
+                            </div>
                         
-                        <h3>Documents</h3>
+                            <div>
+                            <h3>Documents</h3>
+                            </div>
                       
                     </div>
                     <div class="row justify-content-center m-0 text-center">

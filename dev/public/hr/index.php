@@ -6,6 +6,7 @@
 class Documents {
   // map of valid document keys and associated descriptions
   public static $docMap = [
+      "application" => "Application",
       "jobDesc" => "Job Description",
       "discForm" => "Disclosure",
       "lea" => "LEA",
@@ -144,7 +145,7 @@ $candidates = all_candidates();
                 <tr style="overflow-wrap:break-word;">
                     <th class="d-none">Hidden nested details table</th>
                     <th colspan="1"></th>
-                    <th colspan="10" class="text-center">Documents Received</th>
+                    <th colspan="11" class="text-center">Documents Received</th>
                   </tr>
                   <tr>
                     <th style data-sortable="true" data-field="name">Candidate Name</th>

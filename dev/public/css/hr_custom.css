@@ -256,6 +256,11 @@ div #top_ribbon .row {
     font-weight: 500;
   }
 
+  .doc_status.Unsubmitted {
+    background-color: rgba(255,0,0,0.6);
+    font-weight: 500;
+  }
+
   .doc_status.Completed {
     background-color: rgba(92, 184, 92, 0.6);
     font-weight: 500;

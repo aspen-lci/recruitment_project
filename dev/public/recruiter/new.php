@@ -39,7 +39,7 @@ if(is_post_request()){
         $errors = $result;
     }
 }else{
-    $errors['user_exists'] = "Candidate already exists.  Please contact Jen Falk for further information.";
+    $errors['user_exists'] = "Candidate already exists.  Please contact Jenn Falk for further information.";
 }
     
 }

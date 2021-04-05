@@ -80,6 +80,7 @@
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
 
+        $doc_status_update['app'] = $_POST['application'];
         $doc_status_update['jd'] = $_POST['jd_status'];
         $doc_status_update['disc'] = $_POST['disc_status'];
         $doc_status_update['lea'] = $_POST['lea_status'];
@@ -227,20 +228,26 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow mb-4">   
-                        <div class="card-header mb-4 d-flex align-items-center justify-content-center">
-                            <div>
-                            <label>Application Status:</label>
-                            <select id="application" type="select" name="application">
-                                <option>option</option>
-                            </select>
+                        <div class="card-header justify-content-center text-center">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>Documents</h3>
+                                </div>
                             </div>
-                        
-                            <div>
-                            <h3>Documents</h3>
+                            
+                            <div class="row">
+                                <div class="col-lg-12" id="edit-form">
+                                    <label class="pt-0">Application:</label>
+                                    <select id="application" type="select" name="application">
+                                        <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '15')) ? 'selected' : ''); ?>></option>
+                                        <option value="4" style="width:100%;" <?php echo(document_in_document_list($document_list, '15') == 'Completed' ? 'selected' : ''); ?>>Completed</option>
+                                        <option value="16" style="width:100%;" <?php echo(document_in_document_list($document_list, '15') == 'Not Submitted' ? 'selected' : ''); ?>>Not Submitted</option>
+                                    </select>
+                                </div>
                             </div>
                       
                     </div>
-                    <div class="row justify-content-center m-0 text-center">
+                    <div class="row justify-content-center mt-4 m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-1">

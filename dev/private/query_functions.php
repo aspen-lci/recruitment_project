@@ -665,6 +665,12 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
             if(!$result){
               echo mysqli_error($db); 
             }
+
+            $result = update_doc_status($data_set['candidate_id'], 15, $doc_set['app']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
     
     mysqli_commit($db);
   return $result;

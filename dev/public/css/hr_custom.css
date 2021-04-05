@@ -256,7 +256,7 @@ div #top_ribbon .row {
     font-weight: 500;
   }
 
-  .doc_status.Unsubmitted {
+  .doc_status.Not_Submitted {
     background-color: rgba(255,0,0,0.6);
     font-weight: 500;
   }

@@ -157,12 +157,27 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">   
-                    <div class="card-header mb-4 d-flex align-items-center justify-content-center">
-                        
-                            <h3>Documents</h3>
-                        
+                    <div class="card-header justify-content-center text-center">
+                        <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>Documents</h3>
+                                </div>
                         </div>
-                    <div class="row justify-content-center m-0 text-center">
+                            
+                            <div class="row">
+                                <div class="col-lg-12" id="edit-form">
+                                    <label class="pt-0">Application: </label>
+                                    <span><?php echo(document_in_document_list($document_list, '15')); ?></span>
+                                    <!-- <select id="application" type="select" name="application">
+                                        <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '15')) ? 'selected' : ''); ?>></option>
+                                        <option value="4" style="width:100%;" <?php echo(document_in_document_list($document_list, '15') == 'Completed' ? 'selected' : ''); ?>>Completed</option>
+                                        <option value="16" style="width:100%;" <?php echo(document_in_document_list($document_list, '15') == 'Not Submitted' ? 'selected' : ''); ?>>Not Submitted</option>
+                                    </select> -->
+                                </div>
+                            </div>
+                      
+                    </div>
+                    <div class="row justify-content-center mt-4 m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-1">

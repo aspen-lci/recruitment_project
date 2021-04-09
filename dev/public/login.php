@@ -17,6 +17,10 @@ if(is_post_request()){
         redirect_to(url_for('/hr/index.php'));
       break;
       case 4:
+        $candidate = get_candidate_by_user_id($_SESSION['user_id']);
+        $_SESSION['company_id'] = $candidate['company_id'];
+        $logo = get_logo_url($_SESSION['company_id']);
+        $_SESSION['logo'] = $logo[0];
         redirect_to(url_for('/candidate/index.php'));
       break;
       case 5:

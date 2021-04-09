@@ -9,6 +9,7 @@ $start_date = $candidate[0]['start_date'];
 $interview_date = $candidate[0]['interview_date'];
 $interview_time = $candidate[0]['interview_time'];
 $ii_date = $candidate[0]['ii_date'];
+$company = $candidate[0]['company_id'];
 
 $documents = documents_by_candidate($candidate_id);
 
@@ -31,7 +32,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <!-- Jumbotron Header -->
     <header class="jumbotron">
-    <img src="<?php echo url_for('/images/LL New Hire_CandidateLandingPage.jpg') ?>" alt="hero_img" style="width: 100%;">
+    <img src="<?php echo url_for('/images/LL New Hire_CandidateLandingPage 040921.jpg') ?>" alt="hero_img" style="width: 100%;">
       <!-- <h1 class="display-4">We cannot wait to get to know you better!</h1>
       <p class="lead">By applying with us, you have taken the first step to positively impact individuals, families, and communities. Below you will find an easy checklist to walk you through our hiring process.</p>
       <p class="lead">We ask that you complete the first four steps below within the next 48 hours so we can invite you to the panel interview and facilitate your onboarding experience. The speed with which you complete this process determines how quickly you can begin your work at Lifeline Youth & Family Services.</p>

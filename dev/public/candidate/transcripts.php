@@ -13,7 +13,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron">
-      <img src="<?php echo url_for('/images/LL New Hire_Transcripts.jpg') ?>" alt="Transcript Instructions" style="width:100%;">  
+      <img src="<?php echo url_for('/images/LL New Hire_Transcripts 0409215.jpg') ?>" alt="Transcript Instructions" style="width:100%;">  
       <!-- <h1>How to Send Transcripts</h1>
         <p class="lead">In order for DCS to qualify transcripts as official, they must be sent <strong>directly from the institution</strong> to jenn.falk@lastingchangeinc.org (preferred method) or they can mail them directly to our corporate office (4150 Illinois Road Fort Wayne, IN 46804, ATTN: Jenn Falk). <em>If transcripts are not sent from the institution, we cannot accept them as official.</em></p> -->
         
@@ -22,7 +22,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <div class="row text-center" style="display: <?php echo($position == '1' ? "inherit" : "none") ?>">  
         <div class="col-lg-12 mb-4">
           <div class="card h-100">
-            <div class="card-header c-card-5"><h3>Required Degree Checklist</h3></div>
+            <div class="card-header c-card-7"><h3>Required Degree Checklist</h3></div>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12 d-flex justify-content-between">
@@ -33,7 +33,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               </div>
               
             </div>
-            <div class="card-footer c-card-5">
+            <div class="card-footer c-card-7">
               
             </div>
           </div>

@@ -11,7 +11,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron">
-        <img src="<?php echo url_for('/images/LL New Hire_CriminalBackgroundCheck.jpg'); ?>" alt="background_check_banner_img" style="width: 100%;">
+        <img src="<?php echo url_for('/images/LL New Hire_CriminalBackgroundCheck 0409213.jpg'); ?>" alt="background_check_banner_img" style="width: 100%;">
         <!-- <h1 class="text-center">Instructions and Helpful Tips for Filling Out the Criminal History and Background Check Form</h1>
         <p class="lead mt-3">The Department of Child Services (DCS) requires the following information for your background check. Without this information, the hiring process cannot proceed.</p>
         <p class="lead">Please complete this form in its entirety, sign, and return. Keep an eye on your email over the next few days, for instructions regarding how the hiring process will continue. </p> -->
@@ -44,7 +44,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div class="row text-center">  
                 <div class="col-lg-12">
                     <h3 class="mt-4">Example</h3>
-                    <img src="<?php echo url_for('/images/Criminal History.PNG') ?>" alt="Criminal Historoy Form Example" style="width: 100%;">
+                    <img src="<?php echo url_for('/images/Criminal History.PNG') ?>" alt="Criminal History Form Example" style="width: 100%;">
                     <p>(1) I was born 10/9/1990, I lived in my hometown Fort Wayne, IN until I went to college at (2) Indiana
                         University! I always went (3) home for the summer. (4) In August 2009, I transferred home to finish my
                         degree at IPFW and have lived in Fort Wayne since.</p>    

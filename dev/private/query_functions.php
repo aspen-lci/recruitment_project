@@ -1009,4 +1009,20 @@ function get_position_id($user_id){
 
 }
 
+function get_logo_url($company_id){
+  global $db;
+
+  $sql = "SELECT logo_url FROM companies ";
+  $sql .= "WHERE id='" . db_escape($db, $company_id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $position = resultToArray($result);
+  mysqli_free_result($result);
+  
+  return $position;
+
+}
+
 ?>

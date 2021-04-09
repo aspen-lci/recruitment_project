@@ -18,7 +18,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       <!-- Jumbotron Header -->
       <header class="jumbotron" id="panel-img">
         <!-- <h1 class="text-center">Panel Interview</h1> -->
-        <img src="<?php echo url_for('/images/LL New Hire_PanelInterview.jpg') ?>" alt="Panel Interview Information" style="width:100%;">
+        <img src="<?php echo url_for('/images/LL New Hire_PanelInterview 0409214.jpg') ?>" alt="Panel Interview Information" style="width:100%;">
         <div class="top-right">
           <p><label class="panel-info">Interview Date:</label> <?php echo (date("l, F j, Y", strtotime($candidate['interview_date']))); ?></p>
           <p><label class="panel-info">Interview Time:</label> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>

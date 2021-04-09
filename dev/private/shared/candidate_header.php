@@ -40,7 +40,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container d-flex justify-content-between">
       <div id="logo">
-        <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/LLlogo.png') ?>" alt="Logo" style="height: 100px;"></a>
+        <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/'. $_SESSION['logo']); ?>" alt="Logo" style="height: 100px;"></a>
       </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,3 +66,4 @@
   </nav>
   <?php echo display_session_message(); ?>
   <?php echo display_errors($errors); ?>
+  <?php echo($_SESSION['logo']); ?>

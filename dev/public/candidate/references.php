@@ -12,7 +12,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron">
-        <img src="<?php echo url_for('/images/LL New Hire_References.jpg') ?>" alt="References Instructions" style="width:100%;">
+        <img src="<?php echo url_for('/images/LL New Hire_References 0409216.jpg') ?>" alt="References Instructions" style="width:100%;">
       <!-- <h1>Instructions</h1>
         <p class="lead">Once you receive the email from Checkster, please register online using the links provided in the email. You will then be able to send invitations to colleagues and supervisors to fill out a reference form for you.</p>
         <h1>Requirements</h1>

@@ -24,7 +24,7 @@ if(is_post_request()){
     $candidate['region'] = $_POST['region'] ?? '';
     $candidate['start_date'] = $_POST['startDate'] ?? '';
     $candidate['interview_date'] = $_POST['interviewDate'] ?? '';
-    $candidate['interview_time'] = $_POST['interviewTime'] ?? '';
+    $candidate['interview_time'] = ($_POST['interviewTime'] ?? '');
     $candidate['ii_date'] = $_POST['iiDate'] ?? '';
 
     $exists = find_user_by_email($candidate['email']);
@@ -120,16 +120,16 @@ if(is_post_request()){
                         
                         <div class="form-row m-4">
                             
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="interviewDate">Panel Interview Date</label>
                                 <input type="date" class="form-control" id="interviewDate" name="interviewDate">
                             </div> <!-- Form Col End -->
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="interviewTime">Panel Interview Time</label>
                                 <input type="time" class="form-control" name="interviewTime">
                             </div> <!-- Form Col End -->
-
+<!-- 
                             <div class="form-group col-md-4">
                                 <label for="iiDate">Impact Institute Date</label>
                                 <br>
@@ -138,7 +138,7 @@ if(is_post_request()){
                                     <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                                 </select>
                                
-                            </div> <!-- Form Col End -->
+                            </div> Form Col End -->
                         </div> <!-- Form Row End -->
 
                         <div class="form-row m-4">

@@ -75,7 +75,7 @@
         </div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo url_for('/recruiter/new.php') ?>">Add New Candidate</a>
+              <a class="nav-link" href="<?php echo url_for('/recruiter/new.php'); ?>">Add New Candidate</a>
             </li>
             
             <li class="nav-item">

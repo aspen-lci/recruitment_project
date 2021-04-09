@@ -125,11 +125,11 @@ $candidates = all_candidates();
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h4 class="m-0 font-weight-bold text-dark text-center">Candidates In Process</h4>
+                  <h4 class="m-0 mt-1 font-weight-bold text-dark text-center">Candidates In Process</h4>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
                 
-                <div class="actions text-left mb-2"></div>
+                <div class="actions text-left mb-2">
                 <a class="btn" href="https://docs.google.com/spreadsheets/d/161_T3QU4jgzs6snv_MKkmpB8sJQKPUhDB5jE_HwZg2w/edit?usp=sharing" target="_blank">HBS Tracking Sheet</a>
                 <table
                 id="parentTable"
@@ -203,6 +203,7 @@ $candidates = all_candidates();
                   
                 </tbody>
               </table>
+                  </div>
               </div> <!-- end card body -->
             </div> <!-- Card -->
             </div> <!-- Column -->
@@ -216,7 +217,7 @@ $candidates = all_candidates();
           $('#parentTable').on('expand-row.bs.table', function (e, index, row, $detail) {
 
           // Get subtable from first cell
-          var $rowDetails = $(row[11]);
+          var $rowDetails = $(row[12]);
 
           // Give new id to avoid conflict with first cell    
           var id = $rowDetails.attr("id");

@@ -555,7 +555,6 @@ function edit_candidate_recruiter($data_set){
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
             $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
-            $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";
             echo $sql;

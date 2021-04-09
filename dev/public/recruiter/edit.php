@@ -31,7 +31,7 @@
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
         $update['region'] = $_POST['region'];
-        $update['ii_date'] = $_POST['iiDate'];
+        
         
         $result = edit_candidate_recruiter($update);
         if ($result === true) {
@@ -129,16 +129,12 @@
                                     <?php } ?>
                             </select>
                             <br/>
-                            <label>Impact Institute Date:</label> 
-                            <select id="iiDate" type="select" name="iiDate">
-                            <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
-                            <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
-                            </select>
+                            <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
                         </div> <!-- Form Col End -->
                         <div class="col-4">
                             <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date']) > 0000-00-00 ? $candidate['interview_date'] : ''); ?>"/>
                             <br>
-                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time'])); ?>"/>
+                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time']) > 0 ? $candidate['interview_time'] : ''); ?>"/>
                             <br>
                             <label>Panel Interview District for Zoom Link:</label> 
                             <select id="region" type="select" name="region">
@@ -168,14 +164,9 @@
                                 <div class="col-lg-12" id="edit-form">
                                     <label class="pt-0">Application: </label>
                                     <span><?php echo(document_in_document_list($document_list, '15')); ?></span>
-                                    <!-- <select id="application" type="select" name="application">
-                                        <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '15')) ? 'selected' : ''); ?>></option>
-                                        <option value="4" style="width:100%;" <?php echo(document_in_document_list($document_list, '15') == 'Completed' ? 'selected' : ''); ?>>Completed</option>
-                                        <option value="16" style="width:100%;" <?php echo(document_in_document_list($document_list, '15') == 'Not Submitted' ? 'selected' : ''); ?>>Not Submitted</option>
-                                    </select> -->
-                                </div>
-                            </div>
+                                    </div>
                       
+                    </div>
                     </div>
                     <div class="row justify-content-center mt-4 m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">

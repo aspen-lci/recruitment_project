@@ -137,7 +137,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                 data-show-toggle="true"
                 data-detail-formatter="detailFormatter">
                 <thead>
-                <tr>
+                <tr style="overflow-wrap:break-word;">
                     <th class="d-none">Hidden nested details table</th>
                     <th colspan="1"></th>
                     <th colspan="11" class="text-center">Documents Received</th>
@@ -145,7 +145,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                   
                   <tr>
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
-                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style data-sortable="true" data-field="%s">%s</th>', $k, $v); ?>
+                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style style data-sortable="true" data-field="%s">%s</th>', $k, $v); ?>
                     <th class="d-none"></th>
                   </tr>
                  
@@ -192,6 +192,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
                   
                 </tbody>
               </table>
+              </div>
               </div> <!-- end card body -->
             </div> <!-- Card -->
             </div> <!-- Column -->
@@ -214,7 +215,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
           $('#parentTable').on('expand-row.bs.table', function (e, index, row, $detail) {
 
           // Get subtable from first cell
-          var $rowDetails = $(row[11]);
+          var $rowDetails = $(row[12]);
 
           // Give new id to avoid conflict with first cell    
           var $id = $rowDetails.attr("id");

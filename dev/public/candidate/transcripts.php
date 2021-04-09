@@ -7,10 +7,9 @@ $position = $position_id[0]['position_id'];
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
-<?php print_r($position); ?>
   
     <!-- Page Content -->
-    <div class="container" style="margin-top: 20px;">
+    <div class="container" id="content" style="margin-top: 20px;">
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron">

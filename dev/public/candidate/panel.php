@@ -13,7 +13,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
   
     <!-- Page Content -->
-    <div class="container" style="margin-top: 20px;">
+    <div class="container" id="content" style="margin-top: 20px;">
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron" id="panel-img">

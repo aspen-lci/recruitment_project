@@ -1,7 +1,8 @@
 <?php require_once('../../../private/initialize.php'); 
 
 $company_set = all_companies();
-$position_set = all_positions();
+$ll_position_set = all_active_positions(2);
+$cw_position_set = all_active_positions(3);
 $region_set = all_regions();
 $recruiter_set = all_recruiters();
 $ii_dates = all_ii_dates();
@@ -89,9 +90,9 @@ if(is_post_request()){
                             <div class="form-group col-md-4">
                                     <label for="company">Company</label>
                                     <select id="company" class="form-control" name="company">
-                                        <!-- <option selected>Choose Company</option> -->
+                                        <option value="" selected>Choose Company</option>
                                         <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['id'] === '2' ? 'selected' : 'disabled'); ?>><?php echo $company['company'] ?></option>    
+                                        <option value="<?php echo $company['id'] ?>" ?><?php echo $company['company'] ?></option>    
                                     <?php } ?>
                                     </select>
                             </div> <!-- Form Col End -->
@@ -100,9 +101,7 @@ if(is_post_request()){
                                     <label for="position">Position</label>
                                     <select id="position" class="form-control" name="position" required>
                                         <option value = "" selected>Choose Position</option>
-                                        <?php foreach ($position_set as $position) { ?>
-                                        <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option>    
-                                    <?php } ?>
+                                        
                                     </select>
                             </div> <!-- Form Col End -->
 
@@ -110,9 +109,7 @@ if(is_post_request()){
                                     <label for="region">Panel Interview Region</label>
                                     <select id="region" class="form-control" name="region" required>
                                         <option value="" selected>Choose Region</option>
-                                        <?php foreach ($region_set as $region) { ?>
-                                        <option value="<?php echo $region['id'] ?>"><?php echo $region['name'] ?></option>    
-                                        <?php } ?>
+                                        
                                     </select>
                             </div> <!-- Form Col End -->
 
@@ -166,7 +163,23 @@ if(is_post_request()){
       }
    })();
 
- 
+   $(document).ready(function(){
+        $("#company").change(function(){
+            var c = $(this);
+            var ll = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
+            var cw = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
+            var ll_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected>Choose Region</option><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
+            var cw_reg = '<select id="region" class="form-control" name="region" required><option value = "24" selected>Crosswinds</option></select>';
+            if(c.val() === '2'){
+                $("#position").replaceWith(ll);
+                $("#region").replaceWith(ll_reg);
+            }
+            else if(c.val() === '3'){
+                $("#position").replaceWith(cw);
+                $("#region").replaceWith(cw_reg);
+            }
+        });
+   });
 
  
 </script>

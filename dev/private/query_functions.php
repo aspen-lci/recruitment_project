@@ -144,6 +144,7 @@
       global $db;
 
       $sql = "SELECT * FROM companies ";
+      $sql .= "WHERE inactive=0 ";
       $sql .= "ORDER BY company ASC";
 
       $result = mysqli_query($db, $sql);
@@ -215,6 +216,20 @@ echo $sql;
       mysqli_free_result($result);
       return $positions;
   }
+
+  function all_active_positions($company_id){
+    global $db;
+
+    $sql = "SELECT * FROM positions ";
+    $sql .= "WHERE inactive = 0 AND company_id=" . $company_id . " ";
+    $sql .= "ORDER BY title ASC";
+  
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $positions = resultToArray($result);
+    mysqli_free_result($result);
+    return $positions;
+}
 
   function all_regions(){
     global $db;

@@ -20,8 +20,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         <!-- <h1 class="text-center">Panel Interview</h1> -->
         <img src="<?php echo url_for('/images/LL New Hire_PanelInterview 0409214.jpg') ?>" alt="Panel Interview Information" style="width:100%;">
         <div class="top-right">
-          <p><label class="panel-info">Interview Date:</label> <?php echo (date("l, F j, Y", strtotime($candidate['interview_date']))); ?></p>
-          <p><label class="panel-info">Interview Time:</label> <?php echo (date("g:i A", strtotime($candidate['interview_time']))); ?></p>
+          <p><label class="panel-info">Interview Date:</label> <?php echo($candidate['interview_date'] > 0000-00-00 ? (date("l, F j, Y", strtotime($candidate['interview_date']))) : 'To Be Determined'); ?></p>
+          <p><label class="panel-info">Interview Time:</label> <?php echo($candidate['interview_time'] > 0 ? (date("g:i A", strtotime($candidate['interview_time']))) : 'To Be Determined'); ?></p>
           <a class="lead btn" id="logout-btn" target="_blank" href="<?php echo $zoom_link; ?>">Zoom Link</a>
         </div>
       </header>

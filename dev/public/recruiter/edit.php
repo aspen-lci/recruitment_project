@@ -38,7 +38,7 @@
             $_SESSION['message'] = "User has been updated.";
             
         }else{
-            $errors=$result;
+            $_SESSION['error']=$result;
         }
 
         if($update['position'] != $candidate['position_id']){
@@ -78,6 +78,7 @@
 <?php include(SHARED_PATH . '/recruiter_header.php'); ?>
 
 <div id="content">
+<?php print_r($_SESSION); ?>
    <div class="row m-3" id="top-ribbon">
         <div class="col-lg-2">
             <a class="p-4" href="<?php echo url_for('/recruiter/index.php'); ?>" onclick="return confirm('Any changes made will not be saved.')">&laquo; Return to List</a>

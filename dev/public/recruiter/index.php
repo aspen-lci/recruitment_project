@@ -116,7 +116,7 @@ $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SE
 
     <!-- Page Content -->
     <div id="content">
-    <?php print_r($_SESSION); ?>
+    
           <div class="row">
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">

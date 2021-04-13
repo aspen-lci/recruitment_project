@@ -153,10 +153,10 @@ function get_template_link($templates, $doc_id){
 
 }
 
-function box_visibility($documents_list, $doc_id){
+function box_visibility($documents_list, $doc_id, $disposition){
   foreach($documents_list as $document){
     if($document['document_id']  == $doc_id){
-      if($document['status_id'] == 14){
+      if($document['status_id'] == 14 OR ($document['status_id'] == 13 AND $disposition == 1)){
         return 'none';
         
       }else {return 'flex';}

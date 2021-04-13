@@ -2,7 +2,8 @@
     require_login();
 
     $company_set = all_companies();
-    $position_set = all_positions();
+    $ll_position_set = all_active_positions(2);
+    $cw_position_set = all_active_positions(3);
     $region_set = all_regions();
     $recruiter_set = all_recruiters();
     $ii_dates = all_ii_dates();
@@ -28,6 +29,10 @@
     
 
     if(is_post_request()){
+        $position_explode = explode('|', $_POST['position']);
+        $position = $position_explode[0];
+        $jd_doc_id = $position_explode[1];
+
         $update = [];
         $update['candidate_id'] = $id;
         $update['user_id'] = $candidate['user_id'];
@@ -36,7 +41,7 @@
         $update['recruiter'] = $_POST['recruiter'];
         $update['disposition'] = $_POST['status'];
         $update['company'] = $_POST['company'];
-        $update['position'] = $_POST['position'];
+        $update['position'] = $position;
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
         $update['start_date'] = $_POST['startDate'];
@@ -93,11 +98,21 @@
         $doc_status_update['ultipro'] = $_POST['ultipro_status'];
         
         if($candidate['disposition_id'] <= 5 && $update['disposition'] == 7){
+            if($candidate['company_id'] == 2){
             $doc_status_update['offer'] = 1;
             $doc_status_update['trans'] = 1;
             $doc_status_update['fprint'] = 1;
             $doc_status_update['ref'] = 1;
             $doc_status_update['ultipro'] = 1;
+            }
+
+            if($candidate['company_id'] == 3){
+                $doc_status_update['offer'] = 1;
+                $doc_status_update['trans'] = 1;
+                $doc_status_update['fprint'] = 13;
+                $doc_status_update['ref'] = 1;
+                $doc_status_update['ultipro'] = 1;
+            }
         }
 
         $result = edit_candidate_hr($update, $doc_status_update, $jd_id);
@@ -197,9 +212,11 @@
                             </select> <br/>
                             <label>Position:</label> 
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
-                            <?php foreach ($position_set as $position) { ?>
-                                        <option value="<?php echo $position['id'];?>" <?php echo($position['title'] === $candidate['position'] ? 'selected' : ''); ?>><?php echo $position['title']; ?></option>    
-                                    <?php } ?>
+                                <?php 
+                                    $pos_set = ($candidate['company_id'] == '2' ? $ll_position_set : $cw_position_set);
+                                    foreach ($pos_set as $position) { ?>
+                                    <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
+                                <?php }; ?>
                             </select><br/>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
@@ -477,6 +494,24 @@ $('input[type="text"]')
         if($(this).val() === '12')
             alert("Selecting inactive status will remove candidate from dashboard lists and make them an inactive user.");
     });
+
+    $(document).ready(function(){
+        $("#company").change(function(){
+            var c = $(this);
+            var ll = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
+            var cw = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
+            var ll_reg = '<select id="region" name="region" required><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?> <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
+            var cw_reg = '<select id="region" name="region" required><option value = "24" selected>Crosswinds</option></select>';
+            if(c.val() === '2'){
+                $("#position").replaceWith(ll);
+                $("#region").replaceWith(ll_reg);
+            }
+            else if(c.val() === '3'){
+                $("#position").replaceWith(cw);
+                $("#region").replaceWith(cw_reg);
+            }
+        });
+   });
 
 
 //     $.fn.editable.defaults.mode = 'inline';

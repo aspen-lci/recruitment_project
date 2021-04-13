@@ -555,7 +555,7 @@ function edit_candidate_recruiter($data_set){
             $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
             $sql .= "LIMIT 1; ";
-            echo $sql;
+            
             $result = mysqli_query($db, $sql);
 
             if(!$result){
@@ -569,7 +569,7 @@ function edit_candidate_recruiter($data_set){
             $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
-            $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
+            $sql .= "region_id='" . db_escape($db, $data_set['region']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";
             echo $sql;

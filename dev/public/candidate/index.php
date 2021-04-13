@@ -10,6 +10,7 @@ $interview_date = $candidate[0]['interview_date'];
 $interview_time = $candidate[0]['interview_time'];
 $ii_date = $candidate[0]['ii_date'];
 $company = $candidate[0]['company_id'];
+$disposition = $candidate[0]['disposition_id'];
 
 $documents = documents_by_candidate($candidate_id);
 
@@ -43,7 +44,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center">
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display: <?php echo(box_visibility($documents, $jd_doc_id)); ?>;">
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, $jd_doc_id, $disposition)); ?>;">
           <div class="card-header c-card-1">
             <h4>1</h4>
           </div>
@@ -61,7 +62,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 4)); ?>;">
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 4, $disposition)); ?>;">
           <div class="card-header c-card-2">
             <h4>2</h4>
           </div>
@@ -81,7 +82,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 5)); ?>;">
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 5, $disposition)); ?>;">
           <div class="card-header c-card-3">
             <h4>3</h4>
           </div>
@@ -105,7 +106,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <div class="row text-center">
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 6)); ?>;">
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 6, $disposition)); ?>;">
           <div class="card-header c-card-4">
             <h4>4</h4>
           </div>
@@ -124,7 +125,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 13)); ?>;">
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 13, $disposition)); ?>;">
           <div class="card-header c-card-5" >
             <h4>5</h4>
           </div>
@@ -143,7 +144,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 7)); ?>;">
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 7, $disposition)); ?>;">
           <div class="card-header c-card-6">
             <h4>6</h4>
           </div>
@@ -165,7 +166,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <div class="row text-center">
     <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 8)); ?>";>
+        <div class="card h-100" style="display: <?php echo(box_visibility($documents, 8, $disposition)); ?>";>
           <div class="card-header c-card-7">
             <h4>7</h4>
           </div>
@@ -186,7 +187,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 9)); ?>";>
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 9, $disposition)); ?>";>
           <div class="card-header c-card-8">
             <h4>8</h4>
           </div>
@@ -204,7 +205,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
       
       <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 10)); ?>";>
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 10, $disposition)); ?>";>
           <div class="card-header c-card-9">
             <h4>9</h4>
           </div>
@@ -226,7 +227,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center"> 
 
     <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11)); ?>";>
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
           <div class="card-header c-card-10">
             <h4>10</h4>
           </div>
@@ -243,7 +244,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
       <div class="col-lg-8 mb-4">
-        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11)); ?>";>
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
           <div class="card-header c-card-11"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>

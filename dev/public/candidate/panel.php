@@ -11,7 +11,7 @@ $zoom_link = $zoom_link_set[0]['zoom_link'];
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
 
-  
+
     <!-- Page Content -->
     <div class="container" id="content" style="margin-top: 20px;">
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
@@ -33,12 +33,12 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div class="card-header c-card-5"><h3>Necessary Interview Materials</h3></div>
             <div class="card-body">
               <div class="row text-justify">
-                <div class="col-lg-12 d-flex justify-content-between">
-                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Zoom Etiquette - Candidate.pdf'); ?>">Zoom Etiquette</a>
-                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/LL CareerPresentation 052220.pdf'); ?>">Lifeline Career Presentation</a>
-                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FAQlist 2020.pdf'); ?>">FAQ List</a>
-                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Tenets of Culture Document.pdf'); ?>">Tenets of Our Culture</a>
-                    <a class="lead btn" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Career Progression updated.pdf'); ?>" style="display: <?php echo($candidate['position_id'] == '1' ? "inherit" : "none"); ?>">Family Consultant Career Progression</a>
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Zoom Etiquette - Candidate.pdf'); ?>">Zoom Etiquette</a>
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/LL CareerPresentation 052220.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">Lifeline Career Presentation</a>
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FAQlist 2020.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">FAQ List</a>
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Tenets of Culture Document.pdf'); ?>">Tenets of Our Culture</a>
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Career Progression updated.pdf'); ?>" style="display: <?php echo(($candidate['position_id'] == '1' OR $candidate['position_id'] == '5') ? "inherit" : "none"); ?>">Family Consultant Career Progression</a>
               </div>
               </div>
               

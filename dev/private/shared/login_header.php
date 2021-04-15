@@ -1,5 +1,28 @@
 <?php 
     if(!isset($page_title)) { $page_title = 'New Hire';}
+
+    if(!isset($_GET['co'])){
+      $_SESSION['logo'] = '';
+    }else{
+      if($_GET['co'] == 'll'){
+        $_SESSION['logo'] = url_for('/images/LLlogo.png');
+      }elseif($_GET['co'] = 'cw'){
+        $_SESSION['logo'] = url_for('/images/Crosswinds-715c.png');
+      }else{
+        $_SESSION['logo'] = '';
+      }
+    }
+
+    if(isset($_SESSION['company_id'])){
+      if($_SESSION['company_id'] == '2'){
+        $_SESSION['logo'] = url_for('/images/LLlogo.png');
+      }elseif($_SESSION['company_id'] == '3'){
+        $_SESSION['logo'] = url_for('/images/Crosswinds-715c.png');
+      }else{
+        $_SESSION['logo'] = '';
+      }
+    }
+
 ?>
 
 
@@ -38,7 +61,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 20px;">
     <div class="container">
       <div id="logo">
-        <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/LLlogo.png') ?>" alt="Logo" style="height: 100px;"></a>
+        <a class="navbar-brand" href="#" <?php echo($_SESSION['logo'] == '' ? 'style="display:none;"' : ''); ?>><img src="<?php echo $_SESSION['logo']; ?>" alt="Logo" style="height: 100px;"></a>
       </div>
 
      <div id="welcome">
@@ -48,28 +71,6 @@
         <ul>
           <li><a href="<?php echo url_for('/logout.php'); ?>" class="btn" id="logout-btn" role="button">Log Out</a></li>
 
-      
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div> -->
     </div>
   </nav>
   <?php echo display_session_message(); ?>

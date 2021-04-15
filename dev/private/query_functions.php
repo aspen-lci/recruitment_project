@@ -27,6 +27,21 @@
         return $user;
     }
 
+     //Get candidate login info
+     function find_candidate_company_by_id($id){
+      global $db;
+
+        $sql = "SELECT company FROM candidate_login ";
+        $sql .= "WHERE user_id='" . db_escape($db, $id) . "' "; 
+
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        print_r($candidate);
+        return $candidate;
+    }
+
 // Get list of all users
     function all_users(){
         global $db;

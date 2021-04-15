@@ -42,9 +42,15 @@ if(is_post_request()) {
         $_SESSION['user_type'] = $user['type'];
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['inactive'] = $user['inactive'];
+          if($_SESSION['user_type'] == 4){
+            $candidate = get_candidate_by_user_id($_SESSION['user_id']);
+            $_SESSION['company_id'] = $candidate[0]['company_id'];
+          }
         } else {
           $_SESSION['message'] = "Your account is not active.  Please contact your recruiter.";
         }
+
+        
 
         //check if password is blank
         // if(is_blank($_SESSION['password'])){
@@ -69,6 +75,7 @@ if(is_post_request()) {
 <!-- Page Content -->
 
 <div id="content">
+
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
       <div class="card h-100" id="regForm">

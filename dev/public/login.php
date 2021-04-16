@@ -26,6 +26,10 @@ if(is_post_request()){
       case 5:
         redirect_to(url_for('/hr/index.php'));
       break;
+      case 6:
+        
+        redirect_to(url_for('/recruiter/index.php'));
+      break;
     } 
       
     

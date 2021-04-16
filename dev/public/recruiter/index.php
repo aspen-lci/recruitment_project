@@ -105,9 +105,13 @@ class Documents {
       return $docs;
     }
 }
-  
-$candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SESSION['user_id']);
+if($_SESSION['user_type'] == 2)  {
+  $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SESSION['user_id']);
+}
 
+if($_SESSION['user_type'] == 6){
+  $candidates = candidates_by_position($_SESSION['user_id']);
+}
 ?>
 
 <?php $page_title = 'Recruiter Dashboard'; ?>

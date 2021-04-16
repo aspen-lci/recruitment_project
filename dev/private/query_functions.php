@@ -13,13 +13,26 @@
         return $user;
     }
 
+    function find_user_id_by_email($email){
+      global $db;
+
+      $sql = "SELECT id FROM users ";
+      $sql .= "WHERE email='" . db_escape($db, $email) . "' "; 
+echo $sql;
+      $result = mysqli_query($db, $sql);
+      confirm_result_set($result);
+      $user_id = mysqli_fetch_assoc($result);
+      mysqli_free_result($result);
+      return $user_id;
+  }
+
     //Get user by id
     function find_user_by_id($id){
       global $db;
 
         $sql = "SELECT * FROM users_roles ";
         $sql .= "WHERE user_id='" . db_escape($db, $id) . "' "; 
-
+echo($sql);
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         $user = mysqli_fetch_assoc($result);
@@ -111,7 +124,7 @@
             $sql .= "'" . db_escape($db, $user['email']) . "',";
             $sql .= "'" . db_escape($db, $user['type']) . "'";
             $sql .= ")";
-
+echo $sql;
             $result = mysqli_query($db, $sql);
 
             if(!$result){
@@ -121,6 +134,33 @@
             db_disconnect($db);
             return $result;
     }
+
+    function insert_manager($email, $position_id){
+      global $db;
+          $user = find_user_id_by_email($email);
+          $user_id = $user[0];
+
+          print_r($user_id);
+          if(!$user_id){
+            $result = mysqli_error($db);
+          }
+
+          $sql = "INSERT INTO managers ";
+          $sql .= "(user_id, position_id) ";
+          $sql .= "VALUES (";
+          $sql .= "'" . db_escape($db, $user_id) . "',";
+          $sql .= "'" . db_escape($db, $position_id) . "'";
+          $sql .= ")";
+
+          $result = mysqli_query($db, $sql);
+
+          if(!$result){
+              $result = mysqli_error($db);
+              
+          }
+          db_disconnect($db);
+          return $result;
+  }
 
     function update_user($user_set){
       global $db;
@@ -503,6 +543,22 @@ function get_doc_defaults($company_id){
     $candidates = resultToArray($result);
     mysqli_free_result($result);
     return $candidates;
+}
+
+function candidates_by_position($position_id){
+  global $db;
+
+  $sql = "SELECT * FROM all_candidate_doc_status ";
+  $sql .= "WHERE position='" . db_escape($db, $popsition_id) . "' ";
+  $sql .= "AND disposition <> 'Inactive' ";
+  $sql .= "AND inactive = 0 ";
+  $sql .= "ORDER BY last_name ASC";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $candidates = resultToArray($result);
+  mysqli_free_result($result);
+  return $candidates;
 }
 
 function get_candidate_by_id($id){

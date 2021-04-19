@@ -32,12 +32,25 @@ echo $sql;
 
         $sql = "SELECT * FROM users_roles ";
         $sql .= "WHERE user_id='" . db_escape($db, $id) . "' "; 
-echo($sql);
+
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         $user = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
         return $user;
+    }
+
+    function find_manager_by_id($id){
+      global $db;
+
+        $sql = "SELECT * FROM all_managers ";
+        $sql .= "WHERE user_id='" . db_escape($db, $id) . "' "; 
+
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $manager = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $manager;
     }
 
      //Get candidate login info
@@ -131,33 +144,40 @@ echo $sql;
                 $result = mysqli_error($db);
                 
             }
-            db_disconnect($db);
+            
             return $result;
     }
 
-    function insert_manager($email, $position_id){
+    function insert_manager($user){
       global $db;
-          $user = find_user_id_by_email($email);
-          $user_id = $user[0];
-
-          print_r($user_id);
-          if(!$user_id){
-            $result = mysqli_error($db);
-          }
+      mysqli_begin_transaction($db);
+        $result = insert_user($user);
+        
+          if(!$result){
+              mysqli_rollback($db);
+              return (mysqli_error($db));
+              exit;
+           }
+          
+          $user_id = mysqli_insert_id($db);
 
           $sql = "INSERT INTO managers ";
           $sql .= "(user_id, position_id) ";
           $sql .= "VALUES (";
           $sql .= "'" . db_escape($db, $user_id) . "',";
-          $sql .= "'" . db_escape($db, $position_id) . "'";
+          $sql .= "'" . db_escape($db, $user['position']) . "'";
+          $sql .= "'" . db_escape($db, $user['company']) . "'";
           $sql .= ")";
 
-          $result = mysqli_query($db, $sql);
+          $mgr_result = mysqli_query($db, $sql);
 
-          if(!$result){
-              $result = mysqli_error($db);
-              
+          if(!$mgr_result){
+            mysqli_rollback($db);
+              return(mysqli_error($db));
+              exit;
           }
+          $result = $mgr_result;
+          mysqli_commit($db);
           db_disconnect($db);
           return $result;
   }
@@ -180,6 +200,38 @@ echo $sql;
       }
       db_disconnect($db);
       return $result;
+    }
+
+    function update_manager($user_set){
+      global $db;
+
+      $sql = "UPDATE users SET ";
+      $sql .= "first_name='" . db_escape($db, $user_set['first_name']) . "', ";
+      $sql .= "last_name='" . db_escape($db, $user_set['last_name']) . "', ";
+      $sql .= "email='" . db_escape($db, $user_set['email']) . "', ";
+      $sql .= "type='" . db_escape($db, $user_set['type']) . "' ";
+      $sql .= "WHERE id=" . $user_set['id'];
+     
+      $result = mysqli_query($db, $sql);
+
+      if(!$result){
+          return mysqli_error($db);
+          
+      }
+
+      $sql = "UPDATE managers SET ";
+      $sql .= "position_id=" . db_escape($db, $user_set['position_id']) . " ";
+      $sql .= "WHERE user_id=" . $user_set['id'];
+
+      $result2 = mysqli_query($db, $sql);
+
+      if(!$result2){
+          return mysqli_error($db);
+          
+      }
+
+      db_disconnect($db);
+      return $result2;
     }
 
     function all_user_types(){

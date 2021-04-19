@@ -11,32 +11,28 @@ if(is_post_request()){
     $user['last_name'] = $_POST['lastName'] ?? '';
     $user['email'] = $_POST['email'] ?? '';
     $user['type'] = $_POST['userType'] ?? '';
-    $position = $_POST['position'] ?? '';
+    $user['position'] = $_POST['position'] ?? '';
 
-    $result = insert_user($user);
-   
-    if($result === true) {
-        
-        if($user['type'] == '6'){
-            $id = find_user_id_by_email($_POST['email']);
-            
-            $user_id = $id[0][id];
-            $result2 = insert_manager($user['email'], $position);
-                if($result2 === true){
+    if($user['type'] == 6){
+        $result = insert_manager($user);
+            if($result === true){
                 $_SESSION['message'] = "User has been created";
                 redirect_to(url_for('/hr/hr_users/index.php'));
-                }else{
-                    $errors['manager'] = "Manager could not be created.";
-                }
-                
             }else{
-                $_SESSION['message'] = "User has been created";
-                // redirect_to(url_for('/hr/hr_users/index.php'));
+                $errors['creation'] = $result;
             }
-        }else {
-        $errors['user_exists'] = "User already exists." . $result;
-        
-    }
+        }else{
+            $result = insert_user($user);
+            if($result === true){
+                $_SESSION['message'] = "User has been created";
+                redirect_to(url_for('/hr/hr_users/index.php'));
+            
+            }else{
+                $errors['creation'] = $result;
+            }   
+        }
+   
+        db_disconnect($db);
     
 }else {
     //display blank form
@@ -145,8 +141,11 @@ if(is_post_request()){
                         
                     }
                 });
-        };
-    });
+        }
+        else{
+            $('#mgr_opt').addClass('hidden');;
+    };
+});
 });
 </script>
 

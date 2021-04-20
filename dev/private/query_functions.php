@@ -627,6 +627,8 @@ function get_candidate_by_id($id){
   return $candidate;
 }
 
+
+
 function get_candidate_by_user_id($user_id){
   global $db;
 
@@ -641,6 +643,66 @@ function get_candidate_by_user_id($user_id){
   
   return $candidate;
 
+}
+
+function get_notes_by_candidate_id($candidate_id){
+  global $db;
+
+  $sql = "SELECT note_text FROM notes ";
+  $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $notes = resultToArray($result);
+  mysqli_free_result($result);
+  
+  return $notes;
+
+}
+
+function create_candidate_note($candidate_id, $note){
+  global $db;
+
+  $sql = "INSERT INTO notes ";
+  $sql .= "(candidate_id, note_text) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $candidate_id) . "', ";
+  $sql .= "'" . db_escape($db, $note) . "'";
+  $sql .= ")";
+
+  $result = mysqli_query($db, $sql);
+
+          if(!$result){
+            mysqli_rollback($db);
+              return(mysqli_error($db));
+              exit;
+          }
+          
+          
+          db_disconnect($db);
+          return $result;
+}
+
+function update_candidate_note($candidate_id, $note){
+  global $db;
+
+  $sql = "UPDATE notes SET ";
+  $sql .= "note_text='" . db_escape($db, $note) . "' ";
+  $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "' ";
+  $sql .= "LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+
+          if(!$result){
+            mysqli_rollback($db);
+              return(mysqli_error($db));
+              exit;
+          }
+          
+          
+          db_disconnect($db);
+          return $result;
 }
 
 function all_candidates(){

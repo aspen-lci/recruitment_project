@@ -17,7 +17,13 @@
     $candidate_list = get_candidate_by_id($id);
     $candidate = $candidate_list[0];
     $document_list = documents_by_candidate($id);
-    
+    $notes = get_notes_by_candidate_id($id);
+
+    if(!$notes){
+        $candidate['notes'] = '';    
+    }else{
+    $candidate['notes'] = $notes[0]['note_text'];
+    }
 
     if(is_post_request()){
         $position_explode = explode('|', $_POST['position']);
@@ -158,6 +164,30 @@
                     </div> <!-- Form Row End -->
                     </div>
                     </div>
+
+                    <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">   
+                        <div class="card-header justify-content-center text-center">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>Notes</h3>
+                                </div> <!-- Col End -->
+                            </div> <!-- Row End -->
+                        </div> <!-- Card-Header End -->
+                <div class="card-body">
+                    <div class="row m-4">
+                        <div class="col-12">
+                                <span class="textarea resize-ta" id="notes" name="notes" style="width: 100%"><?php echo $candidate['notes']; ?></span>
+                                <!-- <textarea id="notes" name="notes" rows="10" cols="100"></textarea> -->
+                        </div> <!-- Card Body End -->
+                    </div> <!-- Col End -->
+                </div> <!-- Row End -->
+
+
+                    </div> <!-- Card End -->
+                </div> <!-- Col End -->
+            </div> <!-- Row End -->
                         
 
     <div class="row">

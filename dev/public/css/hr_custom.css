@@ -143,6 +143,16 @@ body {
   background-color: transparent;
 }
 
+#edit-form textarea {
+  border-top-style: hidden;
+  border-bottom-style: dashed 1px #0088cc;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  color: black;
+  text-align: center;
+  background-color: transparent;
+}
+
 footer #footer_tagline{
   font-size: 1.75rem;
 }

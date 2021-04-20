@@ -110,7 +110,7 @@ if($_SESSION['user_type'] == 2)  {
 }
 
 if($_SESSION['user_type'] == 6){
-  $candidates = candidates_by_position($_SESSION['user_id']);
+  $candidates = candidates_by_position($_SESSION['position_id']);
 }
 ?>
 

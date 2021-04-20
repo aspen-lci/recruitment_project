@@ -27,7 +27,8 @@ if(is_post_request()){
         redirect_to(url_for('/hr/index.php'));
       break;
       case 6:
-        
+        $manager = find_manager_by_id($_SESSION['user_id']);
+        $_SESSION['position_id'] = $manager['position_id'];
         redirect_to(url_for('/recruiter/index.php'));
       break;
     } 

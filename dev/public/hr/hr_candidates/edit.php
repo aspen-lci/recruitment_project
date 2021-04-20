@@ -44,7 +44,7 @@
         $update['position'] = $position;
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
-        $update['start_date'] = $_POST['startDate'];
+        //$update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
       	$update['region'] = $_POST['region'];
 
@@ -149,7 +149,7 @@
         }else{
             $errors = $result; 
         }
-        redirect_to(url_for('/hr/index.php'));
+        //redirect_to(url_for('/hr/index.php'));
     }
             
 ?>
@@ -159,7 +159,7 @@
 
 
 <div id="content">
-
+<?php print_r($doc_status_update); ?>
 
 <div class="row m-3" id="top-ribbon">
     <div class="col-lg-2">

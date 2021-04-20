@@ -601,7 +601,7 @@ function candidates_by_position($position_id){
   global $db;
 
   $sql = "SELECT * FROM all_candidate_doc_status ";
-  $sql .= "WHERE position='" . db_escape($db, $popsition_id) . "' ";
+  $sql .= "WHERE position_id='" . db_escape($db, $position_id) . "' ";
   $sql .= "AND disposition <> 'Inactive' ";
   $sql .= "AND inactive = 0 ";
   $sql .= "ORDER BY last_name ASC";

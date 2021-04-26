@@ -61,7 +61,8 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 20px;">
     <div class="container">
       <div id="logo">
-        <a class="navbar-brand" href="#" <?php echo($_SESSION['logo'] == '' ? 'style="display:none;"' : ''); ?>><img src="<?php echo $_SESSION['logo']; ?>" alt="Logo" style="height: 100px;"></a>
+        <!-- <a class="navbar-brand" href="#" <?php echo($_SESSION['logo'] == '' ? 'style="display:none;"' : ''); ?>><img src="<?php echo $_SESSION['logo']; ?>" alt="Logo" style="height: 100px;"></a> -->
+        <a class="navbar-brand" href="#"><img src="<?php echo(url_for('/images/Lasting-Change-715c.png')) ?>" alt="Logo" style="height: 100px;"></a>
       </div>
 
      <div id="welcome">

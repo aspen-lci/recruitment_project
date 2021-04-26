@@ -145,7 +145,7 @@ body {
 
 #edit-form textarea {
   border-top-style: hidden;
-  border-bottom-style: dashed 1px #0088cc;
+  border-bottom-style: solid 1px #0088cc;
   border-left-style: hidden;
   border-right-style: hidden;
   color: black;
@@ -155,6 +155,10 @@ body {
 
 footer #footer_tagline{
   font-size: 1.75rem;
+}
+
+footer #footer_disclaimer{
+  font-size: 1rem;
 }
 
 .form-control{

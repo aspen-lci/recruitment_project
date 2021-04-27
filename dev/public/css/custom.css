@@ -60,7 +60,7 @@ footer {
 }
 
 footer #footer_tagline{
-    font-size: 1.75rem;
+    font-size: 1.5rem;
 }
 
 footer #footer_disclaimer{
@@ -145,7 +145,7 @@ label.panel-info{
     font-size: 1.5em;
     margin-left: auto;
     margin-right: auto;
-    color: #F98E2C;
+    color: #706f73;
 }
 
 @media screen and (max-width:991px){

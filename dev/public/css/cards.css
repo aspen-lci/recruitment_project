@@ -3,9 +3,21 @@
     color: white; 
     font-weight: bold;
   }
+
+  .cw.c-card-1{
+    background-color:rgba(0, 147, 139);
+    color: white; 
+    font-weight: bold;
+  }
   
   .c-card-2{
     background-color:  rgba(0, 59, 73);
+    color: white; 
+    font-weight: bold;
+  }
+
+  .cw.c-card-2{
+    background-color:  rgba(144, 62, 115);
     color: white; 
     font-weight: bold;
   }
@@ -22,8 +34,19 @@
     font-weight: bold;
   }
   
+  .cw.c-card-4{
+    background-color:rgba(0, 147, 139);
+    color: white; 
+    font-weight: bold;
+  }
   .c-card-5{
     background-color: rgba(0, 59, 73);
+    color: white; 
+    font-weight: bold;
+  }
+
+  .cw.c-card-5{
+    background-color: rgba(144, 62, 115);
     color: white; 
     font-weight: bold;
   }
@@ -40,12 +63,24 @@
     font-weight: bold;
   }
   
+  .cw.c-card-7{
+    background-color:rgba(0, 147, 139);
+    color: white; 
+    font-weight: bold;
+  }
+
   .c-card-8{
     background-color:rgba(0, 59, 73);
     color: white; 
     font-weight: bold;
   }
   
+  .cw.c-card-8{
+    background-color:rgba(144, 62, 115);
+    color: white; 
+    font-weight: bold;
+  }
+
   .c-card-9{
     background-color:rgba(109, 110, 113);
     color: white;
@@ -58,8 +93,20 @@
     font-weight: bold;
   }
 
+  .cw.c-card-10{
+    background-color:rgba(0, 147, 139);
+    color: white; 
+    font-weight: bold;
+  }
+
   .c-card-11{
     background-color: rgba(0, 59, 73);
+    color: white; 
+    font-weight: bold;
+  }
+
+  .cw.c-card-11{
+    background-color:rgba(144, 62, 115);
     color: white; 
     font-weight: bold;
   }

@@ -211,7 +211,7 @@
                     <div class="row justify-content-center mt-4 m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-1">
+                            <div class="card-header c-card-1 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <!-- <p class="my-0 flex-grow-1">Job Description</p> -->
                                 <p class="my-0 flex-grow-1">1. Job Description</p>
                             </div> <!--End Card Header -->
@@ -224,7 +224,7 @@
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-2 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-2 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">2. Disclosure</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -235,7 +235,7 @@
 
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-3 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-3 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">3. LEA</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -246,7 +246,7 @@
 
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-4 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-4 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">4. Background Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -257,7 +257,7 @@
 
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">5. Panel Interview</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -273,7 +273,7 @@
                         <div class="row d-flex justify-content-center m-0 text-center"> <!-- m-4 justify-content-center"> -->
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">6. Job Offer</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -284,7 +284,7 @@
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">7. Transcripts</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -295,7 +295,7 @@
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">8. Fingerprinting</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -306,7 +306,7 @@
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">9. Reference Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
@@ -317,7 +317,7 @@
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-10 d-flex align-items-center justify-content-center h-100">
+                            <div class="card-header c-card-10 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">10. UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">

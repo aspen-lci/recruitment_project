@@ -7,7 +7,7 @@
       <p class="text-white text-center mb-0">4150 Illinois Road</p>
       <p class="text-white text-center mb-0">Fort Wayne, IN 46804</p>
       <p class="m-0 text-center text-white" id="footer_disclaimer">Copyright &copy; <?php echo date('Y') ?> Lasting Change, Inc.</br>
-     Lasting Change, Inc. is a management services company for Lifeline or Crosswinds.</p>
+      This website is operated by Lasting Change, Inc. pursuant to and in compliance with service agreements with both Lifeline Youth & Family Services, Inc. and Crosswinds, Inc.</p>
     </div>
       <!-- /.container -->
   </footer>

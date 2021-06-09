@@ -274,7 +274,7 @@
                 <div class="card-body">
                     <div class="row m-4">
                         <div class="col-12" id="edit-form">
-                                <textarea class="textarea resize-ta" id="notes" name="notes" <?php echo(is_blank($candidate['notes']) ? 'rows="3"' : 'rows="6"'); ?> style="width: 100%; height: 100%;"><?php echo $candidate['notes']; ?></textarea>
+                                <textarea class="textarea resize-ta text-left" id="notes" name="notes" <?php echo(is_blank($candidate['notes']) ? 'rows="3"' : 'rows="6"'); ?> style="width: 100%; height: 100%;"><?php echo $candidate['notes']; ?></textarea>
                                 <!-- <textarea id="notes" name="notes" rows="10" cols="100"></textarea> -->
                         </div> <!-- Card Body End -->
                     </div> <!-- Col End -->

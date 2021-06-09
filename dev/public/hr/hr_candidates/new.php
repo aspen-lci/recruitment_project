@@ -179,6 +179,19 @@ if(is_post_request()){
                 $("#region").replaceWith(cw_reg);
             }
         });
+  
+   });
+
+   $(document).ready(function(){
+    $("#position").change(function(){
+            var p = $(this);
+            var yts_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected></option>Choose Region<option value = "25">PWA</option><option value = "26">Spencer Home</option></select>';
+            if(p.val() === '3|2'){
+                $("#region").replaceWith(yts_reg);
+            }
+   
+        });
+  
    });
 
  

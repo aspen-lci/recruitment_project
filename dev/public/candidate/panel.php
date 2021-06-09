@@ -22,7 +22,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         <div class="top-right">
           <p><label class="panel-info">Interview Date:</label> <?php echo($candidate['interview_date'] > 0000-00-00 ? (date("l, F j, Y", strtotime($candidate['interview_date']))) : 'To Be Determined'); ?></p>
           <p><label class="panel-info">Interview Time:</label> <?php echo($candidate['interview_time'] > 0 ? (date("g:i A", strtotime($candidate['interview_time']))) : 'To Be Determined'); ?></p>
-          <a class="lead btn" id="logout-btn" target="_blank" href="<?php echo $zoom_link; ?>">Zoom Link</a>
+          <a class="lead btn" id="logout-btn" target="_blank" href="<?php echo $zoom_link; ?>" style="display: <?php echo($zoom_link != NULL ? "inherit" : "none");  ?>">Zoom Link</a>
         </div>
       </header>
   
@@ -34,7 +34,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12 d-flex justify-content-center">
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Zoom Etiquette - Candidate.pdf'); ?>">Zoom Etiquette</a>
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Zoom Etiquette - Candidate.pdf'); ?>" style="display: <?php echo($zoom_link != NULL ? "inherit" : "none");  ?>">Zoom Etiquette</a>
                     <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/LL CareerPresentation 052220.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">Lifeline Career Presentation</a>
                     <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FAQlist 2020.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">FAQ List</a>
                     <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Tenets of Culture Document.pdf'); ?>">Tenets of Our Culture</a>

@@ -20,6 +20,7 @@ if(is_post_request()){
     $candidate['recruiter'] = $_POST['recruiter'] ?? '';
     $candidate['company'] = $_POST['company'] ?? '';
     $candidate['position'] = $position ?? '';
+    $candidate['intern'] = $_POST['intern'] ?? '';
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
     $candidate['region'] = $_POST['region'] ?? 'NULL';
     $candidate['start_date'] = $_POST['startDate'] ?? '';
@@ -105,7 +106,13 @@ if(is_post_request()){
                                     </select>
                             </div> <!-- Form Col End -->
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-1">
+                                    <label for="intern">Check If Intern</label>
+                                    <input type="checkbox" id="intern" class="form-control" name="intern" value=1>
+                                        
+                            </div> <!-- Form Col End -->
+
+                            <div class="form-group col-md-3">
                                     <label for="region">Panel Interview Region</label>
                                     <select id="region" class="form-control" name="region" required>
                                         <option value="" selected>Choose Region</option>

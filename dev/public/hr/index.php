@@ -176,12 +176,11 @@ $candidates = all_candidates();
                         <dd><?php echo $candidate['position'] ?? ''; ?></dd>
                     </td>
                     <td style="border: none; padding-right: 50px;" class="align-top">
+                        <dt>Intern</dt>
+                        <dd><?php echo($candidate['intern'] == 0 ? 'No' : 'Yes'); ?></dd>
                         <dt>Recruiter</dt>
                         <dd><?php echo $candidate['recruiter'] ?? ''; ?></dd>  
-                        <dt>Impact Institute Date</dt>
-                      <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
-                        <!-- <dt>Panel Interview District</dt>
-                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>     -->
+                       
                     </td>
                      <td style="border: none; padding-right: 50px;" class="align-top">
                         <dt>Panel Interview Date</dt>
@@ -193,6 +192,8 @@ $candidates = all_candidates();
                     <td style="border: none;" class="align-top">
                         <dt>Panel Interview Region</dt>
                         <dd><?php echo $candidate['region'] ?? ''; ?></dd> 
+                        <dt>Impact Institute Date</dt>
+                        <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
                     </td>
                   </table>
                     </td>

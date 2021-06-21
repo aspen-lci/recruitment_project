@@ -39,6 +39,7 @@
         $update['recruiter'] = $_POST['recruiter'];
         $update['company'] = $_POST['company'];
         $update['position'] = $position;
+        $update['intern'] = $_POST['intern'];
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
         $update['region'] = $_POST['region'];
@@ -133,7 +134,10 @@
                             <?php foreach ($company_set as $company) { ?>
                                         <option value="<?php echo $company['id'] ?>" <?php echo($company['company'] === $candidate['company'] ? 'selected' : ''); ?>><?php echo $company['company'] ?></option>    
                                     <?php } ?>
-                            </select> <br/>
+                            </select>
+                            <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
+                            <label for="intern" class="form-check-label">Check If Intern</label>
+                            <br/>
 
                             <label>Position:</label> 
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
@@ -144,8 +148,9 @@
                                <?php }; ?>
                                
                             </select>
-                            <br/>
+                            </br>
                             <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
+                                
                         </div> <!-- Form Col End -->
                         <div class="col-4">
                             <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date']) > 0000-00-00 ? $candidate['interview_date'] : ''); ?>"/>
@@ -158,6 +163,8 @@
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
                                     <?php } ?>
                             </select>
+                            
+                            
                         </div> <!-- Form Col End -->
                         
                     </form>

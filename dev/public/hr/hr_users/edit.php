@@ -90,7 +90,7 @@ include(SHARED_PATH . '/hr_header.php');
                                 <div id="mgr_opt" class="form-row <?php echo($user['role_id'] == 6 ? '' : 'hidden'); ?>">
                                 <div id="companies" class="form-group col-md-6">
                                     <label class="mt-2" for="company">Company</label>
-                                    <select id="company" class="form-control" name="company" required>
+                                    <select id="company" class="form-control" name="company">
                                         <option value="" selected>Choose Company</option>
                                         <?php foreach ($company_set as $company) { ?>
                                         <option value="<?php echo $company['id'] ?>" <?php echo($company['id'] == $user['company_id'] ? 'selected' : ''); ?>><?php echo $company['company'] ?></option>    

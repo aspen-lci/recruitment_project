@@ -31,6 +31,9 @@ if(is_post_request()){
         $_SESSION['position_id'] = $manager['position_id'];
         redirect_to(url_for('/recruiter/index.php'));
       break;
+      case 7:
+        redirect_to(url_for('/recruiter/index.php'));
+      break;
     } 
       
     

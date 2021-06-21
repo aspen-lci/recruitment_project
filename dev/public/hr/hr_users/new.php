@@ -84,7 +84,7 @@ if(is_post_request()){
                                 <div id="mgr_opt" class="form-row hidden">
                                 <div id="companies" class="form-group col-md-6">
                                     <label class="mt-2" for="company">Company</label>
-                                    <select id="company" class="form-control" name="company" required>
+                                    <select id="company" class="form-control" name="company">
                                         <option value="" selected>Choose Company</option>
                                         <?php foreach ($company_set as $company) { ?>
                                         <option value="<?php echo $company['id'] ?>" ><?php echo $company['company'] ?></option>    
@@ -93,7 +93,7 @@ if(is_post_request()){
                                     </div> <!-- positions end -->
                                     <div id="positions" class="form-group col-md-6">
                                     <label class="mt-2" for="position">Managed Position</label>
-                                    <select id="position" class="form-control" name="position" required>
+                                    <select id="position" class="form-control" name="position">
                                         <option value="" selected>Choose Position</option>
                                         <?php foreach ($positions as $position) { ?>
                                             <option value="<?php echo $position['id'] ?>" <?php echo $position['title'] ?></option>    

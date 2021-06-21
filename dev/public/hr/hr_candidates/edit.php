@@ -49,6 +49,7 @@
         $update['disposition'] = $_POST['status'];
         $update['company'] = $_POST['company'];
         $update['position'] = $position;
+        $update['intern'] = $_POST['intern'];
         $update['interview_date'] = $_POST['interviewDate'];
         $update['interview_time'] = $_POST['interviewTime'];
         //$update['start_date'] = $_POST['startDate'];
@@ -236,11 +237,7 @@
                                     <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
                                 <?php }; ?>
                             </select><br/>
-                            <label>Impact Institute Date:</label> 
-                            <select id="iiDate" type="select" name="iiDate">
-                                <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
-                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
-                            </select>
+                           
 
                         </div> <!-- Form Col End -->
                         <div class="col-4">
@@ -253,8 +250,12 @@
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    
                                     <?php } ?>
+                            </select></br>
+                            <label>Impact Institute Date:</label> 
+                            <select id="iiDate" type="select" name="iiDate">
+                                <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
+                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                             </select>
-
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->
                         </div>

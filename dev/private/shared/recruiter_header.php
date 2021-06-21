@@ -59,7 +59,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-bottom: 20px;">
       <div class="container d-flex justify-content-between">
         <div>
-        <a class="navbar-brand"  href="<?php echo WWW_ROOT . '/recruiter/index.php'?>"><h2>Recruiter Dashboard</h2></a>
+        <a class="navbar-brand"  href="<?php echo WWW_ROOT . '/recruiter/index.php'?>"><h2><?php echo($_SESSION['user_type'] == 7 ? 'Intern Manager' : 'Recruiter'); ?>  Dashboard</h2></a>
         </div>
 
        

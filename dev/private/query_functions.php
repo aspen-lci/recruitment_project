@@ -219,9 +219,16 @@ echo $sql;
           
       }
 
-      $sql = "UPDATE managers SET ";
-      $sql .= "position_id=" . db_escape($db, $user_set['position_id']) . " ";
-      $sql .= "WHERE user_id=" . $user_set['id'];
+      // $sql = "UPDATE managers SET ";
+      // $sql .= "position_id=" . db_escape($db, $user_set['position_id']) . " ";
+      // $sql .= "WHERE user_id=" . $user_set['id'];
+
+      $sql = "REPLACE INTO managers ";
+      $sql .= "(user_id, position_id) ";
+      $sql .= "VALUES (";
+      $sql .= "'" . db_escape($db, $user_set['id']) . "',";
+      $sql .= "'" . db_escape($db, $user_set['position_id']) . "'";
+      $sql .= ")";
 
       $result2 = mysqli_query($db, $sql);
 
@@ -323,6 +330,20 @@ echo $sql;
       mysqli_free_result($result);
       return $positions;
   }
+
+  function all_positions_by_company($company_id){
+    global $db;
+
+    $sql = "SELECT * FROM positions ";
+    $sql .= "WHERE inactive = 0  ";
+    $sql .= "ORDER BY title ASC";
+  
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $positions = resultToArray($result);
+    mysqli_free_result($result);
+    return $positions;
+}
 
   function all_active_positions($company_id){
     global $db;
@@ -515,12 +536,13 @@ echo($result);
         $new_id = mysqli_insert_id($db);
         
         $sql = "REPLACE INTO candidates ";
-        $sql .= "(user_id, recruiter_id, company_id, position_id, region_id, start_date, interview_date, interview_time, ii_date) ";
+        $sql .= "(user_id, recruiter_id, company_id, position_id, intern, region_id, start_date, interview_date, interview_time, ii_date) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $new_id) . "',";
         $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
         $sql .= "'" . db_escape($db, $candidate['company']) . "',";
         $sql .= "'" . db_escape($db, $candidate['position']) . "',";
+        $sql .= "'" . db_escape($db, $candidate['intern']) . "',";
         $sql .= "'" . db_escape($db, $candidate['region']) . "',";
         $sql .= "'" . db_escape($db, $candidate['start_date']) . "',";
         $sql .= "'" . db_escape($db, $candidate['interview_date']) . "',";
@@ -718,6 +740,19 @@ function all_candidates(){
     return $candidates;
 }
 
+function all_interns(){
+  global $db;
+
+  $sql = "SELECT * FROM all_intern_view ";
+  $sql .= "WHERE inactive = 0";
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $interns = resultToArray($result);
+  mysqli_free_result($result);
+  return $interns;
+}
+
 function documents_by_candidate($candidate_id){
   global $db;
 
@@ -752,6 +787,7 @@ function edit_candidate_recruiter($data_set){
             $sql .= "recruiter_id='" . db_escape($db, $data_set['recruiter']) . "', ";
             $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
             $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
+            $sql .= "intern='" . db_escape($db, $data_set['intern']) . "', ";
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
             $sql .= "region_id='" . db_escape($db, $data_set['region']) . "' ";

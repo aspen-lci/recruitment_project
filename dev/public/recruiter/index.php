@@ -112,6 +112,10 @@ if($_SESSION['user_type'] == 2)  {
 if($_SESSION['user_type'] == 6){
   $candidates = candidates_by_position($_SESSION['position_id']);
 }
+
+if($_SESSION['user_type'] == 7){
+  $candidates = all_interns();
+}
 ?>
 
 <?php $page_title = 'Recruiter Dashboard'; ?>
@@ -175,6 +179,12 @@ if($_SESSION['user_type'] == 6){
                         <dt>Position</dt>
                         <dd><?php echo $candidate['position'] ?? ''; ?></dd>
                     </td>
+                    <td style="border: none; padding-right: 50px;" class="align-top">
+                        <dt>Intern</dt>
+                        <dd><?php echo($candidate['intern'] == 0 ? 'No' : 'Yes'); ?></dd>
+                        <dt>Panel Interview Region</dt>
+                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
+                    </td>
                     <td style="border: none; padding-right: 50px;">
                         <dt>Panel Interview Date</dt>
                         <dd><?php echo ($candidate['interview_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['interview_date'])) : ''); ?></dd>
@@ -182,10 +192,9 @@ if($_SESSION['user_type'] == 6){
                         <dd><?php echo ($candidate['interview_time'] > 0 ? date('g:i A', strtotime($candidate['interview_time'])) : ''); ?></dd>
                     </td>
                     <td style="border: none;">
-                        <dt>Panel Interview District</dt>
-                        <dd><?php echo $candidate['region'] ?? ''; ?></dd>
                         <dt>Impact Institute Date</dt>
                         <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
+                        
                     </td>
                   </table>
                     </td>

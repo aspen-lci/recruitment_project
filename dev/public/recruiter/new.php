@@ -106,7 +106,7 @@ if(is_post_request()){
                             </div> <!-- Form Col End -->
 
                             <div class="form-group col-md-1">
-                                    <label for="intern">Check If Intern</label>
+                                    <label class="ml-2" for="intern">Intern</label>
                                     <input type="checkbox" id="intern" class="form-control" name="intern" value=1>
                                         
                             </div> <!-- Form Col End -->

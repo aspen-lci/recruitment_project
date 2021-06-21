@@ -135,8 +135,7 @@
                                         <option value="<?php echo $company['id'] ?>" <?php echo($company['company'] === $candidate['company'] ? 'selected' : ''); ?>><?php echo $company['company'] ?></option>    
                                     <?php } ?>
                             </select>
-                            <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
-                            <label for="intern" class="form-check-label">Check If Intern</label>
+                            
                             <br/>
 
                             <label>Position:</label> 
@@ -148,6 +147,8 @@
                                <?php }; ?>
                                
                             </select>
+                            <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
+                            <label for="intern"><b>INTERN</b></label>
                             </br>
                             <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
                                 

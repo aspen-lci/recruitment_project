@@ -827,6 +827,7 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
             $sql .= "disposition_id='" . db_escape($db, $data_set['disposition']) . "', ";
             $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
             $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
+            $sql .= "intern='" . db_escape($db, $data_set['intern']) . "', ";
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
             $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";

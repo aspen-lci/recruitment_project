@@ -87,6 +87,7 @@
     font-weight: bold;
   }
 
+
   .c-card-10{
     background-color:rgba(249, 142, 44);
     color: white; 
@@ -107,6 +108,18 @@
 
   .cw.c-card-11{
     background-color:rgba(144, 62, 115);
+    color: white; 
+    font-weight: bold;
+  }
+
+  .c-card-12{
+    background-color:rgba(109, 110, 113);
+    color: white;
+    font-weight: bold;
+  }
+
+  .c-card-13{
+    background-color:rgba(249, 142, 44);
     color: white; 
     font-weight: bold;
   }

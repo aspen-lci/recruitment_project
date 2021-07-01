@@ -2,7 +2,7 @@
     require_login();
     
     $company_set = all_companies();
-    $ll_position_set = all_active_positions(2);
+    $ll_position_set = all_positions_by_company(2);
     $cw_position_set = all_active_positions(3);
     $region_set = all_regions();
     $recruiter_set = all_recruiters();

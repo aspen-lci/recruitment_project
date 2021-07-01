@@ -21,7 +21,13 @@ if(is_post_request()){
         $_SESSION['company_id'] = $candidate[0]['company_id'];
         $logo = get_logo_url($_SESSION['company_id']);
         $_SESSION['logo'] = $logo[0][logo_url];
+        $_SESSION['intern'] = $candidate[0]['intern'];
+
+        if($_SESSION['intern'] = 1){
+          redirect_to(url_for('/intern/index.php'));
+        }else{
         redirect_to(url_for('/candidate/index.php'));
+        }
       break;
       case 5:
         redirect_to(url_for('/hr/index.php'));

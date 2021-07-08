@@ -23,7 +23,7 @@ if(is_post_request()){
         $_SESSION['logo'] = $logo[0][logo_url];
         $_SESSION['intern'] = $candidate[0]['intern'];
 
-        if($_SESSION['intern'] = 1){
+        if($_SESSION['intern'] == 1){
           redirect_to(url_for('/intern/index.php'));
         }else{
         redirect_to(url_for('/candidate/index.php'));

@@ -38,7 +38,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                     <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/LL CareerPresentation 052220.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">Lifeline Career Presentation</a>
                     <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FAQlist 2020.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">FAQ List</a>
                     <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Tenets of Culture Document.pdf'); ?>">Tenets of Our Culture</a>
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Career Progression updated.pdf'); ?>" style="display: <?php echo(($candidate['position_id'] == '1' OR $candidate['position_id'] == '5') ? "inherit" : "none"); ?>">Family Consultant Career Progression</a>
+                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Career Progression updated.pdf'); ?>" style="display: <?php echo(($candidate['position_id'] == '1' OR $candidate['position_id'] == '5' OR $candidate['position_id'] == '9') ? "inherit" : "none"); ?>">Family Consultant Career Progression</a>
               </div>
               </div>
               

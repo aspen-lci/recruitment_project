@@ -21,7 +21,15 @@ $templates = get_templates();
 
 $jd = get_template_link($templates, $jd_doc_id);
 
-$disc = get_template_link($templates, 4);
+if($company == 2){
+$disc = get_template_link($templates, 26);
+$ack = get_template_link($templates, 25);
+}
+
+if($company == 3){
+  $disc = get_template_link($templates, 24);
+  $ack = get_template_link($templates, 23);
+  }
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
@@ -69,9 +77,10 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-body">
             <h4 class="card-title">Disclosure Form</h4>
             <div <?php echo(card_body_status($documents, 4)); ?>>
-              <p class="card-text">First, Middle, and Last Name required! Please sign and date. </p>
+              <p class="card-text">First, Middle, and Last Name required! Please sign and date both forms. </p>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="<?php echo $disc; ?>" target="_blank" class="btn btn-outline-lli btn-small">FCRA Disclosure</a>
+              <a href="<?php echo $disc; ?>" target="_blank" class="btn btn-outline-lli btn-small">Disclosure</a>
+              <a href="<?php echo $ack; ?>" target="_blank" class="btn btn-outline-lli btn-small">Acknowledgement</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, '4')); ?>><?php echo(document_in_document_list($documents, 4)); ?></p>
           </div>

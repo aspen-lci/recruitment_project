@@ -38,7 +38,7 @@ if(is_post_request()){
         redirect_to(url_for('/recruiter/index.php'));
       break;
       case 7:
-        redirect_to(url_for('/recruiter/index.php'));
+        redirect_to(url_for('/manager/index.php'));
       break;
     } 
       

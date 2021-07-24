@@ -1,6 +1,12 @@
 <?php 
     if(!isset($page_title)) { $page_title = 'HR';}
     require_login();
+
+    if($_SESSION['user_type'] == '1' OR $_SESSION['user_type'] == '3' OR $_SESSION['user_type'] == '5'){
+    }else{
+      redirect_to(url_for('logout.php'));
+    }
+    
 ?>
 
 <!doctype html>
@@ -104,3 +110,4 @@
     </nav>
     <?php echo display_session_message(); ?>
     <?php echo display_errors($errors); ?>
+    

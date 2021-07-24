@@ -18,6 +18,24 @@
    <!-- Chatbot -->
    <script src="//code.tidio.co/wcvpkdgsrtwx6hqb0rd7t9w6gs881qem.js" async></script>
 
+   <script>
+    setInterval(function(){
+    logout();
+},1200000);
+
+function logout(){
+    if(confirm('You have been idle for more than 20 minutes.  Click OK to stay logged in.'))
+        alert('OK! keeping you logged in');
+        
+    else
+    redirect()
+}
+
+function redirect(){
+    document.location = "../../../public/logout.php"
+}
+</script>
+
    <?php
       db_disconnect($db);
   ?>

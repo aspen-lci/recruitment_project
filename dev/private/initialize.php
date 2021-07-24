@@ -30,4 +30,14 @@
 
     $db = db_connect();
     $errors = [];
+
+    if(isset($_SESSION['email'])){
+        if(time()-$_SESSION['login_timestamp']>(5*60)){
+            session_unset();
+            session_destroy();
+            
+        }else{
+            $_SESSION['login_timestamp'] = time();
+        }
+    }
 ?>

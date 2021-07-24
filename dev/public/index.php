@@ -42,6 +42,7 @@ if(is_post_request()) {
         $_SESSION['user_type'] = $user['type'];
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['inactive'] = $user['inactive'];
+        $_SESSION['login_timestamp'] = time();
           if($_SESSION['user_type'] == 4){
             $candidate = get_candidate_by_user_id($_SESSION['user_id']);
             $_SESSION['company_id'] = $candidate[0]['company_id'];

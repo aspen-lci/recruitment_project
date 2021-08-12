@@ -558,7 +558,7 @@ echo($result);
         }
 
         $candidate_id = mysqli_insert_id($db);
-        $doc_defaults = get_doc_defaults($candidate['company']);
+        $doc_defaults = get_doc_defaults($candidate['company'], $candidate['intern']);
 
         $sql = "INSERT INTO document_status ";
         $sql .= "(candidate_id, document_id, status_id) ";
@@ -588,11 +588,13 @@ echo($result);
         return $result;
 }
 
-function get_doc_defaults($company_id){
+function get_doc_defaults($company_id, $intern){
   global $db;
 
   $sql = "SELECT * FROM document_defaults ";
-  $sql .= "WHERE company_id='" . $company_id . "'";
+  $sql .= "WHERE company_id='" . $company_id . "' ";
+  $sql .= "AND intern='" . $intern . "' " ;
+  $sql .= "AND is_active = 1";
 
   $result = mysqli_query($db, $sql);
 

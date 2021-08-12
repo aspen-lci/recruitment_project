@@ -111,21 +111,15 @@ class Documents {
       return $docs;
     }
 }
-if($_SESSION['user_type'] == 2)  {
-  $candidates = candidates_by_recruiter((!isset($_SESSION['user_id'])) ? 15 : $_SESSION['user_id']);
-}
 
-if($_SESSION['user_type'] == 6){
-  $candidates = candidates_by_position($_SESSION['position_id']);
-}
 
 if($_SESSION['user_type'] == 7){
   $candidates = all_interns();
 }
 ?>
 
-<?php $page_title = 'Recruiter Dashboard'; ?>
-<?php include(SHARED_PATH . '/recruiter_header.php'); ?>
+<?php $page_title = 'Intern Manager Dashboard'; ?>
+<?php include(SHARED_PATH . '/manager_header.php'); ?>
 
 
     <!-- Page Content -->
@@ -154,7 +148,7 @@ if($_SESSION['user_type'] == 7){
                 <tr style="overflow-wrap:break-word;">
                     <th class="d-none">Hidden nested details table</th>
                     <th colspan="1"></th>
-                    <th colspan="11" class="text-center">Documents Received</th>
+                    <th colspan="13" class="text-center">Documents Received</th>
                   </tr>
                   
                   <tr>
@@ -167,7 +161,7 @@ if($_SESSION['user_type'] == 7){
                 <tbody>
                   <?php foreach($candidates as $candidate) { $docs = new Documents($candidate['documents']); ?>
                   <tr data-has-detail-view="true">
-                    <td><a class="action" href="<?php echo url_for('/recruiter/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
+                    <td><a class="action" href="<?php echo url_for('/manager/edit.php?id=' . h($candidate['candidate_id'])); ?>"><?php echo (h($candidate['first_name']) . ' ' . h($candidate['last_name'])); ?></a></td>
                     <?php foreach($docs->getAll() as $d) echo sprintf('<td class="text-center doc_status %s">%s</td>', ($d->status == "Not Submitted" ? "Not_Submitted" : $d->status), ($d->status != "Unassigned" ? $d->status : "")); ?>                
                   
                     <td class="detail-view" style="display:none;"> 
@@ -234,7 +228,7 @@ if($_SESSION['user_type'] == 7){
           $('#parentTable').on('expand-row.bs.table', function (e, index, row, $detail) {
 
           // Get subtable from first cell
-          var $rowDetails = $(row[12]);
+          var $rowDetails = $(row[14]);
 
           // Give new id to avoid conflict with first cell    
           var $id = $rowDetails.attr("id");

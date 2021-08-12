@@ -7,6 +7,13 @@
       redirect_to(url_for('logout.php'));
     }
     
+    if(time()-$_SESSION['login_timestamp']>($_SESSION['time_limit'])){
+      session_unset();
+      session_destroy();
+      
+  }else{
+      $_SESSION['login_timestamp'] = time();
+  }
 ?>
 
 <!doctype html>

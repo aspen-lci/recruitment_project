@@ -29,23 +29,6 @@
     <script src="<?php echo url_for('/js/custom.js'); ?>"></script>
     
 
-<script>
-    setInterval(function(){
-    logout();
-},(<?php echo $_SESSION['time_limit'] ?> - 180) * 1000);
-
-function logout(){
-    if(confirm('Click OK to stay logged in.'))
-        alert('OK! keeping you logged in');
-        
-    else
-    redirect()
-}
-
-function redirect(){
-    document.location = "../logout.php"
-}
-</script>
 
     <?php
       db_disconnect($db);

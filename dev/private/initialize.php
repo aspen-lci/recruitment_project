@@ -31,13 +31,15 @@
     $db = db_connect();
     $errors = [];
 
-    if(isset($_SESSION['email'])){
-        if(time()-$_SESSION['login_timestamp']>(5*60)){
-            session_unset();
-            session_destroy();
+    // if(isset($_SESSION['login_timestamp'])){
+    //     if(time()-$_SESSION['login_timestamp']>($_SESSION['time_limit'])){
+    //         session_unset();
+    //         session_destroy();
             
-        }else{
-            $_SESSION['login_timestamp'] = time();
-        }
-    }
+    //     }else{
+    //         $_SESSION['login_timestamp'] = time();
+    //     }
+    // }else{
+    //     $_SESSION['time_limit'] = "";
+    // }
 ?>

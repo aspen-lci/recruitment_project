@@ -153,6 +153,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Accept and sign the internship agreement</h4>
             <div <?php echo(card_body_status($documents, 21)); ?>>
             <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
+            <p class="card-text">Please download the completed document and save to be uploaded into our Relias system at a later time.  Please format the document name as Last Name, First Name Internship Agreement, Date.</p>
             <a href="<?php echo $intern; ?>" target="_blank" class="btn btn-outline-lli btn-small">Internship Agreement</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 21)); ?>><?php echo(document_in_document_list($documents, 21)); ?></p>
@@ -177,6 +178,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4 class="card-title">Accept and sign the business associates contract</h4>
             <div <?php echo(card_body_status($documents, 22)); ?>>
             <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
+            <p class="card-text">Please download the completed document and save to be uploaded into our Relias system at a later time.  Please format the document name as Last Name, First Name Internship Agreement, Date.</p>
             <a href="<?php echo $intern; ?>" target="_blank" class="btn btn-outline-lli btn-small">Business Associates Contract</a>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 22)); ?>><?php echo(document_in_document_list($documents, 22)); ?></p>

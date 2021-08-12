@@ -123,7 +123,7 @@ if(is_post_request()) {
       </div> <!-- End Row -->
     </div>
 
-    <?php include(SHARED_PATH . '/candidate_footer.php'); ?>
+    <?php include(SHARED_PATH . '/login_footer.php'); ?>
 
 
 

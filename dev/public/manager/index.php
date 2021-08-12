@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialize.php'); 
   if(!isset($page_title)) {$page_title = 'Intern Manager';}
 
-  if($_SESSION['user_type'] != '1'){
+  if($_SESSION['user_type'] != '7'){
     redirect_to(url_for('logout.php'));
   }
 /**
@@ -15,12 +15,14 @@ class Documents {
       "discForm" => "Disclosure",
       "lea" => "LEA",
       "lCheck" => "Background Check",
-      "panel" => "Panel Interview",
-      "jobOffer" => "Job Offer",
+      "internOffer" => "Internship Offer",
+      "internAgree" => "Internship Agreement",
+      "busAssoc" => "Business Associates Contract",
       "trans" => "Transcripts",
       "fPrint" => "Fingerprinting",
       "ref" => "Reference Check",
-      "ultipro" => "Ultipro"
+      "liab" => "Proof of Liability",
+      "ukg" => "UKG"
     ];
 
     private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];

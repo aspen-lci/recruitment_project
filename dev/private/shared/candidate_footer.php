@@ -21,10 +21,10 @@
    <script>
     setInterval(function(){
     logout();
-},1200000);
+},(<?php echo $_SESSION['time_limit'] ?> -180) * 1000);
 
 function logout(){
-    if(confirm('You have been idle for more than 20 minutes.  Click OK to stay logged in.'))
+    if(confirm('Click OK to stay logged in.'))
         alert('OK! keeping you logged in');
         
     else
@@ -32,7 +32,7 @@ function logout(){
 }
 
 function redirect(){
-    document.location = "../../../public/logout.php"
+    document.location = "../logout.php"
 }
 </script>
 

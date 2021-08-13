@@ -588,6 +588,85 @@ echo($result);
         return $result;
 }
 
+function mgr_insert_candidate($candidate){
+  global $db;
+
+  $errors = validate_candidate($candidate);
+      
+      if (!empty($errors)) {
+          return $errors;
+      }
+    mysqli_begin_transaction($db);
+
+      // could use sprintf("'%s','%s',%d", 'string1', 'string2', 1) also
+      $sql = "REPLACE INTO users ";
+      $sql .= "(first_name, last_name, email, type) ";
+      $sql .= "VALUES (";
+      $sql .= "'" . db_escape($db, $candidate['first_name']) . "',";
+      $sql .= "'" . db_escape($db, $candidate['last_name']) . "',";
+      $sql .= "'" . db_escape($db, $candidate['email']) . "',";
+      $sql .= db_escape($db, $candidate['type']);
+      $sql .= ")";
+
+      $result = mysqli_query($db, $sql);
+echo($result);
+      if(!$result){
+          mysqli_rollback($db);
+          return (mysqli_error($db));
+          exit;
+          
+      }
+
+      $new_id = mysqli_insert_id($db);
+      
+      $sql = "REPLACE INTO candidates ";
+      $sql .= "(user_id, recruiter_id, company_id, position_id, intern) ";
+      $sql .= "VALUES (";
+      $sql .= "'" . db_escape($db, $new_id) . "',";
+      $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
+      $sql .= "'" . db_escape($db, $candidate['company']) . "',";
+      $sql .= "'" . db_escape($db, $candidate['position']) . "',";
+      $sql .= "'" . db_escape($db, $candidate['intern']) . "'";
+      $sql .= ")";
+      echo $sql;
+      $result = mysqli_query($db, $sql);
+
+      if(!$result){
+        mysqli_rollback($db);
+        echo mysqli_error($db);
+      }
+
+      $candidate_id = mysqli_insert_id($db);
+      $doc_defaults = get_doc_defaults($candidate['company'], $candidate['intern']);
+
+      $sql = "INSERT INTO document_status ";
+      $sql .= "(candidate_id, document_id, status_id) ";
+      $sql .= "VALUES ";
+     
+
+      foreach($doc_defaults as $default){
+      $sql .= "(";
+      $sql .= $candidate_id . ",";
+      $sql .= $default['document_id'] . "," . $default['default_status'] . "), ";
+      }
+
+      $sql .= "(";
+      $sql .= $candidate_id . ", ";
+      $sql .= $candidate['jd_doc_id'] . ", ";
+      $sql .= "1)";
+      echo $sql;
+      $result = mysqli_query($db, $sql);
+
+      if(!$result){
+        mysqli_rollback($db);
+        echo mysqli_error($db);
+      }
+
+      mysqli_commit($db);
+      
+      return $result;
+}
+
 function get_doc_defaults($company_id, $intern){
   global $db;
 

@@ -93,12 +93,12 @@
         </div>
         
         <div class="d-flex justify-content-end">
-          <ul class="navbar-nav">
-            <li class="nav-item">
+           <ul class="navbar-nav">
+          <!--  <li class="nav-item">
               <a class="nav-link" href="<?php echo url_for('/hr/hr_users/index.php'); ?>">All Users</a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo url_for('/hr/hr_candidates/new.php'); ?>">Add New Candidate</a>
+              <a class="nav-link" href="<?php echo url_for('/manager/new.php'); ?>">Add New Candidate</a>
             </li>
             
             

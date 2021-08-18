@@ -23,6 +23,7 @@ if(is_post_request()){
     $candidate['position'] = $position ?? '';
     $candidate['intern'] = $_POST['intern'] ?? '';
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
+    $candidate['region'] = $_POST['region'] ?? 'NULL';
     
 
     $exists = find_user_by_email($candidate['email']);
@@ -107,6 +108,13 @@ if(is_post_request()){
                                         
                             </div> <!-- Form Col End -->
 
+                            <div class="form-group col-md-3">
+                                    <label for="region">Region</label>
+                                    <select id="region" class="form-control" name="region" required>
+                                        <option value="" selected>Choose Region</option>
+                                        
+                                    </select>
+                            </div> <!-- Form Col End -->
                            
 
                             

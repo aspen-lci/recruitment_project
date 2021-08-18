@@ -620,13 +620,14 @@ echo($result);
       $new_id = mysqli_insert_id($db);
       
       $sql = "REPLACE INTO candidates ";
-      $sql .= "(user_id, recruiter_id, company_id, position_id, intern) ";
+      $sql .= "(user_id, recruiter_id, company_id, position_id, intern, region_id) ";
       $sql .= "VALUES (";
       $sql .= "'" . db_escape($db, $new_id) . "',";
       $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
       $sql .= "'" . db_escape($db, $candidate['company']) . "',";
       $sql .= "'" . db_escape($db, $candidate['position']) . "',";
-      $sql .= "'" . db_escape($db, $candidate['intern']) . "'";
+      $sql .= "'" . db_escape($db, $candidate['intern']) . "',";
+      $sql .= "'" . db_escape($db, $candidate['region']) . "'";
       $sql .= ")";
       echo $sql;
       $result = mysqli_query($db, $sql);
@@ -812,7 +813,8 @@ function all_candidates(){
   global $db;
 
     $sql = "SELECT * FROM all_candidate_doc_status ";
-    $sql .= "WHERE inactive = 0";
+    $sql .= "WHERE inactive = 0 ";
+    $sql .= "AND intern = 0";
     
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -954,6 +956,126 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
             }
 
             $result = update_doc_status($data_set['candidate_id'], 7, $doc_set['offer']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 8, $doc_set['trans']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 9, $doc_set['fprint']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 10, $doc_set['ref']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 11, $doc_set['ultipro']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 15, $doc_set['app']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+    
+    mysqli_commit($db);
+  return $result;
+}
+
+function edit_intern_hr($data_set, $doc_set, $jd_id){
+  global $db;
+
+  mysqli_begin_transaction($db);
+            $sql = "UPDATE users SET ";
+            $sql .= "first_name='" . db_escape($db, $data_set['first_name']) . "', ";
+            $sql .= "last_name='" . db_escape($db, $data_set['last_name']) . "' ";
+            $sql .= "WHERE id='" . db_escape($db, $data_set['user_id']) . "' ";
+            $sql .= "LIMIT 1; ";
+            
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+              mysqli_rollback($db);
+              echo mysqli_error($db);
+                
+            }
+            
+            $sql = "UPDATE candidates SET ";
+            $sql .= "recruiter_id='" . db_escape($db, $data_set['recruiter']) . "', ";
+            $sql .= "disposition_id='" . db_escape($db, $data_set['disposition']) . "', ";
+            $sql .= "company_id='" . db_escape($db, $data_set['company']) . "', ";
+            $sql .= "position_id='" . db_escape($db, $data_set['position']) . "', ";
+            $sql .= "intern='" . db_escape($db, $data_set['intern']) . "', ";
+            $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
+            $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
+            $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
+            $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
+            $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
+            $sql .= "LIMIT 1";
+            
+            $result = mysqli_query($db, $sql);
+
+            if(!$result){
+              mysqli_rollback($db);
+              echo mysqli_error($db); 
+            }
+
+           $result = update_doc_status($data_set['candidate_id'], $jd_id, $doc_set['jd']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 4, $doc_set['disc']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 5, $doc_set['lea']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 6, $doc_set['bcg']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 21, $doc_set['agreement']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 7, $doc_set['offer']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 22, $doc_set['contract']);
+
+            if(!$result){
+              echo mysqli_error($db); 
+            }
+
+            $result = update_doc_status($data_set['candidate_id'], 31, $doc_set['liability']);
 
             if(!$result){
               echo mysqli_error($db); 

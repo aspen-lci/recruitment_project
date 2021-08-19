@@ -36,6 +36,7 @@
     
 
     if(is_post_request()){
+        
         $position_explode = explode('|', $_POST['position']);
         $position = $position_explode[0];
         $jd_doc_id = $position_explode[1];

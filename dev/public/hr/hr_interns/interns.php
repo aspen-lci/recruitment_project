@@ -19,7 +19,7 @@ class Documents {
       "trans" => "Transcripts",
       "fPrint" => "Fingerprinting",
       "ref" => "Reference Check",
-      "liab" => "Proof of Liability",
+      "liab" => "Proof of Liability Insurance",
       "ukg" => "UKG Onboarding"
     ];
 
@@ -152,7 +152,7 @@ class Documents {
                   
                   <tr>
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
-                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style style data-sortable="true" data-field="%s">%s</th>', $k, $v); ?>
+                    <?php foreach(Documents::$docMap as $k=>$v) echo sprintf('<th style data-sortable="true" data-field="%s">%s</th>', $k, $v); ?>
                     <th class="d-none"></th>
                   </tr>
                  

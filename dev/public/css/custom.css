@@ -134,6 +134,11 @@ label.panel-info{
     font-size: 1.2em;
 }
 
+table th{
+    overflow-wrap:break-word;
+    width: 50px;
+}
+
 .top-right {
     position: absolute;
     top: 8px;

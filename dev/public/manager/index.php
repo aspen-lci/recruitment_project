@@ -15,14 +15,14 @@ class Documents {
       "discForm" => "Disclosure",
       "lea" => "LEA",
       "lCheck" => "Background Check",
-      "internOffer" => "Internship Offer",
+      "jobOffer" => "Job Offer",
       "internAgree" => "Internship Agreement",
       "busAssoc" => "Business Associates Contract",
       "trans" => "Transcripts",
       "fPrint" => "Fingerprinting",
       "ref" => "Reference Check",
-      "liab" => "Proof of Liability",
-      "ukg" => "UKG"
+      "liab" => "Proof of Liability Insurance",
+      "ukg" => "UKG Onboarding"
     ];
 
     private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];
@@ -129,7 +129,7 @@ if($_SESSION['user_type'] == 7){
             <div class="col-lg-12 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h4 class="m-0 font-weight-bold text-dark text-center">Candidates In Process</h4>
+                  <h4 class="m-0 font-weight-bold text-dark text-center">Interns In Process</h4>
                 </div> <!-- Card header -->
                 <div class="card-body"> 
                   <div class="actions text-left mb-2">

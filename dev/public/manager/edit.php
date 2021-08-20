@@ -149,16 +149,10 @@
                             </select>
                             <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
                             <label for="intern"><b>INTERN</b></label>
-                            </br>
-                            <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
                                 
                         </div> <!-- Form Col End -->
                         <div class="col-4">
-                            <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date']) > 0000-00-00 ? $candidate['interview_date'] : ''); ?>"/>
-                            <br>
-                            <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time']) > 0 ? $candidate['interview_time'] : ''); ?>"/>
-                            <br>
-                            <label>Panel Interview District for Zoom Link:</label> 
+                            <label>Region</label> 
                             <select id="region" type="select" name="region">
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
@@ -266,34 +260,47 @@
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-header c-card-5 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
-                                <p class="my-0 flex-grow-1">5. Panel Interview</p> 
+                                <p class="my-0 flex-grow-1">5. Internship Offer</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
-                                <p><?php echo(document_in_document_list($document_list, '13')); ?></p>
+                                <p><?php echo(document_in_document_list($document_list, '7')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
                         
                     </div> <!-- End Column -->
+
+                    <div class="col-lg-2 col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">6. Internship Agreement</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '21')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
+                        </div> <!-- End Column -->
+
                 </div> <!-- End Row -->
                 
                         
                         
                         <div class="row d-flex justify-content-center m-0 text-center"> <!-- m-4 justify-content-center"> -->
+                        
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-6 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
-                                <p class="my-0 flex-grow-1">6. Job Offer</p> 
+                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">7. Business Associates Contract</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
-                                <p><?php echo(document_in_document_list($document_list, '7')); ?></p>
+                                <p><?php echo(document_in_document_list($document_list, '22')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-7 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
-                                <p class="my-0 flex-grow-1">7. Transcripts</p> 
+                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">8. Transcripts</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '8')); ?></p>
@@ -303,8 +310,8 @@
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-8 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
-                                <p class="my-0 flex-grow-1">8. Fingerprinting</p> 
+                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">9. Fingerprinting</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '9')); ?></p>
@@ -314,8 +321,8 @@
 
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-9 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
-                                <p class="my-0 flex-grow-1">9. Reference Check</p> 
+                            <div class="card-header c-card-10 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">10. Reference Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '10')); ?></p>
@@ -323,16 +330,31 @@
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
 
+                        <div class="col-lg-2 col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header c-card-11 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">11. Proof of Liability Insurance</p> 
+                            </div> <!--End Card Header -->
+                            <div class="card-body flex-column h-100">
+                                <p><?php echo(document_in_document_list($document_list, '31')); ?></p>
+                            </div> <!-- End Card Body -->
+                        </div> <!-- End Card -->
+                        </div> <!-- End Column -->
+
+
                     <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-10 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
-                                <p class="my-0 flex-grow-1">10. UltiPro Onboarding</p>
+                            <div class="card-header c-card-12 d-flex align-items-center justify-content-center h-100 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">12. UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
                             <div class="card-body flex-column h-100">
                                 <p><?php echo(document_in_document_list($document_list, '11')); ?></p>
                             </div> <!-- End Card Body -->
                         </div> <!-- End Card -->
                    </div> <!-- End Col -->
+
+
+                   
                 </div> <!-- End Row -->
                 </div> <!-- Card Body End -->
             </div>  <!-- Card End -->

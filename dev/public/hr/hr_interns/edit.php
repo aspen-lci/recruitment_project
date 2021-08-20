@@ -164,16 +164,18 @@
             $errors = $result; 
         }
 
-        if($candidate['notes'] == ''){
+        if($candidate['notes'] == '' && $new_notes != ''){
             $create_note = create_candidate_note($id, $new_notes);
             if ($create_note === false) {
                 $errors = $create_note;
             }
-        }else{
+        }elseif($candidate['notes'] != '' && $new_notes != ''){
             $update_note = update_candidate_note($id, $new_notes);
             if ($update_note === false) {
                 $errors = $update_note;
             }
+        }else{
+            
         }
 
         redirect_to(url_for('/hr/hr_interns/interns.php'));
@@ -259,7 +261,7 @@
                             <br>
                             <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo($candidate['interview_time'] > 0 ? h($candidate['interview_time']) : ''); ?>"/>
                             <br> -->
-                            <label>Panel Interview Region:</label> 
+                            <label>Region:</label> 
                             <select id="region" type="select" name="region">
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    

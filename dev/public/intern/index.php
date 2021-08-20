@@ -35,7 +35,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <!-- Jumbotron Header -->
     <header class="jumbotron">
-    <img src="<?php echo url_for('/images/LL Internship Header Graphics 081621.jpg') ?>" alt="hero_img" style="width: 100%;">
+    <img src="<?php echo url_for('/images/LL Internship Header Graphics 081621-min.jpg') ?>" alt="hero_img" style="width: 100%;">
       <!-- <h1 class="display-4">We cannot wait to get to know you better!</h1>
       <p class="lead">By applying with us, you have taken the first step to positively impact individuals, families, and communities. Below you will find an easy checklist to walk you through our hiring process.</p>
       <p class="lead">We ask that you complete the first four steps below within the next 48 hours so we can invite you to the panel interview and facilitate your onboarding experience. The speed with which you complete this process determines how quickly you can begin your work at Lifeline Youth & Family Services.</p>
@@ -250,16 +250,16 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </div>
 
     <div class="col-lg-4 mb-4">
-        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 31, $disposition)); ?>";>
           <div class="card-header c-card-11 <?php echo($company == 3 ? 'cw' : ''); ?>">
             <h4>11</h4>
           </div>
           <div class="card-body">
             <h4 class="card-title">Proof of Liability Insurance</h4>
-            <div <?php echo(card_body_status($documents, 11)); ?>>
+            <div <?php echo(card_body_status($documents, 31)); ?>>
               <p class="card-text">Instructions for submitting liability insurance info</p>
           </div>
-          <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
+          <p class="doc_status" <?php echo(display_card_body_status($documents, 31)); ?>><?php echo(document_in_document_list($documents, 31)); ?></p>
           </div>
           <div class="card-footer c-card-11 <?php echo($company == 3 ? 'cw' : ''); ?>">
           </div>

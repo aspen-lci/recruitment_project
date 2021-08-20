@@ -4,7 +4,7 @@ $company_set = all_companies();
 $ll_position_set = all_active_positions(2);
 $cw_position_set = all_active_positions(3);
 $region_set = all_regions();
-$recruiter_set = all_recruiters();
+$recruiter_set = all_intern_recruiters();
 $ii_dates = all_ii_dates();
 
 

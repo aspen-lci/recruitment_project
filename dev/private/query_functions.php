@@ -386,6 +386,19 @@ echo $sql;
     return $recruiters;
   }
 
+  function all_intern_recruiters(){
+    global $db;
+
+    $sql = "SELECT * FROM intern_recruiters ";
+    $sql .= "ORDER BY first_name ASC";
+    
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $recruiters = resultToArray($result);
+    mysqli_free_result($result);
+    return $recruiters;
+  }
+
   function all_status(){
     global $db;
 
@@ -826,8 +839,9 @@ function all_candidates(){
 function all_interns(){
   global $db;
 
-  $sql = "SELECT * FROM all_intern_view ";
-  $sql .= "WHERE inactive = 0";
+  $sql = "SELECT * FROM all_candidate_doc_status ";
+  $sql .= "WHERE inactive = 0 ";
+  $sql .= "AND intern = 1";
 
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);

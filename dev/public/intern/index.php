@@ -257,7 +257,11 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div class="card-body">
             <h4 class="card-title">Proof of Liability Insurance</h4>
             <div <?php echo(card_body_status($documents, 31)); ?>>
-              <p class="card-text">Instructions for submitting liability insurance info</p>
+              <p class="card-text">Malpractice insurance is required and must be provided during your training with Lifeline. Please ask your school if they have a policy for you and how to access it.
+If you are responsible for purchasing your own policy, check with a professional organization like the APA or NASW or one of the companies below.</p>
+
+              <a href="http://www.hpso.com/individuals/professional-liability/student-malpractice-insurance-coverage-description?utm_source=google&utm_medium=cpc&utm_campaign=HC-HPSO-PPC-DSA-NonBrand&utm_term=DYNAMIC+SEARCH+ADS&gclid=CjwKCAiAi_D_BRApEiwASslbJ77CLHNzAJMedy8T9aEceVcxY_ZWpezvjo_UDyWMe86ma7uZJleOrhoCkgQQAvD_BwE&gclsrc=aw.ds" class="btn btn-outline-lli btn-small mt-3">HPSO</a>          
+              <a href="https://www.americanprofessional.com/" class="btn btn-outline-lli btn-small mt-3">APA</a>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 31)); ?>><?php echo(document_in_document_list($documents, 31)); ?></p>
           </div>

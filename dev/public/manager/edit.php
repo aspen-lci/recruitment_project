@@ -4,6 +4,7 @@
     $company_set = all_companies();
     $ll_position_set = all_positions_by_company(2);
     $cw_position_set = all_active_positions(3);
+    $cma_position_set = all_active_positions(4);
     $region_set = all_regions();
     $recruiter_set = all_recruiters();
     $ii_dates = all_ii_dates();
@@ -147,8 +148,10 @@
                                <?php }; ?>
                                
                             </select>
+                            </br>
+                            <label for="intern">Intern:</label>
                             <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
-                            <label for="intern"><b>INTERN</b></label>
+                            
                                 
                         </div> <!-- Form Col End -->
                         <div class="col-4">
@@ -158,7 +161,12 @@
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
                                     <?php } ?>
                             </select>
-                            
+                            <br/>
+                            <label>Impact Institute Date:</label> 
+                            <select id="iiDate" type="select" name="iiDate">
+                                <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
+                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
+                            </select>
                             
                         </div> <!-- Form Col End -->
                         
@@ -378,8 +386,11 @@ $(document).ready(function(){
             var c = $(this);
             var ll = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
             var cw = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
+            var cma = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cma_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
             var ll_reg = '<select id="region" name="region" required><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?> <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
             var cw_reg = '<select id="region" name="region" required><option value = "24" selected>Crosswinds</option></select>';
+            var cma_reg = '<select id="region" name="region" required><option value = "27" selected>CMA</option></select>';
+            
             if(c.val() === '2'){
                 $("#position").replaceWith(ll);
                 $("#region").replaceWith(ll_reg);
@@ -387,6 +398,10 @@ $(document).ready(function(){
             else if(c.val() === '3'){
                 $("#position").replaceWith(cw);
                 $("#region").replaceWith(cw_reg);
+            }
+            else if(c.val() === '4'){
+                $("#position").replaceWith(cma);
+                $("#region").replaceWith(cma_reg);
             }
         });
    });

@@ -23,7 +23,7 @@ $jd = get_template_link($templates, $jd_doc_id);
 
 $disc = get_template_link($templates, 4);
 
-$intern = get_template_link($templates, 21);
+$intern = ($position_id == 11 ? '#11' : '#12');
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
@@ -51,11 +51,11 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <h4>1</h4>
           </div>
           <div class="card-body">
-            <h4 class="card-title">Job Description</h4>
+            <h4 class="card-title">Internship Description</h4>
             <div <?php echo(card_body_status($documents, $jd_doc_id)); ?>>
               <p class="card-text">Please sign and return.</p>
               <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
-              <a href="<?php echo $jd; ?>" target="_blank" class="btn btn-outline-lli btn-small" <?php echo(card_body_status($documents, $jd_doc_id)); ?>><?php echo $position; ?> Job Description</a>
+              <a href="<?php echo $jd; ?>" target="_blank" class="btn btn-outline-lli btn-small" <?php echo(card_body_status($documents, $jd_doc_id)); ?>>Internship Duties Description</a>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, $jd_doc_id)); ?>><?php echo(document_in_document_list($documents, $jd_doc_id)); ?></p>
           </div>

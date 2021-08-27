@@ -3,6 +3,7 @@
 $company_set = all_companies();
 $ll_position_set = all_active_positions(2);
 $cw_position_set = all_active_positions(3);
+$cma_position_set = all_active_positions(4);
 $region_set = all_regions();
 $recruiter_set = all_recruiters();
 $ii_dates = all_ii_dates();
@@ -175,8 +176,10 @@ if(is_post_request()){
             var c = $(this);
             var ll = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
             var cw = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
+            var cma = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($cma_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
             var ll_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected>Choose Region</option><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
             var cw_reg = '<select id="region" class="form-control" name="region" required><option value = "24" selected>Crosswinds</option></select>';
+            var cma_reg = '<select id="region" class="form-control" name="region" required><option value = "27" selected>CMA</option></select>';
             if(c.val() === '2'){
                 $("#position").replaceWith(ll);
                 $("#region").replaceWith(ll_reg);
@@ -185,17 +188,20 @@ if(is_post_request()){
                 $("#position").replaceWith(cw);
                 $("#region").replaceWith(cw_reg);
             }
-        });
-  
-   });
-
-   $(document).ready(function(){
-    $("#position").change(function(){
-            var p = $(this);
-            var yts_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected></option>Choose Region<option value = "25">PWA</option><option value = "26">Spencer Home</option></select>';
-            if(p.val() === '3|2'){
-                $("#region").replaceWith(yts_reg);
+            else if(c.val() === '4'){
+                $("#position").replaceWith(cma);
+                $("#region").replaceWith(cma_reg);
             }
+        });
+    });
+
+        $(document).ready(function(){
+        $("#position").change(function(){
+               var p = $(this);
+               var yts_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected></option>Choose Region<option value = "25">PWA</option><option value = "26">Spencer Home</option></select>';
+               if(p.val() === '3|2'){
+                    $("#region").replaceWith(yts_reg);
+                }
    
         });
   

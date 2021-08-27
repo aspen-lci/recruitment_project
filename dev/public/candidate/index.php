@@ -31,6 +31,11 @@ if($company == 3){
   $ack = get_template_link($templates, 23);
   }
 
+  if($company == 4){
+    $disc = get_template_link($templates, 24);
+    $ack = get_template_link($templates, 23);
+    }
+
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
 
@@ -53,7 +58,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, $jd_doc_id, $disposition)); ?>;">
-          <div class="card-header c-card-1 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-1 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>1</h4>
           </div>
           <div class="card-body">
@@ -65,13 +70,13 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, $jd_doc_id)); ?>><?php echo(document_in_document_list($documents, $jd_doc_id)); ?></p>
           </div>
-          <div class="card-footer c-card-1 <?php echo($company == 3 ? 'cw' : ''); ?>"></div>
+          <div class="card-footer c-card-1 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>"></div>
         </div>
       </div>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 4, $disposition)); ?>;">
-          <div class="card-header c-card-2 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-2 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>2</h4>
           </div>
           <div class="card-body">
@@ -84,7 +89,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, '4')); ?>><?php echo(document_in_document_list($documents, 4)); ?></p>
           </div>
-          <div class="card-footer c-card-2 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-2 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
            
           </div>
         </div>
@@ -92,7 +97,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 5, $disposition)); ?>;">
-          <div class="card-header c-card-3 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-3 <?php echo($company == 3 OR $company == 4 ? 'cw' : ''); ?>">
             <h4>3</h4>
           </div>
           <div class="card-body">
@@ -103,7 +108,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 5)); ?>><?php echo(document_in_document_list($documents, 5)); ?></p>
           </div>
-          <div class="card-footer c-card-3 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-3 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             
           </div>
         </div>
@@ -116,7 +121,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center">
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 6, $disposition)); ?>;">
-          <div class="card-header c-card-4 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-4 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>4</h4>
           </div>
           <div class="card-body">
@@ -127,7 +132,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 6)); ?>><?php echo(document_in_document_list($documents, 6)); ?></p>
           </div>
-          <div class="card-footer c-card-4 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-4 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             
           </div>
         </div>
@@ -135,7 +140,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 13, $disposition)); ?>;">
-          <div class="card-header c-card-5 <?php echo($company == 3 ? 'cw' : ''); ?>" >
+          <div class="card-header c-card-5 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>" >
             <h4>5</h4>
           </div>
           <div class="card-body">
@@ -147,14 +152,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 13)); ?>><?php echo(document_in_document_list($documents, 13)); ?></p>
           </div>
-          <div class="card-footer c-card-5 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-5 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 7, $disposition)); ?>;">
-          <div class="card-header c-card-6 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-6 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>6</h4>
           </div>
           <div class="card-body">
@@ -164,7 +169,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <p class="doc_status" <?php echo(display_card_body_status($documents, 7)); ?>><?php echo(document_in_document_list($documents, 7)); ?></p>
            </div>
-          <div class="card-footer c-card-6 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-6 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             
           </div>
       </div>
@@ -176,7 +181,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <div class="row text-center">
     <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 8, $disposition)); ?>";>
-          <div class="card-header c-card-7 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-7 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>7</h4>
           </div>
           <div class="card-body">
@@ -190,14 +195,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 8)); ?>><?php echo(document_in_document_list($documents, 8)); ?></p>
           </div>
-          <div class="card-footer c-card-7 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-7 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             </div>
         </div>
       </div>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 9, $disposition)); ?>";>
-          <div class="card-header c-card-8 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-8 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>8</h4>
           </div>
           <div class="card-body">
@@ -208,14 +213,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               </div>
               <p class="doc_status" <?php echo(display_card_body_status($documents, 9)); ?>><?php echo(document_in_document_list($documents, 9)); ?></p>
           </div>
-          <div class="card-footer c-card-8 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-8 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
            </div>
         </div>
       </div>
       
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 10, $disposition)); ?>";>
-          <div class="card-header c-card-9 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-9 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>9</h4>
           </div>
           <div class="card-body">
@@ -226,7 +231,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
               </div>
               <p class="doc_status" <?php echo(display_card_body_status($documents, 10)); ?>><?php echo(document_in_document_list($documents, 10)); ?></p>
           </div>
-          <div class="card-footer c-card-9 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-9 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             </div>
         </div>
       </div>
@@ -237,7 +242,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
-          <div class="card-header c-card-10 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-10 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>10</h4>
           </div>
           <div class="card-body">
@@ -247,14 +252,14 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
           </div>
-          <div class="card-footer c-card-10 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-10 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
           </div>
         </div>
       </div>
 
       <div class="col-lg-8 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
-          <div class="card-header c-card-11 <?php echo($company == 3 ? 'cw' : ''); ?>"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
+          <div class="card-header c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>
               
@@ -280,7 +285,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
           </div>
-          <div class="card-footer c-card-11 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             
           </div>
         </div>

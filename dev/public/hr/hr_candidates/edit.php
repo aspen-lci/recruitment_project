@@ -2,8 +2,9 @@
     require_login();
 
     $company_set = all_companies();
-    $ll_position_set = all_positions_by_company(2);
+    $ll_position_set = all_active_positions(2);
     $cw_position_set = all_active_positions(3);
+    $cma_position_set = all_active_positions(4);
     $region_set = all_regions();
     $recruiter_set = all_recruiters();
     $ii_dates = all_ii_dates();
@@ -116,9 +117,17 @@
             if($candidate['company_id'] == 3){
                 $doc_status_update['offer'] = 1;
                 $doc_status_update['trans'] = 1;
-                $doc_status_update['fprint'] = 13;
+                $doc_status_update['fprint'] = 1;
                 $doc_status_update['ref'] = 1;
                 $doc_status_update['ultipro'] = 1;
+            }
+
+            if($candidate['company_id'] == 4){
+                $doc_status_update['offer'] = 1;
+                $doc_status_update['trans'] = 1;
+                $doc_status_update['fprint'] = 13;
+                $doc_status_update['ref'] = 1;
+                $doc_status_update['ultipro'] = 14;
             }
         }
 
@@ -561,8 +570,10 @@ $('input[type="text"]')
             var c = $(this);
             var ll = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
             var cw = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
+            var cma = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cma_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
             var ll_reg = '<select id="region" name="region" required><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?> <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
             var cw_reg = '<select id="region" name="region" required><option value = "24" selected>Crosswinds</option></select>';
+            var cma_reg = '<select id="region" name="region" required><option value = "27" selected>CMA</option></select>';
             if(c.val() === '2'){
                 $("#position").replaceWith(ll);
                 $("#region").replaceWith(ll_reg);
@@ -571,6 +582,19 @@ $('input[type="text"]')
                 $("#position").replaceWith(cw);
                 $("#region").replaceWith(cw_reg);
             }
+            else if(c.val() === '4'){
+                $("#position").replaceWith(cma);
+                $("#region").replaceWith(cma_reg);
+            }
+        });
+
+        $("#position").change(function(){
+               var p = $(this);
+               var yts_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected></option>Choose Region<option value = "25">PWA</option><option value = "26">Spencer Home</option></select>';
+               if(p.val() === '3|2'){
+                    $("#region").replaceWith(yts_reg);
+                }
+   
         });
    });
 

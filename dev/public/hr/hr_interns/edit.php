@@ -246,15 +246,10 @@
                                     <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
                                 <?php }; ?>
                             </select>
+                            </br>
+                            <label for="intern">Intern:</label>
                             <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
-                            <label for="intern"><b>INTERN</b></label>
-                            <br/>
-                            <label>Impact Institute Date:</label> 
-                            <select id="iiDate" type="select" name="iiDate">
-                                <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
-                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
-                            </select>
-
+                            
                         </div> <!-- Form Col End -->
                         <div class="col-4">
                             <!-- <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date']) > 0000-00-00 ? $candidate['interview_date'] : ''); ?>"/>
@@ -266,6 +261,12 @@
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name']; ?></option>    
                                     <?php } ?>
+                            </select>
+                            <br/>
+                            <label>Impact Institute Date:</label> 
+                            <select id="iiDate" type="select" name="iiDate">
+                                <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
+                                <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                             </select>
                            
                         </div> <!-- Form Col End -->

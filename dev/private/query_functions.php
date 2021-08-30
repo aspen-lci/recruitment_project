@@ -549,7 +549,7 @@ echo($result);
         $new_id = mysqli_insert_id($db);
         
         $sql = "REPLACE INTO candidates ";
-        $sql .= "(user_id, recruiter_id, company_id, position_id, intern, region_id, start_date, interview_date, interview_time, ii_date) ";
+        $sql .= "(user_id, recruiter_id, company_id, position_id, intern, region_id, start_date, interview_date, interview_time, disposition_id, ii_date) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $new_id) . "',";
         $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
@@ -560,6 +560,11 @@ echo($result);
         $sql .= "'" . db_escape($db, $candidate['start_date']) . "',";
         $sql .= "'" . db_escape($db, $candidate['interview_date']) . "',";
         $sql .= "'" . db_escape($db, $candidate['interview_time']) . "',";
+
+        if($candidate['company'] == '4' || $candidate['intern'] == '1'){
+        $sql .= "'7',";
+        }else{$sql .= "'1',";}
+
         $sql .= "'" . db_escape($db, $candidate['ii_date']) . "'";
         $sql .= ")";
         echo $sql;
@@ -571,6 +576,23 @@ echo($result);
         }
 
         $candidate_id = mysqli_insert_id($db);
+
+
+        //
+        // if($candidate['company'] == '4' OR $candidate['intern'] == '1'){
+        //   $sql = "UPDATE candidates SET ";
+        //   $sql .= "disposition_id=7 ";
+        //   $sql .= "WHERE candidate_id=" . $candidate_id . " ";
+        // }
+        // echo $sql;
+        // $result = mysqli_query($db, $sql);
+
+        // if(!$result){
+        //   mysqli_rollback($db);
+        //   echo mysqli_error($db);
+        // }
+        
+        
         $doc_defaults = get_doc_defaults($candidate['company'], $candidate['intern']);
 
         $sql = "INSERT INTO document_status ";
@@ -633,13 +655,14 @@ echo($result);
       $new_id = mysqli_insert_id($db);
       
       $sql = "REPLACE INTO candidates ";
-      $sql .= "(user_id, recruiter_id, company_id, position_id, intern, region_id) ";
+      $sql .= "(user_id, recruiter_id, company_id, position_id, intern, disposition_id, region_id) ";
       $sql .= "VALUES (";
       $sql .= "'" . db_escape($db, $new_id) . "',";
       $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
       $sql .= "'" . db_escape($db, $candidate['company']) . "',";
       $sql .= "'" . db_escape($db, $candidate['position']) . "',";
       $sql .= "'" . db_escape($db, $candidate['intern']) . "',";
+      $sql .= "'7',";
       $sql .= "'" . db_escape($db, $candidate['region']) . "'";
       $sql .= ")";
       echo $sql;

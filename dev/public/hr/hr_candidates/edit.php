@@ -239,7 +239,7 @@
                             <label>Disposition:</label>
                             <select id="status" type="select" name="status" value="<?php echo($candidate['disposition']); ?>">
                                     <?php foreach ($disposition_set as $disposition) { ?>
-                                        <option value="<?php echo $disposition['status_id'] ?>" <?php echo($disposition['status'] === $candidate['disposition'] ? 'selected' : ''); ?>><?php echo ($disposition['status']); ?></option>
+                                        <option value="<?php echo $disposition['status_id'] ?>" <?php echo($disposition['status'] === $candidate['disposition'] ? 'selected' : ''); echo($candidate['disposition'] == 'Select' && $disposition['status'] == 'Open' ? 'disabled' : '') ?>><?php echo ($disposition['status']); ?></option>
                                     <?php } ?>
                             </select>
                            

@@ -83,6 +83,24 @@
             $new_jd_status = get_jd_status($candidate['candidate_id'], $new_jd);
             $_POST['jd_status'] = $new_jd_status[0]['status_id'];
         }
+
+        $new_notes = $_POST['notes'] ?? '';
+
+        if($candidate['notes'] == '' && $new_notes != ''){
+            $create_note = create_candidate_note($id, $new_notes);
+            if ($create_note === false) {
+                $errors = $create_note;
+            }
+        }elseif($candidate['notes'] != '' && $new_notes != ''){
+            $update_note = update_candidate_note($id, $new_notes);
+            if ($update_note === false) {
+                $errors = $update_note;
+            }
+        }else{
+            
+        }
+
+
         redirect_to(url_for('/manager/index.php'));
     }
 ?>
@@ -170,7 +188,7 @@
                             
                         </div> <!-- Form Col End -->
                         
-                    </form>
+                    
                     </div> <!-- Form Row End -->
                     </div>
                     </div>
@@ -187,8 +205,8 @@
                         </div> <!-- Card-Header End -->
                 <div class="card-body">
                     <div class="row m-4">
-                        <div class="col-12">
-                                <span class="textarea resize-ta" id="notes" name="notes" style="width: 100%"><?php echo $candidate['notes']; ?></span>
+                        <div class="col-12" id="edit-form">
+                        <textarea class="textarea resize-ta text-left" id="notes" name="notes" <?php echo(is_blank($candidate['notes']) ? 'rows="3"' : 'rows="6"'); ?> style="width: 100%; height: 100%;"><?php echo $candidate['notes']; ?></textarea>
                                 <!-- <textarea id="notes" name="notes" rows="10" cols="100"></textarea> -->
                         </div> <!-- Card Body End -->
                     </div> <!-- Col End -->
@@ -199,7 +217,7 @@
                 </div> <!-- Col End -->
             </div> <!-- Row End -->
                         
-
+            </form>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow mb-4">   
@@ -405,6 +423,19 @@ $(document).ready(function(){
             }
         });
    });
+
+      // Dealing with Textarea Height
+function calcHeight(value) {
+  let numberOfLineBreaks = (value.match(/\n/g) || []).length;
+  // min-height + lines x line-height + padding + border
+  let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
+  return newHeight;
+}
+
+let textarea = document.querySelector(".resize-ta");
+textarea.addEventListener("keyup", () => {
+  textarea.style.height = calcHeight(textarea.value) + "px";
+});
 
 // $('input[type="text"]')
 //     // event handler

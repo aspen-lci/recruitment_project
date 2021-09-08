@@ -86,20 +86,11 @@
 
         $new_notes = $_POST['notes'] ?? '';
 
-        if($candidate['notes'] == '' && $new_notes != ''){
-            $create_note = create_candidate_note($id, $new_notes);
-            if ($create_note === false) {
-                $errors = $create_note;
-            }
-        }elseif($candidate['notes'] != '' && $new_notes != ''){
-            $update_note = update_candidate_note($id, $new_notes);
+       $update_note = update_candidate_note($id, $new_notes);
             if ($update_note === false) {
                 $errors = $update_note;
             }
-        }else{
-            
-        }
-
+       
 
         redirect_to(url_for('/manager/index.php'));
     }

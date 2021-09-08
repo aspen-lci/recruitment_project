@@ -93,8 +93,8 @@
         $jd_id_array = get_jd_doc_id($update['position']);
         $jd_id = $jd_id_array[0]['jd_doc_id'];
 
-        $doc_status_update['app'] = $_POST['application'];
-        $doc_status_update['jd'] = $_POST['jd_status'];
+        $doc_status_update['app'] = $_POST['application'] ?? '';
+        $doc_status_update['jd'] = $_POST['jd_status'] ?? '';
         $doc_status_update['disc'] = $_POST['disc_status'];
         $doc_status_update['lea'] = $_POST['lea_status'];
         $doc_status_update['bcg'] = $_POST['bcg_status'];
@@ -178,19 +178,12 @@
         //     }
         // }
 
-        if($candidate['notes'] == '' && $new_notes != ''){
-            $create_note = create_candidate_note($id, $new_notes);
-            if ($create_note === false) {
-                $errors = $create_note;
-            }
-        }elseif($candidate['notes'] != '' && $new_notes != ''){
+        
             $update_note = update_candidate_note($id, $new_notes);
             if ($update_note === false) {
                 $errors = $update_note;
             }
-        }else{
-            
-        }
+       
 
         redirect_to(url_for('/hr/index.php'));
     }

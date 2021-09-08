@@ -618,6 +618,13 @@ echo($result);
           echo mysqli_error($db);
         }
 
+        $note = '';
+        $note_created = create_candidate_note($candidate_id, $note);
+
+        if(!$note_created){
+          echo mysqli_error($db);
+        }
+
         mysqli_commit($db);
         
         return $result;
@@ -820,7 +827,7 @@ function create_candidate_note($candidate_id, $note){
           }
           
           
-          db_disconnect($db);
+          
           return $result;
 }
 
@@ -830,7 +837,7 @@ function update_candidate_note($candidate_id, $note){
   $sql = "UPDATE notes SET ";
   $sql .= "note_text='" . db_escape($db, $note) . "' ";
   $sql .= "WHERE candidate_id='" . db_escape($db, $candidate_id) . "' ";
-  $sql .= "LIMIT 1";
+  // $sql .= "LIMIT 1";
 
   $result = mysqli_query($db, $sql);
 

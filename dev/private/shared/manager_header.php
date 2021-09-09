@@ -98,7 +98,7 @@
               <a class="nav-link" href="<?php echo url_for('/hr/hr_users/index.php'); ?>">All Users</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo url_for('/manager/new.php'); ?>">Add New Candidate</a>
+              <a class="nav-link" href="<?php echo url_for('/manager/new.php'); ?>">Add New Intern</a>
             </li>
             
             

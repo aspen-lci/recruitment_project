@@ -21,10 +21,10 @@ if(is_post_request()){
     $candidate['recruiter'] = $_POST['recruiter'] ?? '';
     $candidate['company'] = $_POST['company'] ?? '';
     $candidate['position'] = $position ?? '';
-    $candidate['intern'] = $_POST['intern'] ?? '';
+    $candidate['intern'] = 1;
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
     $candidate['region'] = $_POST['region'] ?? 'NULL';
-    
+    $candidate['ii_date'] = $_POST['iiDate'] ?? '';
 
     $exists = find_user_by_email($candidate['email']);
 
@@ -45,16 +45,16 @@ if(is_post_request()){
 
 ?>
 
-<?php $page_title = 'Create Candidate'; ?>
+<?php $page_title = 'Create Intern'; ?>
 <?php include(SHARED_PATH . '/manager_header.php'); ?>
 
 <div id="content">
     <div class="row">
-    <a class="m-3 pl-4" href="<?php echo url_for('/manager/index.php'); ?>">&laquo; Return to Candidates In Process</a>
+    <a class="m-3 pl-4" href="<?php echo url_for('/manager/index.php'); ?>">&laquo; Return to Interns In Process</a>
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-dark text-center">Add New Candidate</h3>
+                    <h3 class="m-0 font-weight-bold text-dark text-center">Add New Intern</h3>
                 </div>  <!-- Card Header End -->
                 <div class="card=body">
                      <form action="<?php echo url_for('/manager/new.php'); ?>" method="post">
@@ -84,7 +84,7 @@ if(is_post_request()){
                         </div> <!-- Form Row End -->
                         <div class="form-row m-4">
                         
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="company">Company</label>
                                     <select id="company" class="form-control" name="company">
                                         <option value="" selected>Choose Company</option>
@@ -94,7 +94,7 @@ if(is_post_request()){
                                     </select>
                             </div> <!-- Form Col End -->
                             
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                             <label for="position">Position</label>
                                     <select id="position" class="form-control" name="position" required>
                                         <option value = "" selected>Choose Position</option>
@@ -102,11 +102,11 @@ if(is_post_request()){
                                     </select>
                             </div> <!-- Form Col End -->
 
-                            <div class="form-group col-md-1">
+                            <!-- <div class="form-group col-md-1">
                                     <label class="ml-2" for="intern" >Intern</label>
                                     <input type="checkbox" id="intern" class="form-control" name="intern" value=1 checked>
                                         
-                            </div> <!-- Form Col End -->
+                            </div> Form Col End -->
 
                             <div class="form-group col-md-3">
                                     <label for="region">Region</label>
@@ -115,7 +115,15 @@ if(is_post_request()){
                                         
                                     </select>
                             </div> <!-- Form Col End -->
-                           
+                            <div class="form-group col-md-3">
+                                <label for="iiDate">Impact Institute Date</label>
+                                <br>
+                                <select class="form-control" id="iiDate" type="select" name="iiDate">
+                                <option value="">Select a Date</option>
+                                    <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
+                                </select>
+                               
+                            </div> <!-- Form Col End -->
 
                             
                         </div> <!-- Form Row End -->
@@ -123,7 +131,7 @@ if(is_post_request()){
                      
                      
                         <div class="form-row m-4">
-                            <div class="form-group col">
+                            <div class="form-group">
                                 <button type="submit" class="btn">Submit</button>
                             </div> <!-- Form Col End -->
                         </div><!-- Form Row End -->

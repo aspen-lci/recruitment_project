@@ -662,7 +662,7 @@ echo($result);
       $new_id = mysqli_insert_id($db);
       
       $sql = "REPLACE INTO candidates ";
-      $sql .= "(user_id, recruiter_id, company_id, position_id, intern, disposition_id, region_id) ";
+      $sql .= "(user_id, recruiter_id, company_id, position_id, intern, disposition_id, ii_date, region_id) ";
       $sql .= "VALUES (";
       $sql .= "'" . db_escape($db, $new_id) . "',";
       $sql .= "'" . db_escape($db, $candidate['recruiter']) . "',";
@@ -670,6 +670,7 @@ echo($result);
       $sql .= "'" . db_escape($db, $candidate['position']) . "',";
       $sql .= "'" . db_escape($db, $candidate['intern']) . "',";
       $sql .= "'7',";
+      $sql .= "'" . db_escape($db, $candidate['ii_date']) . "',";
       $sql .= "'" . db_escape($db, $candidate['region']) . "'";
       $sql .= ")";
       echo $sql;
@@ -705,6 +706,14 @@ echo($result);
         mysqli_rollback($db);
         echo mysqli_error($db);
       }
+
+      $note = '';
+        $note_created = create_candidate_note($candidate_id, $note);
+
+        if(!$note_created){
+          echo mysqli_error($db);
+        }
+
 
       mysqli_commit($db);
       

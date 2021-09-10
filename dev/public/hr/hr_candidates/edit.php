@@ -330,7 +330,7 @@
                     <div class="row justify-content-center mt-4 m-0 text-center">
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-1 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-1 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">1. Job Description</p>
                             </div> <!--End Card Header -->
 
@@ -346,7 +346,7 @@
                                 
                             
                             </div> <!-- End Card body -->
-                            <div class="card-footer c-card-1 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-footer c-card-1 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <?php echo (is_blank($link['jd']) ? '' : add_doc_link(http($link['jd'])));  ?>
                             </div>
                             </div> <!-- End Card -->
@@ -354,7 +354,7 @@
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-2 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-2 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">2. Disclosure</p>
                             </div> <!--End Card Header -->
                             <div class="card-body">  
@@ -368,7 +368,7 @@
                                 <input class="doc-status m-0 p-0" type="text" name="disc_link_upload"/>
                                 
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-2 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-footer c-card-2 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                             <?php echo (is_blank($link['disc']) ? '' : add_doc_link(http($link['disc'])));  ?>
                             </div>
                         </div> <!-- End Card -->
@@ -376,7 +376,7 @@
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-3 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-3 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">3. LEA</p>
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -389,7 +389,7 @@
                                 <label class="mt-2 mb-0">Update Document Link</label>
                                 <input class="doc-status m-0 p-0" type="text" name="lea_link_upload"/>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-3 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-footer c-card-3 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                             <?php echo (is_blank($link['lea']) ? '' : add_doc_link(http($link['lea'])));  ?>
                             </div>
                         </div> <!-- End Card -->
@@ -397,7 +397,7 @@
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-4 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-4 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">4. Background Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -410,7 +410,7 @@
                                 <label class="mt-2 mb-0">Update Document Link</label>
                                 <input class="doc-status m-0 p-0" type="text" name="bcg_link_upload"/>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-4 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-footer c-card-4 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                             <?php echo (is_blank($link['bcg']) ? '' : add_doc_link(http($link['bcg'])));  ?>
                             </div>
                         </div> <!-- End Card -->
@@ -418,7 +418,7 @@
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-5 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-5 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">5. Panel Interview</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -431,7 +431,7 @@
                                 
                             
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-5 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>"></div>
+                            <div class="card-footer c-card-5 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                 </div> <!-- End Row -->
                 </div>
@@ -440,7 +440,7 @@
     <div class="row d-flex justify-content-center m-0 text-center">
             <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-6 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-6 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">6. Job Offer</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -451,13 +451,13 @@
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-6 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>"></div>
+                            <div class="card-footer c-card-6 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                                                 
                         <div class="col-lg-2 col-md-4 mb-4">    
                         <div class="card h-100">
-                            <div class="card-header c-card-7 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-7 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">7. Transcripts</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -468,13 +468,13 @@
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-7 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>"></div>
+                            <div class="card-footer c-card-7 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-8 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-8 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">8. Fingerprinting</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -485,13 +485,13 @@
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-8 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>"></div>
+                            <div class="card-footer c-card-8 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-9 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-9 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">9. Reference Check</p> 
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -502,13 +502,13 @@
                                     <?php } ?>
                                 </select>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-9 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>"></div>
+                            <div class="card-footer c-card-9 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
                         
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-10 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>">
+                            <div class="card-header c-card-10 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">10. UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -520,7 +520,7 @@
                                 </select>
                                 </form>
                             </div> <!-- End Card Body -->
-                            <div class="card-footer c-card-10 <?php echo($candidate['company_id'] == 3 ? 'cw' : ''); ?>"></div>
+                            <div class="card-footer c-card-10 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                    </div> <!-- End Card Group -->
                 </div> <!-- End Row -->

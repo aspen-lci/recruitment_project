@@ -97,7 +97,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display: <?php echo(box_visibility($documents, 5, $disposition)); ?>;">
-          <div class="card-header c-card-3 <?php echo($company == 3 OR $company == 4 ? 'cw' : ''); ?>">
+          <div class="card-header c-card-3 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>3</h4>
           </div>
           <div class="card-body">

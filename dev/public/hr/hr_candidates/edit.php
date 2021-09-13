@@ -5,6 +5,7 @@
     $ll_position_set = all_active_positions(2);
     $cw_position_set = all_active_positions(3);
     $cma_position_set = all_active_positions(4);
+    $all_position_set = all_positions();
     $region_set = all_regions();
     $recruiter_set = all_recruiters();
     $ii_dates = all_ii_dates();
@@ -248,7 +249,13 @@
                             <label>Position:</label> 
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
                                 <?php 
-                                    $pos_set = ($candidate['company_id'] == '2' ? $ll_position_set : $cw_position_set);
+                                     if($candidate['company_id'] == 2){
+                                        $pos_set = $ll_position_set;
+                                    }elseif($candidate['company_id'] == 3){
+                                        $pos_set = $cw_position_set;
+                                    }else{
+                                        $pos_set = $cma_position_set;
+                                    }
                                     foreach ($pos_set as $position) { ?>
                                     <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
                                 <?php }; ?>
@@ -563,7 +570,7 @@ $('input[type="text"]')
             var c = $(this);
             var ll = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
             var cw = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
-            var cma = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cma_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
+            var cma = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($cma_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
             var ll_reg = '<select id="region" name="region" required><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?> <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
             var cw_reg = '<select id="region" name="region" required><option value = "24" selected>Crosswinds</option></select>';
             var cma_reg = '<select id="region" name="region" required><option value = "27" selected>CMA</option></select>';

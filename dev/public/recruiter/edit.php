@@ -2,7 +2,7 @@
     require_login();
     
     $company_set = all_companies();
-    $ll_position_set = all_positions_by_company(2);
+    $ll_position_set = all_active_positions(2);
     $cw_position_set = all_active_positions(3);
     $cma_position_set = all_active_positions(4);
     $region_set = all_regions();
@@ -141,12 +141,17 @@
 
                             <label>Position:</label> 
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
-                               <?php 
-                               $pos_set = ($candidate['company_id'] == '2' ? $ll_position_set : $cw_position_set);
-                               foreach ($pos_set as $position) { ?>
-                               <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
-                               <?php }; ?>
-                               
+                                <?php 
+                                    if($candidate['company_id'] == 2){
+                                        $pos_set = $ll_position_set;
+                                    }elseif($candidate['company_id'] == 3){
+                                        $pos_set = $cw_position_set;
+                                    }else{
+                                        $pos_set = $cma_position_set;
+                                    }
+                                    foreach ($pos_set as $position) { ?>
+                                    <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
+                                <?php }; ?>
                             </select>
                             <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
                             <label for="intern"><b>INTERN</b></label>

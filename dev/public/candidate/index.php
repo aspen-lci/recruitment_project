@@ -24,16 +24,19 @@ $jd = get_template_link($templates, $jd_doc_id);
 if($company == 2){
 $disc = get_template_link($templates, 26);
 $ack = get_template_link($templates, 25);
+$video = url_for('/images/Lifeline.mp4');
 }
 
 if($company == 3){
   $disc = get_template_link($templates, 24);
   $ack = get_template_link($templates, 23);
+  $video = url_for('/images/Crosswinds.mp4');
   }
 
   if($company == 4){
     $disc = get_template_link($templates, 24);
     $ack = get_template_link($templates, 23);
+    $video = url_for('/images/Crosswinds.mp4');
     }
 
 $page_title = 'Welcome to Lifeline';
@@ -46,11 +49,24 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <!-- Jumbotron Header -->
     <header class="jumbotron">
-    <img src="<?php echo url_for('/images/LL New Hire_CandidateLandingPage 040921.jpg') ?>" alt="hero_img" style="width: 100%;">
-      <!-- <h1 class="display-4">We cannot wait to get to know you better!</h1>
-      <p class="lead">By applying with us, you have taken the first step to positively impact individuals, families, and communities. Below you will find an easy checklist to walk you through our hiring process.</p>
-      <p class="lead">We ask that you complete the first four steps below within the next 48 hours so we can invite you to the panel interview and facilitate your onboarding experience. The speed with which you complete this process determines how quickly you can begin your work at Lifeline Youth & Family Services.</p>
-      <p class="lead">As you move further along, you will receive emails from our HR representative, Jenn Falk (jenn.falk@lastingchangeinc.org), as well as KidTraks and Checkster. Please be sure to use the same email address on all forms and for all communication with Lifeline. Please reach out if you have any questions. We are happy to assist you in your hiring process, and we look forward to welcoming you to our team!</p> -->
+      <div class="row" style="background-color: #F98E2C">
+        <div class="col-5">
+          <div class="video-container">
+            <video controls>
+                <source src="<?php echo $video; ?>" type="video/mp4">
+              </video>
+          </div>
+          <div>
+            <!-- <p id="jumbotron-text" class="text-center">We cannot wait to get to know you better!</p> -->
+            <p style="color: white;">Please watch this video before completing the steps below.</p>
+          </div>
+        </div> <!-- end col -->
+        <div class="col-7">
+          <div>
+            <img src="<?php echo url_for('/images/LL New Hire_CandidateLandingPage without photo.jpg') ?>" alt="hero_img" width="100%">
+          </div>
+        </div> <!-- end col -->
+      </div> <!-- end row -->
     </header>
     
     <!-- Page Features -->

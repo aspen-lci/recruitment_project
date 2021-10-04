@@ -182,6 +182,36 @@ table th{
     
 } 
 
+.wrapper{
+    font-size: 0;
+    background-color: #F98E2C;
+}
+
+.video-container{
+    position: relative;
+    padding-bottom: 20%;
+    padding-top: 0px;
+    width: 100%;
+    height: 250px;
+    /* overflow: hidden; */
+    display: inline-block;
+   
+    vertical-align: top;
+}
+
+.video-container video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#jumbotron-text {
+    font-size: 1.3rem;
+}
+
+
 
 /* Errors */
 

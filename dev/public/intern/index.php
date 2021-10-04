@@ -292,7 +292,7 @@ If you are responsible for purchasing your own policy, check with a professional
           <div class="card-body">
             <h4 class="card-title">Onboarding</h4>
             <div <?php echo(card_body_status($documents, 11)); ?>>
-              <p class="card-text">You will receive an email from Lasting Change, Inc with a link to UKG. Please use this link to log in and complete the onboarding documents as soon as possible. This step must be completed before you may be onboarded as an employee.</p>
+              <p class="card-text">You will receive an email from Lasting Change, Inc with a link to UKG. Please use this link to log in and complete the onboarding documents as soon as possible. This step must be completed before you may be onboarded as an intern.</p>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
           </div>

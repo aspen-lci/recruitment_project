@@ -25,19 +25,29 @@ if($company == 2){
 $disc = get_template_link($templates, 26);
 $ack = get_template_link($templates, 25);
 $video = url_for('/images/Lifeline.mp4');
+$bio = url_for('/documents/bio sheet - lyfs.pdf');
 }
 
 if($company == 3){
   $disc = get_template_link($templates, 24);
   $ack = get_template_link($templates, 23);
   $video = url_for('/images/Crosswinds.mp4');
+  $bio = url_for('/documents/bio sheet - cw.pdf');
   }
 
   if($company == 4){
     $disc = get_template_link($templates, 24);
     $ack = get_template_link($templates, 23);
     $video = url_for('/images/Crosswinds.mp4');
+    $bio = url_for('/documents/bio sheet - cw.pdf');
     }
+
+if($company == 5){
+  $disc = get_template_link($templates, 26);
+  $ack = get_template_link($templates, 25);
+  $video = url_for('/images/Lifeline.mp4');
+  $bio = url_for('/documents/bio sheet - pwash.pdf');
+  }
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
@@ -256,7 +266,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     <!-- /.row -->
     <div class="row text-center"> 
 
-    <div class="col-lg-4 mb-4">
+    <div class="col-lg-6 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
           <div class="card-header c-card-10 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             <h4>10</h4>
@@ -273,9 +283,29 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
         </div>
       </div>
 
-      <div class="col-lg-8 mb-4">
+      <div class="col-lg-6 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
-          <div class="card-header c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
+          <div class="card-header c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
+            <h4>11</h4>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Bio Sheet</h4>
+            <div <?php echo(card_body_status($documents, 11)); ?>>
+              <p class="card-text">Welcome to <?php echo $_SESSION['company'] ?>! To help us get to know you better, please complete the attached Bio Sheet, with some “Fun Facts”.  Also, please send a current picture, of yourself, to joinus@lastingchangeinc.org.</p>
+              <p class="card-text">You have worked hard to get to this point and we are looking forward to meeting you in person.</p>
+              <a href="<?php echo $bio ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Bio Sheet Form</a>
+          </div>
+          <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
+          </div>
+          <div class="card-footer c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
+          </div>
+        </div>
+      </div>
+</div>
+<div class="row text-center">
+      <div class="col-lg-12 mb-4">
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
+          <div class="card-header c-card-12 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>
               
@@ -301,7 +331,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             </div>
             <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
           </div>
-          <div class="card-footer c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-12 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             
           </div>
         </div>

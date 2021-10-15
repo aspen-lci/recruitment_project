@@ -14,13 +14,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Lifeline Onboarding - <?php echo $page_title; ?></title>
+  <title><?php echo $_SESSION['company'] ?> Onboarding - <?php echo $page_title; ?></title>
 
   <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo url_for('/images/apple-touch-icon.png'); ?>">
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="<?php echo url_for('/images/apple-touch-icon.png'); ?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo url_for('/images/favicon-32x32.png'); ?>">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo url_for('/images/favicon-16x16.png'); ?>">
-    <link rel="manifest" href="<?php echo url_for('/images/site.webmanifest'); ?>">
+    <link rel="manifest" href="<?php echo url_for('/images/site.webmanifest'); ?>"> -->
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo url_for('/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -40,7 +40,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container d-flex justify-content-between">
       <div id="logo">
-        <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/'. $_SESSION['logo']); ?>" alt="Logo" style="height: 100px;"></a>
+        <a class="navbar-brand" href="#"><img src="<?php echo url_for('/images/'. $_SESSION['logo']); ?>" alt="Logo" style="max-width: 300px;"></a>
       </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

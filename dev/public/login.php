@@ -22,6 +22,7 @@ if(is_post_request()){
       case 4:
         $candidate = get_candidate_by_user_id($_SESSION['user_id']);
         $_SESSION['company_id'] = $candidate[0]['company_id'];
+        $_SESSION['company'] = $candidate[0]['company'];
         $logo = get_logo_url($_SESSION['company_id']);
         $_SESSION['logo'] = $logo[0][logo_url];
         $_SESSION['intern'] = $candidate[0]['intern'];

@@ -36,12 +36,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Lifeline Onboarding - <?php echo $page_title; ?></title>
+  <title>Onboarding - <?php echo $page_title; ?></title>
 
   <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo url_for('/images/apple-touch-icon.png'); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo url_for('/images/favicon-32x32.png'); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo url_for('/images/favicon-16x16.png'); ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo url_for('/images/LC apple-touch-icon.png'); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo url_for('/images/LC favicon-32x32.png'); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo url_for('/images/LC favicon-16x16.png'); ?>">
     <link rel="manifest" href="<?php echo url_for('/images/site.webmanifest'); ?>">
 
   <!-- Bootstrap core CSS -->

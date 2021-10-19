@@ -1,7 +1,18 @@
 <?php require_once('../../private/initialize.php'); 
 
 $templates = get_templates();
+
+if ($_SESSION['company_id'] == 2){
 $crim = get_template_link($templates, 6);
+}
+
+if ($_SESSION['company_id'] == 3 OR $_SESSION['company_id'] == 4){
+  $crim = get_template_link($templates, 42);
+}
+
+if ($_SESSION['company_id'] == 5){
+  $crim = get_template_link($templates, 41);
+}
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>

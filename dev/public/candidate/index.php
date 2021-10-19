@@ -33,6 +33,7 @@ if($company == 3){
   $ack = get_template_link($templates, 23);
   $video = url_for('/images/Crosswinds.mp4');
   $bio = url_for('/documents/bio sheet - cw.pdf');
+  $ii = url_for('/documents/New Hires First Week.pdf');
   }
 
   if($company == 4){
@@ -40,6 +41,7 @@ if($company == 3){
     $ack = get_template_link($templates, 23);
     $video = url_for('/images/Crosswinds.mp4');
     $bio = url_for('/documents/bio sheet - cw.pdf');
+    $ii = url_for('/documents/New Hires First Week.pdf');
     }
 
 if($company == 5){
@@ -47,6 +49,7 @@ if($company == 5){
   $ack = get_template_link($templates, 25);
   $video = url_for('/images/Lifeline.mp4');
   $bio = url_for('/documents/bio sheet - pwash.pdf');
+  $ii = url_for('/documents/New Hires First Week.pdf');
   }
 
 $page_title = 'Welcome to Lifeline';
@@ -329,7 +332,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </ul>
               </div>
             </div>
-            <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
+            <a href="<?php echo $ii; ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
           </div>
           <div class="card-footer c-card-12 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             

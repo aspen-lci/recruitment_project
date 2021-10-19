@@ -8,12 +8,44 @@ $candidate = $candidate_set[0];
 $zoom_link_set = get_zoom_link($candidate['region_id']);
 $zoom_link = $zoom_link_set[0]['zoom_link'];
 
+if ($_SESSION['company_id'] == 2){
+  if ($_SESSION['position_id'] == 5){
+    $button_link = array(
+      "Zoom Etiquette" => url_for('/documents/Zoom Etiquette - Candidate.pdf'),
+      "Career Presentation" => url_for('/documents/LL CareerPresentation 052220.pdf'),
+      "FAQ List" => url_for('/documents/FAQlist 2021_ll.pdf'),
+      "Tenets of Culture" => url_for('/documents/Lifeline - Tenets of Culture Document - Updated 10 01 2021.pdf'),
+      "Family Consultant Career Progression" => url_for('/documents/FC Career Progression updated.pdf'));
+  }else{
+  $button_link = array(
+    "Zoom Etiquette" => url_for('/documents/Zoom Etiquette - Candidate.pdf'),
+    "Career Presentation" => url_for('/documents/LL CareerPresentation 052220.pdf'),
+    "FAQ" => url_for('/documents/FAQlist 2021_ll.pdf'),
+    "Tenets of Culture" => url_for('/documents/Lifeline - Tenets of Culture Document - Updated 10 01 2021.pdf'));
+  }
+}
+
+if ($_SESSION['company_id'] == 3){
+  $button_link = array(
+    "Zoom Etiquette" => url_for('/documents/Zoom Etiquette - Candidate.pdf'),
+    "FAQ" => url_for('/documents/FAQlist 2021_cw.pdf'),
+    "Tenets of Culture" => url_for('/documents/Crosswinds - Tenets of Culture Document - Updated 10 01 2021.pdf'));
+}
+
+if ($_SESSION['company_id'] == 5){
+  $button_link = array(
+    "Zoom Etiquette" => url_for('/documents/Zoom Etiquette - Candidate.pdf'),
+    "FAQ" => url_for('/documents/FAQlist 2021_pwash.pdf'),
+    "Tenets of Culture" => url_for('/documents/PWA - Tenets of Culture Document - Updated 10 01 2021.pdf'));
+}
+
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
 
 
     <!-- Page Content -->
     <div class="container" id="content" style="margin-top: 20px;">
+
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron" id="panel-img">
@@ -34,11 +66,8 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div class="card-body">
               <div class="row text-justify">
                 <div class="col-lg-12 d-flex justify-content-center">
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Zoom Etiquette - Candidate.pdf'); ?>" style="display: <?php echo($zoom_link != NULL ? "inherit" : "none");  ?>">Zoom Etiquette</a>
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/LL CareerPresentation 052220.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">Lifeline Career Presentation</a>
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FAQlist 2020.pdf'); ?>" style="display: <?php echo($candidate['company_id'] == '2' ? "inherit" : "none"); ?>">FAQ List</a>
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/Tenets of Culture Document.pdf'); ?>">Tenets of Our Culture</a>
-                    <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Career Progression updated.pdf'); ?>" style="display: <?php echo(($candidate['position_id'] == '1' OR $candidate['position_id'] == '5' OR $candidate['position_id'] == '9') ? "inherit" : "none"); ?>">Family Consultant Career Progression</a>
+                <?php foreach($button_link as $k => $v) echo sprintf('<a class="lead btn mr-2" target="_blank" id="logout-btn" href="%s">%s</a>', $v, $k); ?>
+                    
               </div>
               </div>
               

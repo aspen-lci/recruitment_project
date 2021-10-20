@@ -21,9 +21,11 @@ $templates = get_templates();
 
 $jd = get_template_link($templates, $jd_doc_id);
 
-$disc = get_template_link($templates, 4);
+$disc = get_template_link($templates, 26);
+$ack = get_template_link($templates, 25);
+$bio = url_for('/documents/bio sheet - lyfs.pdf');
 
-$intern = ($position_id == 11 ? '#11' : '#12');
+$intern = ($position_id == 11 ? get_template_link($templates, 44) : get_template_link($templates, 43));
 
 $page_title = 'Welcome to Lifeline';
 include(SHARED_PATH . '/candidate_header.php'); ?>
@@ -193,7 +195,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
             <div <?php echo(card_body_status($documents, 22)); ?>>
             <p class="card-text">Note: Please use the same email used to sign in to this portal for SignNow.</p>
             <p class="card-text">Please download the completed document and save to be uploaded into our Relias system at a later time.  Please format the document name as Last Name, First Name Internship Agreement, Date.</p>
-            <a href="<?php echo $intern; ?>" target="_blank" class="btn btn-outline-lli btn-small">Business Associates Contract</a>
+            <a href="<?php echo(get_template_link($templates, 22)); ?>" target="_blank" class="btn btn-outline-lli btn-small">Business Associates Contract</a>
           </div>
           <p class="doc_status" <?php echo(display_card_body_status($documents, 22)); ?>><?php echo(document_in_document_list($documents, 22)); ?></p>
           </div>
@@ -304,9 +306,27 @@ If you are responsible for purchasing your own policy, check with a professional
   <!-- /.row -->
 
   <div class="row text-center">
-  <div class="col-lg-12 mb-4">
+  <div class="col-lg-4 mb-4">
         <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
-          <div class="card-header c-card-13 <?php echo($company == 3 ? 'cw' : ''); ?>"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
+          <div class="card-header c-card-13 <?php echo($company == 3 ? 'cw' : ''); ?>">
+            <h4>13</h4>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Bio Sheet</h4>
+            <div <?php echo(card_body_status($documents, 11)); ?>>
+            <p class="card-text">Welcome to <?php echo $_SESSION['company'] ?>! To help us get to know you better, please complete the attached Bio Sheet, with some “Fun Facts”.  Also, please send a current picture, of yourself, to joinus@lastingchangeinc.org.</p>
+              <p class="card-text">You have worked hard to get to this point and we are looking forward to meeting you in person.</p>
+              <a href="<?php echo $bio ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Bio Sheet Form</a>
+          </div>
+          <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
+          </div>
+          <div class="card-footer c-card-13 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          </div>
+        </div>
+      </div>
+  <div class="col-lg-8 mb-4">
+        <div class="card h-100" style="display:<?php echo(box_visibility($documents, 11, $disposition)); ?>";>
+          <div class="card-header c-card-11 <?php echo($company == 3 ? 'cw' : ''); ?>"><h4><?php echo ($ii_date > 0000-00-00 ? date("l, F j, Y", strtotime($ii_date)) : ''); ?></h4></div>
           <div class="card-body">
             <h4 class="card-title">Impact Institute</h4>
               
@@ -332,7 +352,7 @@ If you are responsible for purchasing your own policy, check with a professional
             </div>
             <a href="<?php echo url_for('/documents/New Hires First Week.pdf'); ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
           </div>
-          <div class="card-footer c-card-13 <?php echo($company == 3 ? 'cw' : ''); ?>">
+          <div class="card-footer c-card-11 <?php echo($company == 3 ? 'cw' : ''); ?>">
             
           </div>
         </div>

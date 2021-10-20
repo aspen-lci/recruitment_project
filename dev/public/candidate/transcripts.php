@@ -42,6 +42,31 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
     </div> 
     <!-- /.row -->
     
+<!-- Page Features -->
+    <div class="row text-center" style="display: <?php echo ($_SESSION['position_id'] == 5 ? 'inherit' : 'none'); ?>">  
+        <div class="col-lg-12 mb-4">
+          <div class="card h-100">
+            <div class="card-header c-card-7"><h3>Family Consultant Transcript Information</h3></div>
+            <div class="card-body">
+              <div class="row text-justify">
+                <div class="col-lg-12 d-flex justify-content-center">
+                <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Degree Requirements.pdf'); ?>">Family Consultant Degree Requirements</a>
+                <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Degree Example.pdf'); ?>">Family Consultant Degree Examples</a>
+                <a class="lead btn mr-2" target="_blank" id="logout-btn" href="<?php echo url_for('/documents/FC Degree Form.pdf'); ?>">Family Consultant Degree Form</a>
+                    
+              </div>
+              </div>
+              
+            </div>
+            <div class="card-footer c-card-7">
+              
+            </div>
+          </div>
+        </div>
+
+    </div> 
+    <!-- /.row -->
+
     <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
     </div>
     <!-- /.container -->

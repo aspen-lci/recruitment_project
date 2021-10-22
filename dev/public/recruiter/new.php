@@ -93,7 +93,7 @@ if(is_post_request()){
                                     <select id="company" class="form-control" name="company">
                                         <option value="" selected>Choose Company</option>
                                         <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" ?><?php echo $company['company'] ?></option>    
+                                        <option value="<?php echo $company['id'] ?>"><?php echo $company['company'] ?></option>    
                                     <?php } ?>
                                     </select>
                             </div> <!-- Form Col End -->

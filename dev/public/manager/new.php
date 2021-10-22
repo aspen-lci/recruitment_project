@@ -89,7 +89,7 @@ if(is_post_request()){
                                     <select id="company" class="form-control" name="company">
                                         <option value="" selected>Choose Company</option>
                                         <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" ?><?php echo $company['company'] ?></option>    
+                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['id'] != 2 ? 'disabled' : 'selected'); ?>><?php echo $company['company'] ?></option>    
                                     <?php } ?>
                                     </select>
                             </div> <!-- Form Col End -->
@@ -98,6 +98,9 @@ if(is_post_request()){
                             <label for="position">Position</label>
                                     <select id="position" class="form-control" name="position" required>
                                         <option value = "" selected>Choose Position</option>
+                                        <?php foreach ($ll_position_set as $position) { 
+                                            if ($position['id'] == 11 OR $position['id'] == 12) {?>
+                                            <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php }} ?>
                                     
                                     </select>
                             </div> <!-- Form Col End -->
@@ -111,8 +114,8 @@ if(is_post_request()){
                             <div class="form-group col-md-3">
                                     <label for="region">Region</label>
                                     <select id="region" class="form-control" name="region" required>
-                                        <option value="" selected>Choose Region</option>
-                                        
+                                        <option value = "" selected>Choose Region</option><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?>
+                                        </select>
                                     </select>
                             </div> <!-- Form Col End -->
                             <div class="form-group col-md-3">

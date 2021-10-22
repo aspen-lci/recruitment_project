@@ -9,7 +9,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
   
     <!-- Page Content -->
     <div class="container" id="content" style="margin-top: 20px;">
-    <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
+    <a href="<?php echo url_for('/intern/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron">
         <img src="<?php echo url_for('/images/LL New Hire_References 0409216.jpg') ?>" alt="References Instructions" style="width:100%;">
@@ -21,7 +21,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
       </header>
   
     
-    <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
+    <a href="<?php echo url_for('/intern/index.php'); ?>">&laquo; Return to Checklist</a>
     </div>
     <!-- /.container -->
   

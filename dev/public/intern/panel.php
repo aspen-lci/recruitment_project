@@ -14,7 +14,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <!-- Page Content -->
     <div class="container" id="content" style="margin-top: 20px;">
-    <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
+    <a href="<?php echo url_for('/intern/index.php'); ?>">&laquo; Return to Checklist</a>
       <!-- Jumbotron Header -->
       <header class="jumbotron" id="panel-img">
         <!-- <h1 class="text-center">Panel Interview</h1> -->
@@ -51,7 +51,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     </div> 
     <!-- /.row -->
-    <a href="<?php echo url_for('/candidate/index.php'); ?>">&laquo; Return to Checklist</a>
+    <a href="<?php echo url_for('/intern/index.php'); ?>">&laquo; Return to Checklist</a>
     </div>
     <!-- /.container -->
   

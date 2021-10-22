@@ -237,7 +237,7 @@
                             <label>Company:</label> 
                             <select id="company" type="select" name="company" value="<?php echo($candidate['company']); ?>">
                             <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['company'] === $candidate['company'] ? 'selected' : ''); ?>><?php echo $company['company']; ?></option>    
+                                        <option value="<?php echo $company['id'] ?>" <?php echo($company['company_id'] === 2 ? 'selected' : ''); ?>><?php echo $company['company']; ?></option>    
                                     <?php } ?>
                             </select> <br/>
                             <label>Position:</label> 

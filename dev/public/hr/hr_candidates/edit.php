@@ -108,7 +108,7 @@
         $doc_status_update['ultipro'] = $_POST['ultipro_status'];
         
         if($candidate['disposition_id'] <= 5 && $update['disposition'] == 7){
-            if($candidate['company_id'] == 2){
+            if($candidate['company_id'] == 2 OR $candidate['company_id'] == 5){
             $doc_status_update['offer'] = 1;
             $doc_status_update['trans'] = 1;
             $doc_status_update['fprint'] = 1;
@@ -254,8 +254,10 @@
                                         $pos_set = $ll_position_set;
                                     }elseif($candidate['company_id'] == 3){
                                         $pos_set = $cw_position_set;
-                                    }else{
+                                    }elseif($candidate['company_id'] == 4){
                                         $pos_set = $cma_position_set;
+                                    }elseif($candidate['company_id'] == 5){
+                                        $pos_set = $pwa_position_set;
                                     }
                                     foreach ($pos_set as $position) { ?>
                                     <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>

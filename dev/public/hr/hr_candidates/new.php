@@ -95,7 +95,7 @@ if(is_post_request()){
                                     <select id="company" class="form-control" name="company">
                                         <option value="" selected>Choose Company</option>
                                         <?php foreach ($company_set as $company) { ?>
-                                        <option value="<?php echo $company['id'] ?>" ?><?php echo $company['company'] ?></option>    
+                                        <option value="<?php echo $company['id'] ?>"><?php echo $company['company'] ?></option>    
                                     <?php } ?>
                                     </select>
                             </div> <!-- Form Col End -->
@@ -175,14 +175,14 @@ if(is_post_request()){
    $(document).ready(function(){
         $("#company").change(function(){
             var c = $(this);
-            var ll = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
-            var cw = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
+            var ll = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($ll_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
+            var cw = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($cw_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
             var cma = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($cma_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
-            var pwa = '<select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>"><?php foreach ($pwa_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option><?php } ?>';
-            var ll_reg = '<select id="region" name="region" required><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?> <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
-            var cw_reg = '<select id="region" name="region" required><option value = "24" selected>Crosswinds</option></select>';
-            var cma_reg = '<select id="region" name="region" required><option value = "27" selected>CMA</option></select>';
-            var pwa_reg = '<select id="region" name="region" required><option value = "25" selected>PWA/Spencer Home</option></select>';
+            var pwa = '<select id="position" class="form-control" name="position" required><option value = "" selected>Choose Position</option><?php foreach ($pwa_position_set as $position) { ?><option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php } ?>';
+            var ll_reg = '<select id="region" class="form-control" name="region" required><option value = "" selected>Choose Region</option><?php foreach ($region_set as $region) { ?><option value="<?php echo $region['id'] ?>" <?php echo($region['id'] == '24' ? 'style="display:none;"' : '') ?>><?php echo $region['name'] ?></option><?php } ?></select>';
+            var cw_reg = '<select id="region" class="form-control" name="region" required><option value = "24" selected>Crosswinds</option></select>';
+            var cma_reg = '<select id="region" class="form-control" name="region" required><option value = "27" selected>CMA</option></select>';
+            var pwa_reg = '<select id="region" class="form-control" name="region" required><option value = "25" selected>PWA/Spencer Home</option></select>';
             if(c.val() === '2'){
                 $("#position").replaceWith(ll);
                 $("#region").replaceWith(ll_reg);
@@ -191,6 +191,7 @@ if(is_post_request()){
                 $("#position").replaceWith(cw);
                 $("#region").replaceWith(cw_reg);
             }
+
             else if(c.val() === '4'){
                 $("#position").replaceWith(cma);
                 $("#region").replaceWith(cma_reg);
@@ -200,8 +201,7 @@ if(is_post_request()){
                 $("#region").replaceWith(pwa_reg);
             }
         });
-  
-   });
+    });
 
  
 </script>

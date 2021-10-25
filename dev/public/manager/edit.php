@@ -150,13 +150,11 @@
 
                             <label>Position:</label> 
                             <select id="position" type="select" name="position" value="<?php echo($candidate['position']); ?>">
-                               <?php 
-                               $pos_set = ($candidate['company_id'] == '2' ? $ll_position_set : $cw_position_set);
-                               foreach ($pos_set as $position) { ?>
-                               <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
-                               <?php }; ?>
-                               
-                            </select>
+                            <?php foreach ($ll_position_set as $position) { 
+                                            if ($position['id'] == 11 OR $position['id'] == 12) {?>
+                                            <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>"><?php echo $position['title'] ?></option><?php }} ?>
+                                    
+                                    </select>
                             </br>
                             <label for="intern">Intern:</label>
                             <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>

@@ -16,7 +16,7 @@ class Documents {
       "trans" => "Transcripts",
       "fPrint" => "Fingerprinting",
       "ref" => "Reference Check",
-      "ultipro" => "Ultipro"
+      "ultipro" => "UKG Onboarding"
     ];
 
     private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];

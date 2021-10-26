@@ -26,6 +26,7 @@ $disc = get_template_link($templates, 26);
 $ack = get_template_link($templates, 25);
 $video = url_for('/images/Lifeline.mp4');
 $bio = url_for('/documents/bio sheet - lyfs.pdf');
+$ii = url_for('/documents/New Hires First Week.pdf');
 }
 
 if($company == 3){

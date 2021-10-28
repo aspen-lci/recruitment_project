@@ -46,9 +46,9 @@ if($company == 3){
     }
 
 if($company == 5){
-  $disc = get_template_link($templates, 26);
-  $ack = get_template_link($templates, 25);
-  $video = url_for('/images/Lifeline.mp4');
+  $disc = get_template_link($templates, 45);
+  $ack = get_template_link($templates, 46);
+  // $video = url_for('/images/Lifeline.mp4');
   $bio = url_for('/documents/bio sheet - pwash.pdf');
   $ii = url_for('/documents/New Hires First Week.pdf');
   }
@@ -63,7 +63,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
 
     <!-- Jumbotron Header -->
     <header class="jumbotron">
-      <div class="row" style="background-color: #F98E2C">
+      <div class="row" style="background-color: #F98E2C; <?php echo($company == 5 ? 'display: none' : ''); ?>;">
         <div class="col-5">
           <div class="video-container">
             <video controls>
@@ -79,6 +79,15 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           <div>
             <img src="<?php echo url_for('/images/LL New Hire_CandidateLandingPage without photo.jpg') ?>" alt="hero_img" width="100%">
           </div>
+        </div> <!-- end col -->
+      </div> <!-- end row -->
+
+      <div class="row" style="background-color: #F98E2C; display: <?php echo($company != 5 ? 'none' : 'inherit'); ?>;">
+        <div class="col-12">
+         
+          
+            <img src="<?php echo url_for('/images/LL New Hire_CandidateLandingPage 040921.jpg') ?>" alt="hero_img" width="100%">
+          
         </div> <!-- end col -->
       </div> <!-- end row -->
     </header>
@@ -333,7 +342,7 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
                 </ul>
               </div>
             </div>
-            <a href="<?php echo $ii; ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Learn more about your first week</a>
+            <a href="<?php echo $ii; ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3" <?php echo($company != 2 ? 'style="display: none;"' : ''); ?>">Learn more about your first week</a>
           </div>
           <div class="card-footer c-card-12 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
             

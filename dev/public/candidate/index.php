@@ -303,12 +303,12 @@ include(SHARED_PATH . '/candidate_header.php'); ?>
           </div>
           <div class="card-body">
             <h4 class="card-title">Bio Sheet</h4>
-            <div <?php echo(card_body_status($documents, 11)); ?>>
+            <div>
               <p class="card-text">Welcome to <?php echo $_SESSION['company'] ?>! To help us get to know you better, please complete the attached Bio Sheet, with some “Fun Facts”.  Also, please send a current picture, of yourself, to joinus@lastingchangeinc.org.</p>
               <p class="card-text">You have worked hard to get to this point and we are looking forward to meeting you in person.</p>
               <a href="<?php echo $bio ?>" target="_blank" class="btn btn-outline-lli btn-small mt-3">Bio Sheet Form</a>
           </div>
-          <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p>
+         <!-- <p class="doc_status" <?php echo(display_card_body_status($documents, 11)); ?>><?php echo(document_in_document_list($documents, 11)); ?></p> -->
           </div>
           <div class="card-footer c-card-11 <?php echo(($company == 3 OR $company == 4) ? 'cw' : ''); ?>">
           </div>

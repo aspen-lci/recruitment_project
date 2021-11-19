@@ -106,6 +106,7 @@
         $doc_status_update['fprint'] = $_POST['fprint_status'];
         $doc_status_update['ref'] = $_POST['ref_status'];
         $doc_status_update['ultipro'] = $_POST['ultipro_status'];
+        $doc_status_update['bio'] = $_POST['bio_status'];
         
         if($candidate['disposition_id'] <= 5 && $update['disposition'] == 7){
             if($candidate['company_id'] == 2 OR $candidate['company_id'] == 5){
@@ -114,6 +115,7 @@
             $doc_status_update['fprint'] = 1;
             $doc_status_update['ref'] = 1;
             $doc_status_update['ultipro'] = 1;
+            $doc_status_update['bio'] = 1;
             }
 
             if($candidate['company_id'] == 3){
@@ -122,6 +124,7 @@
                 $doc_status_update['fprint'] = 1;
                 $doc_status_update['ref'] = 1;
                 $doc_status_update['ultipro'] = 1;
+                $doc_status_update['bio'] = 1;
             }
 
             if($candidate['company_id'] == 4){
@@ -130,6 +133,7 @@
                 $doc_status_update['fprint'] = 13;
                 $doc_status_update['ref'] = 1;
                 $doc_status_update['ultipro'] = 14;
+                $doc_status_update['bio'] = 1;
             }
         }
 
@@ -515,10 +519,10 @@
                             <div class="card-footer c-card-9 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                         </div> <!-- End Column -->
-                        
+
                         <div class="col-lg-2 col-md-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-header c-card-10 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
+                        <div class="card-header c-card-10 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
                                 <p class="my-0 flex-grow-1">10. UltiPro Onboarding</p>
                             </div> <!--End Card Header -->
                             <div class="card-body">
@@ -528,9 +532,26 @@
                                         <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '11')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
                                     <?php } ?>
                                 </select>
-                                </form>
                             </div> <!-- End Card Body -->
                             <div class="card-footer c-card-10 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
+                        </div> <!-- End Card -->
+                        </div> <!-- End Column -->
+                        
+                        <div class="col-lg-2 col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header c-card-11 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>">
+                                <p class="my-0 flex-grow-1">11. Bio Sheet</p>
+                            </div> <!--End Card Header -->
+                            <div class="card-body">
+                                <select class="doc-status" id="bio_status" type="select" name="bio_status">
+                                    <option value="" style="width:100%;" <?php echo(is_blank(document_in_document_list($document_list, '14')) ? 'selected' : ''); ?>></option>
+                                    <?php foreach ($status_set as $status) { ?>
+                                        <option value="<?php echo $status['status_id'] ?>" style="width:100%;" <?php echo($status['status'] === (document_in_document_list($document_list, '14')) ? 'selected' : ''); ?>><?php echo ($status['status']); ?></option>
+                                    <?php } ?>
+                                </select>
+                                </form>
+                            </div> <!-- End Card Body -->
+                            <div class="card-footer c-card-11 <?php echo(($candidate['company_id'] == 3 OR $candidate['company_id'] == 4) ? 'cw' : ''); ?>"></div>
                         </div> <!-- End Card -->
                    </div> <!-- End Card Group -->
                 </div> <!-- End Row -->

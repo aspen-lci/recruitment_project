@@ -16,7 +16,8 @@ class Documents {
       "trans" => "Transcripts",
       "fPrint" => "Fingerprinting",
       "ref" => "Reference Check",
-      "ultipro" => "UKG Onboarding"
+      "ultipro" => "UKG Onboarding",
+      "bio" => "Bio Sheet"
   ];
 
   private $reqProps = ["id"=>0, "status"=>"", "signed_link"=>""];
@@ -146,7 +147,7 @@ $candidates = all_candidates();
                 <tr style="overflow-wrap:break-word;">
                     <th class="d-none">Hidden nested details table</th>
                     <th colspan="1"></th>
-                    <th colspan="11" class="text-center">Documents Received</th>
+                    <th colspan="12" class="text-center">Documents Received</th>
                   </tr>
                   <tr>
                     <th style data-sortable="true" data-field="name">Candidate Name</th>
@@ -219,7 +220,7 @@ $candidates = all_candidates();
           $('#parentTable').on('expand-row.bs.table', function (e, index, row, $detail) {
 
           // Get subtable from first cell
-          var $rowDetails = $(row[12]);
+          var $rowDetails = $(row[13]);
 
           // Give new id to avoid conflict with first cell    
           var id = $rowDetails.attr("id");

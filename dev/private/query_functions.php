@@ -440,7 +440,7 @@ echo $sql;
     global $db;
 
     $sql = "SELECT * FROM ii_dates ";
-    $sql .= "WHERE date >= CURRENT_DATE() ";
+    $sql .= "WHERE date >= CURRENT_DATE() AND inactive=0 ";
     $sql .= "ORDER BY date ASC";
 
     $result = mysqli_query($db, $sql);
@@ -451,6 +451,20 @@ echo $sql;
     return $dates;
   }
 
+  function all_start_dates(){
+    global $db;
+
+    $sql = "SELECT * FROM start_dates ";
+    $sql .= "WHERE date >= CURRENT_DATE() AND inactive=0 ";
+    $sql .= "ORDER BY date ASC";
+
+    $result = mysqli_query($db, $sql);
+
+    confirm_result_set($result);
+    $dates = resultToArray($result);
+    mysqli_free_result($result);
+    return $dates;
+  }
 
     function validate_password($password, $confirm_password){
         
@@ -967,6 +981,7 @@ function edit_candidate_hr($data_set, $doc_set, $jd_id){
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
             $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
+            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
             $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";
@@ -1081,6 +1096,7 @@ function edit_intern_hr($data_set, $doc_set, $jd_id){
             $sql .= "interview_date='" . db_escape($db, $data_set['interview_date']) . "', ";
             $sql .= "interview_time='" . db_escape($db, $data_set['interview_time']) . "', ";
             $sql .= "region_id='" . db_escape($db, $data_set['region']) . "', ";
+            $sql .= "start_date='" . db_escape($db, $data_set['start_date']) . "', ";
             $sql .= "ii_date='" . db_escape($db, $data_set['ii_date']) . "' ";
             $sql .= "WHERE id='" . db_escape($db, $data_set['candidate_id']) . "' ";
             $sql .= "LIMIT 1";

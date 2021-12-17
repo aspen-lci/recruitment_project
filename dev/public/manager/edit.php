@@ -169,6 +169,9 @@
                                     <?php } ?>
                             </select>
                             <br/>
+                            <label>Start Date:</label><?php echo($candidate['start_date'] != NULL ? (new DateTime($candidate['start_date']))->format("m/d/Y") : ''); ?>
+                           
+                            <br/>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
                                 <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>

@@ -116,7 +116,7 @@
                 </div>  <!-- Card Header End -->
                 <div class="card-body" id="card-padding">
                     <div class="row m-4">
-                        <div class="col-4">
+                        <div class="col-3">
                             <p class="m-0"><label>Email:</label><?php echo($candidate['email']); ?></p>
                             <label>Recruiter:</label>
                             <select id="recruiter" type="select" name="recruiter" value="<?php echo($candidate['recruiter']); ?>" onchange="return confirm('Changing the recruiter will remove this candidate from your list.')">
@@ -130,7 +130,7 @@
                         </div> <!-- Form Col End -->
                         
 
-                        <div class="col-4">
+                        <div class="col-3">
                             <label>Company:</label> 
                             <select id="company" type="select" name="company" value="<?php echo($candidate['company']); ?>">
                             <?php foreach ($company_set as $company) { ?>
@@ -154,13 +154,11 @@
                                     <option value="<?php echo $position['id'] . '|' . $position['jd_doc_id']?>" <?php echo($candidate['position_id'] == $position['id'] ? 'selected' : ''); ?>><?php echo $position['title'] ?></option>
                                 <?php }; ?>
                             </select>
-                            <input class="ml-4" type="checkbox" id="intern" name="intern" value=1 <?php echo($candidate['intern'] == 1 ? 'checked' : ''); ?>>
-                            <label for="intern"><b>INTERN</b></label>
-                            </br>
-                            <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
+                              
+                            
                                 
                         </div> <!-- Form Col End -->
-                        <div class="col-4">
+                        <div class="col-3">
                             <label>Panel Interview Date:</label> <input id="interviewDate" type="date" name="interviewDate" value="<?php echo(h($candidate['interview_date']) > 0000-00-00 ? $candidate['interview_date'] : ''); ?>"/>
                             <br>
                             <label>Panel Interview Time:</label> <input id="interviewTime" type="time" name="interviewTime" value="<?php echo(h($candidate['interview_time']) > 0 ? $candidate['interview_time'] : ''); ?>"/>
@@ -170,11 +168,13 @@
                             <?php foreach ($region_set as $region) { ?>
                                         <option value="<?php echo $region['id'];?>" <?php echo($region['id'] === $candidate['region_id'] ? 'selected' : ''); ?>><?php echo $region['name'] ?></option>    
                                     <?php } ?>
-                            </select>
-                            
-                            
+                            </select> 
                         </div> <!-- Form Col End -->
-                        
+                        <div class="col-3">
+                            <label>Start Date:</label> <span><?php echo($candidate['start_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['start_date']))); ?></span>
+                            <br>
+                            <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
+                        </div> <!-- Form Col End -->
                     </form>
                     </div> <!-- Form Row End -->
                     </div>

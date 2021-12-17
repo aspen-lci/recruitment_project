@@ -8,6 +8,7 @@ $pwa_position_set = all_active_positions(5);
 $region_set = all_regions();
 $recruiter_set = all_recruiters();
 $ii_dates = all_ii_dates();
+$start_dates = all_start_dates();
 
 
 if(is_post_request()){
@@ -23,7 +24,7 @@ if(is_post_request()){
     $candidate['recruiter'] = $_POST['recruiter'] ?? '';
     $candidate['company'] = $_POST['company'] ?? '';
     $candidate['position'] = $position ?? '';
-    $candidate['intern'] = $_POST['intern'] ?? '';
+    $candidate['intern'] = 0;
     $candidate['jd_doc_id'] = $jd_doc_id ?? '';
     $candidate['region'] = $_POST['region'] ?? '';
     $candidate['start_date'] = $_POST['startDate'] ?? '';
@@ -107,13 +108,13 @@ if(is_post_request()){
                                     </select>
                             </div> <!-- Form Col End -->
 
-                            <div class="form-group col-md-1">
+                            <!-- <div class="form-group col-md-1">
                                     <label class="ml-2" for="intern">Intern</label>
                                     <input type="checkbox" id="intern" class="form-control" name="intern" value=1>
                                         
-                            </div> <!-- Form Col End -->
+                            </div> Form Col End -->
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="region">Panel Interview Region</label>
                                     <select id="region" class="form-control" name="region" required>
                                         <option value="" selected>Choose Region</option>

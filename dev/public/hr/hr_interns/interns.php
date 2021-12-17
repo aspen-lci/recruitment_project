@@ -181,6 +181,10 @@ class Documents {
                     <td style="border: none; padding-right: 50px;" class="align-top">
                         <dt>Region</dt>
                         <dd><?php echo $candidate['region'] ?? ''; ?></dd>
+                        <dt>Start Date</dt>
+                        <dd><?php echo ($candidate['start_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['start_date'])) : ''); ?></dd>
+                    </td>
+                    <td style="border: none; padding-right: 50px;" class="align-top">
                         <dt>Impact Institute Date</dt>
                         <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
                     </td>

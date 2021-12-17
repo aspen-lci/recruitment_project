@@ -11,6 +11,7 @@
     $ii_dates = all_ii_dates();
     $disposition_set = all_dispositions();
     $status_set = all_doc_status();
+    $start_dates = all_start_dates();
 
 
     if(!isset($_GET['id'])){
@@ -55,7 +56,7 @@
         $update['intern'] = $_POST['intern'];
         //$update['interview_date'] = $_POST['interviewDate'];
         //$update['interview_time'] = $_POST['interviewTime'];
-        //$update['start_date'] = $_POST['startDate'];
+        $update['start_date'] = $_POST['startDate'];
         $update['ii_date'] = $_POST['iiDate'];
       	$update['region'] = $_POST['region'];
         
@@ -265,12 +266,17 @@
                                     <?php } ?>
                             </select>
                             <br/>
+                            <label>Start Date:</label> 
+                            <select id="startDate" type="select" name="startDate">
+                                <option value="" <?php echo(is_blank($candidate['start_date']) ? 'selected' : ''); ?>> </option>
+                                <?php foreach($start_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['start_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
+                            </select>
+                            <br/>
                             <label>Impact Institute Date:</label> 
                             <select id="iiDate" type="select" name="iiDate">
                                 <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
                                 <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                             </select>
-                           
                         </div> <!-- Form Col End -->
                         </div> <!-- Row End -->
                         </div>

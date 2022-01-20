@@ -174,6 +174,7 @@
                             <label>Start Date:</label> <span><?php echo($candidate['start_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['start_date']))); ?></span>
                             <br>
                             <label>Impact Institute Date:</label> <span><?php echo($candidate['ii_date'] == 0000-00-00 ? 'TBD' : date('m/d/Y', strtotime($candidate['ii_date']))); ?></span>
+                            <p class="m-0"><label>Date Entered: </label><?php echo($candidate['time_entered'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['time_entered'])) : ''); ?></p>
                         </div> <!-- Form Col End -->
                     </form>
                     </div> <!-- Form Row End -->

@@ -200,6 +200,8 @@ $candidates = all_candidates();
                     <td style="border: none; padding-right: 50px;" class="align-top">
                         <dt>Impact Institute Date</dt>
                         <dd><?php echo ($candidate['ii_date'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['ii_date'])) : ''); ?></dd>
+                        <dt>Date Entered</dt>
+                        <dd><?php echo ($candidate['time_entered'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['time_entered'])) : ''); ?></dd>
                     </td>
                   </table>
                     </td>

@@ -296,6 +296,7 @@
                                 <option value="" <?php echo(is_blank($candidate['ii_date']) ? 'selected' : ''); ?>> </option>
                                 <?php foreach($ii_dates as $date) echo('<option value=' . $date['date'] . ' ' . ($date['date'] == $candidate['ii_date'] ? 'selected' : '') . '>' . sprintf('%s</option>' . PHP_EOL, (new DateTime($date['date']))->format("m/d/Y"))); ?>
                             </select>
+                            <p class="m-0"><label>Date Entered: </label><?php echo($candidate['time_entered'] > 0000-00-00 ? date('m/d/Y', strtotime($candidate['time_entered'])) : ''); ?></p>
                         </div>
 
                         </div> <!-- Row End -->
